@@ -8,27 +8,38 @@
     <artifactId>polyFinance-ObjectOriented-root</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <!--管理所有模块-->
     <modules>
         <module>polyFinance-ObjectOriented-admin-web</module>
         <module>polyFinance-ObjectOriented-quartz-service</module>
         <module>polyFinance-ObjectOriented-home-core</module>
         <module>polyFinance-ObjectOriented-home-web</module>
     </modules>
-
+<!--指定项目中公有的模块-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.jnshu</groupId>
+                <artifactId>polyFinance-ObjectOriented-home-core</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+<!--指定jdk版本为1.8，默认为1.6-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
     </properties>
 
-
+<!--指定spring boot版本-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
+<!--指定共用依赖-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
