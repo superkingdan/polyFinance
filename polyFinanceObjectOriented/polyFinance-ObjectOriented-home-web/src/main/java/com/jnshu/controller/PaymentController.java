@@ -1,12 +1,10 @@
 package com.jnshu.controller;
 
 import com.jnshu.entity.BankCardRO;
+import com.jnshu.entity.PaymentRPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,6 +79,12 @@ public class PaymentController {
         return map;
     }
 
+    /**
+     * 获得第三方银行验证码
+     * @param phone 手机号
+     * @param bankCardId 银行卡id
+     * @return code,message
+     */
     @PostMapping(value = "/a/u/r/pay/code")
     public Map sendCode(@RequestParam(value="phone")String phone,@RequestParam(value="bankCardId")Long bankCardId){
         long id=1L;
@@ -88,6 +92,22 @@ public class PaymentController {
         Map<String,Object> map=new HashMap<>();
         map.put("code",10000);
         map.put("message","ok");
+        return map;
+    }
+
+    /**
+     * 用户支付
+     * @param rpo 用户支付信息
+     * @return 支付结果,code,message,生成的交易号
+     */
+    @PostMapping(value = "/a/u/r/pay/payment")
+    public Map pay(@ModelAttribute PaymentRPO rpo){
+        long id=1L;
+        log.info("用户"+id+"支付，支付信息为"+rpo);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",10000);
+        map.put("message","ok");
+        map.put("transactionId",4568752);
         return map;
     }
 

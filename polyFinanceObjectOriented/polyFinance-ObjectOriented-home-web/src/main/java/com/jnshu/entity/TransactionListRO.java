@@ -1,16 +1,17 @@
 package com.jnshu.entity;
 
 /**
- * 续投列表对象
+ * 用户投资列表返回结果实体类
  */
-public class ContinuedInvestmentListRO {
+public class TransactionListRO {
     private long id;
     private String productName;
-    private String interestRate;
     private String money;
-    private int mark;
     private long startAt;
     private long endAt;
+    private String interestRate;
+    private int mark;
+    private int status;
 
     public long getId() {
         return id;
@@ -28,28 +29,12 @@ public class ContinuedInvestmentListRO {
         this.productName = productName;
     }
 
-    public String getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(String interestRate) {
-        this.interestRate = interestRate;
-    }
-
     public String getMoney() {
         return money;
     }
 
     public void setMoney(String money) {
         this.money = money;
-    }
-
-    public int getMark() {
-        return mark;
-    }
-
-    public void setMark(int mark) {
-        this.mark = mark;
     }
 
     public long getStartAt() {
@@ -68,16 +53,41 @@ public class ContinuedInvestmentListRO {
         this.endAt = endAt;
     }
 
+    public String getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(String interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "ContinuedInvestmentListRO{" +
+        return "TransactionListRO{" +
                 "id=" + id +
                 ", productName='" + productName + '\'' +
-                ", interestRate='" + interestRate + '\'' +
                 ", money='" + money + '\'' +
-                ", mark=" + mark +
                 ", startAt=" + startAt +
                 ", endAt=" + endAt +
+                ", interestRate='" + interestRate + '\'' +
+                ", mark=" + mark +
+                ", status=" + status +
                 '}';
     }
 }
