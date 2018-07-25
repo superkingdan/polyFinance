@@ -23,7 +23,7 @@ public class UserController {
     @ResponseBody
     public Map find(@PathVariable(value = "id")long id ){
         log.info("按照id查询，查询的id为"+id);
-        Map map=new HashMap();
+        Map<String,Object> map=new HashMap<>();
         User user=new User();
         user.setId(id);
         user.setUserNumber("UK051111");
@@ -36,8 +36,8 @@ public class UserController {
     @ResponseBody
     public Map findAll(){
         log.info("查找全部");
-        Map map=new HashMap();
-        List<User> users=new ArrayList<User>();
+        Map<String,Object> map=new HashMap<>();
+        List<User> users=new ArrayList<>();
         User user1=new User();
         User user2=new User();
         users.add(user1);

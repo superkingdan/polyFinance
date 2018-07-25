@@ -19,16 +19,21 @@ import java.util.Map;
 public class ClaimsController {
     private static final Logger log= LoggerFactory.getLogger(ClaimsController.class);
 
+    /**
+     * 获得债权列表
+     * @param rpo 接收前端查询数据
+     * @return 返回参数，包括code,message,债权列表
+     */
     @GetMapping(value = "/a/u/claims/list")
-    public Map getClaimsList(@ModelAttribute ClaimsListRPO object){
-        log.info("查询债权列表，条件是"+object);
+    public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo){
+        log.info("查询债权列表，条件是"+rpo);
         Map<String,Object> map=new HashMap<>();
         map.put("code",10000);
         map.put("message","ok");
         map.put("total",10086);
-        map.put("size",object.getSize());
+        map.put("size",rpo.getSize());
         List<Claims> claimsList=new ArrayList<Claims>();
-        for(int i=0;i<object.getSize();i++){
+        for(int i=0;i<rpo.getSize();i++){
             Claims claims=new Claims();
             claims.setId(1000L+i);
             claims.setClaimsCode("XTR");
@@ -47,6 +52,11 @@ public class ClaimsController {
         return map;
     }
 
+    /**
+     * 获得具体指定债权
+     * @param id 指定债权Id
+     * @return 返回参数，包括code,message,指定债权数据
+     */
     @GetMapping(value = "/a/u/claims/{id}")
     public  Map getClaims(@PathVariable(value = "id")long id){
         log.info("查询债权详情，债权id为"+id);
@@ -71,6 +81,12 @@ public class ClaimsController {
         return map;
     }
 
+    /**
+     * 修改指定债权
+     * @param claims 接收修改内容
+     * @param id 指定债权id
+     * @return 修改结果，包括code ,message
+     */
     @PutMapping(value = "/a/u/claims/{id}")
     public Map updateClaims(@ModelAttribute Claims claims,@PathVariable(value = "id")long id){
         claims.setId(id);
@@ -81,6 +97,11 @@ public class ClaimsController {
         return map;
     }
 
+    /**
+     * 新增债权
+     * @param claims 接收新增内容
+     * @return 新增结果，包括code,message，id看情况返回
+     */
     @PostMapping(value = "/a/u/claims")
     public Map addClaims(@ModelAttribute Claims claims){
         log.info("新增债权，内容为"+claims);
