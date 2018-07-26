@@ -10,14 +10,20 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-//用户注册及登入
+/**
+ * 用户注册及登入
+ * @return
+ */
 @Controller
 @RequestMapping("/a")
 public class UserLoginController {
 
     private static final Logger log= LoggerFactory.getLogger(UserLoginController.class);
 
-    //    登入
+    /**
+     * 登入
+     * @return
+     */
     @PostMapping("/login")
     @ResponseBody
     public Object login(@RequestParam(value="phoneNumber") String phone_number,
@@ -29,7 +35,10 @@ public class UserLoginController {
     }
 
 
-    // 注册    验证验证码
+    /**
+     * 注册 验证验证码
+     * @return
+     */
     @PostMapping("/register")
     @ResponseBody
     public Object register(@RequestParam(value="phoneNumber") String phone_number,
@@ -41,19 +50,28 @@ public class UserLoginController {
         json.put("message","ok");
         return json;
     }
-    // 注册   发送验证码
+    /**
+     * 注册 发送验证码
+     * @return
+     */
     @GetMapping("/register/code")
     @ResponseBody
-    public Object code(@RequestParam() HttpServletRequest request) throws JSONException {
+    public Object code(@RequestParam(value="phoneNumber") String phone_number,
+                       HttpServletRequest request) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");
         return json;
     }
-    //    找回密码
+    /**
+     * 找回密码
+     * @return
+     */
     @PutMapping("/user/pswd")
     @ResponseBody
-    public Object findBack(@RequestParam() HttpServletRequest request) throws JSONException {
+    public Object findBack(@RequestParam(value="phoneNumber") String phone_number,
+                           @RequestParam(value="code") String code,
+                           HttpServletRequest request) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");

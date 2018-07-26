@@ -4,6 +4,12 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.jnshu.entity.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +23,16 @@ import java.util.Map;
 public class MessageController {
 
     private static final Logger log= LoggerFactory.getLogger(MessageController.class);
-//    需求：点击”消息列表“按钮，查询当前消息。模糊查询消息列表。
+    /**
+     * 多条件查询消息列表
+     * @return 消息列表
+     */
     @GetMapping("/messages")
     @ResponseBody
-    public Object messages(HttpServletRequest request) throws JSONException {
+    public Object messages(@RequestParam(value = "pageNum")int pageNum,
+                           @RequestParam(value = "pageSize")int pageSize,
+                           @ModelAttribute Message Message,
+                           HttpServletRequest request) throws JSONException {
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");
@@ -39,10 +51,14 @@ public class MessageController {
         return json;
     }
 
-//    消息列表。编辑，查看详情。
+    /**
+     * 消息编辑，查看详情
+     * @return 消息
+     */
     @GetMapping("/messages/{id}")
     @ResponseBody
-    public Object getMessage(HttpServletRequest request) throws JSONException{
+    public Object getMessage(@PathVariable(value="id") int id,
+                             HttpServletRequest request) throws JSONException{
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");
@@ -61,20 +77,28 @@ public class MessageController {
         json.put("更新",map);
         return json;
     }
-//    新增消息。图片上传和删除同上
+    /**
+     * 新增消息
+     * @return
+     */
     @PostMapping("/messages")
     @ResponseBody
-    public Object newMessage(HttpServletRequest request) throws JSONException{
+    public Object newMessage(@ModelAttribute Message Message,
+                             HttpServletRequest request) throws JSONException{
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");
         return json;
     }
 
-//    指定消息上下线
+    /**
+     * 消息上下线
+     * @return
+     */
     @PutMapping("/messages/{id}")
     @ResponseBody
-    public Object upMessage(HttpServletRequest request) throws JSONException{
+    public Object upMessage(@PathVariable(value="id") int id,
+                            HttpServletRequest request) throws JSONException{
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");
@@ -83,7 +107,8 @@ public class MessageController {
 //    删除指定消息
     @DeleteMapping("/messages/{id}")
     @ResponseBody
-    public Object deleteMessage(HttpServletRequest request) throws JSONException{
+    public Object deleteMessage(@PathVariable(value="id") int id,
+                                HttpServletRequest request) throws JSONException{
         JSONObject json = new JSONObject();
         json.put("code",1);
         json.put("message","ok");
