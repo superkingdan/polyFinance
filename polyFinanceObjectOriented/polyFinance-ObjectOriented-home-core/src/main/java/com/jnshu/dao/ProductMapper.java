@@ -4,11 +4,14 @@ import com.jnshu.entity.Product;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * product相关sql语句
  */
 @Mapper
+@Component(value ="productMapper")
 public interface ProductMapper {
 
 //插入产品
