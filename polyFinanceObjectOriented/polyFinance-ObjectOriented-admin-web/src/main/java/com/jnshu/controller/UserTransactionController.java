@@ -42,6 +42,7 @@ public class UserTransactionController {
             log.setId(521+i);
             log.setProductName("八星报喜");
             log.setTransactionAt(System.currentTimeMillis());
+            log.setBankLog("00001234567812345678");
             log.setStatus(0);
             log.setTransactionWay("农业银行，452185793465125");
             logs.add(log);

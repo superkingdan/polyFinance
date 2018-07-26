@@ -63,7 +63,7 @@ public class TransactionLogController {
         log.setTransactionAt(System.currentTimeMillis());
         log.setStatus(0);
         log.setMoney("50000");
-        log.setBankLog(5487642154645447841L);
+        log.setBankLog("12345678912345678912");
         log.setTransactionWay("建设银行，12345678912345678912");
         map.put("data",log);
         return map;

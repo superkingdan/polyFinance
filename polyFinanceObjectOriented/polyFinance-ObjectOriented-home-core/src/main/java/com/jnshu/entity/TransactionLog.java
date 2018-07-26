@@ -17,7 +17,7 @@ public class TransactionLog implements Serializable {
     private long transactionAt;
     private String transactionWay;
     private String money;
-    private long bankLog;
+    private String bankLog;
     //交易状态，0付款成功，1付款失败，2回款成功，3回款失败，4返息成功，5返息失败
     private int status;
 
@@ -101,11 +101,11 @@ public class TransactionLog implements Serializable {
         this.money = money;
     }
 
-    public long getBankLog() {
+    public String getBankLog() {
         return bankLog;
     }
 
-    public void setBankLog(long bankLog) {
+    public void setBankLog(String bankLog) {
         this.bankLog = bankLog;
     }
 

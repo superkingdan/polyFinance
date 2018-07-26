@@ -1,5 +1,8 @@
 package com.jnshu.entity;
 
+/**
+ * 获得交易记录接收数据对象
+ */
 public class TransactionLogRPO {
     private long id;
     private int page=1;
