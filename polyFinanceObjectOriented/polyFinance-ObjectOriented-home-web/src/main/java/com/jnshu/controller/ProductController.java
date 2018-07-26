@@ -1,5 +1,6 @@
 package com.jnshu.controller;
 
+import com.jnshu.dto.ProductListRPO;
 import com.jnshu.entity.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +25,12 @@ public class ProductController {
 
     /**
      * 获得产品列表
-     * @param isRecommend 是否是推荐产品，区别推荐页和
+     * @param rpo 是否是推荐产品，区别推荐页
      * @return 返回参数，code,message，产品列表
      */
     @GetMapping(value = "/a/product/list")
-    public Map getProductList(@RequestParam(value = "isRecommend",required = false)Integer isRecommend){
-        log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+isRecommend);
+    public Map getProductList(ProductListRPO rpo){
+        log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+rpo.getIsRecommend());
         Map<String,Object> map=new HashMap<>();
         map.put("code",10000);
         map.put("message","ok");

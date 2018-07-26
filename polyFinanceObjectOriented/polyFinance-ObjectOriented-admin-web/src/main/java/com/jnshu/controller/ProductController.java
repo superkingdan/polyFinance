@@ -1,7 +1,7 @@
 package com.jnshu.controller;
 
 import com.jnshu.entity.Product;
-import com.jnshu.entity.ProductListRPO;
+import com.jnshu.dto.ProductListRPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

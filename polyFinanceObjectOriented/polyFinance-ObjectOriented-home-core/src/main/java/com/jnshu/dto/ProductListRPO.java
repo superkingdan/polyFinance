@@ -1,4 +1,4 @@
-package com.jnshu.entity;
+package com.jnshu.dto;
 
 /**
  * 获得产品列表分页接收数据实体类
@@ -6,15 +6,24 @@ package com.jnshu.entity;
 public class ProductListRPO {
     private int page=1;
     private int size=10;
-    private int status;
+    private Integer status;
     private String productName;
-    private int rateOfInterest;
+    private Integer rateOfInterest;
     private String interestRateMin;
     private String interestRateMax;
     private String investmentAmount;
-    private int deadlineMin;
-    private int deadlineMax;
+    private Integer deadlineMin;
+    private Integer deadlineMax;
     private String productCode;
+    private Integer isRecommend;
+
+    public Integer getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(Integer isRecommend) {
+        this.isRecommend = isRecommend;
+    }
 
     public int getPage() {
         return page;
@@ -32,11 +41,11 @@ public class ProductListRPO {
         this.size = size;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -48,11 +57,11 @@ public class ProductListRPO {
         this.productName = productName;
     }
 
-    public int getRateOfInterest() {
+    public Integer getRateOfInterest() {
         return rateOfInterest;
     }
 
-    public void setRateOfInterest(int rateOfInterest) {
+    public void setRateOfInterest(Integer rateOfInterest) {
         this.rateOfInterest = rateOfInterest;
     }
 
@@ -80,19 +89,19 @@ public class ProductListRPO {
         this.investmentAmount = investmentAmount;
     }
 
-    public int getDeadlineMin() {
+    public Integer getDeadlineMin() {
         return deadlineMin;
     }
 
-    public void setDeadlineMin(int deadlineMin) {
+    public void setDeadlineMin(Integer deadlineMin) {
         this.deadlineMin = deadlineMin;
     }
 
-    public int getDeadlineMax() {
+    public Integer getDeadlineMax() {
         return deadlineMax;
     }
 
-    public void setDeadlineMax(int deadlineMax) {
+    public void setDeadlineMax(Integer deadlineMax) {
         this.deadlineMax = deadlineMax;
     }
 
@@ -118,6 +127,7 @@ public class ProductListRPO {
                 ", deadlineMin=" + deadlineMin +
                 ", deadlineMax=" + deadlineMax +
                 ", productCode='" + productCode + '\'' +
+                ", isRecommend=" + isRecommend +
                 '}';
     }
 }
