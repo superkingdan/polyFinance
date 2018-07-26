@@ -2,11 +2,10 @@ package com.jnshu.controller;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-<<<<<<< HEAD
-=======
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
->>>>>>> 7cd4a9fb9b30409e34569c9b7caaa76b98152647
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
