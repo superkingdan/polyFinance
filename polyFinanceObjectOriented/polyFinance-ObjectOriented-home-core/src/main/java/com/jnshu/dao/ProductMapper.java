@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * product相关sql语句
+ * product相关sql语句，by王琦超
  */
 @Mapper
 @Component(value ="productMapper")
