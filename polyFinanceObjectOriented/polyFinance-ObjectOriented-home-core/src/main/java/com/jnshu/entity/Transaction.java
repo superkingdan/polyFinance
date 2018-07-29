@@ -7,6 +7,34 @@ import java.io.Serializable;
  */
 public class Transaction implements Serializable {
     private static final long serialVersionUID = 433310565527530505L;
+    /**
+     * 续投状态，未到续投时间
+     */
+    public static final Integer RENUWAL_STATUS_NOT=0;
+    /**
+     * 续投状态，可续投
+     */
+    public static final Integer RENUWAL_STATUS_CAN=1;
+    /**
+     * 续投状态,已续投
+     */
+    public static final Integer RENUWAL_STATUS_HAVE=2;
+    /**
+     * 续投状态，超过续投时间
+     */
+    public static final Integer RENUWAL_STATUS_EXPIRED=3;
+    /**
+     *投资状态，投资中
+     */
+    public static final Integer STATUS_INVESTING=0;
+    /**
+     *投资状态，回款中
+     */
+    public static final Integer STATUS_PAYING=1;
+    /**
+     * 投资状态，已回款
+     */
+    public static final Integer STATUS_REPAID=2;
     private long id;
     private long createAt;
     private long createBy;

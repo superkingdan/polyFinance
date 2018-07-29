@@ -7,6 +7,22 @@ import java.io.Serializable;
  */
 public class Contract implements Serializable {
     private static final long serialVersionUID = -1164263469683778970L;
+    /**
+     * 是否付款，未付款
+     */
+    public static final Integer IS_PAY_NO=0;
+    /**
+     * 是否付款，已付款
+     */
+    public static final Integer IS_PAY_YES=1;
+    /**
+     * 是否匹配债权,未匹配
+     */
+    public static final Integer IS_MATCHING_CLAIMS_NO=0;
+    /**
+     * 是否匹配债权，已匹配
+     */
+    public static final Integer IS_MATCHING_CLAIMS_YES=1;
     private long id;
     private long createAt;
     private long createBy;

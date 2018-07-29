@@ -7,6 +7,42 @@ import java.io.Serializable;
  */
 public class Message implements Serializable {
     private static final long serialVersionUID = -4586832996771783008L;
+    /**
+     * 发送人群，所有人
+     */
+    public static final Integer SENT_PERSON_TYPE_ALL=0;
+    /**
+     * 发送人群，认证投资人
+     */
+    public static final Integer SENT_PERSON_TYPE_VERIFIED=1;
+    /**
+     * 是否推送，不推送
+     */
+    public static final Integer IS_PUSH_NO=0;
+    /**
+     *是否推送，推送
+     */
+    public static final Integer IS_PUSH_YES=1;
+    /**
+     *消息类型，即时发送
+     */
+    public static final Integer MESSAGE_TYPE_IMMEDIATE=0;
+    /**
+     *消息类型，定时发送
+     */
+    public static final Integer MESSAGE_TYPE_TIMING=1;
+    /**
+     *是否发送，发送
+     */
+    public static final Integer IS_SENT_YES=0;
+    /**
+     *是否发送，待发送
+     */
+    public static final Integer IS_SENT_READY=1;
+    /**
+     *是否发送，存为草稿
+     */
+    public static final Integer IS_SENT_DRAFT=2;
     private long id;
     private long createAt;
     private long createBy;

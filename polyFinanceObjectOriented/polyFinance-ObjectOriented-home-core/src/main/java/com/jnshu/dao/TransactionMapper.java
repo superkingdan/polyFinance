@@ -1,12 +1,10 @@
 package com.jnshu.dao;
 
-import com.jnshu.dto.*;
-import com.jnshu.entity.Claims;
+import com.jnshu.dto1.*;
 import com.jnshu.entity.Transaction;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.jnshu.dao;
 
-import com.jnshu.dto.TransactionLogRPO;
+import com.jnshu.dto1.TransactionLogRPO;
 import com.jnshu.entity.TransactionLog;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;

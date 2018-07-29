@@ -1,8 +1,8 @@
 package com.jnshu.dao;
 
-import com.jnshu.dto.ProductListRPO;
-import com.jnshu.dto.StatisticsSalesListRO;
-import com.jnshu.dto.StatisticsSalesListRPO;
+import com.jnshu.dto1.ProductListRPO;
+import com.jnshu.dto1.StatisticsSalesListRO;
+import com.jnshu.dto1.StatisticsSalesListRPO;
 import com.jnshu.entity.Product;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;

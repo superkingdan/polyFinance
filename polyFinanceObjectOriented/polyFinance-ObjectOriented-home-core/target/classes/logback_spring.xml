@@ -55,5 +55,5 @@
 
     <!-- logger是root的子打印器，可以有多个，输出name配置的包中的日志。 -->
     <!-- com.task.repository是我的mybatis映射dao的包名，设置为debug可以打印mybatis的sql语句 -->
-    <logger name="com.task.repository" level="DEBUG" />
+    <logger name="com.jnshu.dao" level="DEBUG" />
 </configuration>

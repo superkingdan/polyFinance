@@ -7,6 +7,26 @@ import java.io.Serializable;
  */
 public class Content implements Serializable {
     private static final long serialVersionUID = 310712541617581588L;
+    /**
+     * 类型，banner推荐
+     */
+    public static final Integer TYPE_BANNER=0;
+    /**
+     *类型，帮助中心
+     */
+    public static final Integer TYPE_HELP=1;
+    /**
+     *类型，关于我们
+     */
+    public static final Integer TYPE_ABOUT_US=2;
+    /**
+     *状态，存为草稿
+     */
+    public static final Integer STATUS_DRAFT=0;
+    /**
+     *状态，上线
+     */
+    public static final Integer STATUS_ONLINE=1;
     private long id;
     private long createAt;
     private long createBy;

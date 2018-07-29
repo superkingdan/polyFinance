@@ -1,6 +1,6 @@
 package com.jnshu.controller;
 
-import com.jnshu.dto.BankCardRO;
+import com.jnshu.dto1.BankCardRO;
 import com.jnshu.entity.PaymentRPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

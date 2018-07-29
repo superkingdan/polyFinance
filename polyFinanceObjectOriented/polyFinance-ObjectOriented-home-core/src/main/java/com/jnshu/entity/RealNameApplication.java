@@ -4,6 +4,30 @@ import java.io.Serializable;
 
 public class RealNameApplication implements Serializable {
     private static final long serialVersionUID = 7462581826457911697L;
+    /**
+     *实名状态，未认证
+     */
+    public static final Integer APPLICATION_STATUS_NO=0;
+    /**
+     *实名状态，已认证
+     */
+    public static final Integer APPLICATION_STATUS_YES=1;
+    /**
+     *实名状态，已拒绝
+     */
+    public static final Integer APPLICATION_STATUS_REFUSED=2;
+    /**
+     *实名状态，已取消
+     */
+    public static final Integer APPLICATION_STATUS_CANCEL=3;
+    /**
+     *是否第一次申请，是
+     */
+    public static final Integer IS_FIRST_YES=0;
+    /**
+     *是否第一次申请，不是
+     */
+    public static final Integer IS_FIRST_NO=1;
     private long id;
     private long createAt;
     private long createBy;

@@ -1,8 +1,8 @@
 package com.jnshu.controller;
 
 import com.jnshu.entity.Claims;
-import com.jnshu.dto.ClaimsMatchingRO;
-import com.jnshu.dto.ClaimsMatchingRPO;
+import com.jnshu.dto1.ClaimsMatchingRO;
+import com.jnshu.dto1.ClaimsMatchingRPO;
 import com.jnshu.entity.ContractMatchingRO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

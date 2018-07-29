@@ -1,7 +1,7 @@
 package com.jnshu.dao;
 
-import com.jnshu.dto.BankCardRO;
-import com.jnshu.dto.PaymentDto;
+import com.jnshu.dto1.BankCardRO;
+import com.jnshu.dto1.PaymentDto;
 import com.jnshu.entity.BankCard;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

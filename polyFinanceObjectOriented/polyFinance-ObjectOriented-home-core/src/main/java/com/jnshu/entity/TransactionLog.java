@@ -7,6 +7,30 @@ import java.io.Serializable;
  */
 public class TransactionLog implements Serializable {
     private static final long serialVersionUID = 4189666884369204619L;
+    /**
+     *交易状态，付款成功
+     */
+    public static final Integer STATUS_PAY_SUCCESS=0;
+    /**
+     *交易状态，付款失败
+     */
+    public static final Integer STATUS_PAY_FAIL=1;
+    /**
+     *交易状态，回款成功
+     */
+    public static final Integer STATUS_RETURN_SUCCESS=2;
+    /**
+     *交易状态，回款失败
+     */
+    public static final Integer STATUS_RETURN_FAIL=3;
+    /**
+     *交易状态，返息成功
+     */
+    public static final Integer STATUS_INTEREST_SUCCESS=4;
+    /**
+     *交易状态，返息失败
+     */
+    public static final Integer STATUS_INTEREST_FAIL=5;
     private long id;
     private long createAt;
     private long createBy;

@@ -1,6 +1,6 @@
 package com.jnshu.dao;
 
-import com.jnshu.dto.ClaimsListRPO;
+import com.jnshu.dto1.ClaimsListRPO;
 import com.jnshu.entity.Claims;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;

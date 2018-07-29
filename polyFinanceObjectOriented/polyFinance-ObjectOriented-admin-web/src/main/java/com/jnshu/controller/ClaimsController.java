@@ -1,9 +1,12 @@
 package com.jnshu.controller;
 
+import com.github.pagehelper.Page;
 import com.jnshu.entity.Claims;
-import com.jnshu.dto.ClaimsListRPO;
+import com.jnshu.dto1.ClaimsListRPO;
+import com.jnshu.service1.ClaimsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,7 +21,8 @@ import java.util.Map;
 @RestController
 public class ClaimsController {
     private static final Logger log= LoggerFactory.getLogger(ClaimsController.class);
-
+    @Autowired
+    ClaimsService claimsService;
     /**
      * 获得债权列表
      * @param rpo 接收前端查询数据
@@ -27,28 +31,30 @@ public class ClaimsController {
     @GetMapping(value = "/a/u/claims/list")
     public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo){
         log.info("查询债权列表，条件是"+rpo);
+        Page<Claims> claimsPage=claimsService.getClaimsList(rpo);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        map.put("total",10086);
-        map.put("size",rpo.getSize());
-        List<Claims> claimsList=new ArrayList<Claims>();
-        for(int i=0;i<rpo.getSize();i++){
-            Claims claims=new Claims();
-            claims.setId(1000L+i);
-            claims.setClaimsCode("XTR");
-            claims.setCreditor("小旋风");
-            claims.setCreditorPhoneNumber("13555557777");
-            claims.setCreditorIdCard("660523199001011234");
-            claims.setLendDeadline(12);
-            claims.setLendStartAt(System.currentTimeMillis());
-            claims.setLendEndAt(System.currentTimeMillis()+12*30*24*3600*1000L);
-            claims.setLendMoney("100000");
-            claims.setStatus(1);
-            claims.setRemanentMoney("50000");
-            claimsList.add(claims);
-        }
-        map.put("data",claimsList);
+        map.put("code",0);
+        map.put("message","success");
+        map.put("total",claimsPage.getTotal());
+        map.put("size",claimsPage.getPageSize());
+//        List<Claims> claimsList=new ArrayList<Claims>();
+//        for(int i=0;i<rpo.getSize();i++){
+//            Claims claims=new Claims();
+//            claims.setId(1000L+i);
+//            claims.setClaimsCode("XTR");
+//            claims.setCreditor("小旋风");
+//            claims.setCreditorPhoneNumber("13555557777");
+//            claims.setCreditorIdCard("660523199001011234");
+//            claims.setLendDeadline(12);
+//            claims.setLendStartAt(System.currentTimeMillis());
+//            claims.setLendEndAt(System.currentTimeMillis()+12*30*24*3600*1000L);
+//            claims.setLendMoney("100000");
+//            claims.setStatus(1);
+//            claims.setRemanentMoney("50000");
+//            claimsList.add(claims);
+//        }
+        System.out.println(claimsPage);
+        map.put("data",claimsPage);
         return map;
     }
 

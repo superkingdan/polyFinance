@@ -7,6 +7,14 @@ import java.io.Serializable;
  */
 public class BankCard implements Serializable {
     private static final long serialVersionUID = 6592673127900903170L;
+    /**
+     * 银行卡第一次添加
+     */
+    public static final Integer ORDER_FIRST=1;
+    /**
+     * 银行卡第二次添加
+     */
+    public static final Integer ORDER_SECOND=2;
     private long id;
     private long createAt;
     private long createBy;

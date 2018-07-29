@@ -7,6 +7,31 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     private static final long serialVersionUID = -3931423334698412790L;
+    /**
+     * 实名状态，未实名
+     */
+    public static final Integer REAL_STATUS_NOT=0;
+    /**
+     *实名状态，已实名
+     */
+    public static final Integer REAL_STATUS_HAVE=1;
+    /**
+     * 新手礼包,未买过
+     */
+    public static final Integer IS_NEW_NOT=0;
+    /**
+     * 新手礼包，已经买过
+     */
+    public static final Integer IS_NEW_HAVE=1;
+    /**
+     *用户状态，正常
+     */
+    public static final Integer STATUS_NORMAL=0;
+    /**
+     *用户状态，冻结
+     */
+    public static final Integer STATUS_FREEZE=1;
+
     private long id;
      private long createAt;
      private long createBy;

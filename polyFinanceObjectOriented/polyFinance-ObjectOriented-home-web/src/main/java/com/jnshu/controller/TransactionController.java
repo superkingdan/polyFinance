@@ -1,7 +1,7 @@
 package com.jnshu.controller;
 
-import com.jnshu.dto.TransactionListRO;
-import com.jnshu.dto.TransactionRO;
+import com.jnshu.dto1.TransactionListRO;
+import com.jnshu.dto1.TransactionRO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

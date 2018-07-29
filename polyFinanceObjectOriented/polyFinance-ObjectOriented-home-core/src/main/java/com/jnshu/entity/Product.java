@@ -7,6 +7,51 @@ import java.io.Serializable;
  */
 public class Product implements Serializable {
     private static final long serialVersionUID = 492495524263482919L;
+    /**
+     *还款方式，按月付息，到期还本
+     */
+    public static final Integer REFUND_STYLE_INTEREST=0;
+    /**
+     *还款方式，本息一次还
+     */
+    public static final Integer REFUND_STYLE_ONCE=1;
+    /**
+     *在售
+     */
+    public static final Integer STATUS_ON_SALE=0;
+    /**
+     * 停售
+     */
+    public static final Integer STATUS_STOP_SALE=1;
+    /**
+     * 角标，都不选
+     */
+    public static final Integer MARK_NOT_SELECTED=0;
+    /**
+     * 角标，新近产品
+     */
+    public static final Integer MARK_NEW=1;
+    /**
+     * 角标，热门产品
+     */
+    public static final Integer MARK_HOT=2;
+    /**
+     * 是否推荐，不推荐
+     */
+    public static final Integer IS_RECOMMEND_NO=0;
+    /**
+     * 是否推荐，推荐
+     */
+    public static final Integer IS_RECOMMEND_YES=1;
+    /**
+     * 是否限购，否
+     */
+    public static final Integer IS_LIMITED_PURCHASE_NO=0;
+    /**
+     * 是否限购，是
+     */
+    public static final Integer IS_LIMITED_PURCHASE_YES=1;
+
     private long id;
     private long createAt;
     private long createBy;

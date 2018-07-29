@@ -7,6 +7,18 @@ import java.io.Serializable;
  */
 public class Claims implements Serializable {
     private static final long serialVersionUID = -931727715216503734L;
+    /**
+     * 状态，未使用
+     */
+    public static final Integer STATUS_NOT_USE=0;
+    /**
+     * 状态，使用中
+     */
+    public static final Integer STATUS_USING=1;
+    /**
+     * 状态，已到期
+     */
+    public static final Integer STATUS_EXPIRED=2;
     private long id;
     private long createAt;
     private long createBy;

@@ -7,6 +7,46 @@ import java.io.Serializable;
  */
 public class TimedTask implements Serializable {
     private static final long serialVersionUID = 7155950148356243300L;
+    /**
+     *状态，已执行
+     */
+    public static final Integer STATUS_HAS_EXECUTED=1;
+    /**
+     *状态，未执行
+     */
+    public static final Integer STATUS_NOT_EXECUTE=0;
+    /**
+     *任务性质，返息
+     */
+    public static final Integer NATURE_RETURN_INTEREST=0;
+    /**
+     *任务性质,返回本金
+     */
+    public static final Integer NATURE_RETURN_PRINCIPAL=1;
+    /**
+     *任务性质，查询返息是否成功
+     */
+    public static final Integer NATURE_INQUIRE_INTEREST=2;
+    /**
+     *任务性质，查询返现是否成功
+     */
+    public static final Integer NATURE_INQUIRE_PRINCIPAL=3;
+    /**
+     *任务性质，修改续投状态
+     */
+    public static final Integer NATURE_RENEWAL=4;
+    /**
+     *任务性质，修改消息为已发送
+     */
+    public static final Integer NATURE_MESSAGE=5;
+    /**
+     *任务性质，修改合同状态为未匹配
+     */
+    public static final Integer NATURE_CONTRACT=6;
+    /**
+     *任务性质，修改债权状态为已过期
+     */
+    public static final Integer NATURE_CLAIMS=7;
     private long id;
     private long createAt;
     private long createBy;
