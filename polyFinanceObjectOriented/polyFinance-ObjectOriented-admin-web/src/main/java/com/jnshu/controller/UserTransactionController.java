@@ -1,5 +1,8 @@
 package com.jnshu.controller;
 
+import com.jnshu.dto.TransactionListBackRO;
+import com.jnshu.dto.TransactionListRPO;
+import com.jnshu.dto.TransactionLogRPO;
 import com.jnshu.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +61,7 @@ public class UserTransactionController {
      * @return 返回参数，code,message,投资列表
      */
     @GetMapping(value = "/a/u/user/transaction/list/{id}")
-    public Map getTransactionList(@ModelAttribute TransactionListRPO rpo,@PathVariable(value = "id")long id){
+    public Map getTransactionList(@ModelAttribute TransactionListRPO rpo, @PathVariable(value = "id")long id){
         rpo.setId(id);
         log.info("查询指定用户"+id+"投资列表");
         Map<String,Object> map=new HashMap<>();
@@ -66,9 +69,9 @@ public class UserTransactionController {
         map.put("message","ok");
         map.put("total",rpo.getSize()*3);
         map.put("size",rpo.getSize());
-        List<TransactionListRO> ros=new ArrayList<>();
+        List<TransactionListBackRO> ros=new ArrayList<>();
         for(int i=0;i<rpo.getSize();i++){
-            TransactionListRO ro=new TransactionListRO();
+            TransactionListBackRO ro=new TransactionListBackRO();
             ro.setProductName("太平盛世");
             ro.setMoney("10000");
             ro.setStartAt(System.currentTimeMillis());
@@ -77,7 +80,7 @@ public class UserTransactionController {
             ro.setReturned("200");
             ro.setNotReturn("100");
             ro.setContractCode("UKZXC1801000"+i);
-            ro.setClaimsProtocolCode("UKZQ1801542"+i);
+            ro.setCurrentClaimsCode("UKZQ1801542"+i);
             ros.add(ro);
         }
         map.put("data",ros);

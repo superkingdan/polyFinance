@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 
 
 @SpringBootApplication
-@MapperScan("com.jnshu.dao")
+@MapperScan({"com.jnshu.dao","com.jnshu.dao2","com.jnshu.dao3"})
 public class Entry {
     public static void main(String[] args) {
         SpringApplication.run(Entry.class,args);

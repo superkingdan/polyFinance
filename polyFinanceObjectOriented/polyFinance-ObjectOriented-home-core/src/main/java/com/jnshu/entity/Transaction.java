@@ -19,7 +19,7 @@ public class Transaction implements Serializable {
     //续投状态0未到续投时间，1可续投，2已续投，3超过续投时间，默认0，定时任务触发时修改为1，续投投资成功修改为2，返款后修改为3
     private int renuwalStatus=0;
     private String money;
-    private String exceptEarnings;
+    private String expectEarnings;
     private String returned;
     private String notReturn;
     private long productId;
@@ -109,12 +109,12 @@ public class Transaction implements Serializable {
         this.money = money;
     }
 
-    public String getExceptEarnings() {
-        return exceptEarnings;
+    public String getExpectEarnings() {
+        return expectEarnings;
     }
 
-    public void setExceptEarnings(String exceptEarnings) {
-        this.exceptEarnings = exceptEarnings;
+    public void setExpectEarnings(String expectEarnings) {
+        this.expectEarnings = expectEarnings;
     }
 
     public String getReturned() {
@@ -178,7 +178,7 @@ public class Transaction implements Serializable {
                 ", endAt=" + endAt +
                 ", renuwalStatus=" + renuwalStatus +
                 ", money='" + money + '\'' +
-                ", exceptEarnings='" + exceptEarnings + '\'' +
+                ", exceptEarnings='" + expectEarnings + '\'' +
                 ", returned='" + returned + '\'' +
                 ", notReturn='" + notReturn + '\'' +
                 ", productId=" + productId +

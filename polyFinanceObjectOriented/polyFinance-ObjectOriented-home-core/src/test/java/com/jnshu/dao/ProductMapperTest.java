@@ -2,6 +2,7 @@ package com.jnshu.dao;
 
 import com.jnshu.Entry;
 import com.jnshu.dto.ProductListRPO;
+import com.jnshu.dto.StatisticsSalesListRPO;
 import com.jnshu.entity.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -73,5 +74,31 @@ public class ProductMapperTest {
         rpo.setInterestRateMax("0.20");
         rpo.setInterestRateMin("0.06");
         System.out.println(productMapper.getProductListByRpo(rpo));
+    }
+    @Test
+    public void getProductIdByProductName(){
+        System.out.println(productMapper.getProductIdByProductName("万箭齐发1"));
+    }
+
+    @Test
+    public void getProductNameByProductId(){
+        System.out.println(productMapper.getProductNameByProductId(1));
+    }
+
+    @Test
+    public void getProductIdByProductNameAndCode(){
+        StatisticsSalesListRPO rpo=new StatisticsSalesListRPO();
+        rpo.setProductName("万箭齐发");
+        System.out.println(productMapper.getProductIdByProductNameAndCode(rpo));
+    }
+
+    @Test
+    public void getRefundInfoById(){
+        System.out.println(productMapper.getRefundInfoById(1));
+    }
+
+    @Test
+    public void getPayInfoById(){
+        System.out.println(productMapper.getPayInfoById(1));
     }
 }

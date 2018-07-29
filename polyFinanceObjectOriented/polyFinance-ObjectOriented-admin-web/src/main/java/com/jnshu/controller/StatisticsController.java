@@ -1,9 +1,9 @@
 package com.jnshu.controller;
 
-import com.jnshu.entity.StatisticsSalesListRO;
-import com.jnshu.entity.StatisticsSalesListRPO;
+import com.jnshu.dto.StatisticsSalesListRO;
+import com.jnshu.dto.StatisticsSalesListRPO;
 import com.jnshu.entity.StatisticsSalesRO;
-import com.jnshu.entity.StatisticsSalesRPO;
+import com.jnshu.dto.StatisticsSalesRPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

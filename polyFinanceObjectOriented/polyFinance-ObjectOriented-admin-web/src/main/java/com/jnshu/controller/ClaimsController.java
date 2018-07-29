@@ -1,7 +1,7 @@
 package com.jnshu.controller;
 
 import com.jnshu.entity.Claims;
-import com.jnshu.entity.ClaimsListRPO;
+import com.jnshu.dto.ClaimsListRPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
