@@ -9,6 +9,7 @@ public class ClaimsMatchingRPO {
     private Long id;
     private int page=1;
     private int size=10;
+    private int start=(page-1)*size;
     private Long productId;
     private String productName;
     private Long userId[];
@@ -17,6 +18,10 @@ public class ClaimsMatchingRPO {
     private Long startAtMax;
     private Long endAtMin;
     private Long endAtMax;
+
+    public int getStart() {
+        return start;
+    }
 
     public Long getId() {
         return id;

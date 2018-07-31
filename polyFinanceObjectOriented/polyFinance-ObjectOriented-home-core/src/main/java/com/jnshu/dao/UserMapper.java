@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  *用户表相关SQL
  * @author wangqichao
@@ -33,9 +35,13 @@ public interface UserMapper {
     @Select("select user.real_name,user.id_card from user inner join transaction on user.id=transaction.user_id where transaction.contract_code=#{contractCode}")
     User getUserInfoByContractCode(String contractCode);
 
+    //通过姓名查找用户id
+    @Select("select id from user where real_name=#{userName}")
+    Long[] getUserIdByName(String userName);
 
-
-
+    //通过id查找用户姓名
+    @Select("select real_name from user where id=#{userId}")
+    String getUserNameById(long userId);
 
 
 }

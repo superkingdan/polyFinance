@@ -27,7 +27,7 @@ ContractMapper contractMapper;
             Contract contract=new Contract();
             contract.setCreateAt(System.currentTimeMillis());
             contract.setCreateBy(1L);
-            contract.setContractCode("UKZXC1800000"+i);
+            contract.setContractCode("UKZXC1800001"+i);
             contract.setIsPay(1);
             contract.setIsMatchingClaims(0);
             contract.setUserSign("王二狗");

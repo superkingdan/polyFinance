@@ -21,9 +21,9 @@ public class TransactionMapperTest {
             Transaction transaction = new Transaction();
             transaction.setCreateAt(System.currentTimeMillis());
             transaction.setCreateBy(1L+i);
-            transaction.setUserId(12L+i);
+            transaction.setUserId(i);
             transaction.setStartAt(System.currentTimeMillis());
-            transaction.setEndAt(System.currentTimeMillis() + 6 * 30 * 24 * 3600 * 1000L);
+            transaction.setEndAt(System.currentTimeMillis() + 12* 30 * 24 * 3600 * 1000L);
             transaction.setRenuwalStatus(0);
             transaction.setMoney("50000");
             transaction.setExpectEarnings("300");
@@ -31,7 +31,7 @@ public class TransactionMapperTest {
             transaction.setNotReturn("300");
             transaction.setProductId(1+i);
             transaction.setStatus(0);
-            transaction.setContractCode("UKZXC1800000"+i);
+            transaction.setContractCode("UKZXC1800001"+i);
             transactionMapper.addTransaction(transaction);
             System.out.println(transaction.getId());
         }
@@ -102,6 +102,7 @@ public class TransactionMapperTest {
         rpo.setId(1L);
         Long userId[]={12L,13L};
         rpo.setUserId(userId);
+        rpo.setSize(1);
         System.out.println(transactionMapper.getClaimsMatchingList(rpo));
 
     }

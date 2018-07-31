@@ -7,7 +7,7 @@ public class BankCardRO {
     private long id;
     private String bankName;
     private String bankCard;
-    private int order;
+    private int cardOrder;
     private String icon;
     private String singleLimited;
     private String dayLimited;
@@ -36,12 +36,12 @@ public class BankCardRO {
         this.bankCard = bankCard;
     }
 
-    public int getOrder() {
-        return order;
+    public int getCardOrder() {
+        return cardOrder;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setCardOrder(int cardOrder) {
+        this.cardOrder = cardOrder;
     }
 
     public String getIcon() {
@@ -74,7 +74,7 @@ public class BankCardRO {
                 "id=" + id +
                 ", bankName='" + bankName + '\'' +
                 ", bankCard='" + bankCard + '\'' +
-                ", order=" + order +
+                ", cardOrder=" + cardOrder +
                 ", icon='" + icon + '\'' +
                 ", singleLimited='" + singleLimited + '\'' +
                 ", dayLimited='" + dayLimited + '\'' +

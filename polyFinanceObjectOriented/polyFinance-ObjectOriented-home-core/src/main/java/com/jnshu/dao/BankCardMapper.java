@@ -21,7 +21,7 @@ public interface BankCardMapper {
     BankCard getBankIdById(long bankCardId);
 
     //通过用户id获得用户银行卡相关信息
-    @Select("select bank_card.id,bank.bank_name,bank_card.bank_card,bank_card.order,bank.icon,bank.single_limited,bank.day_limited from bank_card inner join bank on bank_card.bank_id=bank.id where bank_card.user_id=#{userId}")
+    @Select("select bank_card.id,bank.bank_name,bank_card.bank_card,bank_card.card_order,bank.icon,bank.single_limited,bank.day_limited from bank_card inner join bank on bank_card.bank_id=bank.id where bank_card.user_id=#{userId}")
     List<BankCardRO> getBankCardInfoByUserId(long userId);
 
     //查找交易方式

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Calendar;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,5 +45,24 @@ UserMapper userMapper;
     @Test
     public void getUserInfoByContractCode(){
         System.out.println(userMapper.getUserInfoByContractCode("UKZXC18000001"));
+    }
+
+    @Test
+    public void getUserIdByName(){
+        Long[] longs=userMapper.getUserIdByName("王大锤");
+        System.out.println(longs[0]);
+        System.out.println(longs[1]);
+    }
+
+    @Test
+    public  void  getUserNameById(){
+        System.out.println(userMapper.getUserNameById(1));
+    }
+
+    @Test
+    public void test(){
+        Calendar time=Calendar.getInstance();
+        int thisYear=time.get(Calendar.YEAR);
+        System.out.println(thisYear%100);
     }
 }

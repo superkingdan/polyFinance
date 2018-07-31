@@ -30,22 +30,22 @@ public interface ClaimsMapper {
     //按id查询指定债权匹配相关信息
     // 暂时有问题
     @Select("select claims_code,lend_start_at,lend_end_at,lend_money,remanent_money from claims where id=#{id}")
-    Claims getClaimsMatchingById(long id);
+    Claims getClaimsMatchingById(long claimsId);
 
 //    //按id查询指定债权匹配金额
-//    @Select("select remanent_money,lend_money from claims where id=#{id}")
-//    Claims getClaimsMoneyById(long id);
+    @Select("select remanent_money,lend_money from claims where id=#{claimsId}")
+    Claims getClaimsMoneyById(long claimsId);
 
     //修改债权信息，需要先计算时间和待匹配金额
     @Update("update claims set update_at=#{updateAt},update_by=#{updateBy},claims_code=#{claimsCode},creditor=#{creditor},creditor_phone_number=#{creditorPhoneNumber},creditor_id_card=#{creditorIdCard},lend_deadline=#{lendDeadline},lend_start_at=#{lendStartAt},lend_end_at=#{lendEndAt},lend_money=#{lendMoney},claims_nature=#{claimsNature},claims_interest_rate=#{claimsInterestRate},remark=#{remark},remanent_money=#{remanentMoney} where id=#{id}")
     int updateClaims(Claims claims);
 
     //修改债权待匹配金额
-    @Update("update claims set remanent_money=#{remanentMoney},status=#{status} where id=#{id}")
+    @Update("update claims set remanent_money=#{remanentMoney},status=#{status},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
     int updateClaimsMoney(Claims claims);
 
     //新增债权信息,其中lendEndAt需要手动计算后填入
-    @Insert("insert into claims (create_at,create_by,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_money,claims_nature,claims_interest_rate,remark,lend_end_at,remanent_money) values (#{createAt},#{createBy},#{claimsCode},#{creditor},#{creditorPhoneNumber},#{creditorIdCard},#{lendDeadline},#{lendStartAt},#{lendMoney},#{claimsNature},#{claimsInterestRate},#{remark},#{lendEndAt},#{lendMoney})")
+    @Insert("insert into claims (create_at,create_by,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_money,claims_nature,claims_interest_rate,remark,lend_end_at,remanent_money,status) values (#{createAt},#{createBy},#{claimsCode},#{creditor},#{creditorPhoneNumber},#{creditorIdCard},#{lendDeadline},#{lendStartAt},#{lendMoney},#{claimsNature},#{claimsInterestRate},#{remark},#{lendEndAt},#{lendMoney},#{)")
     @Options(useGeneratedKeys=true,keyProperty="id")
     int addClaims(Claims claims);
 

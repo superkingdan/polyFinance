@@ -35,8 +35,8 @@ public interface TransactionMapper {
     Long[] getUserIdByClaimsId(long id);
 
     //查询合同编号对应信息
-    @Select("select user_id,product_id,end_at,money from transaction where contract_code=#{contractCode}")
-    Transaction getContractInfoByContractCode(String contractCode);
+    @Select("select contract_code,user_id,product_id,end_at,money from transaction where contract_code=#{contractCode}")
+    ContractMatchingRO getContractInfoByContractCode(String contractCode);
 
     //修改交易表债权信息
     @Update("update transaction set claims_id=#{claimsId},update_at=#{updateAt},update_by=#{updateBy} where contract_code=#{contractCode}")
@@ -91,20 +91,18 @@ public interface TransactionMapper {
             return new SQL(){{
                 SELECT("contract_code,start_at,end_at,money,product_id,user_id");
                 FROM("transaction");
-                if (rpo.getId()!=null)
-                    WHERE("claims_id=#{id}");
                 if (rpo.getProductId()!=null)
                     WHERE("product_id=#{productId}");
                 if(rpo.getUserId()!=null) {
-                    String userId="";
+                    StringBuffer userId=new StringBuffer("");
                     for(int i=0;i<rpo.getUserId().length;i++)
                     {
-                        userId+=""+rpo.getUserId()[i]+"";
+                        userId=userId.append(rpo.getUserId()[i]);
                         if(i<rpo.getUserId().length-1){
-                            userId=userId+",";
+                            userId=userId.append(',');
                         }
                     }
-                    String finalUserId = userId;
+                    StringBuffer finalUserId = userId;
                     WHERE("user_id in (" + finalUserId + ")");
                 }
                 if(rpo.getStartAtMin()!=null)
@@ -115,7 +113,12 @@ public interface TransactionMapper {
                     WHERE("end_at>=#{endAtMin}");
                 if(rpo.getEndAtMax()!=null)
                     WHERE("end_at<#{endAtMax}");
-            }}.toString();
+                if (rpo.getId()!=null)
+                    WHERE("claims_id=#{id}");
+
+            }}.toString()
+//                    + " limit #{start},#{size}"
+                    ;
         }
 
         public String getPeopleCountingByProductIdAndDate(StatisticsSalesRPO rpo){

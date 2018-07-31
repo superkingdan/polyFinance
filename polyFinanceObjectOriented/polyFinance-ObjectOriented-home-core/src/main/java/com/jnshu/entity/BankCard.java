@@ -30,7 +30,7 @@ public class BankCard implements Serializable {
     private long userId;
     private String city;
     //添加顺序，1为第一次添加，2为第二次添加，最多为2
-    private int order;
+    private int cardOrder;
 
     public long getId() {
         return id;
@@ -112,12 +112,12 @@ public class BankCard implements Serializable {
         this.city = city;
     }
 
-    public int getOrder() {
-        return order;
+    public int getCardOrder() {
+        return cardOrder;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setCardOrder(int cardOrder) {
+        this.cardOrder = cardOrder;
     }
 
     @Override
@@ -133,7 +133,7 @@ public class BankCard implements Serializable {
                 ", bankPhone='" + bankPhone + '\'' +
                 ", userId=" + userId +
                 ", city='" + city + '\'' +
-                ", order=" + order +
+                ", cardOrder=" + cardOrder +
                 '}';
     }
 }

@@ -6,13 +6,15 @@ package com.jnshu.dto1;
 public class ClaimsMatchingRO {
     private String contractCode;
     private String claimsProtocolCode;
-    private long userId[];
+    private long userId;
     private String userName;
     private long productId;
     private String productName;
     private long startAt;
     private long endAt;
     private String money;
+
+
 
     public long getProductId() {
         return productId;
@@ -22,11 +24,11 @@ public class ClaimsMatchingRO {
         this.productId = productId;
     }
 
-    public long[] getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(long[] userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 

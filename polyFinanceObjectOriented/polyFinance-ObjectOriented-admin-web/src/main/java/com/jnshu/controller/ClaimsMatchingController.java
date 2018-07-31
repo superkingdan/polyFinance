@@ -1,14 +1,19 @@
 package com.jnshu.controller;
 
+import com.github.pagehelper.Page;
 import com.jnshu.entity.Claims;
 import com.jnshu.dto1.ClaimsMatchingRO;
 import com.jnshu.dto1.ClaimsMatchingRPO;
-import com.jnshu.entity.ContractMatchingRO;
+import com.jnshu.dto1.ContractMatchingRO;
+import com.jnshu.entity.ClaimsMatching;
+import com.jnshu.service1.ClaimsMatchingService;
+import com.jnshu.utils.CookieUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +24,8 @@ import java.util.Map;
 @RestController
 public class ClaimsMatchingController {
     private static final Logger log= LoggerFactory.getLogger(ClaimsMatchingController.class);
-
+@Autowired
+    ClaimsMatchingService claimsMatchingService;
     /**
      * 获得指定债权匹配列表
      * @param rpo 接收传过来的查询数据
@@ -32,29 +38,14 @@ public class ClaimsMatchingController {
         rpo.setId(id);
         log.info("查找指定债权"+id+"匹配信息");
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        map.put("total",10086);
-        map.put("size",rpo.getSize());
-        Claims claims=new Claims();
-        claims.setClaimsCode("ZXC");
-        claims.setLendStartAt(System.currentTimeMillis());
-        claims.setLendEndAt(System.currentTimeMillis()+12*24*30*3600*1000L);
-        claims.setLendMoney("1000000");
-        claims.setRemanentMoney("50000");
+        map.put("code",0);
+        map.put("message","success");
+        Claims claims=claimsMatchingService.getClaimsInfoById(id);
         map.put("data1",claims);
-        List<ClaimsMatchingRO> claimsMatchingROES=new ArrayList<>();
-        for (int i=0;i<rpo.getSize();i++) {
-            ClaimsMatchingRO matchingRO = new ClaimsMatchingRO();
-            matchingRO.setContractCode("UKZXC180004"+i+"");
-            matchingRO.setClaimsProtocolCode("UKZQ180004"+i+"");
-            matchingRO.setUserName("诸葛亮");
-            matchingRO.setProductName("三国绝版");
-            matchingRO.setStartAt(System.currentTimeMillis());
-            matchingRO.setMoney("150000"+i*1000+"");
-            claimsMatchingROES.add(matchingRO);
-        }
-        map.put("data2",claimsMatchingROES);
+        Page<ClaimsMatchingRO> claimsMatchingROPage=claimsMatchingService.getClaimsMatchingListByRpo(rpo);
+        map.put("total",claimsMatchingROPage.getTotal());
+        map.put("size",rpo.getSize());
+        map.put("data2",claimsMatchingROPage);
         return map;
     }
 
@@ -65,21 +56,11 @@ public class ClaimsMatchingController {
      */
     @GetMapping(value = "/a/u/claims/matching/setout/{id}")
     public Map getRecommendContractList(@PathVariable(value = "id")long id){
-        log.info("获得指定债权"+id+"匹配合同列表");
+        log.info("获得指定债权"+id+"的适宜匹配合同列表");
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        List<ContractMatchingRO> matchingROList=new ArrayList<>();
-        for(int i=0;i<10;i++){
-            ContractMatchingRO matchingRO=new ContractMatchingRO();
-            matchingRO.setContractCode("UKZXC1800000"+i);
-            matchingRO.setContractCode("司马懿");
-            matchingRO.setContractCode("桃园结义");
-            matchingRO.setEndAt(System.currentTimeMillis()+12*30*24*3600*1000L);
-            matchingRO.setMoney(5000*i+"5000");
-            matchingRO.setFraction(200*i);
-            matchingROList.add(matchingRO);
-        }
+        List<ContractMatchingRO> matchingROList=claimsMatchingService.getClaimsMatchingListById(id);
+        map.put("code",0);
+        map.put("message","success");
         map.put("data",matchingROList);
         return map;
     }
@@ -91,12 +72,20 @@ public class ClaimsMatchingController {
      * @return 保存结果，code,message
      */
     @PostMapping(value = "/a/u/claims/matching/save")
-    public Map saveMatching(@RequestParam(value = "id")long id,@RequestParam(value = "contractCode")String contractCode){
+    public Map saveMatching(@RequestParam(value = "id")long id, @RequestParam(value = "contractCode")String contractCode, HttpServletRequest request)throws Exception{
         log.info("保存匹配信息，债权id为"+id+"，合同编号为"+contractCode);
+        ClaimsMatching claimsMatching=new ClaimsMatching();
+        claimsMatching.setClaimsId(id);
+        claimsMatching.setContractCode(contractCode);
+        String createByS= CookieUtil.getCookieValue(request,"uid");
+        if(createByS!=null) {
+            long createBy = Long.parseLong(createByS);
+            claimsMatching.setCreateBy(createBy);
+        }
+        claimsMatchingService.saveClaimsMatching(claimsMatching);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        log.info("债权协议编号为");
+        map.put("code",0);
+        map.put("message","success");
         return map;
     }
 }

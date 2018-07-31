@@ -1,15 +1,33 @@
-package com.jnshu.entity;
+package com.jnshu.dto1;
 
 /**
  * 指定债权匹配合同返回对象
  */
 public class ContractMatchingRO {
     private String contractCode;
+    private Long userId;
     private String userName;
+    private Long productId;
     private String productName;
     private long endAt;
     private String money;
     private int fraction;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 
     public String getContractCode() {
         return contractCode;
@@ -63,7 +81,9 @@ public class ContractMatchingRO {
     public String toString() {
         return "ContractMatchingRO{" +
                 "contractCode='" + contractCode + '\'' +
+                ", userId=" + userId +
                 ", userName='" + userName + '\'' +
+                ", productId=" + productId +
                 ", productName='" + productName + '\'' +
                 ", endAt=" + endAt +
                 ", money='" + money + '\'' +
