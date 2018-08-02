@@ -44,7 +44,7 @@ public class ClaimsServiceImpl implements ClaimsService{
 
         Page<Claims> claimsPage= PageHelper.startPage(rpo.getPage(),rpo.getSize());
         claimsMapper.getClaimsListByRpo(rpo);
-        System.out.println(claimsPage.getResult());
+//        System.out.println(claimsPage.getResult());
         return claimsPage;
     }
 
@@ -121,7 +121,7 @@ public class ClaimsServiceImpl implements ClaimsService{
         int a=claimsMapper.addClaims(claims);
         //获取新增债权id
         long claimsId=claims.getId();
-        log.info("新增债权，id为"+claims.getId());
+        log.info("新增债权，id为"+claimsId);
         //新建定时任务
         TimedTask timedTask=new TimedTask();
         //获取债权到期天数设置,单位天,转化为long

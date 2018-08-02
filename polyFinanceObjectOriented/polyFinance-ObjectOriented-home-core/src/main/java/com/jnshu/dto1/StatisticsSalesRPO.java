@@ -9,6 +9,24 @@ public class StatisticsSalesRPO {
     private int size=10;
     private Long dateMin;
     private Long dateMax;
+    private Long currentDate;
+    private Long nextDate;
+
+    public Long getNextDate() {
+        return nextDate;
+    }
+
+    public void setNextDate(Long nextDate) {
+        this.nextDate = nextDate;
+    }
+
+    public Long getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Long currentDate) {
+        this.currentDate = currentDate;
+    }
 
     public long getId() {
         return id;
@@ -58,6 +76,8 @@ public class StatisticsSalesRPO {
                 ", size=" + size +
                 ", dateMin=" + dateMin +
                 ", dateMax=" + dateMax +
+                ", currentDate=" + currentDate +
+                ", nextDate=" + nextDate +
                 '}';
     }
 }

@@ -65,6 +65,7 @@ public class ClaimsController {
      * @param claims 接收修改内容
      * @param id 指定债权id
      * @return 修改结果，包括code ,message
+     * 不需要修改债权代号
      */
     @PutMapping(value = "/a/u/claims/{id}")
     public Map updateClaims(@ModelAttribute Claims claims, @PathVariable(value = "id")long id, HttpServletRequest request)throws Exception{
@@ -87,6 +88,7 @@ public class ClaimsController {
      * 新增债权
      * @param claims 接收新增内容
      * @return 新增结果，包括code,message，id看情况返回
+     * 债权代号不能重复，需处理异常
      */
     @PostMapping(value = "/a/u/claims")
     public Map addClaims(@ModelAttribute Claims claims, HttpServletRequest request)throws Exception{

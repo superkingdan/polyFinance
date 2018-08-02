@@ -68,13 +68,16 @@ public class ProductMapperTest {
     @Test
     public void getProductListByRpo(){
         ProductListRPO rpo=new ProductListRPO();
-        rpo.setInterestRateMax("0.20");
-        rpo.setInterestRateMin("0.06");
+       rpo.setProductName("万");
+       rpo.setProductCode("C");
         System.out.println(productMapper.getProductListByRpo(rpo));
     }
     @Test
     public void getProductIdByProductName(){
-        System.out.println(productMapper.getProductIdByProductName("万箭齐发1"));
+        Long[] longs=productMapper.getProductIdByProductName("万");
+        for(int i=0;i<longs.length;i++){
+            System.out.println(longs[i]);
+        }
     }
 
     @Test
@@ -85,7 +88,8 @@ public class ProductMapperTest {
     @Test
     public void getProductIdByProductNameAndCode(){
         StatisticsSalesListRPO rpo=new StatisticsSalesListRPO();
-        rpo.setProductName("万箭齐发");
+        rpo.setProductName("万");
+        rpo.setProductCode("C");
         System.out.println(productMapper.getProductIdByProductNameAndCode(rpo));
     }
 

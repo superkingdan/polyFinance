@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 //classes后面是启动类.class
 @SpringBootTest(classes = Entry.class)
@@ -100,10 +102,14 @@ public class TransactionMapperTest {
     public void getClaimsMatchingList() {
         ClaimsMatchingRPO rpo=new ClaimsMatchingRPO();
         rpo.setId(1L);
-        Long userId[]={12L,13L};
-        rpo.setUserId(userId);
-        rpo.setSize(1);
-        System.out.println(transactionMapper.getClaimsMatchingList(rpo));
+//        Long userId[]={12L,13L};
+//        rpo.setUserId(userId);
+        Long productId[]={1L,3L};
+        rpo.setProductId(productId);
+        List<ClaimsMatchingRO> list=transactionMapper.getClaimsMatchingList(rpo);
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i));
+        }
 
     }
 

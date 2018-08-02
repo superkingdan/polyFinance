@@ -1,18 +1,19 @@
 package com.jnshu.entity;
 
 public class StatisticsSalesRO {
-    private String productName;
+
     private long date;
     private long peopleCounting;
     private long numberOfTimes;
-    private String totalMoney;
+    private String totalMoney="";
+    private Integer total;
 
-    public String getProductName() {
-        return productName;
+    public Integer getTotal() {
+        return total;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     public long getDate() {
@@ -47,14 +48,15 @@ public class StatisticsSalesRO {
         this.totalMoney = totalMoney;
     }
 
+
     @Override
     public String toString() {
         return "StatisticsSalesRO{" +
-                "productName='" + productName + '\'' +
                 ", date=" + date +
                 ", peopleCounting=" + peopleCounting +
                 ", numberOfTimes=" + numberOfTimes +
                 ", totalMoney='" + totalMoney + '\'' +
+                ", total=" + total +
                 '}';
     }
 }

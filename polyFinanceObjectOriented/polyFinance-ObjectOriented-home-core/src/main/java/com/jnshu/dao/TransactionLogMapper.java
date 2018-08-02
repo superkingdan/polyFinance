@@ -42,13 +42,13 @@ public interface TransactionLogMapper {
                 if (rpo.getId()!=null)
                     WHERE("user_id=#{id}");
                 if (rpo.getProductName()!=null)
-                    WHERE("product_name=#{productName}");
+                    WHERE("product_name like \"%\"#{productName}\"%\"");
                 if (rpo.getStatus()!=null)
                     WHERE("status=#{status}");
                 if (rpo.getTransactionAtMin()!=null)
                     WHERE("transaction_at>=#{transactionAtMin}");
                 if (rpo.getTransactionAtMax()!=null)
-                    WHERE("transaction_at<##{transactionAtMax}");
+                    WHERE("transaction_at<=#{transactionAtMax}");
                 ORDER_BY("create_at desc");
             }}.toString();
 

@@ -9,6 +9,8 @@ import com.jnshu.entity.*;
 import com.jnshu.dto1.ContractMatchingRO;
 import com.jnshu.service1.ClaimsMatchingService;
 import com.jnshu.utils.TransString;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +43,8 @@ public class ClaimsMatchingServiceImpl implements ClaimsMatchingService {
     SystemDataMapper systemDataMapper;
     @Autowired
     TimedTaskMapper timedTaskMapper;
+
+    private static final Logger log= LoggerFactory.getLogger(ClaimsMatchingService.class);
     @Override
     public Claims getClaimsInfoById(long claimsId) {
         //查询债权匹配列表的data1
@@ -171,7 +175,8 @@ public class ClaimsMatchingServiceImpl implements ClaimsMatchingService {
         int a=claimsMatchingMapper.addClaimsMatching(claimsMatching);
         System.out.println("a="+a);
         long id=claimsMatching.getId();
-        System.out.println(id);
+        log.info("新建债权匹配id为"+id);
+//        System.out.println(id);
         //生成新的合同对象
         Contract contract=new Contract();
         contract.setContractCode(claimsMatching.getContractCode());
@@ -231,6 +236,7 @@ public class ClaimsMatchingServiceImpl implements ClaimsMatchingService {
             timedTask.setTaskTime(lendEndAt);
             timedTask.setContractId(contractMapper.getContractIdByCode(claimsMatching.getContractCode()));
             e=timedTaskMapper.addTaskedTime(timedTask);
+            log.info("生成新定时任务id为"+id);
         }
         System.out.println("e="+e);
         return a*b*c*d*e;

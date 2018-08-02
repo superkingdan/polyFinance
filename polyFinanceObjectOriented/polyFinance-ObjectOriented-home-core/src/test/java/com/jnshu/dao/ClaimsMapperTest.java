@@ -18,8 +18,10 @@ ClaimsMapper claimsMapper;
     @Test
     public void getClaimsListByRpo() {
         ClaimsListRPO rpo=new ClaimsListRPO();
-        rpo.setLendDeadlineMin(5);
-        rpo.setLendDeadlineMax(18);
+        rpo.setClaimsCode("D");
+        rpo.setCreditor("小");
+        rpo.setCreditorPhoneNumber("77");
+        rpo.setCreditorIdCard("12");
         System.out.println(claimsMapper.getClaimsListByRpo(rpo));
     }
 

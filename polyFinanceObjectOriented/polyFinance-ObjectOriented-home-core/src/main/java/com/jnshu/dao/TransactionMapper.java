@@ -91,8 +91,17 @@ public interface TransactionMapper {
             return new SQL(){{
                 SELECT("contract_code,start_at,end_at,money,product_id,user_id");
                 FROM("transaction");
-                if (rpo.getProductId()!=null)
-                    WHERE("product_id=#{productId}");
+                if (rpo.getProductId()!=null) {
+                    StringBuffer productId = new StringBuffer("");
+                    for (int i = 0; i < rpo.getProductId().length; i++) {
+                        productId=productId.append(rpo.getProductId()[i]);
+                        if (i < rpo.getProductId().length - 1) {
+                            productId = productId.append(',');
+                        }
+                    }
+                    StringBuffer finalProductId = productId;
+                    WHERE("product_id in (" + finalProductId + ")");
+                }
                 if(rpo.getUserId()!=null) {
                     StringBuffer userId=new StringBuffer("");
                     for(int i=0;i<rpo.getUserId().length;i++)
@@ -108,14 +117,13 @@ public interface TransactionMapper {
                 if(rpo.getStartAtMin()!=null)
                     WHERE("start_at>=#{startAtMin}");
                 if(rpo.getStartAtMax()!=null)
-                    WHERE("start_at<#{startAtMax}");
+                    WHERE("start_at<=#{startAtMax}");
                 if (rpo.getEndAtMin()!=null)
                     WHERE("end_at>=#{endAtMin}");
                 if(rpo.getEndAtMax()!=null)
-                    WHERE("end_at<#{endAtMax}");
+                    WHERE("end_at<=#{endAtMax}");
                 if (rpo.getId()!=null)
                     WHERE("claims_id=#{id}");
-
             }}.toString()
 //                    + " limit #{start},#{size}"
                     ;
@@ -126,10 +134,10 @@ public interface TransactionMapper {
                 SELECT("count(distinct user_id)");
                 FROM("transaction");
                 WHERE("product_id=#{id}");
-                if(rpo.getDateMin()!=null)
-                    WHERE("create_at>=#{dateMin}");
-                if (rpo.getDateMax()!=null)
-                    WHERE("create_at<#{dateMax}");
+                if(rpo.getCurrentDate()!=null)
+                    WHERE("create_at>=#{currentDate}");
+                if (rpo.getNextDate()!=null)
+                    WHERE("create_at<=#{nextDate}");
             }}.toString();
         }
 
@@ -138,10 +146,10 @@ public interface TransactionMapper {
                 SELECT("count(id)");
                 FROM("transaction");
                 WHERE("product_id=#{id}");
-                if(rpo.getDateMin()!=null)
-                    WHERE("create_at>=#{dateMin}");
-                if (rpo.getDateMax()!=null)
-                    WHERE("create_at<#{dateMax}");
+                if(rpo.getCurrentDate()!=null)
+                    WHERE("create_at>=#{currentDate}");
+                if (rpo.getNextDate()!=null)
+                    WHERE("create_at<#{nextDate}");
             }}.toString();
         }
 
@@ -150,10 +158,10 @@ public interface TransactionMapper {
                 SELECT("sum(cast(money as decimal(18,2)))");
                 FROM("transaction");
                 WHERE("product_id=#{id}");
-                if(rpo.getDateMin()!=null)
-                    WHERE("create_at>=#{dateMin}");
-                if (rpo.getDateMax()!=null)
-                    WHERE("create_at<#{dateMax}");
+                if(rpo.getCurrentDate()!=null)
+                    WHERE("create_at>=#{currentDate}");
+                if (rpo.getNextDate()!=null)
+                    WHERE("create_at<#{nextDate}");
             }}.toString();
         }
 //select product.product_name,transaction.money,transaction.status,transaction.returned,transaction.not_return, transaction.contract_code,contract.current_claims_code from transaction inner join product on transaction.product_id=product.id inner join contract on transaction.contract_code=contract.contract_code where transaction.user_id=#{userId}  and product.product_name=#{productName} and transaction.contract_code=#{contractCode} and transaction.start_at between #{startAtMin} and #{startAtMax} and contract.current_claims_code=#{claimsProtocolCode} and transaction.status=#{status} and transaction.end_at between #{endAtMin} and #{endAtMax} order by transaction.start_at desc
@@ -165,21 +173,21 @@ public interface TransactionMapper {
               INNER_JOIN("contract on transaction.contract_code=contract.contract_code");
               WHERE("transaction.user_id=#{id}");
               if(rpo.getProductName()!=null)
-                  WHERE("product.product_name=#{productName}");
+                  WHERE("product.product_name like \"%\"#{productName}\"%\"");
               if(rpo.getContractCode()!=null)
-                  WHERE("transaction.contract_code=#{contractCode}");
+                  WHERE("transaction.contract_code like \"%\"#{contractCode}\"%\"");
               if (rpo.getStartAtMin()!=null)
                   WHERE("transaction.start_at>=#{startAtMin}");
               if (rpo.getStartAtMax()!=null)
-                  WHERE("transaction.start_at<#{startAtMax}");
+                  WHERE("transaction.start_at<=#{startAtMax}");
               if(rpo.getClaimsProtocolCode()!=null)
-                  WHERE("contract.current_claims_code=#{claimsProtocolCode}");
+                  WHERE("contract.current_claims_code like \"%\"#{claimsProtocolCode}\"%\"");
               if(rpo.getStatus()!=null)
                   WHERE("transaction.status=#{status}");
               if (rpo.getEndAtMin()!=null)
                   WHERE("transaction.end_at>=#{endAtMin}");
               if(rpo.getEndAtMax()!=null)
-                  WHERE("transaction.end_at<#{endAtMax}");
+                  WHERE("transaction.end_at<=#{endAtMax}");
               ORDER_BY("transaction.start_at desc");
             }}.toString();
         }

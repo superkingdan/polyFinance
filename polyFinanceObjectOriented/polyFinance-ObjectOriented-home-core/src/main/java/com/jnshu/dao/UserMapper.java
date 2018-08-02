@@ -36,7 +36,7 @@ public interface UserMapper {
     User getUserInfoByContractCode(String contractCode);
 
     //通过姓名查找用户id
-    @Select("select id from user where real_name=#{userName}")
+    @Select("select id from user where real_name like \"%\"#{userName}\"%\"")
     Long[] getUserIdByName(String userName);
 
     //通过id查找用户姓名

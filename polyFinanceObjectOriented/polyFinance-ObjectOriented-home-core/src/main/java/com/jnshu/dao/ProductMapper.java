@@ -7,6 +7,7 @@ import com.jnshu.entity.Product;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
@@ -33,7 +34,7 @@ public interface ProductMapper {
     int updateProduct(Product product);
 
     //根据id查找产品详情
-    @Select("select id,product_code,product_name,interest_rate,deadline,investment_amount,rate_of_interest,refund_style,mark,is_recommend,is_limite_purchase,more_message from product where id=#{id} ")
+    @Select("select id,product_code,product_name,interest_rate,deadline,investment_amount,rate_of_interest,refund_style,mark,is_recommend,is_limite_purchase,more_message,remark from product where id=#{id} ")
     Product getProductById(long id);
 
     //获得指定id产品姓名
@@ -41,8 +42,8 @@ public interface ProductMapper {
     String getProductNameByProductId(long productId);
 
     //获得指定产品名的产品id
-    @Select("select id from product where product_name=#{productName}")
-     Long getProductIdByProductName(String productName);
+    @Select("select id from product where product_name like \"%\"#{productName}\"%\"")
+     Long[] getProductIdByProductName(String productName);
 
     //根据产品id查找产品还款类型
     @Select("select refund_style,deadline,product_name,interest_rate from product where id=#{id}")
@@ -51,6 +52,10 @@ public interface ProductMapper {
     //根据产品id查找产品支付相关信息
     @Select("select product_name,deadline,interest_rate,is_limite_purchase,refund_style from product where id=#{productId}")
     Product getPayInfoById(long productId);
+
+    //查找产品创建时间
+    @Select("select create_at from product where id=#{id}")
+    Long getProductCreateAtById(long id);
 
     //获得产品列表
     //前台获取需手动将status设置为0在售,并且设置是否推荐
@@ -69,21 +74,21 @@ public interface ProductMapper {
                 if (rpo.getStatus()!=null)
                     WHERE("status=#{status}");
                 if (rpo.getProductName()!=null)
-                    WHERE("product_name=#{productName}");
+                    WHERE("product_name like \"%\"#{productName}\"%\"");
                 if (rpo.getProductCode()!=null)
-                    WHERE("product_code=#{productCode}");
+                    WHERE("product_code like \"%\"#{productCode}\"%\"");
                 if (rpo.getRateOfInterest()!=null)
                     WHERE("rate_of_interest=#{rateOfInterest}");
                 if (rpo.getInterestRateMin()!=null)
                     WHERE("interest_rate>=#{interestRateMin}");
                 if(rpo.getInterestRateMax()!=null)
-                    WHERE("interest_rate<#{interestRateMax}");
+                    WHERE("interest_rate<=#{interestRateMax}");
                 if(rpo.getInvestmentAmount()!=null)
                     WHERE("investment_amount=#{investAmount}");
                 if (rpo.getDeadlineMin()!=null)
                     WHERE("deadline>=#{deadlineMin}");
                 if(rpo.getDeadlineMax()!=null)
-                    WHERE("deadline<#{deadlineMax}");
+                    WHERE("deadline<=#{deadlineMax}");
                 if (rpo.getIsRecommend()!=null)
                     WHERE("is_recommend=#{isRecommend}");
                 ORDER_BY("update_at desc");
@@ -94,9 +99,9 @@ public interface ProductMapper {
                 SELECT("id,product_code,product_name");
                 FROM("product");
                 if(rpo.getProductCode()!=null)
-                    WHERE("product_code=#{productCode}");
+                    WHERE("product_code like \"%\"#{productCode}\"%\"");
                 if(rpo.getProductName()!=null)
-                    WHERE("product_name=#{productName}");
+                    WHERE("product_name like \"%\"#{productName}\"%\"");
             }}.toString();
         }
 

@@ -1,11 +1,16 @@
 package com.jnshu.controller;
 
+import com.github.pagehelper.Page;
 import com.jnshu.entity.Product;
 import com.jnshu.dto1.ProductListRPO;
+import com.jnshu.service1.ProductService;
+import com.jnshu.utils.CookieUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +23,8 @@ import java.util.Map;
 @RestController
 public class ProductController {
     private static final Logger log= LoggerFactory.getLogger(ProductController.class);
-
+@Autowired
+    ProductService productService;
     /**
      * 获得产品列表
      * @param rpo 查询条件
@@ -27,25 +33,13 @@ public class ProductController {
     @GetMapping(value = "/a/u/product/list")
     public Map getProductList(@ModelAttribute ProductListRPO rpo){
         log.info("获得产品列表，查询条件为"+rpo);
+        Page<Product> products=productService.getProductList(rpo);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        map.put("total",10086);
+        map.put("code",0);
+        map.put("message","success");
+        map.put("total",products.getTotal());
         map.put("size",rpo.getSize());
-        List<Product> productList=new ArrayList<>();
-        for (int i=0;i<rpo.getSize();i++){
-            Product product=new Product();
-            product.setId(i*3+1000);
-            product.setProductCode("ZXC");
-            product.setProductName("万箭齐发");
-            product.setInterestRate("0.18");
-            product.setDeadline(180);
-            product.setRateOfInterest(2);
-            product.setStatus(0);
-            product.setIsRecommend(1);
-            productList.add(product);
-        }
-        map.put("data",productList);
+        map.put("data",products);
         return map;
     }
 
@@ -56,24 +50,11 @@ public class ProductController {
      */
     @GetMapping(value = "/a/u/product/{id}")
     public Map getProduct(@PathVariable(value = "id")long id){
-        log.info("获得自定产品详情，产品id为"+id);
+        log.info("获得指定产品详情，产品id为"+id);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",id);
-        map.put("message","ok");
-        Product product=new Product();
-        product.setId(1000);
-        product.setProductCode("ZXC");
-        product.setProductName("万箭齐发");
-        product.setInterestRate("0.18");
-        product.setDeadline(180);
-        product.setInvestmentAmount("50000");
-        product.setRateOfInterest(2);
-        product.setRefundStyle(0);
-        product.setMark(1);
-        product.setRemark("这个是新产品，安排一下");
-        product.setIsRecommend(1);
-        product.setIsLimitePurchase(0);
-        product.setMoreMessage("https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/823.png");
+        map.put("code",0);
+        map.put("message","success");
+        Product product=productService.getProductById(id);
         map.put("data",product);
         return map;
     }
@@ -85,11 +66,18 @@ public class ProductController {
      * @return 修改结果，code,message
      */
     @PutMapping(value = "/a/u/product/{id}")
-    public Map updateProduct(@PathVariable(value = "id")long id,@ModelAttribute Product product){
+    public Map updateProduct(@PathVariable(value = "id")long id,@ModelAttribute Product product,HttpServletRequest request)throws Exception{
         log.info("修改，产品id为"+id+"修改为"+product);
+        product.setId(id);
+        String updateByS=CookieUtil.getCookieValue(request,"uid");
+        if (updateByS!=null) {
+            long updateBy = Long.parseLong(updateByS);
+            product.setUpdateBy(updateBy);
+        }
+        productService.updateProduct(product);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
+        map.put("code",0);
+        map.put("message","success");
         return map;
     }
 
@@ -97,13 +85,20 @@ public class ProductController {
      * 新增产品信息
      * @param product 新增产品的详情
      * @return 返回参数，code,message
+     * 需要注意名称代号不能重复，需抓异常
      */
     @PostMapping(value = "/a/u/product")
-    public Map addProduct(@ModelAttribute Product product){
+    public Map addProduct(@ModelAttribute Product product, HttpServletRequest request)throws Exception{
         log.info("新增产品，产品详情为"+product);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
+        String createByS= CookieUtil.getCookieValue(request,"uid");
+        if(createByS!=null) {
+            long createBy = Long.parseLong(createByS);
+            product.setCreateBy(createBy);
+        }
+        productService.addProduct(product);
+        map.put("code",0);
+        map.put("message","success");
         return map;
     }
 
@@ -114,11 +109,20 @@ public class ProductController {
      * @return 修改结果，code,message
      */
     @PutMapping(value = "/a/u/product/{id}/status")
-    public Map updateProductStatus(@PathVariable (value = "id")long id,@RequestParam(value = "status")int status){
-        log.info("修改产品状态为"+status);
+    public Map updateProductStatus(@PathVariable (value = "id")long id,@RequestParam(value = "status")int status,HttpServletRequest request)throws Exception{
+        log.info("修改产品"+id+"状态为"+status);
+        Product product=new Product();
+        product.setId(id);
+        product.setStatus(status);
+        String updateByS=CookieUtil.getCookieValue(request,"uid");
+        if (updateByS!=null) {
+            long updateBy = Long.parseLong(updateByS);
+            product.setUpdateBy(updateBy);
+        }
+        productService.updateProductStatus(product);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
+        map.put("code",0);
+        map.put("message","success");
         return map;
     }
 

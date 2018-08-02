@@ -59,31 +59,31 @@ public interface ClaimsMapper {
                 SELECT("id,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_end_at,lend_money,status,remanent_money");
                 FROM("claims");
                 if(rpo.getCreditor()!=null)
-                    WHERE("creditor=#{creditor}");
+                    WHERE("creditor like \"%\"#{creditor}\"%\"");
                 if(rpo.getCreditorIdCard()!=null)
-                    WHERE("creditor_id_card=#{creditorIdCard}");
+                    WHERE("creditor_id_card like \"%\"#{creditorIdCard}\"%\"");
                 if(rpo.getLendStartMin()!=null)
                     WHERE("lend_start_at>=#{lendStartMin}");
                 if(rpo.getLendStartMax()!=null)
-                    WHERE("lend_start_at<#{lendStartMax}");
+                    WHERE("lend_start_at<=#{lendStartMax}");
                 if (rpo.getClaimsCode()!=null)
-                    WHERE("claims_code=#{claimsCode}");
+                    WHERE("claims_code like \"%\"#{claimsCode}\"%\"");
                 if(rpo.getStatus()!=null)
                     WHERE("status=#{status}");
                 if(rpo.getLendEndMin()!=null)
                     WHERE("lend_end_at>=#{lendEndMin}");
                 if(rpo.getLendEndMax()!=null)
-                    WHERE("lend_end_at<#{lendEndMax}");
+                    WHERE("lend_end_at<=#{lendEndMax}");
                 if(rpo.getCreditorPhoneNumber()!=null)
-                    WHERE("creditor_phone_number=#{creditorPhoneNumber}");
+                    WHERE("creditor_phone_number like \"%\"#{creditorPhoneNumber}\"%\"");
                 if(rpo.getLendMoneyMin()!=null)
                     WHERE("lend_money>=#{lendMoneyMin}");
                 if(rpo.getLendMoneyMax()!=null)
-                    WHERE("lend_money<#{lendMoneyMax}");
+                    WHERE("lend_money<=#{lendMoneyMax}");
                 if(rpo.getLendDeadlineMin()!=null)
                     WHERE("lend_deadline>=#{lendDeadlineMin}");
                 if(rpo.getLendDeadlineMax()!=null)
-                    WHERE("lend_deadline<#{lendDeadlineMax}");
+                    WHERE("lend_deadline<=#{lendDeadlineMax}");
             }}.toString();
         }
     }

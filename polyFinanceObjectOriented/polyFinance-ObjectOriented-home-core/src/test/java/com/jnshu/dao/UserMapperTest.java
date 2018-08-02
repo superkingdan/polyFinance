@@ -49,7 +49,7 @@ UserMapper userMapper;
 
     @Test
     public void getUserIdByName(){
-        Long[] longs=userMapper.getUserIdByName("王大锤");
+        Long[] longs=userMapper.getUserIdByName("王");
         System.out.println(longs[0]);
         System.out.println(longs[1]);
     }

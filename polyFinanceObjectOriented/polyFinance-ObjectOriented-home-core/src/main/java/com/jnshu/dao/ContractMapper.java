@@ -39,7 +39,7 @@ public interface ContractMapper {
     Contract getHaveSignContractByCode(String code);
 
     //根据合同code查找已签署债权协议相关信息
-    @Select("select user_sign,current_claims_code,update_at from contract where contract_code=#{code}")
+    @Select("select user_sign,contract_code,update_at from contract where current_claims_code=#{code}")
     Contract getClaimsCodeByCode(String code);
 
     //筛选出未匹配债权的合同编号

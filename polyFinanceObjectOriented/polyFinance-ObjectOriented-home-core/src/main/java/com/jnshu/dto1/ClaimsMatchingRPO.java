@@ -10,7 +10,7 @@ public class ClaimsMatchingRPO {
     private int page=1;
     private int size=10;
     private int start=(page-1)*size;
-    private Long productId;
+    private Long productId[];
     private String productName;
     private Long userId[];
     private String userName;
@@ -47,11 +47,11 @@ public class ClaimsMatchingRPO {
         this.size = size;
     }
 
-    public Long getProductId() {
+    public Long[] getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(Long[] productId) {
         this.productId = productId;
     }
 
@@ -70,8 +70,6 @@ public class ClaimsMatchingRPO {
     public void setProductName(String productName) {
         this.productName = productName;
     }
-
-
 
     public String getUserName() {
         return userName;
@@ -119,7 +117,8 @@ public class ClaimsMatchingRPO {
                 "id=" + id +
                 ", page=" + page +
                 ", size=" + size +
-                ", productId=" + productId +
+                ", start=" + start +
+                ", productId=" + Arrays.toString(productId) +
                 ", productName='" + productName + '\'' +
                 ", userId=" + Arrays.toString(userId) +
                 ", userName='" + userName + '\'' +
