@@ -27,7 +27,7 @@ public interface TransactionMapper {
 //    ClaimsMatchingRO getClaimsMatchingList(long id);
 
     //查找原交易信息
-    @Select("select user_id,start_at,end_at,money,expect_earnings,product_id from transaction where id=#{id}")
+    @Select("select id,user_id,start_at,end_at,money,expect_earnings,product_id from transaction where id=#{id}")
     Transaction getOldTransactionById(long id);
 
     //查找已经匹配债权且交易正在执行中的用户id
@@ -75,7 +75,7 @@ public interface TransactionMapper {
     String getSumMoneyByProductIdAndDate(StatisticsSalesRPO rpo);
 
     //获得可续投列表信息
-    @Select("select transaction.id,product.product_name,product.interest_rate,transaction.money,product.mark,transaction.start_at,transaction.end_at from transaction inner join product on transaction.product_id=product.id where product.status=0 and transaction.user_id=#{userId}")
+    @Select("select transaction.id,product.product_name,product.interest_rate,transaction.money,product.mark,transaction.start_at,transaction.end_at from transaction inner join product on transaction.product_id=product.id where product.status=0 and transaction.renuwal_status=1 and product.is_limite_purchase=0 and transaction.user_id=#{userId}")
     List<TransactionListRO> getRenewalListByUserId(long userId);
 
     //获得投资详情

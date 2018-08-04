@@ -3,9 +3,7 @@ package com.jnshu.service1.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jnshu.dao.*;
-import com.jnshu.dto1.TransactionListBackRO;
-import com.jnshu.dto1.TransactionListRPO;
-import com.jnshu.dto1.TransactionLogRPO;
+import com.jnshu.dto1.*;
 import com.jnshu.entity.*;
 import com.jnshu.service1.UserTransactionService;
 import org.slf4j.Logger;
@@ -13,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * 后台用户管理相关service

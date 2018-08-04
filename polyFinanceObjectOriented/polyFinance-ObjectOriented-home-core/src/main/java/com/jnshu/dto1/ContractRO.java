@@ -1,8 +1,5 @@
-package com.jnshu.entity;
+package com.jnshu.dto1;
 
-/**
- * 用户查看的合同对应实体类
- */
 public class ContractRO {
     private String contractCode;
     private long contractCreateAt;

@@ -12,7 +12,8 @@ public class TransactionRO {
     private long startAt;
     private long endAt;
     private int status;
-    private String exceptEarnings;
+    private long userId;
+    private String expectEarnings;
     private String returned;
     private String notReturn;
     private String investmentAmount;
@@ -22,6 +23,23 @@ public class TransactionRO {
     private int renuwalStatus;
     private long contractId;
     private int productStatus;
+    private String contractCode;
+
+    public String getContractCode() {
+        return contractCode;
+    }
+
+    public void setContractCode(String contractCode) {
+        this.contractCode = contractCode;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
     public long getId() {
         return id;
@@ -87,12 +105,12 @@ public class TransactionRO {
         this.status = status;
     }
 
-    public String getExceptEarnings() {
-        return exceptEarnings;
+    public String getExpectEarnings() {
+        return expectEarnings;
     }
 
-    public void setExceptEarnings(String exceptEarnings) {
-        this.exceptEarnings = exceptEarnings;
+    public void setExpectEarnings(String expectEarnings) {
+        this.expectEarnings = expectEarnings;
     }
 
     public String getReturned() {
@@ -178,7 +196,8 @@ public class TransactionRO {
                 ", startAt=" + startAt +
                 ", endAt=" + endAt +
                 ", status=" + status +
-                ", exceptEarnings='" + exceptEarnings + '\'' +
+                ", userId=" + userId +
+                ", expectEarnings='" + expectEarnings + '\'' +
                 ", returned='" + returned + '\'' +
                 ", notReturn='" + notReturn + '\'' +
                 ", investmentAmount='" + investmentAmount + '\'' +
@@ -188,6 +207,7 @@ public class TransactionRO {
                 ", renuwalStatus=" + renuwalStatus +
                 ", contractId=" + contractId +
                 ", productStatus=" + productStatus +
+                ", contractCode='" + contractCode + '\'' +
                 '}';
     }
 }

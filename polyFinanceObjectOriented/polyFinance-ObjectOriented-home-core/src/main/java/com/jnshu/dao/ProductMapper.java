@@ -46,7 +46,7 @@ public interface ProductMapper {
      Long[] getProductIdByProductName(String productName);
 
     //根据产品id查找产品还款类型
-    @Select("select refund_style,deadline,product_name,interest_rate from product where id=#{id}")
+    @Select("select refund_style,deadline,product_name,interest_rate,rate_of_interest,product_code from product where id=#{id}")
     Product getRefundInfoById(long id);
 
     //根据产品id查找产品支付相关信息

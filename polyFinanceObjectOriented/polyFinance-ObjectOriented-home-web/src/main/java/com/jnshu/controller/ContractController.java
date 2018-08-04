@@ -1,12 +1,16 @@
 package com.jnshu.controller;
 
-import com.jnshu.entity.ContractRO;
+import com.jnshu.dto1.ContractRO;
+import com.jnshu.service1.ContractService;
+import com.jnshu.utils.CookieUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,27 +22,50 @@ import java.util.Map;
 public class ContractController {
     private static final Logger log= LoggerFactory.getLogger(ContractController.class);
 
+    @Autowired
+    ContractService contractService;
+
+    /**
+     * 获得未签署合同原图
+     * @param type 合同种类
+     * @return 合同url
+     */
     @GetMapping(value = "/a/u/contract/unsigned/{type}")
     public Map getContractUnsigned(@PathVariable(value = "type")int type){
        log.info("获得未签署合同");
+       String contractUrl=contractService.getContractUnsigned(type);
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        map.put("contract","https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/840.png");
+        map.put("code",0);
+        map.put("message","success");
+        map.put("contract",contractUrl);
         return map;
     }
 
+    /**
+     * 获得待签署合同信息
+     * @return 用户待签署合同信息，code,message,data
+     */
     @GetMapping(value = "/a/u/contract/ready-signed")
-    public Map getReadyContract(){
-        long id=1L;
-        log.info("用户"+id+"获得待签署合同");
+    public Map getReadyContract(HttpServletRequest request)throws Exception{
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        map.put("contract","https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/840.png");
-        map.put("userName","王大锤");
-        map.put("userIdCard","330512196908195487");
-        map.put("companyCachet","https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/842.png");
+        //从cookie获得id
+        long id;
+        String uidS= CookieUtil.getCookieValue(request,"uid");
+        if (uidS!=null) {
+            id = Long.parseLong(uidS);
+        }
+        //如果cookie中没有uid直接报错
+        else {
+            map.put("code",-1);
+            map.put("message","there is no uid in cookie");
+            log.info("获取待签署合同，但是cookie中没有uid");
+            return map;
+        }
+        log.info("用户"+id+"获得待签署合同");
+        ContractRO ro=contractService.getContractReadySign(id);
+        map.put("code",0);
+        map.put("message","success");
+        map.put("data",ro);
         return map;
     }
 
@@ -51,18 +78,9 @@ public class ContractController {
     public Map getContract(@PathVariable(value = "id")long id){
         log.info("查看合同id为"+id+"的合同");
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        ContractRO ro=new ContractRO();
-        ro.setContractCode("UKZXC1800001");
-        ro.setContractCreateAt(System.currentTimeMillis());
-        ro.setUserName("哼哈");
-        ro.setUserIdCard("220513199511110321");
-        ro.setCreditor("奔波儿霸");
-        ro.setCreditorIdCard("2222222199611111111");
-        ro.setUserSign("https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/841.png");
-        ro.setCompanyCachet("https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/842.png");
-        ro.setContract("https://jnshuphoto.oss-cn-hangzhou.aliyuncs.com/headphoto/840.png");
+        ContractRO ro=contractService.getContractById(id);
+        map.put("code",0);
+        map.put("message","success");
         map.put("data",ro);
         return map;
     }
