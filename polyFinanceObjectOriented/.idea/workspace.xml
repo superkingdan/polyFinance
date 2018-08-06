@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3d7506e-e66e-4ac7-b9cb-7aeab7b49399" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/ContractMapper.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/ContractMapper.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/ProductMapper.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/ProductMapper.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionLogMapper.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionLogMapper.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/test/java/com/jnshu/dao/TransactionLogMapperTest.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/test/java/com/jnshu/dao/TransactionLogMapperTest.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/PaymentController.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/PaymentController.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController.java" />
+      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/UserMapper.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/UserMapper.java" />
       <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/PaymentService.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/PaymentService.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/utils/HttpPay.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/utils/HttpPay.java" />
-      <change beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/test/java/com/jnshu/service1/Impl/PaymentServiceImplTest.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/test/java/com/jnshu/service1/Impl/PaymentServiceImplTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/" />
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/" />
@@ -57,14 +48,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PaymentController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/PaymentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+            <state relative-caret-position="646">
+              <caret line="184" column="54" lean-forward="true" selection-start-line="184" selection-start-column="54" selection-end-line="184" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Entry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/Entry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/PaymentService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="550">
-              <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
+              <caret line="27" column="55" lean-forward="true" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -102,18 +103,18 @@
       <file leaf-file-name="TransactionController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="101" column="19" lean-forward="true" selection-start-line="96" selection-start-column="8" selection-end-line="101" selection-end-column="19" />
+            <state relative-caret-position="371">
+              <caret line="91" column="36" lean-forward="true" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentServiceImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PaymentServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="353" column="0" lean-forward="true" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
+            <state relative-caret-position="321">
+              <caret line="359" column="50" lean-forward="true" selection-start-line="359" selection-start-column="50" selection-end-line="359" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3920#3921#0" expanded="true" />
@@ -125,36 +126,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransactionMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java">
+      <file leaf-file-name="UserMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/UserMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+            <state relative-caret-position="282">
+              <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentServiceImplTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/test/java/com/jnshu/service1/Impl/PaymentServiceImplTest.java">
+      <file leaf-file-name="TransactionMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="e#708#709#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
-                <element signature="e#943#944#0" expanded="true" />
-                <element signature="e#1030#1031#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransactionLogMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionLogMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+            <state relative-caret-position="432">
+              <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -192,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service1/impl/StatisticsServiceImpl.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/entity/StatisticsSalesRO.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dto1/ContractRO.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dto1/ClaimsProtocolCodeRO.java" />
@@ -241,8 +226,9 @@
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/PaymentService.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/PaymentController.java" />
+        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -827,7 +813,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PaymentServiceImplTest.addTransaction">
+  <component name="RunManager" selected="Application.Entry">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -1043,11 +1029,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PaymentServiceImplTest.addTransaction" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PaymentServiceImplTest.updateContract" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PaymentServiceImplTest.updateTransactionLog" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TransactionLogMapperTest.updateTransLogById" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Entry" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Entry" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PaymentServiceImplTest.addTransaction" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PaymentServiceImplTest.updateContract" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PaymentServiceImplTest.updateTransactionLog" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TransactionLogMapperTest.updateTransLogById" />
       </list>
     </recent_temporary>
   </component>
@@ -1070,7 +1056,7 @@
       <workItem from="1532958792114" duration="130215000" />
       <workItem from="1533292320901" duration="112000" />
       <workItem from="1533302306784" duration="16246000" />
-      <workItem from="1533480184273" duration="40139000" />
+      <workItem from="1533480184273" duration="42107000" />
     </task>
     <servers />
   </component>
@@ -1107,7 +1093,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359089000" />
+    <option name="totallyTimeSpent" value="361057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1464,14 +1450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/BankCardMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -1515,14 +1493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-379">
           <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1572,44 +1542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="101" column="19" lean-forward="true" selection-start-line="96" selection-start-column="8" selection-end-line="101" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/PaymentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="27" column="55" lean-forward="false" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="353" column="0" lean-forward="true" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
-            <element signature="e#3977#3978#0" expanded="true" />
-            <element signature="e#4128#4129#0" expanded="true" />
-            <element signature="e#4191#4192#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/TransactionServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1626,12 +1558,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/Entry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="91" column="36" lean-forward="true" selection-start-line="91" selection-start-column="36" selection-end-line="91" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/PaymentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+        <state relative-caret-position="646">
+          <caret line="184" column="54" lean-forward="true" selection-start-line="184" selection-start-column="54" selection-end-line="184" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/PaymentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="27" column="55" lean-forward="true" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/TransactionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/PaymentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="359" column="50" lean-forward="true" selection-start-line="359" selection-start-column="50" selection-end-line="359" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3920#3921#0" expanded="true" />
+            <element signature="e#3977#3978#0" expanded="true" />
+            <element signature="e#4128#4129#0" expanded="true" />
+            <element signature="e#4191#4192#0" expanded="true" />
           </folding>
         </state>
       </provider>

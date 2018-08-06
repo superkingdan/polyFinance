@@ -349,6 +349,15 @@ public class PaymentServiceImpl implements PaymentService{
         message.setUserId(userId);
         int g=messageMapper.addMessage(message);
         System.out.println("新建消息id为"+message.getId());
+        //修改用户资产
+        String property=userMapper.getPropertyById(userId);
+        BigDecimal newPropertyB=new BigDecimal(property).add(moneyB);
+        User user=new User();
+        user.setProperty(newPropertyB.toString());
+        user.setId(userId);
+        user.setUpdateAt(System.currentTimeMillis());
+        user.setUpdateBy(userId);
+        int h=userMapper.updatePropertyById(user);
         return transactionId;
     }
 

@@ -24,7 +24,7 @@ public interface UserMapper {
     String getPropertyById(long userId);
 
     //修改用户资产
-    @Update("update user set property=#{property} where id=#{id} ")
+    @Update("update user set property=#{property},update_at=#{updateAt},update_by=#{updateBy} where id=#{id} ")
     int updatePropertyById(User user);
 
     //查询默认银行卡id
