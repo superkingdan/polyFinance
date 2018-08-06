@@ -1,10 +1,8 @@
 package com.jnshu.service1.Impl;
 
-import com.jnshu.dao.BankCardMapper;
-import com.jnshu.dao.ContractMapper;
-import com.jnshu.dao.ProductMapper;
+import com.jnshu.dao.*;
 import com.jnshu.dto1.BankCardRO;
-import com.jnshu.entity.Contract;
+import com.jnshu.entity.*;
 import com.jnshu.service1.PaymentService;
 import com.jnshu.utils.TransString;
 import org.slf4j.Logger;
@@ -30,6 +28,12 @@ public class PaymentServiceImpl implements PaymentService{
     ContractMapper contractMapper;
     @Autowired
     ProductMapper productMapper;
+    @Autowired
+    BankMapper bankMapper;
+    @Autowired
+    TransactionLogMapper transactionLogMapper;
+    @Autowired
+    UserMapper userMapper;
 
 
     /**
@@ -70,5 +74,53 @@ public class PaymentServiceImpl implements PaymentService{
         //添加到合同表中去
         contractMapper.addContractCode(contract);
         return contract.getId();
+    }
+
+    /**
+     * 生成交易流水
+     * @param rpo 需要的信息
+     * @return 生成的流水id
+     */
+    @Override
+    public Long addPayTransactionLog(PaymentRPO rpo) {
+        //创建新的交易流水对象
+        TransactionLog transactionLog=new TransactionLog();
+        transactionLog.setCreateAt(System.currentTimeMillis());
+        transactionLog.setCreateBy(rpo.getUserId());
+        transactionLog.setUserId(rpo.getUserId());
+        transactionLog.setContractId(rpo.getContractId());
+        //查询产品名
+        String productName=productMapper.getProductNameByProductId(rpo.getProductId());
+        transactionLog.setProductName(productName);
+        transactionLog.setTransactionAt(System.currentTimeMillis());
+        transactionLog.setMoney(rpo.getMoney());
+        transactionLog.setStatus(TransactionLog.STATUS_PAY_FAIL);
+        BankCard card=bankCardMapper.getBankIdById(rpo.getBankCardId());
+        String bankName=bankMapper.getBankNameById(card.getBankId());
+        String transactionWay=bankName+","+card.getBankCard();
+        transactionLog.setTransactionWay(transactionWay);
+        //插入交易流水
+        int a=transactionLogMapper.addTransactionLog(transactionLog);
+        return transactionLog.getId();
+    }
+
+    /**
+     * 获取用户信息
+     * @param userId 用户id
+     * @return 用户真实信息
+     */
+    @Override
+    public User getUserInfo(long userId) {
+        return userMapper.getUserRealInfo(userId);
+    }
+
+    /**
+     * 获取用户银行卡信息
+     * @param bankCardId 银行卡id
+     * @return 银行卡信息
+     */
+    @Override
+    public BankCard getBankCard(long bankCardId) {
+        return bankCardMapper.getBankIdById(bankCardId);
     }
 }

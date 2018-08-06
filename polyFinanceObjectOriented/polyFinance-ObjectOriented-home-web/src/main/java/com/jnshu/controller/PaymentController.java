@@ -1,16 +1,22 @@
 package com.jnshu.controller;
 
 import com.jnshu.dto1.BankCardRO;
+import com.jnshu.entity.BankCard;
 import com.jnshu.entity.PaymentRPO;
+import com.jnshu.entity.User;
 import com.jnshu.service1.PaymentService;
 import com.jnshu.service1.TransactionService;
+import com.jnshu.utils.ConfigReader;
 import com.jnshu.utils.CookieUtil;
+import com.jnshu.utils.HttpFormUtil;
+import com.jnshu.utils.HttpPay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +34,8 @@ public class PaymentController {
     PaymentService paymentService;
     @Autowired
     TransactionService transactionService;
+
+    private static final String PAY_URL = ConfigReader.getString("h5.pay_url");
 
     /**
      * 获得投资界面用户银行卡信息
@@ -75,12 +83,12 @@ public class PaymentController {
 
     /**
      * 创建合同并返回合同id
-     * @param userSign 用户签名
+     * @param rpo 请求数据
      * @return 返回参数，code,message,合同id
      */
     @PostMapping(value = "/a/u/r/pay/contract")
-    public Map addUserSign(@RequestParam(value="userSign")String userSign,@RequestParam(value="productId")Long productId,HttpServletRequest request)throws Exception{
-
+    public Map addUserSign(PaymentRPO rpo,HttpServletRequest request)throws Exception{
+        String respMsg="";
         Map<String,Object> map=new HashMap<>();
         //获取用户id
         long id;
@@ -96,10 +104,24 @@ public class PaymentController {
             return map;
         }
         log.info("用户"+id+"签署完合同，开始支付");
-
+        rpo.setUserId(id);
+        System.out.println("开始创建合同");
+        long contractId=paymentService.addContract(rpo.getUserSign(),rpo.getProductId(),rpo.getUserId());
+        rpo.setContractId(contractId);
+        System.out.println("开始生成交易流水");
+        long transactionLogId=paymentService.addPayTransactionLog(rpo);
+        User user=paymentService.getUserInfo(id);
+        BankCard bankCard=paymentService.getBankCard(rpo.getBankCardId());
+        //转化基本信息为需要的map形式
+        //首先将金额转化为分为单位
+        BigDecimal moneyCent=new BigDecimal(rpo.getMoney()).multiply(BigDecimal.valueOf(100));
+        Map<String,String> param= HttpPay.transParam(transactionLogId,id,moneyCent.toString(),bankCard.getBankCard(),user.getRealName(),user.getIdCard());
+        //向富友发起请求，并将结果返回
+        respMsg= HttpFormUtil.formForward(PAY_URL,param);
         map.put("code",0);
         map.put("message","success");
-        map.put("contractId",123456);
+        map.put("respMsg",respMsg);
+        System.out.println("rsqpMsg:"+respMsg);
         return map;
     }
 

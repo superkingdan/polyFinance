@@ -4,27 +4,27 @@ package com.jnshu.entity;
  * 确认支付用户支付信息
  */
 public class PaymentRPO {
-    private String phone;
-    private String code;
+    private long userId;
     private long bankCardId;
     private String money;
     private long productId;
     private long contractId;
+    private String userSign;
 
-    public String getPhone() {
-        return phone;
+    public String getUserSign() {
+        return userSign;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUserSign(String userSign) {
+        this.userSign = userSign;
     }
 
-    public String getCode() {
-        return code;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getBankCardId() {
@@ -62,12 +62,12 @@ public class PaymentRPO {
     @Override
     public String toString() {
         return "PaymentRPO{" +
-                "phone='" + phone + '\'' +
-                ", code='" + code + '\'' +
+                "userId=" + userId +
                 ", bankCardId=" + bankCardId +
                 ", money='" + money + '\'' +
                 ", productId=" + productId +
                 ", contractId=" + contractId +
+                ", userSign='" + userSign + '\'' +
                 '}';
     }
 }

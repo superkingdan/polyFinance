@@ -25,7 +25,7 @@ public interface TransactionLogMapper {
     TransactionLog getTransLogById(long id);
 
     //新增交易流水
-    @Insert("insert into transaction_log (create_at,create_by,user_id,product_name,transaction_at,transaction_way,money,status,bank_log) values (#{createAt},#{createBy},#{userId},#{productName},#{transactionAt},#{transactionWay},#{money},#{status},#{bankLog})")
+    @Insert("insert into transaction_log (create_at,create_by,user_id,product_name,transaction_at,transaction_way,money,status,bank_log,contract_id) values (#{createAt},#{createBy},#{userId},#{productName},#{transactionAt},#{transactionWay},#{money},#{status},#{bankLog},#{contractId})")
     @Options(useGeneratedKeys=true,keyProperty="id")
     int addTransactionLog(TransactionLog transactionLog);
 

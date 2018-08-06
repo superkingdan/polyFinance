@@ -44,6 +44,15 @@ public class TransactionLog implements Serializable {
     private String bankLog;
     //交易状态，0付款成功，1付款失败，2回款成功，3回款失败，4返息成功，5返息失败
     private int status;
+    private long contractId;
+
+    public long getContractId() {
+        return contractId;
+    }
+
+    public void setContractId(long contractId) {
+        this.contractId = contractId;
+    }
 
     public long getId() {
         return id;
@@ -154,8 +163,9 @@ public class TransactionLog implements Serializable {
                 ", transactionAt=" + transactionAt +
                 ", transactionWay='" + transactionWay + '\'' +
                 ", money='" + money + '\'' +
-                ", bankLog=" + bankLog +
+                ", bankLog='" + bankLog + '\'' +
                 ", status=" + status +
+                ", contractId=" + contractId +
                 '}';
     }
 }
