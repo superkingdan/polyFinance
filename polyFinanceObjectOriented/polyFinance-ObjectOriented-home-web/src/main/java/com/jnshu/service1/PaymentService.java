@@ -18,4 +18,12 @@ public interface PaymentService {
     User getUserInfo(long userId);
 
     BankCard getBankCard(long bankCardId);
+
+    Long updateTransactionLog(long transactionLogId);
+
+    String updateContract(long contractId);
+
+    Long addTransaction(long transactionLogId,String contractCode);
+
+    Long getTransactionIdByContractId(long contractId);
 }

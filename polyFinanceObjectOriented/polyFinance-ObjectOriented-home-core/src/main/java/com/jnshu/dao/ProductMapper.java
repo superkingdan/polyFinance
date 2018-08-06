@@ -37,11 +37,15 @@ public interface ProductMapper {
     @Select("select id,product_code,product_name,interest_rate,deadline,investment_amount,rate_of_interest,refund_style,mark,is_recommend,is_limite_purchase,more_message,remark from product where id=#{id} ")
     Product getProductById(long id);
 
+    //根据相信产品名查找产品详情
+    @Select("select id,product_code,product_name,interest_rate,deadline,investment_amount,rate_of_interest,refund_style,mark,is_recommend,is_limite_purchase,more_message,remark from product where product_name=#{productName} ")
+    Product getProductByName(String productName);
+
     //获得指定id产品姓名
     @Select("select product_name from product where id=#{productId}")
     String getProductNameByProductId(long productId);
 
-    //获得指定产品名的产品id
+    //获得模糊产品名的产品id
     @Select("select id from product where product_name like \"%\"#{productName}\"%\"")
      Long[] getProductIdByProductName(String productName);
 

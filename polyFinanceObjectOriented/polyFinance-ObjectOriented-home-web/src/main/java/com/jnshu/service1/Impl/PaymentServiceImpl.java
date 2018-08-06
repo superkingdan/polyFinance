@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -34,7 +36,14 @@ public class PaymentServiceImpl implements PaymentService{
     TransactionLogMapper transactionLogMapper;
     @Autowired
     UserMapper userMapper;
-
+    @Autowired
+    TimedTaskMapper timedTaskMapper;
+    @Autowired
+    TransactionMapper transactionMapper;
+    @Autowired
+    SystemDataMapper systemDataMapper;
+    @Autowired
+    MessageMapper messageMapper;
 
     /**
      * 获得用户银行卡信息
@@ -122,5 +131,235 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public BankCard getBankCard(long bankCardId) {
         return bankCardMapper.getBankIdById(bankCardId);
+    }
+
+    /**
+     * 更新交易流水表
+     * @param transactionLogId 交易流水Id
+     * @return 合同id
+     */
+    @Override
+    public Long updateTransactionLog(long transactionLogId) {
+        TransactionLog log=transactionLogMapper.getTransLogById(transactionLogId);
+        long contractId=log.getContractId();
+        log.setUpdateAt(System.currentTimeMillis());
+        log.setUpdateBy(log.getCreateBy());
+        log.setId(transactionLogId);
+        log.setStatus(TransactionLog.STATUS_PAY_SUCCESS);
+        transactionLogMapper.updateTransactionLogById(log);
+        return contractId;
+    }
+
+    /**
+     * 更新合同表
+     * @param contractId 合同id
+     * @return 合同code
+     */
+    @Override
+    public String updateContract(long contractId) {
+        Contract contract=contractMapper.getContractById(contractId);
+        contract.setIsPay(Contract.IS_PAY_YES);
+        contract.setUpdateAt(System.currentTimeMillis());
+        contract.setUpdateBy(contract.getCreateBy());
+        //更新合同表
+        contractMapper.updateIsPay(contract);
+        contractMapper.updateIsPay(contract);
+        return contract.getContractCode();
+    }
+
+    /**
+     *创建相应的交易，以及定时任务，消息
+     * @param transactionLogId 交易流水id
+     * @param contractCode 合同code
+     * @return 交易id
+     */
+    @Override
+    public Long addTransaction(long transactionLogId,String contractCode) {
+        //根据交易流水表id查找交易流水相关信息
+        TransactionLog log=transactionLogMapper.getTransLogById(transactionLogId);
+        long userId=log.getUserId();
+        String productName=log.getProductName();
+        long contractId=log.getContractId();
+        String money=log.getMoney();
+
+        //根据产品名查找产品相关信息
+        Product product=productMapper.getProductByName(productName);
+        int rateOfInterest=product.getRateOfInterest();
+        long productId=product.getId();
+        int deadline=product.getDeadline();
+        int refundStyle=product.getRefundStyle();
+        int isLimitedPurchase=product.getIsLimitePurchase();
+        //将时限转化为月，但是新手礼包是用不到这个的
+        int deadlineMonth=deadline/30;
+        String interestRate=product.getInterestRate();
+        //创建交易信息
+        Transaction transaction=new Transaction();
+        transaction.setCreateAt(System.currentTimeMillis());
+        transaction.setCreateBy(userId);
+        transaction.setUserId(userId);
+        //计算起息时间
+        long startAt=System.currentTimeMillis()+rateOfInterest*24*3600*1000L;
+        transaction.setStartAt(startAt);
+        //计算结束时间
+        long endAt=startAt+deadline*24*3600*1000L;
+        transaction.setEndAt(endAt);
+        transaction.setRenuwalStatus(Transaction.RENUWAL_STATUS_NOT);
+        transaction.setMoney(money);
+        //计算预期收益
+        BigDecimal moneyB=new BigDecimal(money);
+        BigDecimal interestRateB=new BigDecimal(interestRate);
+        BigDecimal expectEarningsB=moneyB.multiply(interestRateB).multiply(new BigDecimal(deadline)).divide(new BigDecimal(360),2,BigDecimal.ROUND_HALF_UP);
+        transaction.setExpectEarnings(expectEarningsB.toString());
+        transaction.setReturned("0");
+        transaction.setNotReturn(expectEarningsB.toString());
+        transaction.setProductId(productId);
+        transaction.setStatus(Transaction.STATUS_INVESTING);
+        transaction.setContractCode(contractCode);
+        int d=transactionMapper.addTransaction(transaction);
+        long transactionId=transaction.getId();
+        //创建定时任务,小于七天的不需要建立修改续投状态的定时任务，只有回款
+        //如果是本息一次还，添加回本定时任务
+        int e=0;
+        if(refundStyle==1){
+            TimedTask newTimedTask=new TimedTask();
+            newTimedTask.setCreateAt(System.currentTimeMillis());
+            newTimedTask.setCreateBy(userId);
+            newTimedTask.setStatus(TimedTask.STATUS_NOT_EXECUTE);
+            //结束时间一天之后开始返款
+            newTimedTask.setTaskTime(endAt+24*3600*1000);
+            newTimedTask.setNature(TimedTask.NATURE_RETURN_PRINCIPAL);
+            //返回金额就是预期收益加金额
+            String totalMoney=moneyB.add(expectEarningsB).toString();
+            newTimedTask.setMoney(totalMoney);
+            newTimedTask.setTransactionId(transactionId);
+            e=timedTaskMapper.addTaskedTime(newTimedTask);
+            System.out.println("本息一次还的还款定时任务id为:"+newTimedTask.getId());
+        }
+        //如果是先息后本，添加deadlineMonth次返息任务，一次本带最后一次利息任务
+        else{
+            TimedTask newTimedTask=new TimedTask();
+            newTimedTask.setCreateAt(System.currentTimeMillis());
+            newTimedTask.setCreateBy(userId);
+            newTimedTask.setStatus(TimedTask.STATUS_NOT_EXECUTE);
+            newTimedTask.setTransactionId(transactionId);
+            //循环，设置金额，时间，任务性质
+            //因为七天的新手礼包是本息一次还，所以这里不用考虑deadline小于30的情况
+            //循环deadlineMonth+1次，其中最后一次是本加最后一次利息，前deadlineMonth是只有利息
+            BigDecimal notReturn=expectEarningsB;
+            BigDecimal everyMonthReturn=expectEarningsB.divide(new BigDecimal(deadlineMonth),2,BigDecimal.ROUND_HALF_UP);
+            BigDecimal everyDayReturn=expectEarningsB.divide(new BigDecimal(deadline),2,BigDecimal.ROUND_HALF_UP);
+            //创建结束时间
+            Calendar endAtCalender=Calendar.getInstance();
+            endAtCalender.clear();
+            endAtCalender.setTimeInMillis(endAt);
+            //创建开始时间
+            Calendar startAtCalender=Calendar.getInstance();
+            startAtCalender.clear();
+            startAtCalender.setTimeInMillis(startAt);
+            System.out.println("开始时间为"+startAtCalender.get(Calendar.YEAR)+startAtCalender.get(Calendar.MONTH)+startAtCalender.get(Calendar.DAY_OF_MONTH));
+            for(int i=0;i<(deadlineMonth+1);i++){
+                //判断，前deadlineMonth次是返息，其中第一次的利息比较特殊
+                if(i==0){
+                    //设置性质
+                    newTimedTask.setNature(TimedTask.NATURE_RETURN_INTEREST);
+                    //设置时间,需判断开始开始时间的日期是否小于20
+                    //取得开始时间的日
+                    int dayOfStartAt=startAtCalender.get(Calendar.DAY_OF_MONTH);
+                    //比较，如果小于20，就在本月进行第一次
+                    if(dayOfStartAt<20){
+                        //设置时间日为20号
+                        startAtCalender.set(Calendar.DAY_OF_MONTH,20);
+                        //转化为毫秒设置到定时任务中
+                        newTimedTask.setTaskTime(startAtCalender.getTimeInMillis());
+                        //设置第一个月的返息
+                        BigDecimal firstMonthReturn=everyDayReturn.multiply(new BigDecimal(20-dayOfStartAt));
+                        newTimedTask.setMoney(firstMonthReturn.toString());
+                        System.out.println("第一次返息定时任务详情:"+newTimedTask);
+                        //添加定时任务并计算未返收益
+                        e=timedTaskMapper.addTaskedTime(newTimedTask);
+                        notReturn=notReturn.subtract(firstMonthReturn);
+                    }
+                    //如果是大于等于20号的情况，则在下月20号第一次
+                    else {
+                        //设置时间日为20号
+                        startAtCalender.set(Calendar.DAY_OF_MONTH,20);
+                        //设置月份为下个月
+                        startAtCalender.set(Calendar.MONTH,startAtCalender.get(Calendar.MONTH)+1);
+                        //转化为毫秒设置到定时任务中
+                        newTimedTask.setTaskTime(startAtCalender.getTimeInMillis());
+                        //设置第一个月的返息
+                        BigDecimal firstMonthReturn=everyDayReturn.multiply(new BigDecimal(50-dayOfStartAt));
+                        newTimedTask.setMoney(firstMonthReturn.toString());
+                        System.out.println("第"+(i+1)+"月返息定时任务详情"+newTimedTask);
+                        //添加定时任务并计算未返收益
+                        e=timedTaskMapper.addTaskedTime(newTimedTask);
+                        notReturn=notReturn.subtract(firstMonthReturn);
+                    }
+                }
+                //其余的标准情况
+                if(i>0&&i<deadlineMonth){
+                    //设置性质
+                    newTimedTask.setNature(TimedTask.NATURE_RETURN_INTEREST);
+                    //设置时间为下个月20号
+                    startAtCalender.set(Calendar.MONTH,startAtCalender.get(Calendar.MONTH)+1);
+                    //转化为毫秒设置到定时任务中
+                    newTimedTask.setTaskTime(startAtCalender.getTimeInMillis());
+                    //设置金额
+                    newTimedTask.setMoney(everyMonthReturn.toString());
+                    System.out.println("第"+(i+1)+"月返息定时任务详情:"+newTimedTask);
+                    e=timedTaskMapper.addTaskedTime(newTimedTask);
+                    //计算剩余未返金额
+                    notReturn=notReturn.subtract(everyMonthReturn);
+                }
+                //最后一次也就是本加最后一次利息
+                if(i==deadlineMonth){
+                    //设置性质
+                    newTimedTask.setNature(TimedTask.NATURE_RETURN_PRINCIPAL);
+                    //设置时间,直接使用最后结束时间即可
+                    newTimedTask.setTaskTime(endAtCalender.getTimeInMillis());
+                    //设置金额,未返回加本金
+                    newTimedTask.setMoney(notReturn.add(moneyB).toString());
+                    System.out.println("最后一次定时任务详情:"+newTimedTask);
+                    e=timedTaskMapper.addTaskedTime(newTimedTask);
+                }
+            }
+        }
+        //添加定时改变续投状态的任务,可以续投的才可以改变
+        int f=1;
+        if(isLimitedPurchase==0) {
+            TimedTask renewalTask = new TimedTask();
+            renewalTask.setCreateAt(System.currentTimeMillis());
+            renewalTask.setCreateBy(userId);
+            renewalTask.setNature(TimedTask.NATURE_RENEWAL);
+            renewalTask.setStatus(TimedTask.STATUS_NOT_EXECUTE);
+            renewalTask.setTransactionId(transactionId);
+            //设置定时任务时间为交易到期时间-续投提醒时间
+            long investmentDay = Long.parseLong(systemDataMapper.getInvestmentDay());
+            renewalTask.setTaskTime(endAt - investmentDay * 24 * 3600 * 1000);
+            System.out.println("改变续投状态的定时任务详情" + renewalTask);
+            f= timedTaskMapper.addTaskedTime(renewalTask);
+        }
+        //创建消息
+        Message message=new Message();
+        message.setCreateAt(System.currentTimeMillis());
+        message.setCreateBy(userId);
+        message.setTitle("投资成功");
+        message.setIntroduce(productName+"已投资成功");
+        message.setTransactionId(transactionId);
+        message.setUserId(userId);
+        int g=messageMapper.addMessage(message);
+        System.out.println("新建消息id为"+message.getId());
+        return transactionId;
+    }
+
+    /**
+     * 通过合同id获得交易id
+     * @param contractId 合同id
+     * @return 交易id
+     */
+    @Override
+    public Long getTransactionIdByContractId(long contractId) {
+        String contractCode=contractMapper.getContractCodeById(contractId);
+        return transactionMapper.getTransactionIdByContractCode(contractCode);
     }
 }

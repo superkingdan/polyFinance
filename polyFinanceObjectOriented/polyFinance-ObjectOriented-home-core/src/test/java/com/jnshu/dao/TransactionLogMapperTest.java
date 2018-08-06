@@ -50,4 +50,14 @@ public class TransactionLogMapperTest {
         System.out.println(transactionLogMapper.getTransLogListByRpo(rpo));
 
     }
+
+    @Test
+    public void updateTransLogById(){
+        TransactionLog log=new TransactionLog();
+        log.setUpdateAt(System.currentTimeMillis());
+        log.setUpdateBy(1);
+        log.setStatus(0);
+        log.setId(16);
+        System.out.println(transactionLogMapper.updateTransactionLogById(log));
+    }
 }

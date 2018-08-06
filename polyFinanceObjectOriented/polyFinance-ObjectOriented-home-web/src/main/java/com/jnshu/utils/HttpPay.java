@@ -64,4 +64,29 @@ public class HttpPay {
         }
         return param;
     }
+
+    /**
+     * 将回调的数据加密后比较签名是否一致
+     * @param responseCode 响应代码
+     * @param mchntCd 商户代码
+     * @param mchtOrderId 商户订单代码
+     * @param orderId 富友订单代码
+     * @param bankCard 银行卡号
+     * @param amt 金额
+     * @param sign md5签名
+     * @return 比对结果
+     */
+    public static  Boolean comparedParam(String responseCode,String mchntCd,String mchtOrderId,String orderId,String bankCard,String amt,String sign){
+            StringBuilder signPlain=new StringBuilder();
+            String version="2.0";
+            String type="10";
+            String privateKey= Constants.H5_MCHNT_KEY;
+            //拼接签名模板
+            signPlain.append(type).append("|").append(version).append("|").append(responseCode).append("|").append(mchntCd)
+                    .append("|").append(mchtOrderId).append("|").append(orderId).append("|").append(amt).append("|")
+                    .append(bankCard).append("|").append(privateKey);
+            //获得加密之后的签名
+            String newSign=MD5.MD5Encode(signPlain.toString());
+            return newSign.equals(sign);
+    }
 }

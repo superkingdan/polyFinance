@@ -52,6 +52,9 @@ public interface ContractMapper {
     @Select("select current_claims_code from contract where contract_code=#{contractCode}")
     String getClaimsCodeByContractCode(String contractCOde);
 
+     @Select("select id,contract_code,create_by from contract where id=#{contractId}")
+     Contract getContractById(long contractId);
 
-
+     @Update("update contract set is_pay=#{isPay},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
+     int updateIsPay(Contract contract);
 }

@@ -38,6 +38,10 @@ public interface TransactionMapper {
     @Select("select contract_code,user_id,product_id,end_at,money from transaction where contract_code=#{contractCode}")
     ContractMatchingRO getContractInfoByContractCode(String contractCode);
 
+    //查询合同编号对应交易id
+    @Select("select id from transaction where contract_code=#{contractCode}")
+    Long getTransactionIdByContractCode(String contractCode);
+
     //修改交易表债权信息
     @Update("update transaction set claims_id=#{claimsId},update_at=#{updateAt},update_by=#{updateBy} where contract_code=#{contractCode}")
     int updateClaimsId(Transaction transaction);

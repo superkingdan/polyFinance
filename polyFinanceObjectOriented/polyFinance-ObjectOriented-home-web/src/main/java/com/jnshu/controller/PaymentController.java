@@ -1,6 +1,7 @@
 package com.jnshu.controller;
 
 import com.jnshu.dto1.BankCardRO;
+import com.jnshu.dto1.TransactionRO;
 import com.jnshu.entity.BankCard;
 import com.jnshu.entity.PaymentRPO;
 import com.jnshu.entity.User;
@@ -121,40 +122,89 @@ public class PaymentController {
         map.put("code",0);
         map.put("message","success");
         map.put("respMsg",respMsg);
-        System.out.println("rsqpMsg:"+respMsg);
+        System.out.println("respMsg:"+respMsg);
         return map;
+    }
+
+//    /**
+//     * 获得第三方银行验证码
+//     * @param phone 手机号
+//     * @param bankCardId 银行卡id
+//     * @return code,message
+//     */
+//    @PostMapping(value = "/a/u/r/pay/code")
+//    public Map sendCode(@RequestParam(value="phone")String phone,@RequestParam(value="bankCardId")Long bankCardId){
+//        long id=1L;
+//        log.info("用户"+id+"发送银行短信,手机号为"+phone+"，银行卡id为"+bankCardId);
+//        Map<String,Object> map=new HashMap<>();
+//        map.put("code",10000);
+//        map.put("message","ok");
+//        return map;
+//    }
+//
+//    /**
+//     * 用户支付
+//     * @param rpo 用户支付信息
+//     * @return 支付结果,code,message,生成的交易号
+//     */
+//    @PostMapping(value = "/a/u/r/pay/payment")
+//    public Map pay(@ModelAttribute PaymentRPO rpo){
+//        long id=1L;
+//        log.info("用户"+id+"支付，支付信息为"+rpo);
+//        Map<String,Object> map=new HashMap<>();
+//        map.put("code",10000);
+//        map.put("message","ok");
+//        map.put("transactionId",4568752);
+//        return map;
+//    }
+
+    /**
+     * 回调接口
+     * @param request 回调参数
+     */
+    @PostMapping(value = "/a/pay/callback")
+    public void callBack(HttpServletRequest request){
+        log.info("回调接口被调用");
+        //首先从请求中将数据拿出来
+        // 其中只有响应码，商户号，商户订单号，富友订单号，银行卡号，金额比较重要，需要提取出来做MD5加密对比用
+        String responseCode=request.getParameter("RESPONSECODE");
+        String mchntCd=request.getParameter("MCHNTCD");
+        String mchntOrderId=request.getParameter("MCHNTORDERID");
+        String orderId=request.getParameter("ORDERID");
+        String bankCard=request.getParameter("BANKCARD");
+        String amt=request.getParameter("AMT");
+        String sign=request.getParameter("SIGN");
+        //然后将其加密一遍，看是否被修改过
+        Boolean comparedResult=HttpPay.comparedParam(responseCode,mchntCd,mchntOrderId,orderId,bankCard,amt,sign);
+        if(responseCode.equals("0000")&&comparedResult) {
+            //修改交易流水表之前的数据,并返回合同id
+            long contractId=paymentService.updateTransactionLog(Long.valueOf(mchntOrderId));
+            //验证通过，修改合同表之前的数据,并返回合同编号
+            String contractCode=paymentService.updateContract(contractId);
+            //创建交易表新数据
+            long transactionId=paymentService.addTransaction(Long.valueOf(mchntOrderId),contractCode);
+            log.info("创建了交易，交易id为："+transactionId);
+        }else {
+            log.info("回调出现问题，无法创建订单，问题流水号为："+mchntOrderId);
+        }
     }
 
     /**
-     * 获得第三方银行验证码
-     * @param phone 手机号
-     * @param bankCardId 银行卡id
-     * @return code,message
+     * 交易成功之后根据合同id获得刚才的交易详情
+     * @param contractId 合同id
+     * @return 交易详情
      */
-    @PostMapping(value = "/a/u/r/pay/code")
-    public Map sendCode(@RequestParam(value="phone")String phone,@RequestParam(value="bankCardId")Long bankCardId){
-        long id=1L;
-        log.info("用户"+id+"发送银行短信,手机号为"+phone+"，银行卡id为"+bankCardId);
+    @GetMapping(value = "/a/u/r/pay/transaction/{id}")
+    public Map getTransactionByContractId(@PathVariable(value = "id")Long contractId){
+        log.info("付款成功后通过付款成功界面查看交易详情，请求合同id为"+contractId);
+        //通过合同id查找对应的合同code，然后将其转化为交易id
+        long transactionId=paymentService.getTransactionIdByContractId(contractId);
+        //调用transactionService的利用交易id查询交易详情的方法，直接查询
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
+        TransactionRO ro=transactionService.getTransactionById(transactionId);
+        map.put("code",0);
+        map.put("message","success");
+        map.put("data",ro);
         return map;
     }
-
-    /**
-     * 用户支付
-     * @param rpo 用户支付信息
-     * @return 支付结果,code,message,生成的交易号
-     */
-    @PostMapping(value = "/a/u/r/pay/payment")
-    public Map pay(@ModelAttribute PaymentRPO rpo){
-        long id=1L;
-        log.info("用户"+id+"支付，支付信息为"+rpo);
-        Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        map.put("transactionId",4568752);
-        return map;
-    }
-
 }

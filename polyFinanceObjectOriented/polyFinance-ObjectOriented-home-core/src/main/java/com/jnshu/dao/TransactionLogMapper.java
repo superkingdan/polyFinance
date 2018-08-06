@@ -21,13 +21,17 @@ public interface TransactionLogMapper {
     List<TransactionLog> getTransLogLitByUserId(long userId);
 
      //按照交易流水id查找交易流水详情
-    @Select("select id,product_name,transaction_at,money,status,transaction_way,bank_log from transaction_log where id=#{id}")
+    @Select("select id,product_name,transaction_at,money,status,transaction_way,bank_log,contract_id,user_id from transaction_log where id=#{id}")
     TransactionLog getTransLogById(long id);
 
     //新增交易流水
     @Insert("insert into transaction_log (create_at,create_by,user_id,product_name,transaction_at,transaction_way,money,status,bank_log,contract_id) values (#{createAt},#{createBy},#{userId},#{productName},#{transactionAt},#{transactionWay},#{money},#{status},#{bankLog},#{contractId})")
     @Options(useGeneratedKeys=true,keyProperty="id")
     int addTransactionLog(TransactionLog transactionLog);
+
+    //修改交易流水状态
+    @Update("update transaction_log set status=#{status},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
+    int updateTransactionLogById(TransactionLog transactionLog);
 
     //后台按条件查找指定用户
     //需手动转化style和status为StyleStatus,12种情况
