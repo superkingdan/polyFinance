@@ -2,7 +2,10 @@ package com.jnshu.interceptor;
 
 import com.jnshu.dao.UserMapper;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import com.jnshu.utils.CookieUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 支付相关拦截器
+ * 支付相关拦截器,验证用户是否实名和绑定银行卡
  * @author wangqichao
  */
 @Component(value = "payInterceptor")
@@ -20,14 +23,8 @@ public class PayInterceptor implements HandlerInterceptor {
     @Autowired
     UserMapper userMapper;
 
-    /**
-     * 验证用户的实名状态和是否绑定银行卡
-     * @param httpServletRequest
-     * @param httpServletResponse
-     * @param o
-     * @return
-     * @throws Exception
-     */
+    private static final Logger log= LoggerFactory.getLogger(PayInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         //获取用户id
@@ -44,14 +41,16 @@ public class PayInterceptor implements HandlerInterceptor {
         }
         //如果未实名就去未实名的接口，返回的code是10010
         if(user.getRealStatus()!=1){
-            System.out.println("用户未实名，跳转到返回错误信息为未实名的接口");
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/u/unrealname");
-            return false;
+            log.error("用户"+id+"未实名，跳转到返回错误信息为未实名的接口");
+//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/u/unrealname");
+            throw new MyException(10010,"user didn't have real name");
+//            return false;
         }
         else {
-            System.out.println("用户未绑定银行卡，跳转到返回错误信息为未绑卡的接口");
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/u/nocard");
-            return false;
+            log.error("用户"+id+"未绑定银行卡，跳转到返回错误信息为未绑卡的接口");
+//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/u/nocard");
+            throw new MyException(10020,"user didn't have defaultCard");
+//            return false;
         }
 
     }

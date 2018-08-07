@@ -85,6 +85,7 @@ public class ContractServiceImpl implements ContractService {
         Claims claims=claimsMapper.getCreditorInfoByClaimsCode(contract.getCurrentClaimsCode());
         ro.setCreditor(claims.getCreditor());
         ro.setCreditorIdCard(claims.getCreditorIdCard());
+        System.out.println(ro);
         return ro;
     }
 }

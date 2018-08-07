@@ -1,6 +1,7 @@
 package com.jnshu.controller;
 
 import com.jnshu.dto1.ContractRO;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.ContractService;
 import com.jnshu.utils.CookieUtil;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 查看合同相关接口
+ * 查看合同相关接口,1E
  * @author wangqichao
  */
 @RestController
@@ -31,10 +32,21 @@ public class ContractController {
      * @return 合同url
      */
     @GetMapping(value = "/a/u/contract/unsigned/{type}")
-    public Map getContractUnsigned(@PathVariable(value = "type")int type){
-       log.info("获得未签署合同");
-       String contractUrl=contractService.getContractUnsigned(type);
+    public Map getContractUnsigned(@PathVariable(value = "type")int type)throws Exception{
+       log.info("获得未签署合同,合同种类为："+type);
         Map<String,Object> map=new HashMap<>();
+        if(type>6||type<0){
+            log.error("请求合同类型有误");
+            throw new MyException(10040,"type is error");
+        }
+        String contractUrl="";
+        try {
+            contractUrl = contractService.getContractUnsigned(type);
+        }catch (Exception e){
+            log.error("请求合同时发生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"unknown error");
+        }
         map.put("code",0);
         map.put("message","success");
         map.put("contract",contractUrl);
@@ -56,13 +68,19 @@ public class ContractController {
         }
         //如果cookie中没有uid直接报错
         else {
-            map.put("code",-1);
-            map.put("message","there is no uid in cookie");
             log.info("获取待签署合同，但是cookie中没有uid");
-            return map;
+            throw new MyException(10001,"there is no uid in cookie");
         }
         log.info("用户"+id+"获得待签署合同");
-        ContractRO ro=contractService.getContractReadySign(id);
+        ContractRO ro;
+        try {
+            ro = contractService.getContractReadySign(id);
+        }catch (Exception e)
+        {
+            log.error("用户"+id+"获得待签署合同，产生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"unknown error");
+        }
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);
@@ -75,10 +93,17 @@ public class ContractController {
      * @return 合同相关信息
      */
     @GetMapping(value = "/a/u/contract/{id}")
-    public Map getContract(@PathVariable(value = "id")long id){
+    public Map getContract(@PathVariable(value = "id")long id)throws Exception{
         log.info("查看合同id为"+id+"的合同");
+        ContractRO ro;
         Map<String,Object> map=new HashMap<>();
-        ContractRO ro=contractService.getContractById(id);
+        try {
+            ro=contractService.getContractById(id);
+        }catch (Exception e){
+            log.info("查看合同id为"+id+"的合同,产生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"unknown error");
+        }
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);

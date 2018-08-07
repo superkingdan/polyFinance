@@ -4,34 +4,26 @@ package com.jnshu.entity;
  * 确认支付用户支付信息
  */
 public class PaymentRPO {
-    private long userId;
-    private long bankCardId;
+    private Long userId;
+    private Long bankCardId;
     private String money;
-    private long productId;
-    private long contractId;
+    private Long productId;
+    private Long contractId;
     private String userSign;
 
-    public String getUserSign() {
-        return userSign;
-    }
-
-    public void setUserSign(String userSign) {
-        this.userSign = userSign;
-    }
-
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public long getBankCardId() {
+    public Long getBankCardId() {
         return bankCardId;
     }
 
-    public void setBankCardId(long bankCardId) {
+    public void setBankCardId(Long bankCardId) {
         this.bankCardId = bankCardId;
     }
 
@@ -43,20 +35,28 @@ public class PaymentRPO {
         this.money = money;
     }
 
-    public long getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(long productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
-    public long getContractId() {
+    public Long getContractId() {
         return contractId;
     }
 
-    public void setContractId(long contractId) {
+    public void setContractId(Long contractId) {
         this.contractId = contractId;
+    }
+
+    public String getUserSign() {
+        return userSign;
+    }
+
+    public void setUserSign(String userSign) {
+        this.userSign = userSign;
     }
 
     @Override
