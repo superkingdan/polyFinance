@@ -1,7 +1,7 @@
 package com.jnshu.entity;
 
 
-import com.jnshu.utils.ConfigReader;
+import com.jnshu.utils.payutils.ConfigReader;
 
 public class Constants
 {

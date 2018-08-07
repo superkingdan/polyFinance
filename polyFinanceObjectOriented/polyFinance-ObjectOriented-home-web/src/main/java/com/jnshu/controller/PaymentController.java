@@ -7,18 +7,22 @@ import com.jnshu.entity.PaymentRPO;
 import com.jnshu.entity.User;
 import com.jnshu.service1.PaymentService;
 import com.jnshu.service1.TransactionService;
-import com.jnshu.utils.ConfigReader;
+import com.jnshu.utils.ossutils.ConvertToFile;
+import com.jnshu.utils.ossutils.IsImage;
+import com.jnshu.utils.ossutils.OSSUploadUtil;
+import com.jnshu.utils.payutils.ConfigReader;
 import com.jnshu.utils.CookieUtil;
-import com.jnshu.utils.HttpFormUtil;
-import com.jnshu.utils.HttpPay;
+import com.jnshu.utils.payutils.HttpFormUtil;
+import com.jnshu.utils.payutils.HttpPay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -205,6 +209,99 @@ public class PaymentController {
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);
+        return map;
+    }
+
+    /**
+     * 用户未实名认证
+     * @return code,message
+     */
+    @GetMapping(value = "/a/u/unrealname")
+    public Map returnUnRealName(){
+        log.info("被拦截返回错误信息为未登录");
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",10010);
+        map.put("message","user didn't have real name");
+        return map;
+    }
+
+    /**
+     * 用户未绑卡
+     * @return code,message
+     */
+    @GetMapping(value = "/a/u/nocard")
+    public  Map returnHaveNoCard(){
+        System.out.println("被拦截错误信息为未绑卡");
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",10020);
+        map.put("message","user didn't have defaultCard");
+        return map;
+    }
+
+    /**
+     * 上传图片
+     * @param file 用户数字签名
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/a/u/r/pay/uploadimg",produces = "application/json;charset=UTF-8")
+    public Map uploadUserSign(@RequestParam(required = false) MultipartFile file, HttpServletRequest request)throws Exception{
+        Map<String,Object> map=new HashMap<>();
+        //获取用户id
+        long id;
+        String uidS= CookieUtil.getCookieValue(request,"uid");
+        if (uidS!=null) {
+            id = Long.parseLong(uidS);
+        }
+        //如果cookie中没有uid直接报错
+        else {
+            map.put("code",-1);
+            map.put("message","there is no uid in cookie");
+            log.info("上传图片，但是cookie中没有uid");
+            return map;
+        }
+        log.info("用户"+id+"签署合同中，在上传签名");
+        //判断是否有图片上传
+        if(file==null||file.equals("")||file.getSize()<=0){
+           map.put("code",10030);
+           map.put("message","there is no file");
+           log.info("无上传图片，很尴尬");
+           return map;
+        }
+        //判断是否为图片类型
+        File f= ConvertToFile.multipartFileToFile(file);//转化文件格式
+        String fName=f.getName();
+        System.out.println(fName);
+//        //判断是否为图片格式
+//        if(!IsImage.isImage(fName)){
+//            //如果不是就删除临时文件，并报错
+//            File del = new File(f.toURI());
+//            boolean delete=del.delete();
+//            System.out.println(delete);
+//            map.put("code",10031);
+//            map.put("message","there is error file");
+//            log.info("图片格式不正确，很尴尬");
+//            return map;
+//        }
+        String fileUrl="";
+        try {
+            fileUrl = OSSUploadUtil.uploadFile(f, "jpg");//上传文件,设置后缀为jpg
+        }catch (Exception e){
+            log.error("上传图片发生问题");
+            log.error(e.getMessage());
+            map.put("code",10032);
+            map.put("message","upload file fail");
+            return map;
+        }
+        map.put("code",0);
+        map.put("message","success");
+        map.put("signUrl",fileUrl);
+        log.info("上传成功，图片url为"+fileUrl);
+        //删除临时文件
+        File del = new File(f.toURI());
+        boolean delete=del.delete();
+        System.out.println(delete);
         return map;
     }
 }

@@ -1,4 +1,4 @@
-package com.jnshu.utils;
+package com.jnshu.utils.payutils;
 
 import com.jnshu.entity.Constants;
 
@@ -10,7 +10,7 @@ import java.util.Map;
  * @author  wangqichao
  */
 public class HttpPay {
-    private static final String BACK_URL=ConfigReader.getString("h5.back_url");
+    private static final String BACK_URL= ConfigReader.getString("h5.back_url");
     private static final String HOME_URL=ConfigReader.getString("h5.home_url");
     private static final String RETURN_URL=ConfigReader.getString("h5.return_url");
 
@@ -42,7 +42,7 @@ public class HttpPay {
                 .append("|").append(realName).append("|").append(userIdCard).append("|").append(idType).append("|").append(logoTp)
                 .append("|").append(HOME_URL).append("|").append(RETURN_URL).append("|").append(privateKey);
 //获得加密后的sign
-        String sign=MD5.MD5Encode(signPlain.toString());
+        String sign= MD5.MD5Encode(signPlain.toString());
         System.out.println("[签名明文:]"+signPlain);
         StringBuffer orderPlain = new StringBuffer();
 //组合order

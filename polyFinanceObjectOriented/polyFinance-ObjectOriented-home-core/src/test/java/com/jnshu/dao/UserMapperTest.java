@@ -65,4 +65,9 @@ UserMapper userMapper;
         int thisYear=time.get(Calendar.YEAR);
         System.out.println(thisYear%100);
     }
+
+    @Test
+    public void getUserRealStatusById(){
+        System.out.println(userMapper.getUserRealStatusById(1));
+    }
 }

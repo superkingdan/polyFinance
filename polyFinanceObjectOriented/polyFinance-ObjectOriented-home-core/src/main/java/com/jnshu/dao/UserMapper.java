@@ -28,7 +28,7 @@ public interface UserMapper {
     int updatePropertyById(User user);
 
     //查询默认银行卡id
-    @Select("select default_card from user where id=#{user_id}")
+    @Select("select default_card from user where id=#{userId}")
     Long getDefaultCardById(long userId);
 
     //通过合同code获得用户真实信息
@@ -43,5 +43,7 @@ public interface UserMapper {
     @Select("select real_name from user where id=#{userId}")
     String getUserNameById(long userId);
 
-
+    //获得用户实名状态
+    @Select("select real_status,default_card from user where id=#{userId}")
+    User getUserRealStatusById(long userId);
 }

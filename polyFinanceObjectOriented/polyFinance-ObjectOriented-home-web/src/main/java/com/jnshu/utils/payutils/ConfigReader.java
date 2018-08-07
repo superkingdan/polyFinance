@@ -1,4 +1,4 @@
-package com.jnshu.utils;
+package com.jnshu.utils.payutils;
 
 import java.util.ResourceBundle;
 
