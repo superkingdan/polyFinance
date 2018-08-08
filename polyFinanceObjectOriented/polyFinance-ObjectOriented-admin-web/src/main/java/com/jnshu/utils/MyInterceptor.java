@@ -29,8 +29,8 @@ public class MyInterceptor implements HandlerInterceptor {
             //第一种方式，直接设置状态码
 //            httpServletResponse.sendError(403, " you need loginIn.");
             //第二种方式。通过接口返回信息。
-            System.out.println("hahahhahahha");
-            response.sendRedirect("/intercepted?next=" + request.getRequestURI());
+//            response.sendRedirect("/intercepted?next=" + request.getRequestURI());
+            response.sendRedirect("/a/login");
             return false;
         }
 
@@ -46,7 +46,7 @@ public class MyInterceptor implements HandlerInterceptor {
 //        System.out.println(token);
         Map<String, Object> token2 =tokenUtil.deToken(request.getHeader("token"));
         Boolean s = (Boolean) token2.get("verifyResult");
-        if (s == false) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
+        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
         return s;
     }
 

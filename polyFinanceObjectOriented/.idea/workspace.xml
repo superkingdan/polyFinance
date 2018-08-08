@@ -1,413 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c3d7506e-e66e-4ac7-b9cb-7aeab7b49399" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/application.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/Entry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/config/InterceptorConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller/ClaimsController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller/ClaimsMatchingController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller/ProductController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller/StatisticsController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller/UserTransactionController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/BackController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/BankController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/ContentController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/FrontUserController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/LoginController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/OtherController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller2/UserApplicationController2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/controller3/MessageController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/entity/ClaimsProtocolCodeRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/entity/StatisticsSalesRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/BackService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/BankService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/ContentService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/DataService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/FeedbackService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/RoleBackService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/RoleUserBackService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/UserApplicationService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/UserBackService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/UserService2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/BackServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/BankServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/ContentServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/DataServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/FeedbackServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/RoleBackServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/RoleUserBackServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/UserApplicationServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/UserBackServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service/implement/UserFrontServiceImpl2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/ClaimsMatchingService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/ClaimsService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/ProductService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/StatisticsService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/UserTransactionService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/impl/ClaimsMatchingServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/impl/ClaimsServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/impl/ProductServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/impl/StatisticsServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/service1/impl/UserTransactionServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/utils/AliyunOSSUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/utils/CAM.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/utils/MyInterceptor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/utils/TokenUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/utils/formodule/ModuleBackTree.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/com/jnshu/utils/formodule/ModuleBackTreeInit.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/classes/logback.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/test-classes/com/jnshu/service1/impl/ClaimsMatchingServiceImplTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/application.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainBank.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainContent.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainFeedBackDetail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainModuleBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainModuleBackForLogin.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainRoleBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainRoleBackList.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainUserBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainUserFront.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/DomainUserFrontDetail.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Domain2/UserBankCard.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/Entry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/cache/RedisCacheManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/configuration/MybatisConfiguration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/BankCardMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/BankMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ClaimsMapper1$ClaimsProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ClaimsMapper1$ClaimsProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ClaimsMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ClaimsMatchingMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ContractMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/MessageMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ProductMapper1$ProductProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ProductMapper1$ProductProvider$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ProductMapper1$ProductProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/ProductMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/SystemDataMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TimedTaskMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionLogMapper1$TransactionLogProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionLogMapper1$TransactionLogProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionLogMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1$TransactionProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1$TransactionProvider$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1$TransactionProvider$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1$TransactionProvider$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1$TransactionProvider$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1$TransactionProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/TransactionMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao/UserMapper1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ApplicationMapper2$ApplicationDaoProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ApplicationMapper2$ApplicationDaoProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ApplicationMapper2$ReviewApplication$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ApplicationMapper2$ReviewApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ApplicationMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/BankMapper2$BankDaoProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/BankMapper2$BankDaoProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/BankMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ContentMapper2$ContentDaoProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ContentMapper2$ContentDaoProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ContentMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/DataMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/FeedbackMapper2$FeedbackDaoProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/FeedbackMapper2$FeedbackDaoProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/FeedbackMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/ModuleBackMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/RoleBackMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/RoleModuleBackMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/RoleUserBackMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/UserBackMapper2$UserBackDaoProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/UserBackMapper2$UserBackDaoProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/UserBackMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/UserFrontMapper2$UserFrontDaoProvider$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/UserFrontMapper2$UserFrontDaoProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao2/UserFrontMapper2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/BankCardMapper3$UpdateData$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/BankCardMapper3$UpdateData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/BankCardMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/BankMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/ClaimsMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/ContentMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/ContractMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/FeedbackMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/MessageMapper3$FindMessageListRPO$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/MessageMapper3$FindMessageListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/MessageMapper3$UpdateMessage$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/MessageMapper3$UpdateMessage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/MessageMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/ProductMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/RealNameApplicationMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/SystemDataMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/TimedTaskMapper3$UpdateTask$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/TimedTaskMapper3$UpdateTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/TimedTaskMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/TransactionLogMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/TransactionMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/UserBackMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/UserMapper3$UpdateData$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/UserMapper3$UpdateData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dao3/UserMapper3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/BankCardRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/ClaimsListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/ClaimsMatchingRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/ClaimsMatchingRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/ContractMatchingRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/ContractRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/PaymentDto.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/ProductListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/StatisticsSalesListRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/StatisticsSalesListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/StatisticsSalesRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/TransactionListBackRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/TransactionListRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/TransactionListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/TransactionLogRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto1/TransactionRO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto2/ApplicationListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto2/BankListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto2/ContentListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto2/FeedbackRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto2/UserBackListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto2/UserFrontListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto3/BankCardList.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/dto3/MessageListRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Bank.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/BankCard.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Claims.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/ClaimsMatching.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Content.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Contract.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Feedback.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Message.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/ModuleBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Product.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/RealNameApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/RoleBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/RoleModuleBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/RoleUserBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/SystemData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/TimedTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/Transaction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/TransactionLog.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/entity/UserBack.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/CookieService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/CookieServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/MessageService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/MessageServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/RecommendService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/RecommendServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserBankService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserBankServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserDataService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserDataServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserLoginService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserLoginServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserMessageService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserMessageServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserSiteService3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/service3/UserSiteServiceImpl3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils/Base64.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils/CookieUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils/DESUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils/RandomSalt.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils/TransString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/BankCard.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/Base64.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/CookieFind.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/CookieUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/DESUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/DateUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/IPUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/MessagePhone.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/OSSUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/SHA.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/TokenJWT.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/TokenState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/UserNumber.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/Verification.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/com/jnshu/utils3/VerificationUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/logback.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/classes/trigger.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/BankCardMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/BankMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/ClaimsMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/ClaimsMatchingMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/ContractMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/MessageMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/ProductMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/SystemDataMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/TimedTaskMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/TransactionLogMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/TransactionMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao/UserMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/ApplicationMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/BankMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/ContentMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/DataMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/FeedbackMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/ModuleBackMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/RoleBackMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/RoleModuleBackMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/UserBackTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/test-classes/com/jnshu/dao2/UserFrontMapperTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/application.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/Entry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/configuration/Mvc.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/ContractController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/PaymentController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/ProductController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/RecommendController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/TransactionController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/TransactionLogController1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/UserBankController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/UserDataController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/UserLoginController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/UserMessageController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/controller/UserSiteController3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/entity/Constants.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/entity/PaymentRPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/exception/MyException.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/exception/MyExceptionHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/interceptor/PayInterceptor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/ContractService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/Impl/ContractServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/Impl/PaymentServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/Impl/ProductServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/Impl/TransactionLogServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/Impl/TransactionServiceImpl1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/PaymentService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/ProductService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/TransactionLogService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/service1/TransactionService1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/ossutils/ConvertToFile.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/ossutils/IsImage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/ossutils/OSSConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/ossutils/OSSUploadUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/ossutils/SystemConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/payutils/ConfigReader.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/payutils/DESCoderFUIOU.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/payutils/HttpFormUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/payutils/HttpPay.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/com/jnshu/utils/payutils/MD5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/init.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/logback.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/classes/oss.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/test-classes/com/jnshu/service1/Impl/PaymentServiceImplTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_11.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_core_3_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_core_3_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_core_3_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_core_3_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_dm_3_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_dm_3_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_dysmsapi_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_aliyun_java_sdk_dysmsapi_1_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_oss_aliyun_sdk_oss_2_8_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_oss_aliyun_sdk_oss_2_8_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_oss_aliyun_sdk_oss_2_8_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_aliyun_oss_aliyun_sdk_oss_2_8_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_auth0_java_jwt_3_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_auth0_java_jwt_3_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_5.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_stephenc_jcip_jcip_annotations_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_stephenc_jcip_jcip_annotations_1_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_25_1_jre.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_25_1_jre.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_5_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_5_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_11.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_5_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_5_10.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_2_5_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_2_5_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_java6_2_3_13.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_java6_2_3_13.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_42.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_42.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_8.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_23.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_23.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_23.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_23.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_55.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_55.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_2_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_2_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_6_Final.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_6_Final.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jdom_jdom_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jdom_jdom_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20140107.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20140107.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_16_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_16_10.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_3_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_3_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_25.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_25.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_1_2_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_1_2_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_8_9_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_8_9_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_13_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_13_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" />
+    <list default="true" id="c3d7506e-e66e-4ac7-b9cb-7aeab7b49399" name="Default" comment="删除登录不成功重定向。">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/MyInterceptor.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/MyInterceptor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/" />
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/" />
@@ -443,7 +39,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Entry.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Entry.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/Entry.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
@@ -452,6 +48,26 @@
                 <element signature="e#508#509#0" expanded="true" />
                 <element signature="e#563#564#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginController2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/LoginController2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyInterceptor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/MyInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -484,7 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller/UserTransactionController.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BankController.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/ContentController.java" />
@@ -535,6 +150,7 @@
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/Entry.java" />
+        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/MyInterceptor.java" />
       </list>
     </option>
   </component>
@@ -845,6 +461,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="polyFinanceObjectOriented" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polyFinance-ObjectOriented-root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polyFinanceObjectOriented" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polyFinance-ObjectOriented-admin-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1446,8 +1076,16 @@
       <workItem from="1533480184273" duration="6764000" />
       <workItem from="1533630723699" duration="35240000" />
       <workItem from="1533696137679" duration="6191000" />
-      <workItem from="1533726808073" duration="245000" />
+      <workItem from="1533726808073" duration="814000" />
     </task>
+    <task id="LOCAL-00001" summary="删除traget">
+      <created>1533727255189</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1533727255190</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1483,7 +1121,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="367390000" />
+    <option name="totallyTimeSpent" value="367959000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1496,6 +1134,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1510,6 +1149,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925472" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262295" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1518,7 +1158,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41268075" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30862328" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30862328" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1527,7 +1167,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32703003" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1575,6 +1214,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="删除traget" />
+    <MESSAGE value="删除登录不成功重定向。" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除登录不成功重定向。" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -1592,8 +1236,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service1/impl/ClaimsMatchingServiceImpl1.java" />
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/BankService2.java" />
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/ContentService2.java" />
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller/ClaimsController1.java" />
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller/ClaimsMatchingController1.java" />
@@ -1701,6 +1343,22 @@
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/resources/logback.xml" />
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/resources/logback.xml" />
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/resources/logback.xml" />
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/LoginController2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/MyInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
