@@ -2,6 +2,7 @@ package com.jnshu.controller;
 
 import com.jnshu.dto1.ProductListRPO;
 import com.jnshu.entity.Product;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.ProductService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 产品管理相关模块
+ * 产品管理相关模块,1E
  * @author wangqichao
  */
 @RestController
@@ -32,9 +33,16 @@ public class ProductController1 {
      * @return 返回参数，code,message，产品列表
      */
     @GetMapping(value = "/a/product/list")
-    public Map getProductList(ProductListRPO rpo){
+    public Map getProductList(ProductListRPO rpo)throws Exception{
         log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+rpo.getIsRecommend());
-        List<Product> products= productService1.getProductList(rpo);
+        List<Product> products;
+        try{
+            products= productService1.getProductList(rpo);
+        }catch (Exception e){
+            log.error("查询产品列表失败");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
@@ -48,12 +56,19 @@ public class ProductController1 {
      * @return 返回参数，code,message,产品详情
      */
     @GetMapping(value = "/a/u/product/{id}")
-    public Map getProduct(@PathVariable(value = "id")long id){
+    public Map getProduct(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得id为"+id+"的产品");
         Map<String,Object> map=new HashMap<>();
+        Product product;
+        try{
+            product= productService1.getProductById(id);
+        }catch (Exception e){
+            log.error("查询指定产品"+id+"失败");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         map.put("code",0);
         map.put("message","success");
-        Product product= productService1.getProductById(id);
         map.put("data",product);
         return map;
     }

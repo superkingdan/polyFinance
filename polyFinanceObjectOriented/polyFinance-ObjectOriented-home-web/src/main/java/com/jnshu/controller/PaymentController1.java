@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 支付模块相关接口
+ * 支付模块相关接口,1E
  * @author wangqichao
  */
 @RestController
@@ -58,7 +58,7 @@ public class PaymentController1 {
         //如果cookie中没有uid直接报错
         else {
             log.info("获取用户银行卡，但是cookie中没有uid");
-            throw new MyException(10001,"there is no uid in cookie");
+            throw new MyException(10001,"授权已过期，请重新登录");
         }
         log.info("获得id为"+id+"的用户的银行卡信息");
         List<BankCardRO> ros;
@@ -67,7 +67,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("获得id为"+id+"的用户的银行卡信息时发生错误");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         map.put("code",0);
         map.put("message","success");
@@ -84,7 +84,7 @@ public class PaymentController1 {
     @PostMapping(value = "/a/u/r/pay/continue")
     public Map addRenewal(@RequestParam(value = "id",required = false)Long id,@RequestParam(value="userSign",required = false)String userSign)throws Exception{
         if(id==null||userSign==null){
-            throw new MyException(10002,"params can't be null");
+            throw new MyException(10002,"参数不能为空");
         }
         log.info("添加续投订单，原交易id为"+id);
         try {
@@ -92,7 +92,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("添加续投订单出错，原交易id为"+id);
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
@@ -108,7 +108,7 @@ public class PaymentController1 {
     @PostMapping(value = "/a/u/r/pay/contract")
     public Map addUserSign(PaymentRPO rpo,HttpServletRequest request)throws Exception{
         if(rpo.getUserSign()==null||rpo.getProductId()==null||rpo.getBankCardId()==null||rpo.getMoney()==null){
-            throw new MyException(10002,"params can't be null");
+            throw new MyException(10002,"参数不能为空");
         }
         Map<String,Object> map=new HashMap<>();
         //获取用户id
@@ -120,7 +120,7 @@ public class PaymentController1 {
         //如果cookie中没有uid直接报错
         else {
             log.info("创建合同，但是cookie中没有uid");
-            throw new MyException(10001,"there is no uid in cookie");
+            throw new MyException(10001,"授权已过期，请重新登录");
         }
         log.info("用户"+id+"签署完合同，开始支付");
         rpo.setUserId(id);
@@ -131,7 +131,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("用户"+id+"开始创建合同,但是出错了");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         rpo.setContractId(contractId);
         System.out.println("开始生成交易流水");
@@ -145,7 +145,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("用户"+id+"开始创建交易流水,但是出错了");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         //转化基本信息为需要的map形式
         //首先将金额转化为分为单位
@@ -158,7 +158,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("用户"+id+"开始向富友发送请求,但是出错了");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         map.put("code",0);
         map.put("message","success");
@@ -195,7 +195,7 @@ public class PaymentController1 {
             }catch (Exception e){
                 log.error("交易流水号为"+mchntOrderId+"的流水在回调时修改交易流水表数据出错");
                 log.error(e.getMessage());
-                throw new MyException(-1,"unknown error");
+                throw new MyException(-1,"未知错误");
             }
             //验证通过，修改合同表之前的数据,并返回合同编号
             String contractCode;
@@ -204,7 +204,7 @@ public class PaymentController1 {
             }catch (Exception e){
                 log.error("交易流水号为"+mchntOrderId+"的流水在回调时修改合同表数据出错");
                 log.error(e.getMessage());
-                throw new MyException(-1,"unknown error");
+                throw new MyException(-1,"未知错误");
             }
             //创建交易表新数据
             long transactionId;
@@ -213,7 +213,7 @@ public class PaymentController1 {
             }catch (Exception e){
                 log.error("交易流水号为"+mchntOrderId+"的流水在回调时创建新交易数据出错");
                 log.error(e.getMessage());
-                throw new MyException(-1,"unknown error");
+                throw new MyException(-1,"未知错误");
             }
             log.info("创建了交易，交易id为："+transactionId);
         }else {
@@ -236,7 +236,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("获得交易id失败");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         //调用transactionService的利用交易id查询交易详情的方法，直接查询
         Map<String,Object> map=new HashMap<>();
@@ -246,7 +246,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("查询交易详情失败");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         map.put("code",0);
         map.put("message","success");
@@ -272,13 +272,13 @@ public class PaymentController1 {
         //如果cookie中没有uid直接报错
         else {
             log.error("上传图片，但是cookie中没有uid");
-            throw new MyException(10001,"there is no uid in cookie");
+            throw new MyException(10001,"授权已过期，请重新登录");
         }
         log.info("用户"+id+"签署合同中，在上传签名");
         //判断是否有图片上传
         if(file==null||file.equals("")||file.getSize()<=0){
            log.error("用户"+id+"想上传图片，但是无上传图片，很尴尬");
-           throw new MyException(10030,"there is no file");
+           throw new MyException(10030,"文件不能为空");
         }
         //判断是否为图片类型
         File f= ConvertToFile.multipartFileToFile(file);//转化文件格式
@@ -305,7 +305,7 @@ public class PaymentController1 {
             File del = new File(f.toURI());
             boolean delete=del.delete();
             System.out.println(delete);
-            throw new MyException(10032,"upload file fail");
+            throw new MyException(10032,"图片上传失败");
         }
         map.put("code",0);
         map.put("message","success");

@@ -1,6 +1,7 @@
 package com.jnshu.controller;
 
 import com.jnshu.entity.TransactionLog;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.TransactionLogService1;
 import com.jnshu.utils.CookieUtil;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 交易流水相关接口
+ * 交易流水相关接口，1E
  * @author wangqichao
  */
 @RestController
@@ -39,15 +40,20 @@ public class TransactionLogController1 {
         }
         //如果cookie中没有uid直接报错
         else {
-            map.put("code",-1);
-            map.put("message","there is no uid in cookie");
             log.info("获得用户交易流水，但是cookie中没有uid");
-            return map;
+            throw new MyException(10001,"授权已过期，请重新登录");
         }
         log.info("查找用户"+id+"交易流水列表");
+        List<TransactionLog> logs;
+        try{
+            logs= transactionLogService1.getTransactionLogList(id);
+        }catch (Exception e){
+            log.error("查询用户"+id+"交易流水列表失败");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         map.put("code",0);
         map.put("message","success");
-        List<TransactionLog> logs= transactionLogService1.getTransactionLogList(id);
         map.put("data",logs);
         return map;
     }
@@ -58,12 +64,19 @@ public class TransactionLogController1 {
      * @return 返回参数,code,message,交易流水详情
      */
     @GetMapping(value = "/a/u/transaction-log/{id}")
-    public Map getTransactionLog(@PathVariable(value = "id")long id){
+    public Map getTransactionLog(@PathVariable(value = "id")long id)throws Exception{
         log.info("查找用户交易流水号为"+id+"的交易流水");
         Map<String,Object> map=new HashMap<>();
-        map.put("code",10000);
-        map.put("message","ok");
-        TransactionLog log = transactionLogService1.getTransactionLogById(id);
+        TransactionLog logs;
+        try{
+            logs = transactionLogService1.getTransactionLogById(id);
+        }catch (Exception e){
+            log.error("查询指定交易流水"+id+"失败");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
+        map.put("code",0);
+        map.put("message","success");
         map.put("data",log);
         return map;
     }

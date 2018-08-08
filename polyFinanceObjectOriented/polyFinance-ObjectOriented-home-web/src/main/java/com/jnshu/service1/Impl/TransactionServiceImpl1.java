@@ -319,10 +319,13 @@ public class TransactionServiceImpl1 implements TransactionService1 {
         TransactionRO ro= transactionMapper1.getTransInfoByTransId(id);
         long userId=ro.getUserId();
         long defaultCard= userMapper1.getDefaultCardById(userId);
+        //查询并设置银行卡号
         BankCard bankCard= bankCardMapper1.getBankIdById(defaultCard);
         ro.setDefaultCardId(bankCard.getBankCard());
+        //查询并设置银行名
         String bankName= bankMapper1.getBankNameById(bankCard.getBankId());
         ro.setDefaultCardBankName(bankName);
+        //查询并设置合同id
         long contractId= contractMapper1.getContractIdByCode(ro.getContractCode());
         ro.setContractId(contractId);
         return ro;

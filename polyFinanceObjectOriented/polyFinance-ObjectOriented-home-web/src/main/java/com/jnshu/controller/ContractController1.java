@@ -37,7 +37,7 @@ public class ContractController1 {
         Map<String,Object> map=new HashMap<>();
         if(type>6||type<0){
             log.error("请求合同类型有误");
-            throw new MyException(10040,"type is error");
+            throw new MyException(10040,"无效的请求类型");
         }
         String contractUrl="";
         try {
@@ -45,7 +45,7 @@ public class ContractController1 {
         }catch (Exception e){
             log.error("请求合同时发生错误");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         map.put("code",0);
         map.put("message","success");
@@ -69,7 +69,7 @@ public class ContractController1 {
         //如果cookie中没有uid直接报错
         else {
             log.info("获取待签署合同，但是cookie中没有uid");
-            throw new MyException(10001,"there is no uid in cookie");
+            throw new MyException(10001,"授权已过期，请重新登录");
         }
         log.info("用户"+id+"获得待签署合同");
         ContractRO ro;
@@ -79,7 +79,7 @@ public class ContractController1 {
         {
             log.error("用户"+id+"获得待签署合同，产生错误");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         map.put("code",0);
         map.put("message","success");
@@ -102,7 +102,7 @@ public class ContractController1 {
         }catch (Exception e){
             log.info("查看合同id为"+id+"的合同,产生错误");
             log.error(e.getMessage());
-            throw new MyException(-1,"unknown error");
+            throw new MyException(-1,"未知错误");
         }
         map.put("code",0);
         map.put("message","success");
