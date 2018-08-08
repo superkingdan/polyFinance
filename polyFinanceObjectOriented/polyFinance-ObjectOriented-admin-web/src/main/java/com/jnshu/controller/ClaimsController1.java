@@ -34,7 +34,9 @@ public class ClaimsController1 {
         Page<Claims> claimsPage;
 
             claimsPage= claimsService1.getClaimsList(rpo);
-        
+
+
+
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");

@@ -15,7 +15,7 @@ import java.util.List;
 public interface UserBackService2 {
 
     //后台账户验证。
-    List<Object> verifyUserBack(UserBack userBack, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    Object verifyUserBack(UserBack userBack, HttpServletRequest request, HttpServletResponse response) throws Exception;
     //账户列表
     List<DomainUserBack> getUserBackList(UserBackListRPO rpo) throws Exception;
 

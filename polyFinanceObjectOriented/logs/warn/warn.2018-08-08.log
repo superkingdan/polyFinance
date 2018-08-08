@@ -1,0 +1,512 @@
+20:20:59.939 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.940 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.940 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.940 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.941 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+20:20:59.942 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.035 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.037 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.038 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.039 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.040 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.040 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.040 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.041 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.041 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+20:22:58.041 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.482 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.482 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.482 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.482 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.482 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.483 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.483 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.483 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.483 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.483 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.483 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+20:26:43.484 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.688 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.688 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.689 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.689 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.690 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.690 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.690 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.690 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.690 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.691 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.691 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+20:28:53.691 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+20:29:58.531 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 重新登录。
+21:52:27.359 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.360 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.360 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.360 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.360 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.360 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.361 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.361 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.361 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.361 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.361 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+21:52:27.361 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+21:54:00.297 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 重新登录。
+21:54:02.747 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 重新登录。
+21:54:23.266 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 重新登录。
+21:54:54.034 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.035 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.035 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.035 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.036 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+21:54:54.037 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.854 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.856 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.856 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.856 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.857 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+23:30:10.857 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+23:31:40.010 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7d3f8614 (No operations allowed after connection closed.)
+23:31:40.040 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1d50ce29 (No operations allowed after connection closed.)
+23:31:40.041 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5f11a37a (No operations allowed after connection closed.)
+23:31:40.043 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@42c71fe5 (No operations allowed after connection closed.)
+23:31:40.044 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2f60f8e6 (No operations allowed after connection closed.)
+23:31:40.059 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@34da4aa5 (No operations allowed after connection closed.)
+23:31:40.060 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@66023537 (No operations allowed after connection closed.)
+23:31:40.107 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1c402625 (No operations allowed after connection closed.)
+23:31:40.110 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@344f5a83 (No operations allowed after connection closed.)
+23:31:40.116 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5226b1cd (No operations allowed after connection closed.)
+23:31:40.117 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@257a8d33 (No operations allowed after connection closed.)
+23:31:40.118 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3896f6b7 (No operations allowed after connection closed.)
+23:31:40.120 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@76433864 (No operations allowed after connection closed.)
+23:31:40.139 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@110c57b8 (No operations allowed after connection closed.)
+23:31:40.147 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@60ee53bf (No operations allowed after connection closed.)
+23:31:40.150 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@ada7df (No operations allowed after connection closed.)
+23:31:40.152 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@736f81e5 (No operations allowed after connection closed.)
+23:31:40.155 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@618e579c (No operations allowed after connection closed.)
+23:31:40.158 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1fa0610c (No operations allowed after connection closed.)
+23:31:40.162 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@725eae78 (No operations allowed after connection closed.)
+23:31:40.163 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7d31697f (No operations allowed after connection closed.)
+23:31:40.164 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6e90e3f2 (No operations allowed after connection closed.)
+23:31:40.166 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7224572d (No operations allowed after connection closed.)
+23:31:40.167 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@758e0a7f (No operations allowed after connection closed.)
+23:31:40.169 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@302ef20 (No operations allowed after connection closed.)
+23:31:40.170 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6ae403c1 (No operations allowed after connection closed.)
+23:31:40.171 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3aa9bc8f (No operations allowed after connection closed.)
+23:31:40.171 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3f719457 (No operations allowed after connection closed.)
+23:31:40.179 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2b9e0776 (No operations allowed after connection closed.)
+23:31:40.180 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@61aee3cf (No operations allowed after connection closed.)
+23:31:40.182 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@169466b1 (No operations allowed after connection closed.)
+23:31:40.184 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@25f49b18 (No operations allowed after connection closed.)
+23:31:40.185 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7e0a9d67 (No operations allowed after connection closed.)
+23:31:40.187 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@68aca9f2 (No operations allowed after connection closed.)
+23:31:40.188 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5db8fbb8 (No operations allowed after connection closed.)
+23:31:40.189 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5c95874c (No operations allowed after connection closed.)
+23:31:40.190 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@76dec81c (No operations allowed after connection closed.)
+23:31:40.191 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7bb00c0c (No operations allowed after connection closed.)
+23:31:40.194 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@614f5df9 (No operations allowed after connection closed.)
+23:31:40.195 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1110097b (No operations allowed after connection closed.)
+23:31:40.196 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@118ebd6d (No operations allowed after connection closed.)
+23:31:40.197 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6aa5033c (No operations allowed after connection closed.)
+23:31:40.198 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@719e2b04 (No operations allowed after connection closed.)
+23:31:40.199 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6054af9d (No operations allowed after connection closed.)
+23:31:40.199 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@455032f (No operations allowed after connection closed.)
+23:31:40.200 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@462b4c7a (No operations allowed after connection closed.)
+23:31:40.201 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@466d89b0 (No operations allowed after connection closed.)
+23:31:40.202 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@300fea7 (No operations allowed after connection closed.)
+23:31:40.202 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2f60d993 (No operations allowed after connection closed.)
+23:31:40.203 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@33341899 (No operations allowed after connection closed.)
+23:31:40.204 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@19be2746 (No operations allowed after connection closed.)
+23:31:40.205 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1dcf1710 (No operations allowed after connection closed.)
+23:31:40.206 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@34cae97b (No operations allowed after connection closed.)
+23:31:40.207 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2729cfab (No operations allowed after connection closed.)
+23:31:40.208 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4f45581f (No operations allowed after connection closed.)
+23:31:40.208 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2ad7a170 (No operations allowed after connection closed.)
+23:31:40.209 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@49351460 (No operations allowed after connection closed.)
+23:31:40.210 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2008de7a (No operations allowed after connection closed.)
+23:31:40.211 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4568ffc4 (No operations allowed after connection closed.)
+23:31:40.212 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@52231a38 (No operations allowed after connection closed.)
+23:31:40.229 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@33549208 (No operations allowed after connection closed.)
+23:31:40.230 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@55c97116 (No operations allowed after connection closed.)
+23:31:40.231 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@57dd22b4 (No operations allowed after connection closed.)
+23:31:40.232 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1d6500ad (No operations allowed after connection closed.)
+23:31:40.232 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@ab615db (No operations allowed after connection closed.)
+23:31:40.233 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1469945a (No operations allowed after connection closed.)
+23:31:40.234 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2a1fcce1 (No operations allowed after connection closed.)
+23:31:40.235 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1f4ac167 (No operations allowed after connection closed.)
+23:31:40.235 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@25e81798 (No operations allowed after connection closed.)
+23:31:40.237 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7dfb8c3b (No operations allowed after connection closed.)
+23:31:40.238 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@29573fa1 (No operations allowed after connection closed.)
+23:31:40.239 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@605f9215 (No operations allowed after connection closed.)
+23:31:40.240 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5ee0d51 (No operations allowed after connection closed.)
+23:31:40.241 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@24d5c383 (No operations allowed after connection closed.)
+23:31:40.241 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@346f4a8f (No operations allowed after connection closed.)
+23:31:40.242 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@28bca92d (No operations allowed after connection closed.)
+23:31:40.243 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5d4dbdee (No operations allowed after connection closed.)
+23:31:40.243 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@578eb41f (No operations allowed after connection closed.)
+23:31:40.244 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@197ba753 (No operations allowed after connection closed.)
+23:31:40.259 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@54c39090 (No operations allowed after connection closed.)
+23:31:40.260 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@64d1f52b (No operations allowed after connection closed.)
+23:31:40.261 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@465d8be2 (No operations allowed after connection closed.)
+23:31:40.265 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2d8fd45 (No operations allowed after connection closed.)
+23:31:40.266 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4ad7ba9e (No operations allowed after connection closed.)
+23:31:40.266 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@21c47642 (No operations allowed after connection closed.)
+23:31:40.268 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@b6cfb03 (No operations allowed after connection closed.)
+23:31:40.269 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4e1b1dfe (No operations allowed after connection closed.)
+23:31:40.270 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@396f5de9 (No operations allowed after connection closed.)
+23:31:40.271 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3b9b4ae0 (No operations allowed after connection closed.)
+23:31:40.272 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@57430a73 (No operations allowed after connection closed.)
+23:31:40.273 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@41210988 (No operations allowed after connection closed.)
+23:31:40.274 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2e29450 (No operations allowed after connection closed.)
+23:31:40.274 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@634f12a6 (No operations allowed after connection closed.)
+23:31:40.275 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2c909c2e (No operations allowed after connection closed.)
+23:31:40.276 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@65b4ad7d (No operations allowed after connection closed.)
+23:31:40.277 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@73e2e58f (No operations allowed after connection closed.)
+23:31:40.278 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@68230377 (No operations allowed after connection closed.)
+23:31:40.279 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@407a83b1 (No operations allowed after connection closed.)
+23:31:40.280 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@e50186 (No operations allowed after connection closed.)
+23:31:40.281 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@64cf4288 (No operations allowed after connection closed.)
+23:33:23.195 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@40ef9531 (No operations allowed after connection closed.)
+23:33:23.196 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1598c933 (No operations allowed after connection closed.)
+23:33:23.197 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@185dfe15 (No operations allowed after connection closed.)
+23:33:23.198 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@24a7a632 (No operations allowed after connection closed.)
+23:33:23.199 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5e415ae5 (No operations allowed after connection closed.)
+23:33:23.200 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@d43d14f (No operations allowed after connection closed.)
+23:33:23.201 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7a193ba4 (No operations allowed after connection closed.)
+23:33:23.202 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@631694e3 (No operations allowed after connection closed.)
+23:33:23.208 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@37d46c16 (No operations allowed after connection closed.)
+23:33:23.209 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@248e1a0a (No operations allowed after connection closed.)
+23:33:23.211 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@17f9c124 (No operations allowed after connection closed.)
+23:33:23.225 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@401feeb4 (No operations allowed after connection closed.)
+23:33:23.227 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@54bf9e7d (No operations allowed after connection closed.)
+23:33:23.243 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@b590aa (No operations allowed after connection closed.)
+23:33:23.245 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@591c9179 (No operations allowed after connection closed.)
+23:33:23.253 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6649aea0 (No operations allowed after connection closed.)
+23:33:23.255 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4e2d8862 (No operations allowed after connection closed.)
+23:33:23.256 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@623161cd (No operations allowed after connection closed.)
+23:33:23.257 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5f9bb3ab (No operations allowed after connection closed.)
+23:33:23.258 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@740c3a56 (No operations allowed after connection closed.)
+23:33:23.260 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@56c0c22d (No operations allowed after connection closed.)
+23:33:23.261 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3f96ee31 (No operations allowed after connection closed.)
+23:33:23.262 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3d921483 (No operations allowed after connection closed.)
+23:33:23.264 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@285957ed (No operations allowed after connection closed.)
+23:33:23.265 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@78583961 (No operations allowed after connection closed.)
+23:33:23.270 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@70b7b73d (No operations allowed after connection closed.)
+23:33:23.276 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5dac83a4 (No operations allowed after connection closed.)
+23:33:23.281 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3f2851c3 (No operations allowed after connection closed.)
+23:33:23.282 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@602f476 (No operations allowed after connection closed.)
+23:33:23.285 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4bc1b5d4 (No operations allowed after connection closed.)
+23:33:23.285 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7249aeab (No operations allowed after connection closed.)
+23:33:23.326 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@f924f68 (No operations allowed after connection closed.)
+23:33:23.330 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1ea2aba8 (No operations allowed after connection closed.)
+23:33:23.331 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@588bc2bd (No operations allowed after connection closed.)
+23:33:23.333 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@678813f1 (No operations allowed after connection closed.)
+23:33:23.333 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7afce967 (No operations allowed after connection closed.)
+23:33:23.334 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7188f27b (No operations allowed after connection closed.)
+23:33:23.335 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@779058dd (No operations allowed after connection closed.)
+23:33:23.336 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5020da45 (No operations allowed after connection closed.)
+23:33:23.336 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4d0aa6f7 (No operations allowed after connection closed.)
+23:33:23.337 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7ba79e07 (No operations allowed after connection closed.)
+23:33:23.337 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@e04671e (No operations allowed after connection closed.)
+23:33:23.338 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@58206669 (No operations allowed after connection closed.)
+23:33:23.339 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@40055e84 (No operations allowed after connection closed.)
+23:33:23.339 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@795b725 (No operations allowed after connection closed.)
+23:33:23.340 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2a841c5e (No operations allowed after connection closed.)
+23:33:23.341 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@714c2449 (No operations allowed after connection closed.)
+23:33:23.345 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1b57b59a (No operations allowed after connection closed.)
+23:33:23.346 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@31d1054a (No operations allowed after connection closed.)
+23:33:23.347 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3bbd99c2 (No operations allowed after connection closed.)
+23:33:23.348 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2b438c90 (No operations allowed after connection closed.)
+23:33:23.348 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@d1e1707 (No operations allowed after connection closed.)
+23:33:23.349 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@34dca8bb (No operations allowed after connection closed.)
+23:33:23.350 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@63f8446b (No operations allowed after connection closed.)
+23:33:23.357 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@54e87388 (No operations allowed after connection closed.)
+23:33:23.358 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2933e03d (No operations allowed after connection closed.)
+23:33:23.359 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@78fb1cd0 (No operations allowed after connection closed.)
+23:33:23.359 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5901c4b8 (No operations allowed after connection closed.)
+23:33:23.360 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4ee29823 (No operations allowed after connection closed.)
+23:33:23.361 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@78e6abca (No operations allowed after connection closed.)
+23:33:23.362 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@58db259a (No operations allowed after connection closed.)
+23:33:23.362 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@f280e3d (No operations allowed after connection closed.)
+23:33:23.363 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5551bc7b (No operations allowed after connection closed.)
+23:33:23.364 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@18a4e5e0 (No operations allowed after connection closed.)
+23:33:23.365 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@19d2f49b (No operations allowed after connection closed.)
+23:33:23.365 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5644487a (No operations allowed after connection closed.)
+23:33:23.366 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@eae84ad (No operations allowed after connection closed.)
+23:33:23.367 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@319afb7d (No operations allowed after connection closed.)
+23:33:23.370 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3f62a7f9 (No operations allowed after connection closed.)
+23:33:23.371 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4b912ff7 (No operations allowed after connection closed.)
+23:33:23.372 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@31e041c4 (No operations allowed after connection closed.)
+23:33:23.372 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@57470596 (No operations allowed after connection closed.)
+23:33:23.373 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7db03de8 (No operations allowed after connection closed.)
+23:33:23.373 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3f9c5b3e (No operations allowed after connection closed.)
+23:33:23.374 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@cc1d368 (No operations allowed after connection closed.)
+23:33:23.375 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@63c51cd3 (No operations allowed after connection closed.)
+23:33:23.475 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1fe6223e (No operations allowed after connection closed.)
+23:33:23.479 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@427edf57 (No operations allowed after connection closed.)
+23:33:23.480 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@40a61ee3 (No operations allowed after connection closed.)
+23:33:23.481 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@b4ea1a0 (No operations allowed after connection closed.)
+23:33:23.482 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@25178525 (No operations allowed after connection closed.)
+23:33:23.482 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@112772b7 (No operations allowed after connection closed.)
+23:33:23.483 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@61862776 (No operations allowed after connection closed.)
+23:33:23.483 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1fbbd947 (No operations allowed after connection closed.)
+23:33:23.484 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@69c5938 (No operations allowed after connection closed.)
+23:33:23.485 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2c043196 (No operations allowed after connection closed.)
+23:33:23.486 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7c690ef7 (No operations allowed after connection closed.)
+23:33:23.487 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3d5991dc (No operations allowed after connection closed.)
+23:33:23.491 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@59685ad6 (No operations allowed after connection closed.)
+23:33:23.492 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@546d58ec (No operations allowed after connection closed.)
+23:33:23.493 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6047ea20 (No operations allowed after connection closed.)
+23:33:23.494 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@11615085 (No operations allowed after connection closed.)
+23:33:23.494 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@ac40695 (No operations allowed after connection closed.)
+23:33:23.495 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@34d09519 (No operations allowed after connection closed.)
+23:33:23.496 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6b197f49 (No operations allowed after connection closed.)
+23:33:23.496 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@70e7efd7 (No operations allowed after connection closed.)
+23:33:23.497 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5a3dbff0 (No operations allowed after connection closed.)
+23:33:23.498 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6a7591f3 (No operations allowed after connection closed.)
+23:33:23.498 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4a3648c3 (No operations allowed after connection closed.)
+23:33:23.499 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5e09f05 (No operations allowed after connection closed.)
+23:39:20.062 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.062 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.063 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.063 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.063 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.063 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.063 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.063 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.064 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.064 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.064 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+23:39:20.065 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+23:40:15.882 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@40876d36 (No operations allowed after connection closed.)
+23:40:15.892 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@637bee3a (No operations allowed after connection closed.)
+23:40:15.894 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@27a7c633 (No operations allowed after connection closed.)
+23:40:15.896 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2dfb7f62 (No operations allowed after connection closed.)
+23:40:15.899 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@75b1e9b8 (No operations allowed after connection closed.)
+23:40:15.902 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4987d30a (No operations allowed after connection closed.)
+23:40:15.909 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@50881257 (No operations allowed after connection closed.)
+23:40:15.912 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@267e674b (No operations allowed after connection closed.)
+23:40:15.917 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5c78b615 (No operations allowed after connection closed.)
+23:40:15.919 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2b103113 (No operations allowed after connection closed.)
+23:40:15.927 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3b9a948c (No operations allowed after connection closed.)
+23:40:15.941 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6e0be88b (No operations allowed after connection closed.)
+23:40:15.950 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@77da2341 (No operations allowed after connection closed.)
+23:40:15.953 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5d680c00 (No operations allowed after connection closed.)
+23:40:15.958 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@32b9ddd5 (No operations allowed after connection closed.)
+23:40:15.960 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@25a1dfbb (No operations allowed after connection closed.)
+23:40:15.966 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3834cf03 (No operations allowed after connection closed.)
+23:40:15.968 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@449feaa5 (No operations allowed after connection closed.)
+23:40:15.974 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7e477c63 (No operations allowed after connection closed.)
+23:40:15.997 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@55b02817 (No operations allowed after connection closed.)
+23:40:15.998 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4b62a975 (No operations allowed after connection closed.)
+23:40:15.999 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7093a87e (No operations allowed after connection closed.)
+23:40:16.000 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3572666b (No operations allowed after connection closed.)
+23:40:16.001 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@61d60042 (No operations allowed after connection closed.)
+23:40:16.002 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3fa1240c (No operations allowed after connection closed.)
+23:40:16.003 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@529cabde (No operations allowed after connection closed.)
+23:40:16.003 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@747bced8 (No operations allowed after connection closed.)
+23:40:16.005 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@257e0405 (No operations allowed after connection closed.)
+23:40:16.005 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@13c9d5e2 (No operations allowed after connection closed.)
+23:40:16.006 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@243c5e1e (No operations allowed after connection closed.)
+23:40:16.007 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@e9b494f (No operations allowed after connection closed.)
+23:40:16.008 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5b903ab5 (No operations allowed after connection closed.)
+23:40:16.009 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@62b92e0 (No operations allowed after connection closed.)
+23:40:16.010 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@40a1e095 (No operations allowed after connection closed.)
+23:40:16.011 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@14a418ff (No operations allowed after connection closed.)
+23:40:16.012 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4e3bcd4c (No operations allowed after connection closed.)
+23:40:16.013 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@145dfaf9 (No operations allowed after connection closed.)
+23:40:16.014 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5b3715af (No operations allowed after connection closed.)
+23:40:16.015 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6f608dd6 (No operations allowed after connection closed.)
+23:40:16.018 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7f216cdb (No operations allowed after connection closed.)
+23:40:16.091 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@450cbf4 (No operations allowed after connection closed.)
+23:40:16.092 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@67a93cbc (No operations allowed after connection closed.)
+23:40:16.092 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@c4c03a2 (No operations allowed after connection closed.)
+23:40:16.098 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@78ffe144 (No operations allowed after connection closed.)
+23:40:16.099 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7a728ac4 (No operations allowed after connection closed.)
+23:40:16.100 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@541005ea (No operations allowed after connection closed.)
+23:40:16.101 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@38ad5dd9 (No operations allowed after connection closed.)
+23:40:16.102 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3fdf6e49 (No operations allowed after connection closed.)
+23:40:16.104 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5195f7dc (No operations allowed after connection closed.)
+23:40:16.105 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5fe8751 (No operations allowed after connection closed.)
+23:40:16.106 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@57ef41a2 (No operations allowed after connection closed.)
+23:40:16.106 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1306d030 (No operations allowed after connection closed.)
+23:40:16.107 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6d53fe9b (No operations allowed after connection closed.)
+23:40:16.112 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1ce6286f (No operations allowed after connection closed.)
+23:40:16.112 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@31a98800 (No operations allowed after connection closed.)
+23:40:16.113 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@148b5955 (No operations allowed after connection closed.)
+23:40:16.114 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@665eca79 (No operations allowed after connection closed.)
+23:40:16.115 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4b56238d (No operations allowed after connection closed.)
+23:40:16.116 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@36c24b6f (No operations allowed after connection closed.)
+23:40:16.117 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@784dfd13 (No operations allowed after connection closed.)
+23:40:16.119 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6850ed61 (No operations allowed after connection closed.)
+23:40:16.120 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@12e0f1ad (No operations allowed after connection closed.)
+23:40:16.121 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@365d59ad (No operations allowed after connection closed.)
+23:40:16.122 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@216f9f10 (No operations allowed after connection closed.)
+23:40:16.122 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4e3b55b9 (No operations allowed after connection closed.)
+23:40:16.281 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5b43b84a (No operations allowed after connection closed.)
+23:40:16.286 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@70f02be (No operations allowed after connection closed.)
+23:40:16.287 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5a458a50 (No operations allowed after connection closed.)
+23:40:16.288 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4ec79a3c (No operations allowed after connection closed.)
+23:40:16.289 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@880ea46 (No operations allowed after connection closed.)
+23:40:16.290 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@77e5031a (No operations allowed after connection closed.)
+23:40:16.290 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@10410bc (No operations allowed after connection closed.)
+23:40:16.291 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@73e06cda (No operations allowed after connection closed.)
+23:40:16.292 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7c3d6a3a (No operations allowed after connection closed.)
+23:40:16.293 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@239f4b74 (No operations allowed after connection closed.)
+23:40:16.294 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2bf3e4b (No operations allowed after connection closed.)
+23:40:16.294 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7249147a (No operations allowed after connection closed.)
+23:40:16.295 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@65b2dcb3 (No operations allowed after connection closed.)
+23:40:16.296 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3cafff9a (No operations allowed after connection closed.)
+23:40:16.297 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4799c322 (No operations allowed after connection closed.)
+23:40:16.298 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7dc9f56f (No operations allowed after connection closed.)
+23:40:16.299 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@e6de921 (No operations allowed after connection closed.)
+23:40:16.300 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4dfd8459 (No operations allowed after connection closed.)
+23:40:16.301 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4474de17 (No operations allowed after connection closed.)
+23:40:16.301 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7624397b (No operations allowed after connection closed.)
+23:40:16.302 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@17e1f27f (No operations allowed after connection closed.)
+23:40:16.303 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@369f7396 (No operations allowed after connection closed.)
+23:40:16.304 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@54f99734 (No operations allowed after connection closed.)
+23:40:16.348 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3418331 (No operations allowed after connection closed.)
+23:40:16.349 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1babeb2c (No operations allowed after connection closed.)
+23:40:16.350 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5665280c (No operations allowed after connection closed.)
+23:40:16.351 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4e3d45c3 (No operations allowed after connection closed.)
+23:40:16.351 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@41ea0f3e (No operations allowed after connection closed.)
+23:40:16.352 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@55c7ea4 (No operations allowed after connection closed.)
+23:40:16.353 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7a86134b (No operations allowed after connection closed.)
+23:40:16.355 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5eb14285 (No operations allowed after connection closed.)
+23:40:16.357 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4f333592 (No operations allowed after connection closed.)
+23:40:16.358 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@297cdb8e (No operations allowed after connection closed.)
+23:40:16.363 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@63aa89a1 (No operations allowed after connection closed.)
+23:40:16.364 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@375b5a3b (No operations allowed after connection closed.)
+23:43:23.577 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@735dc1fb (No operations allowed after connection closed.)
+23:43:23.579 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@485e9b39 (No operations allowed after connection closed.)
+23:43:23.579 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@442779a9 (No operations allowed after connection closed.)
+23:43:23.580 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@59682acf (No operations allowed after connection closed.)
+23:43:23.582 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@50ca4c20 (No operations allowed after connection closed.)
+23:43:23.582 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6cf19253 (No operations allowed after connection closed.)
+23:43:23.583 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@13e45455 (No operations allowed after connection closed.)
+23:43:23.583 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@b423ab4 (No operations allowed after connection closed.)
+23:43:23.586 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@9ebccb0 (No operations allowed after connection closed.)
+23:43:23.595 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@69e8b4d4 (No operations allowed after connection closed.)
+23:43:23.604 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@589f1340 (No operations allowed after connection closed.)
+23:43:23.605 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4292057d (No operations allowed after connection closed.)
+23:43:23.606 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@15cbcfd3 (No operations allowed after connection closed.)
+23:43:23.615 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@392987aa (No operations allowed after connection closed.)
+23:43:23.616 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@190c96dc (No operations allowed after connection closed.)
+23:43:23.617 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4b67c16d (No operations allowed after connection closed.)
+23:43:23.619 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@193a85 (No operations allowed after connection closed.)
+23:43:23.620 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7578f9fb (No operations allowed after connection closed.)
+23:43:23.633 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@8bf3bfe (No operations allowed after connection closed.)
+23:43:23.634 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7d26ff2d (No operations allowed after connection closed.)
+23:43:23.645 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@34223f1e (No operations allowed after connection closed.)
+23:43:23.646 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@627af40 (No operations allowed after connection closed.)
+23:43:23.696 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@77b614b1 (No operations allowed after connection closed.)
+23:43:23.697 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3da352fd (No operations allowed after connection closed.)
+23:43:23.701 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@185c5098 (No operations allowed after connection closed.)
+23:43:23.706 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@23bab17c (No operations allowed after connection closed.)
+23:43:23.713 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@646e3a26 (No operations allowed after connection closed.)
+23:43:23.715 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@43fda8ec (No operations allowed after connection closed.)
+23:43:23.718 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@395fe89b (No operations allowed after connection closed.)
+23:43:23.718 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4f988f9d (No operations allowed after connection closed.)
+23:43:23.719 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5ab22342 (No operations allowed after connection closed.)
+23:43:23.719 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@74a65a30 (No operations allowed after connection closed.)
+23:43:23.720 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@327b6f0f (No operations allowed after connection closed.)
+23:43:23.720 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3994eaba (No operations allowed after connection closed.)
+23:43:23.721 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@72f776f9 (No operations allowed after connection closed.)
+23:43:23.721 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3446c54d (No operations allowed after connection closed.)
+23:43:23.721 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5dacd7dd (No operations allowed after connection closed.)
+23:43:23.721 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@43f337e8 (No operations allowed after connection closed.)
+23:43:23.722 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@afac1d1 (No operations allowed after connection closed.)
+23:43:23.723 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@894016e (No operations allowed after connection closed.)
+23:43:23.723 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@333d2d9e (No operations allowed after connection closed.)
+23:43:23.723 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@69ab0066 (No operations allowed after connection closed.)
+23:43:23.724 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3583b0cb (No operations allowed after connection closed.)
+23:43:23.725 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1db44864 (No operations allowed after connection closed.)
+23:43:23.736 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@47bfc791 (No operations allowed after connection closed.)
+23:43:23.736 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@76265730 (No operations allowed after connection closed.)
+23:43:23.737 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5e8bb4d7 (No operations allowed after connection closed.)
+23:43:23.737 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@61c3300a (No operations allowed after connection closed.)
+23:43:23.738 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@58f9f0ec (No operations allowed after connection closed.)
+23:43:23.738 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1c22a314 (No operations allowed after connection closed.)
+23:43:23.739 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1f8c914b (No operations allowed after connection closed.)
+23:43:23.739 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@67b7b1d0 (No operations allowed after connection closed.)
+23:43:23.740 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@70de535a (No operations allowed after connection closed.)
+23:43:23.741 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@796d6456 (No operations allowed after connection closed.)
+23:43:23.742 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@210b4f9 (No operations allowed after connection closed.)
+23:43:23.743 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@58f3ac5a (No operations allowed after connection closed.)
+23:43:23.743 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5a35609d (No operations allowed after connection closed.)
+23:43:23.744 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@48e8e059 (No operations allowed after connection closed.)
+23:43:23.744 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4f5822c1 (No operations allowed after connection closed.)
+23:43:23.745 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@a0cc60c (No operations allowed after connection closed.)
+23:43:23.745 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7b4c6e58 (No operations allowed after connection closed.)
+23:43:23.746 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@74a9b340 (No operations allowed after connection closed.)
+23:43:23.747 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7a69c93e (No operations allowed after connection closed.)
+23:43:23.747 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@16b95cd9 (No operations allowed after connection closed.)
+23:43:23.748 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@e1fdef8 (No operations allowed after connection closed.)
+23:43:23.748 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@37955fc8 (No operations allowed after connection closed.)
+23:43:23.759 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@381503d (No operations allowed after connection closed.)
+23:43:23.760 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5f828b00 (No operations allowed after connection closed.)
+23:43:23.761 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2f9a6616 (No operations allowed after connection closed.)
+23:43:23.761 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@32ec1732 (No operations allowed after connection closed.)
+23:43:23.761 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3b65a9ea (No operations allowed after connection closed.)
+23:43:23.762 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7074ef0d (No operations allowed after connection closed.)
+23:43:23.763 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@c229dc3 (No operations allowed after connection closed.)
+23:43:23.763 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5e255ef2 (No operations allowed after connection closed.)
+23:43:23.764 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@48999625 (No operations allowed after connection closed.)
+23:43:23.764 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1f4214bc (No operations allowed after connection closed.)
+23:43:23.765 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7164e12 (No operations allowed after connection closed.)
+23:43:23.770 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@733052cc (No operations allowed after connection closed.)
+23:43:23.770 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@779cda31 (No operations allowed after connection closed.)
+23:43:23.771 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@78f4c78a (No operations allowed after connection closed.)
+23:43:23.772 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4d276058 (No operations allowed after connection closed.)
+23:43:23.772 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3cf0fd02 (No operations allowed after connection closed.)
+23:43:23.773 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2d2ce5ff (No operations allowed after connection closed.)
+23:43:23.773 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@73baaf47 (No operations allowed after connection closed.)
+23:43:23.774 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5e934c8 (No operations allowed after connection closed.)
+23:43:23.775 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3e4ad19a (No operations allowed after connection closed.)
+23:43:23.775 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7483c8b1 (No operations allowed after connection closed.)
+23:43:23.776 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@526581f1 (No operations allowed after connection closed.)
+23:43:23.776 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1ee6a001 (No operations allowed after connection closed.)
+23:43:23.778 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@76486446 (No operations allowed after connection closed.)
+23:43:23.779 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1c64ec7e (No operations allowed after connection closed.)
+23:43:23.780 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@62f09c0a (No operations allowed after connection closed.)
+23:43:23.780 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@493ddefd (No operations allowed after connection closed.)
+23:43:23.781 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7c62e9c8 (No operations allowed after connection closed.)
+23:43:23.781 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@47defd26 (No operations allowed after connection closed.)
+23:43:23.782 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2128391b (No operations allowed after connection closed.)
+23:43:23.783 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@645c1f5 (No operations allowed after connection closed.)
+23:43:23.784 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6d02545c (No operations allowed after connection closed.)
+23:43:23.786 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5d05b317 (No operations allowed after connection closed.)
+23:43:23.799 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3d85a94d (No operations allowed after connection closed.)
+23:53:05.504 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.505 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.506 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.506 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.507 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.508 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.592 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.592 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.593 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.593 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.593 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+23:53:05.593 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
