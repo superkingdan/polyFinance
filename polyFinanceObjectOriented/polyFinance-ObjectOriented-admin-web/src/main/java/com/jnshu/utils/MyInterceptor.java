@@ -46,7 +46,8 @@ public class MyInterceptor implements HandlerInterceptor {
 //        System.out.println(token);
         Map<String, Object> token2 =tokenUtil.deToken(request.getHeader("token"));
         Boolean s = (Boolean) token2.get("verifyResult");
-        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
+//        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
+        if (!s) response.sendRedirect("/a/login");
         return s;
     }
 
