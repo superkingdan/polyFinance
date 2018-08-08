@@ -13,7 +13,7 @@
         <!-- 基于时间滚动，就是每天的日志输出到不同的文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 输出日志的目录文件名，window中默认分区为当前程序的硬盘分区，%d{yyyy-MM-dd}是当前日期 -->
-            <fileNamePattern>../logs/info/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>./logs/info/info.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 最大保存99个文件，超出的历史文件会被删除 -->
             <maxHistory>99</maxHistory>
         </rollingPolicy>
@@ -34,7 +34,7 @@
         <!-- 基于时间滚动，就是每天的日志输出到不同的文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 输出日志的目录文件名，window中默认分区为当前程序的硬盘分区，%d{yyyy-MM-dd}是当前日期 -->
-            <fileNamePattern>../logs/warn/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>./logs/warn/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 最大保存99个文件，超出的历史文件会被删除 -->
             <maxHistory>99</maxHistory>
         </rollingPolicy>
@@ -53,7 +53,7 @@
     <!-- 除了filter，其他 配置和上面一样， 只是name和文件路径不同-->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>../logs/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>./logs/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>99</maxHistory>
         </rollingPolicy>
         <!-- 阈值过滤器 -->
