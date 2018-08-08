@@ -22,6 +22,7 @@ public class MyInterceptor implements HandlerInterceptor {
 
         TokenUtil tokenUtil = new TokenUtil();
         Cookie cookie = tokenUtil.getCookie(request);
+        Cookie cookie1 = tokenUtil.getCookie2(request);
 
 //        System.out.println("拦截器中打印cookie name="+cookie.getName());
         //验证cookie
@@ -35,6 +36,9 @@ public class MyInterceptor implements HandlerInterceptor {
             throw new MyException(10001,"重新登录。");
         }
 
+        if (!"token".equals(cookie1.getName())){
+            throw new MyException(10001,"重新登录。");
+        }
 //        System.out.println("拦截器中打印 cookie 时间="+cookie.getMaxAge());
 //        if (System.currentTimeMillis()>cookie.getMaxAge()){
 //            System.out.println("拦截器中验证 cookie name="+cookie.getMaxAge());
@@ -45,7 +49,7 @@ public class MyInterceptor implements HandlerInterceptor {
         //验证token
 //        String token = tokenUtil.getToken(request);
 //        System.out.println(token);
-        Map<String, Object> token2 =tokenUtil.deToken(request.getHeader("token"));
+        Map<String, Object> token2 =tokenUtil.deToken(cookie1.getValue());
         Boolean s = (Boolean) token2.get("verifyResult");
 //        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
         if (!s){

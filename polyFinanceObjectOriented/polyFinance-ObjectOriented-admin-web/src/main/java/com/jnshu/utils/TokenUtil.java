@@ -17,15 +17,22 @@ import java.util.Map;
 
 public class TokenUtil {
 
-    //生成cookie
+    //生成uid的cookie
     public Cookie createCookie(Long userId){
         Cookie cookie = new Cookie("uid", String.valueOf(userId));
+        cookie.setPath("/");
+        cookie.setMaxAge(60*60*60);
+        return cookie;
+    }
+
+    //生成token的cookie
+    public Cookie createCookie2(String token){
+        Cookie cookie = new Cookie("token",token);
         cookie.setPath("/");
         cookie.setMaxAge(60*60*60);
         System.out.println("生成cookie："+cookie.getMaxAge());
         return cookie;
     }
-
     //生成JWT token
     public String createToken(Long userId,String loginName, String role){
         //添加token。
@@ -69,6 +76,16 @@ public class TokenUtil {
         return null;
     }
 
+    //从request中获取token的cookie。
+    public Cookie getCookie2(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies){
+            if ("token".equals(cookie.getName())){
+                return cookie;
+            }
+        }
+        return null;
+    }
     //从如request中获取token
     public String getToken(HttpServletRequest request){
         return request.getHeader("token");
@@ -105,7 +122,8 @@ public class TokenUtil {
     public Map<String,Object> getAccount(HttpServletRequest request) {
         Map<String,Object> account = new HashMap<>();
         Cookie cookie = getCookie(request);
-        Map<String, Object> token2 =deToken(request.getHeader("token"));
+        Cookie cookie1 = getCookie2(request);
+        Map<String, Object> token2 =deToken(cookie1.getValue());
         Map<String, Claim> token = (Map<String, Claim>) token2.get("claims");
         account.put("uid", token.get("uid").asLong());
         account.put("loginName", token.get("loginName").asString());

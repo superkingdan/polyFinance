@@ -75,15 +75,18 @@ public class UserBackServiceImpl2 implements UserBackService2 {
             result.add(v);
             result.add(returnModules);
 
-            //添加token和cookie
+            //添加token和uid的cookie
             TokenUtil tokenUtil = new TokenUtil();
-            response.addHeader("token", tokenUtil.createToken(userBackData.getId(),userBackData.getLoginName(), role.getRole()));
+            String token = tokenUtil.createToken(userBackData.getId(),userBackData.getLoginName(), role.getRole());
 
+            //uid的cookie。
             Cookie cookie= tokenUtil.createCookie(userBackData.getId());
             response.addCookie(cookie);
 
-            String next = (String) request.getSession().getAttribute("next");
-//
+            //token的cookie。
+            Cookie cookie1 = tokenUtil.createCookie2(token);
+            response.addCookie(cookie1);
+
 
             logger.info("时间："+new Timestamp(new Date().getTime())+"。后台账户："+userBack.getLoginName()+", 管理角色："+role.getRole()+"。对应模块权限： "+"\n"+returnModules.toString());
             return result;
