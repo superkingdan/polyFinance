@@ -77,7 +77,7 @@ public class TransactionLogController1 {
         }
         map.put("code",0);
         map.put("message","success");
-        map.put("data",log);
+        map.put("data",logs);
         return map;
     }
 }

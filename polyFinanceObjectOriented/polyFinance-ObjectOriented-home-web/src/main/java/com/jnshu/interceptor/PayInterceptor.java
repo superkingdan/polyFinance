@@ -43,13 +43,13 @@ public class PayInterceptor implements HandlerInterceptor {
         if(user.getRealStatus()!=1){
             log.error("用户"+id+"未实名，跳转到返回错误信息为未实名的接口");
 //            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/u/unrealname");
-            throw new MyException(10010,"user didn't have real name");
+            throw new MyException(10010,"用户未实名，请先实名申请");
 //            return false;
         }
         else {
             log.error("用户"+id+"未绑定银行卡，跳转到返回错误信息为未绑卡的接口");
 //            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/u/nocard");
-            throw new MyException(10020,"user didn't have defaultCard");
+            throw new MyException(10020,"用户未绑定银行卡，请先绑定银行卡");
 //            return false;
         }
 

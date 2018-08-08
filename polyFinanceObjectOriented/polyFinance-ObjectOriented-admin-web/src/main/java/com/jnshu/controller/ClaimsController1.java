@@ -29,9 +29,12 @@ public class ClaimsController1 {
      * @return 返回参数，包括code,message,债权列表
      */
     @GetMapping(value = "/a/u/claims/list")
-    public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo){
+    public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo)throws Exception{
         log.info("查询债权列表，条件是"+rpo);
-        Page<Claims> claimsPage= claimsService1.getClaimsList(rpo);
+        Page<Claims> claimsPage;
+
+            claimsPage= claimsService1.getClaimsList(rpo);
+        
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
