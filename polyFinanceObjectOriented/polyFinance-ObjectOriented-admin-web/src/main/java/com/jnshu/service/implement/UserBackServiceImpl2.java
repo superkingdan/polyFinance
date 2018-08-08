@@ -40,7 +40,7 @@ public class UserBackServiceImpl2 implements UserBackService2 {
     RoleModuleBackMapper2 roleModuleBackMapper2;
 
     @Override
-    public List<Object> verifyUserBack(UserBack userBack, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public Object verifyUserBack(UserBack userBack, HttpServletRequest request, HttpServletResponse response) throws Exception {
         List<Object> result = new ArrayList<>();
         Map<String,Object> v = new HashMap<>();
         CAM cam = new CAM();
@@ -89,10 +89,10 @@ public class UserBackServiceImpl2 implements UserBackService2 {
             return result;
         }
 
-        cam.setCode(-1);
-        cam.setMessage("密码不正确。");
-        result.add(cam);
-        return result;
+        Map<String,Object> cam1 = new HashMap<>();
+        cam1.put("code",10001);
+        cam1.put("message","请重新登录。");
+        return cam1;
     }
 
 

@@ -1,5 +1,6 @@
 package com.jnshu.utils;
 
+import com.jnshu.exception.MyException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +31,8 @@ public class MyInterceptor implements HandlerInterceptor {
 //            httpServletResponse.sendError(403, " you need loginIn.");
             //第二种方式。通过接口返回信息。
 //            response.sendRedirect("/intercepted?next=" + request.getRequestURI());
-            response.sendRedirect("/a/login");
-            return false;
+//            response.sendRedirect("/a/login");
+            throw new MyException(10001,"重新登录。");
         }
 
 //        System.out.println("拦截器中打印 cookie 时间="+cookie.getMaxAge());
@@ -47,7 +48,10 @@ public class MyInterceptor implements HandlerInterceptor {
         Map<String, Object> token2 =tokenUtil.deToken(request.getHeader("token"));
         Boolean s = (Boolean) token2.get("verifyResult");
 //        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
-        if (!s) response.sendRedirect("/a/login");
+        if (!s){
+            throw new MyException(10001,"重新登录。");
+//            response.sendRedirect("/a/login");
+        }
         return s;
     }
 
