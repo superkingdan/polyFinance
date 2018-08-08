@@ -1,6 +1,6 @@
 package com.jnshu.interceptor;
 
-import com.jnshu.dao.UserMapper;
+import com.jnshu.dao.UserMapper1;
 import com.jnshu.entity.User;
 import com.jnshu.exception.MyException;
 import com.jnshu.utils.CookieUtil;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component(value = "payInterceptor")
 public class PayInterceptor implements HandlerInterceptor {
     @Autowired
-    UserMapper userMapper;
+    UserMapper1 userMapper1;
 
     private static final Logger log= LoggerFactory.getLogger(PayInterceptor.class);
 
@@ -34,7 +34,7 @@ public class PayInterceptor implements HandlerInterceptor {
             id = Long.parseLong(uidS);
         }
         System.out.println("开始支付拦截，用户id为"+id);
-        User user=userMapper.getUserRealStatusById(id);
+        User user= userMapper1.getUserRealStatusById(id);
         if(user.getRealStatus()==1&&user.getDefaultCard()>0){
             System.out.println("验证通过，放行");
             return true;

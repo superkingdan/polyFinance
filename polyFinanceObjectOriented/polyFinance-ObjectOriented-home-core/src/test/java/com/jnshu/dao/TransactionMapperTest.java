@@ -16,7 +16,7 @@ import java.util.List;
 @SpringBootTest(classes = Entry.class)
 public class TransactionMapperTest {
   @Autowired
-  TransactionMapper transactionMapper;
+  TransactionMapper1 transactionMapper;
     @Test
     public void addTransaction() {
         for(int i=0;i<10;i++) {

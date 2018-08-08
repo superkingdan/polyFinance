@@ -1,8 +1,9 @@
 package com.jnshu.utils;
 
 public class CAM {
-    private int code =200;
+    private int code =0;
     private String message="连接成功。";
+    private String errorMessage;
 
     public CAM(){}
 
@@ -27,11 +28,20 @@ public class CAM {
         this.message = message;
     }
 
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
     @Override
     public String toString() {
         return "CAM：" +
                 "code=" + code +
                 ", message='" + message + '\'' +
+                ", errorMessage='" + errorMessage + '\'' +
                 '。';
     }
 }

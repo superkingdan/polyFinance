@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = Entry.class)
 public class TransactionLogMapperTest {
     @Autowired
-    TransactionLogMapper transactionLogMapper;
+    TransactionLogMapper1 transactionLogMapper;
     @Test
     public void getTransLogLitByUserId() {
         System.out.println(transactionLogMapper.getTransLogLitByUserId(1));

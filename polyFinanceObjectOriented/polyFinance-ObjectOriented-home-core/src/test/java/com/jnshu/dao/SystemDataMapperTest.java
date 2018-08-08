@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 //classes后面是启动类.class
 @SpringBootTest(classes = Entry.class)
 public class SystemDataMapperTest {
 @Autowired
-SystemDataMapper systemDataMapper;
+SystemDataMapper1 systemDataMapper;
     @Test
     public void getContractUrl() {
         System.out.println(systemDataMapper.getContractUrl());

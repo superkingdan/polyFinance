@@ -30,9 +30,9 @@ public class DESUtil {
      * @return
      * @throws UnsupportedEncodingException
      */
-    public String encryptFromLong(long source)throws UnsupportedEncodingException{
+    public String encryptFromLong(long source,String salt)throws UnsupportedEncodingException{
         String source1=String.valueOf(source);//先将long类型转化为String类型
-        return encrypt(source1, "UTF-8");
+        return encrypt(source1, "UTF-8",salt);
     }
 
     /**
@@ -41,8 +41,8 @@ public class DESUtil {
      * @return
      * @throws UnsupportedEncodingException
      */
-    public long decryptToLong(String encryptedData) throws UnsupportedEncodingException {
-        long decryptLong=Long.valueOf(decrypt(encryptedData, "UTF-8"));
+    public long decryptToLong(String encryptedData, String salt) throws UnsupportedEncodingException {
+        long decryptLong=Long.valueOf(decrypt(encryptedData, "UTF-8",salt));
         return decryptLong;
     }
     /**
@@ -52,8 +52,8 @@ public class DESUtil {
      * @throws UnsupportedEncodingException
      * 异常
      */
-    public String encrypt(String source)throws UnsupportedEncodingException{
-        return encrypt(source, "UTF-8");
+    public String encrypt(String source,String salt)throws UnsupportedEncodingException{
+        return encrypt(source, "UTF-8",salt);
     }
 
     /**
@@ -63,23 +63,24 @@ public class DESUtil {
      * @throws UnsupportedEncodingException
      * 异常
      */
-    public String decrypt(String encryptedData)
+    public String decrypt(String encryptedData, String salt)
             throws UnsupportedEncodingException {
-        return decrypt(encryptedData, "UTF-8");
+        return decrypt(encryptedData, "UTF-8", salt);
     }
 
     /**
      *功能：加密
      * @param source 待加密数据
      * @param charSet 字符编码
+     * @param salt 随机盐
      * @return 加密完成数据
      * @throws UnsupportedEncodingException
      * 异常
      */
-    public String encrypt(String source, String charSet)
+    public String encrypt(String source, String charSet,String salt)
             throws UnsupportedEncodingException {
         String encrypt = null;
-        byte[] ret = encrypt(source.getBytes(charSet));
+        byte[] ret = encrypt(source.getBytes(charSet),salt);
         encrypt = new String(Base64.encode(ret));
         return encrypt;
     }
@@ -92,10 +93,10 @@ public class DESUtil {
      * @throws UnsupportedEncodingException
      * 异常
      */
-    public String decrypt(String encryptedData, String charSet)
+    public String decrypt(String encryptedData, String charSet, String salt)
             throws UnsupportedEncodingException {
         String decryptedData = null;
-        byte[] ret = decrypt(Base64.decode(encryptedData.toCharArray()));
+        byte[] ret = decrypt(Base64.decode(encryptedData.toCharArray()), salt);
         decryptedData = new String(ret, charSet);
         return decryptedData;
     }
@@ -105,8 +106,9 @@ public class DESUtil {
      * @param primaryData
      * @return
      */
-    private byte[] encrypt(byte[] primaryData) {
+    private byte[] encrypt(byte[] primaryData,String salt) {
 
+        keyData = salt;
         //取得安全密钥
         byte rawKeyData[] = getKey();
 
@@ -171,8 +173,8 @@ public class DESUtil {
      * @param encryptedData
      * @return
      */
-    private byte[] decrypt(byte[] encryptedData) {
-
+    private byte[] decrypt(byte[] encryptedData,String salt) {
+        keyData = salt;
         /** DES算法要求有一个可信任的随机数源 */
         SecureRandom sr = new SecureRandom();
 

@@ -122,7 +122,7 @@ public class BankCard implements Serializable {
 
     @Override
     public String toString() {
-        return "BankCardMapper{" +
+        return "BankCardMapper1{" +
                 "id=" + id +
                 ", createAt=" + createAt +
                 ", createBy=" + createBy +

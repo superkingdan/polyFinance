@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = Entry.class)
 public class ClaimsMapperTest {
 @Autowired
-ClaimsMapper claimsMapper;
+ClaimsMapper1 claimsMapper;
     @Test
     public void getClaimsListByRpo() {
         ClaimsListRPO rpo=new ClaimsListRPO();

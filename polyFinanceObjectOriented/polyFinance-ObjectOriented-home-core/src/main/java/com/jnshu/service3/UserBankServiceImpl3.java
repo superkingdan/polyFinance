@@ -1,0 +1,94 @@
+package com.jnshu.service3;
+
+import com.alibaba.fastjson.JSONObject;
+import com.jnshu.dao3.BankCardMapper3;
+import com.jnshu.dao3.BankMapper3;
+import com.jnshu.dao3.UserMapper3;
+import com.jnshu.dto3.BankCardList;
+import com.jnshu.entity.Bank;
+import com.jnshu.entity.BankCard;
+import com.jnshu.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserBankServiceImpl3 implements UserBankService3 {
+    @Autowired
+    UserMapper3 userMapper3;
+    @Autowired
+    BankCardMapper3 bankCardMapper3;
+    @Autowired
+    BankMapper3 bankMapper3;
+
+    /*默认银行卡拼接*/
+    @Override
+    public String defaultCard(long id) {
+        BankCard bankCard= bankCardMapper3.findById(id);
+        String name = bankMapper3.findBankById(bankCard.getBankId()).getBankName();
+        String cardId=bankCard.getBankCard().substring(bankCard.getBankCard().length()-4,bankCard.getBankCard().length());
+        String defaultCard=name+"("+cardId+")";
+        return defaultCard;
+    }
+    /*获取银行卡*/
+    @Override
+    public JSONObject findBankCard(long id) {
+        JSONObject json =new JSONObject();
+        List<BankCardList> bankCardList = bankCardMapper3.findListByUser(id);
+        json.put("code",0);
+        json.put("message","成功");
+        json.put("data",bankCardList);
+        return json;
+    }
+
+    /*默认银行卡*/
+    @Override
+    public JSONObject defaultCardUpdata(long id, long cardId) {
+        JSONObject json =new JSONObject();
+        User user= userMapper3.findUserById(id);
+        user.setDefaultCard(cardId);
+        userMapper3.updateData(user);
+        json.put("code",0);
+        json.put("message","成功");
+        return json;
+    }
+
+    @Override
+    public JSONObject addBankCard(BankCardList bankCardList, long id) {
+        JSONObject json =new JSONObject();
+        if (bankCardMapper3.findCountByUser(id)>=2){
+            json.put("code",-1);
+            json.put("message","绑定银行卡超过两张无法添加");
+            return json;
+        }
+        BankCard bankCard =new BankCard();
+        bankCard.setUserId(id);
+        bankCard.setBankCard(bankCardList.getBankCard());
+        bankCard.setCity(bankCardList.getCity());
+        bankCard.setBankPhone(bankCardList.getBankPhone());
+        bankCard.setBankId(bankMapper3.findBankByName(bankCardList.getBankName()).getId());
+        if (bankCardMapper3.findCountByUser(id)==0){
+            bankCard.setCardOrder(1);
+        }
+        if (bankCardMapper3.findCountByUser(id)==1){
+            bankCard.setCardOrder(2);
+        }
+        bankCardMapper3.addBankCard(bankCard);
+        json.put("code",0);
+        json.put("message","添加成功");
+        return json;
+    }
+
+    @Override
+    public JSONObject findBank() {
+        JSONObject json=new JSONObject();
+        List<Bank> banks= bankMapper3.findBank();
+        json.put("code",0);
+        json.put("message","成功");
+        json.put("data",banks);
+        return json;
+    }
+
+
+}

@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = Entry.class)
 public class ProductMapperTest {
    @Autowired
-   ProductMapper productMapper;
+   ProductMapper1 productMapper;
     @Test
     public void addProduct() {
         Product product=new Product();

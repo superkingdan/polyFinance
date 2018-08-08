@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest(classes = Entry.class)
 public class BankCardMapperTest {
 @Autowired
-BankCardMapper bankCardMapper;
+BankCardMapper1 bankCardMapper;
     @Test
     public void getBankIdById() {
         System.out.println(bankCardMapper.getBankIdById(1));
