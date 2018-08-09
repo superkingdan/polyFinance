@@ -136,6 +136,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
         newTransaction.setProductId(productId);
         newTransaction.setStatus(Transaction.STATUS_INVESTING);
         newTransaction.setContractCode(contractCode);
+        newTransaction.setUserId(userId);
         //添加新交易
         int b= transactionMapper1.addTransaction(newTransaction);
         long newId=newTransaction.getId();
@@ -317,6 +318,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
     @Override
     public TransactionRO getTransactionById(long id) {
         TransactionRO ro= transactionMapper1.getTransInfoByTransId(id);
+        System.out.println("1:"+ro);
         long userId=ro.getUserId();
         long defaultCard= userMapper1.getDefaultCardById(userId);
         //查询并设置银行卡号
@@ -325,9 +327,11 @@ public class TransactionServiceImpl1 implements TransactionService1 {
         //查询并设置银行名
         String bankName= bankMapper1.getBankNameById(bankCard.getBankId());
         ro.setDefaultCardBankName(bankName);
+        System.out.println("2:"+ro);
         //查询并设置合同id
         long contractId= contractMapper1.getContractIdByCode(ro.getContractCode());
         ro.setContractId(contractId);
+        System.out.println("3:"+ro);
         return ro;
     }
 

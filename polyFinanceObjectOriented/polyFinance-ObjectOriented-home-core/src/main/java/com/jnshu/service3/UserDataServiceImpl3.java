@@ -1,12 +1,12 @@
 package com.jnshu.service3;
 
 import com.alibaba.fastjson.JSONObject;
-import com.aliyun.oss.OSSClient;
 import com.jnshu.cache.RedisCacheManager;
 import com.jnshu.dao3.RealNameApplicationMapper3;
 import com.jnshu.dao3.UserMapper3;
 import com.jnshu.entity.RealNameApplication;
 import com.jnshu.entity.User;
+import com.jnshu.utils3.AliOSSUtil;
 import com.jnshu.utils3.OSSUtil;
 import com.jnshu.utils3.VerificationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,9 +23,9 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     @Autowired
     UserMapper3 userMapper3;
     @Autowired
-    UserBankService3 userBankService;
+    UserBankService3 userBankService3;
     @Autowired
-    CookieService3 cookieService;
+    CookieService3 cookieService3;
     @Autowired
     AliOSSUtil aliOSSUtil;
 
@@ -41,7 +40,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         JSONObject json =new JSONObject();
         Long id= null;
         try {
-            id = cookieService.findByCookie(request);
+            id = cookieService3.findByCookie(request);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +70,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     public JSONObject findData(long id) {
         JSONObject json=new JSONObject();
         User user= userMapper3.findUserById(id);
-        String defaultCard=userBankService.defaultCard(user.getDefaultCard());
+        String defaultCard= userBankService3.defaultCard(user.getDefaultCard());
         Map<String ,String> map = new HashMap<String ,String>();
         map.put("phoneNumber",user.getPhoneNumber());
         map.put("idCard",user.getIdCard());
@@ -164,7 +163,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             e.printStackTrace();
         }
 
-        ossClient.shutdown();
+//        ossClient.shutdown();
         String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
         redisCacheManager.set(user.getPhoneNumber()+","+imageName,avatar);
 

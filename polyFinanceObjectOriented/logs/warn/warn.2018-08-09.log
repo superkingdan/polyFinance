@@ -103,3 +103,142 @@
 12:03:34.615 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1b1d7781 (No operations allowed after connection closed.)
 12:03:34.616 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@333ea36f (No operations allowed after connection closed.)
 12:03:34.617 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4df7baf (No operations allowed after connection closed.)
+17:17:32.175 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.176 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.177 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.177 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.177 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.177 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.178 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.178 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.178 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.178 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.179 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+17:17:32.179 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+17:18:16.449 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 用户未登录，需跳转登陆页
+17:23:52.118 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@42bde34e (No operations allowed after connection closed.)
+17:23:52.125 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5108e098 (No operations allowed after connection closed.)
+17:23:52.127 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@18601241 (No operations allowed after connection closed.)
+17:23:52.131 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1d8a4469 (No operations allowed after connection closed.)
+17:23:52.142 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@644f3abd (No operations allowed after connection closed.)
+17:23:52.162 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@72550a8c (No operations allowed after connection closed.)
+17:23:52.164 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6a3ffc9d (No operations allowed after connection closed.)
+17:23:52.169 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@25d954bf (No operations allowed after connection closed.)
+17:23:52.178 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@38de186b (No operations allowed after connection closed.)
+17:23:52.190 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@62856496 (No operations allowed after connection closed.)
+17:23:52.192 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@77cbb74f (No operations allowed after connection closed.)
+17:23:52.196 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@185869a5 (No operations allowed after connection closed.)
+17:23:52.202 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@500d2785 (No operations allowed after connection closed.)
+17:23:52.204 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@196548c6 (No operations allowed after connection closed.)
+17:23:52.206 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@333ef56a (No operations allowed after connection closed.)
+17:23:52.211 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@51f8946d (No operations allowed after connection closed.)
+17:23:52.220 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@62e8d5ec (No operations allowed after connection closed.)
+17:23:52.232 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@26b9f97e (No operations allowed after connection closed.)
+17:23:52.236 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4b1b5daf (No operations allowed after connection closed.)
+17:23:52.243 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5e55e35d (No operations allowed after connection closed.)
+17:24:00.343 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 用户未登录，需跳转登陆页
+17:31:05.529 WARN  o.s.web.servlet.PageNotFound - Request method 'GET' not supported
+17:31:05.530 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+17:31:10.651 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@139e16d7 (No operations allowed after connection closed.)
+17:31:10.653 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3e4c630f (No operations allowed after connection closed.)
+17:31:10.654 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3cff2af0 (No operations allowed after connection closed.)
+17:31:10.655 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5f34ab16 (No operations allowed after connection closed.)
+17:31:10.656 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6b24882a (No operations allowed after connection closed.)
+17:31:10.657 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@36adca5a (No operations allowed after connection closed.)
+17:31:10.659 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@73c0ded5 (No operations allowed after connection closed.)
+17:31:10.659 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@9d6a7a0 (No operations allowed after connection closed.)
+17:31:10.663 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@46fc1b68 (No operations allowed after connection closed.)
+17:31:10.673 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1edbf6f7 (No operations allowed after connection closed.)
+17:31:10.684 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6b98a58f (No operations allowed after connection closed.)
+17:31:10.697 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@57cff4fb (No operations allowed after connection closed.)
+17:31:10.717 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@714e8231 (No operations allowed after connection closed.)
+17:31:10.730 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3063bea1 (No operations allowed after connection closed.)
+17:31:10.732 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1ef9c1ff (No operations allowed after connection closed.)
+17:31:10.734 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@36b996f7 (No operations allowed after connection closed.)
+17:31:10.744 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3363d51b (No operations allowed after connection closed.)
+17:31:10.746 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1e58f360 (No operations allowed after connection closed.)
+17:31:10.777 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4efe2f6d (No operations allowed after connection closed.)
+17:31:10.784 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@348a166b (No operations allowed after connection closed.)
+17:35:47.599 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.599 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.599 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.600 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.600 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.600 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.600 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.600 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.600 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.601 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.602 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+17:35:47.602 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.501 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.502 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.502 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.503 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.503 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.503 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.504 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.504 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.504 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.504 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.505 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+17:38:45.505 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+17:47:46.399 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7cb4120f (No operations allowed after connection closed.)
+17:47:46.405 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1016f45a (No operations allowed after connection closed.)
+17:47:46.406 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@adc142d (No operations allowed after connection closed.)
+17:47:46.407 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6f706ca7 (No operations allowed after connection closed.)
+17:47:46.409 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@14d96f80 (No operations allowed after connection closed.)
+17:47:46.420 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@33caed65 (No operations allowed after connection closed.)
+17:47:46.422 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@59ddea4d (No operations allowed after connection closed.)
+17:47:46.434 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3524a085 (No operations allowed after connection closed.)
+17:47:46.449 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6ade7cce (No operations allowed after connection closed.)
+17:47:46.452 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@e1b0535 (No operations allowed after connection closed.)
+17:47:46.456 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@38221939 (No operations allowed after connection closed.)
+17:47:46.459 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@2892b630 (No operations allowed after connection closed.)
+17:47:46.466 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@31b397e0 (No operations allowed after connection closed.)
+17:47:46.468 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@67d71e4e (No operations allowed after connection closed.)
+17:47:46.470 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4f14385c (No operations allowed after connection closed.)
+17:47:46.474 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5f2bb18e (No operations allowed after connection closed.)
+17:47:46.476 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@51e14b (No operations allowed after connection closed.)
+17:47:46.484 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6ee9ffc5 (No operations allowed after connection closed.)
+17:47:46.487 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4de5b954 (No operations allowed after connection closed.)
+17:47:46.509 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4fc0d6a7 (No operations allowed after connection closed.)
+17:50:17.231 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 未知错误
+18:04:11.779 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.780 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.780 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.780 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.782 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.782 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.783 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.783 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.783 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.783 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.784 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+18:04:11.785 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+18:04:35.501 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 未知错误
+18:09:40.285 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.285 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.286 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.287 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.287 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+18:09:40.288 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.725 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.726 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.726 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.726 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.727 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.727 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.728 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.728 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.728 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.728 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.729 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+18:56:20.729 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+18:57:19.246 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 未知错误

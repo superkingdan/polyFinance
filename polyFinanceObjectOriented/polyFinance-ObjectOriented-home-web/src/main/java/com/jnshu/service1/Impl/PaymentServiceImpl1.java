@@ -3,6 +3,7 @@ package com.jnshu.service1.Impl;
 import com.jnshu.dao.*;
 import com.jnshu.dto1.BankCardRO;
 import com.jnshu.entity.*;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.PaymentService1;
 import com.jnshu.utils.TransString;
 import org.slf4j.Logger;
@@ -64,12 +65,20 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 合同id
      */
     @Override
-    public Long addContract(String userSign, long productId, long userId) {
+    public Long addContract(String userSign, long productId, long userId) throws Exception{
+        //查找用户是否够买过新手礼包以及此产品是否是新手礼包
+        Product product=productMapper1.getProductById(productId);
+        if(product.getDeadline()<30){
+            int isNew=userMapper1.getIsNewById(userId);
+            if(isNew==1){
+                throw new MyException(-1,"已购买过新手礼");
+            }
+        }
         //查找最新合同号
         String newestContractCode= contractMapper1.getNewestContractCode();
         System.out.println("最新合同号为"+newestContractCode);
         //查找产品id对应的productCode
-        String productCode= productMapper1.getProductById(productId).getProductCode();
+        String productCode= product.getProductCode();
         //生成合同编号
         String contractCode= TransString.transContractCode(newestContractCode,productCode);
         System.out.println("新合同编号为"+contractCode);
@@ -187,6 +196,10 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         int rateOfInterest=product.getRateOfInterest();
         long productId=product.getId();
         int deadline=product.getDeadline();
+        //如果产品期限小于30天就是新手礼包，将其is_new字段修改为1
+        if(deadline<30){
+         userMapper1.updateIsNewById(userId);
+        }
         int refundStyle=product.getRefundStyle();
         int isLimitedPurchase=product.getIsLimitePurchase();
         //将时限转化为月，但是新手礼包是用不到这个的

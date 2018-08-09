@@ -9,6 +9,7 @@ import com.jnshu.dao3.UserBackMapper3;
 import com.jnshu.dto3.MessageListRPO;
 import com.jnshu.entity.Message;
 import com.jnshu.entity.TimedTask;
+import com.jnshu.utils3.AliOSSUtil;
 import com.jnshu.utils3.OSSUtil;
 import com.jnshu.utils3.VerificationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,7 +160,7 @@ public class MessageServiceImpl3 implements MessageService3 {
             e.printStackTrace();
         }
 
-        ossClient.shutdown();
+//        ossClient.shutdown();
         String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
         redisCacheManager.set(userBackId+",image",avatar);
         json.put("code",0);

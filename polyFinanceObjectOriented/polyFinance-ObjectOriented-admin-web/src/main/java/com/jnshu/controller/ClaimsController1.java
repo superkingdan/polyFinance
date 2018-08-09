@@ -3,6 +3,7 @@ package com.jnshu.controller;
 import com.github.pagehelper.Page;
 import com.jnshu.entity.Claims;
 import com.jnshu.dto1.ClaimsListRPO;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.ClaimsService1;
 import com.jnshu.utils.CookieUtil;
 import org.slf4j.Logger;
@@ -32,11 +33,13 @@ public class ClaimsController1 {
     public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo)throws Exception{
         log.info("查询债权列表，条件是"+rpo);
         Page<Claims> claimsPage;
-
+        try {
             claimsPage= claimsService1.getClaimsList(rpo);
-
-
-
+        }catch (Exception e){
+            log.error("获得债权合同列表，产生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");

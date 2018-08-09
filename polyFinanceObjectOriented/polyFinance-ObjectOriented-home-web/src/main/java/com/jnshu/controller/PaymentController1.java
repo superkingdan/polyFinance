@@ -101,7 +101,7 @@ public class PaymentController1 {
     }
 
     /**
-     * 创建合同并返回合同id
+     * 创建合同并返回富有支付信息和合同id
      * @param rpo 请求数据
      * @return 返回参数，code,message,合同id
      */
@@ -131,7 +131,7 @@ public class PaymentController1 {
         }catch (Exception e){
             log.error("用户"+id+"开始创建合同,但是出错了");
             log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
+            throw new MyException(-1,"已购买过新手礼包");
         }
         rpo.setContractId(contractId);
         System.out.println("开始生成交易流水");
@@ -149,11 +149,19 @@ public class PaymentController1 {
         }
         //转化基本信息为需要的map形式
         //首先将金额转化为分为单位
-        BigDecimal moneyCent=new BigDecimal(rpo.getMoney()).multiply(BigDecimal.valueOf(100));
-        Map<String,String> param= HttpPay.transParam(transactionLogId,id,moneyCent.toString(),bankCard.getBankCard(),user.getRealName(),user.getIdCard());
-        //向富友发起请求，并将结果返回
-        String respMsg="";
+//        System.out.println("金额为"+rpo.getMoney());
+        BigDecimal moneyCent;
         try {
+            moneyCent=new BigDecimal(rpo.getMoney()).multiply(BigDecimal.valueOf(100));
+        }catch (Exception e){
+            log.error("开始转化金额，但是金额有误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"金额输入有误");
+        }
+        String respMsg="";
+        //向富友发起请求，并将结果返回
+        try {
+            Map<String,String> param= HttpPay.transParam(transactionLogId,id,moneyCent.toString(),bankCard.getBankCard(),user.getRealName(),user.getIdCard());
             respMsg = HttpFormUtil.formForward(PAY_URL, param);
         }catch (Exception e){
             log.error("用户"+id+"开始向富友发送请求,但是出错了");
