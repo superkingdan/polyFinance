@@ -19,65 +19,65 @@ public class Claims implements Serializable {
      * 状态，已到期
      */
     public static final Integer STATUS_EXPIRED=2;
-    private long id;
-    private long createAt;
-    private long createBy;
-    private long updateAt;
-    private long updateBy;
+    private Long id;
+    private Long createAt;
+    private Long createBy;
+    private Long updateAt;
+    private Long updateBy;
     //债权代号
     private String claimsCode;
     private String creditor;
     private String creditorPhoneNumber;
     private String creditorIdCard;
     //出借期限，单位：月
-    private int lendDeadline;
-    private long lendStartAt;
-    private long lendEndAt;
+    private Integer lendDeadline;
+    private Long lendStartAt;
+    private Long lendEndAt;
     private String lendMoney;
     //债权状态，0:未使用，1：使用中，2：已到期，默认为0
-    private int status=0;
+    private Integer status=0;
     private String claimsNature;
     private String claimsInterestRate;
     private String remark;
     private String remanentMoney;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getCreateAt() {
+    public Long getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(long createAt) {
+    public void setCreateAt(Long createAt) {
         this.createAt = createAt;
     }
 
-    public long getCreateBy() {
+    public Long getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(long createBy) {
+    public void setCreateBy(Long createBy) {
         this.createBy = createBy;
     }
 
-    public long getUpdateAt() {
+    public Long getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(long updateAt) {
+    public void setUpdateAt(Long updateAt) {
         this.updateAt = updateAt;
     }
 
-    public long getUpdateBy() {
+    public Long getUpdateBy() {
         return updateBy;
     }
 
-    public void setUpdateBy(long updateBy) {
+    public void setUpdateBy(Long updateBy) {
         this.updateBy = updateBy;
     }
 
@@ -113,27 +113,27 @@ public class Claims implements Serializable {
         this.creditorIdCard = creditorIdCard;
     }
 
-    public int getLendDeadline() {
+    public Integer getLendDeadline() {
         return lendDeadline;
     }
 
-    public void setLendDeadline(int lendDeadline) {
+    public void setLendDeadline(Integer lendDeadline) {
         this.lendDeadline = lendDeadline;
     }
 
-    public long getLendStartAt() {
+    public Long getLendStartAt() {
         return lendStartAt;
     }
 
-    public void setLendStartAt(long lendStartAt) {
+    public void setLendStartAt(Long lendStartAt) {
         this.lendStartAt = lendStartAt;
     }
 
-    public long getLendEndAt() {
+    public Long getLendEndAt() {
         return lendEndAt;
     }
 
-    public void setLendEndAt(long lendEndAt) {
+    public void setLendEndAt(Long lendEndAt) {
         this.lendEndAt = lendEndAt;
     }
 
@@ -145,11 +145,11 @@ public class Claims implements Serializable {
         this.lendMoney = lendMoney;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

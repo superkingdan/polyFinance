@@ -48,7 +48,7 @@ ClaimsMapper1 claimsMapper;
         claims.setClaimsCode("PHD");
         claims.setCreditor("小旋风");
         claims.setClaimsInterestRate("0.15");
-        claims.setId(1);
+        claims.setId(1L);
         claims.setRemark("已公证");
         claims.setCreditorPhoneNumber("13555557777");
         claims.setCreditorIdCard("660523199001011234");

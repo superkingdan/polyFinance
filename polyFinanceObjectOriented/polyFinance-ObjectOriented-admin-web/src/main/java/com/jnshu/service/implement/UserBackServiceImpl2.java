@@ -57,7 +57,6 @@ public class UserBackServiceImpl2 implements UserBackService2 {
         DESUtil desUtil = new DESUtil();
         String pw = userBackData.getHashKey();
         String enLoginPassword = desUtil.encrypt(userBack.getHashKey(), userBackData.getSalt());
-
         if (pw.equals(enLoginPassword)){
             //获得角色名
             RoleBack role = roleBackMapper2.getRoleByUserId(userBackData.getId());

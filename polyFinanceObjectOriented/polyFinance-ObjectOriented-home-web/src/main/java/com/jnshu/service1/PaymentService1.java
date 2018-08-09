@@ -11,7 +11,7 @@ public interface PaymentService1 {
 
     List<BankCardRO> getInvestment(long id);
 
-    Long addContract(String userSign,long productId,long userId);
+    Long addContract(String userSign,long productId,long userId)throws Exception;
 
     Long addPayTransactionLog(PaymentRPO rpo);
 
