@@ -55,7 +55,7 @@ public class ProductController1 {
      * @param id 产品id
      * @return 返回参数，code,message,产品详情
      */
-    @GetMapping(value = "/a/u/product/{id}")
+    @GetMapping(value = "/a/product/{id}")
     public Map getProduct(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得id为"+id+"的产品");
         Map<String,Object> map=new HashMap<>();

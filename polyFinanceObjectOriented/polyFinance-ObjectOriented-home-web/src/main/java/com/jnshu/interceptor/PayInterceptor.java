@@ -33,6 +33,10 @@ public class PayInterceptor implements HandlerInterceptor {
         if (uidS!=null) {
             id = Long.parseLong(uidS);
         }
+        if(uidS==null){
+            log.error("用户未登录，跳转登录接口");
+            throw new MyException(10001,"用户未登录，请先登录");
+        }
         System.out.println("开始支付拦截，用户id为"+id);
         User user= userMapper1.getUserRealStatusById(id);
         if(user.getRealStatus()==1&&user.getDefaultCard()>0){
