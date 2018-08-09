@@ -33,36 +33,42 @@ public class ScheduleTask {
     @Autowired
     TransactionMapper3 transactionMapper3;
 
-    public void scheduleTest() {
+    public void scheduleTest() throws Exception{
+
         System.err.println("scheduleTest开始定时执行"+System.currentTimeMillis());
         /*获取状态为0的任务组  不包括性质为6*/
-        List<TimedTask> timedTasks= timedTaskMapper3.findTaskByStatus();
-        if (timedTasks!=null){
-        BigDecimal num = new BigDecimal(System.currentTimeMillis());
-        BigDecimal num1 = new BigDecimal(3600000);
-        BigDecimal result = num.subtract(num1);
+        List<TimedTask> timedTasks=timedTaskMapper.findTaskByStatus();
+        if (timedTasks.size()>0){
+            System.out.println("timedTasks不为0");
+            BigDecimal num = new BigDecimal(System.currentTimeMillis());
+            BigDecimal num1 = new BigDecimal(3600000);
+            BigDecimal result = num.add(num1);
+            System.out.println("111=="+timedTasks.get(0)+"`"+String.valueOf(result));
+            /*进入任务分发器*/
 
-        /*进入任务分发器*/
-        for (int i=0;timedTasks.get(i).getTaskTime()>Long.valueOf(String.valueOf(result));i++){
-            timeTask7Service.timedTask(timedTasks.get(i));
+            for (int i=0;timedTasks.get(i).getTaskTime()<Long.valueOf(String.valueOf(result))&&
+                    timedTasks.get(i).getTaskTime()>Long.valueOf(String.valueOf(num));i++){
+                System.out.println("进入任务分发器");
+                timeTask7Service.timedTask(timedTasks.get(i));
 
-        }}
+            }}
 
         /*任务性质为6的任务*/
-        List<TimedTask> timedTasks1= timedTaskMapper3.findTaskByNature(6);
-        if (timedTasks1!=null){
-        for (int u=0;timedTasks1.size()==u;u++) {
-            /*获取对应交易表组*/
-            List<Transaction> transactions=new ArrayList<>();
-            transactions.add(transactionMapper3.findTransaction(timedTasks1.get(u).getTransactionId()));
-            /*获取对应债权表组*/
-            List<Claims> claims=new ArrayList<>();
-            claims.add(claimsMapper3.findClaimsById(timedTasks1.get(u).getClaimsId()));
-            /*对比时间*/
-            if (claims.get(u).getLendEndAt()<=transactions.get(u).getEndAt()){
-                timeTask7Service.timedTask(timedTasks1.get(u));
-            }
-        }}
+        List<TimedTask> timedTasks1=timedTaskMapper.findTaskByNature(6);
+        System.out.println(timedTasks1);
+        if (timedTasks1.size()>0){
+            for (int u=0;timedTasks1.size()==u;u++) {
+                /*获取对应交易表组*/
+                List<Transaction> transactions=new ArrayList<>();
+                transactions.add(transactionMapper.findTransaction(timedTasks1.get(u).getTransactionId()));
+                /*获取对应债权表组*/
+                List<Claims> claims=new ArrayList<>();
+                claims.add(claimsMapper.findClaimsById(timedTasks1.get(u).getClaimsId()));
+                /*对比时间*/
+                if (claims.get(u).getLendEndAt()<=transactions.get(u).getEndAt()){
+                    timeTask7Service.timedTask(timedTasks1.get(u));
+                }
+            }}
 
 
 
