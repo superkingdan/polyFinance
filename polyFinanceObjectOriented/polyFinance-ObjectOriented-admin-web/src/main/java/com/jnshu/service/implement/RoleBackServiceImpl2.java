@@ -55,6 +55,18 @@ public class RoleBackServiceImpl2 implements RoleBackService2 {
         return roleBackMapper2.getRoleNameById(id);
     }
 
+    //获取角色权限的模块id的list.
+    @Override
+    public List<Long> getModuleIdListOfRole(Long roleId) throws Exception {
+        return roleModuleBackMapper2.getModuleIdListOfRole(roleId);
+    }
+
+    //获取全部的模块id的list.
+    @Override
+    public List<Long> getAllModuleIds() throws Exception {
+        return moduleBackMapper2.getAllModuleIds();
+    }
+
     //通过角色id获取模块信息。模块角色关联表和模块表
     @Override
     public List<DomainModuleBackForLogin> getModuleOfRole(Long id) throws Exception {

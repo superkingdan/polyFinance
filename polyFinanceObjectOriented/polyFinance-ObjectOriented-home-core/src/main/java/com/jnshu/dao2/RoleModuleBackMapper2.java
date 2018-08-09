@@ -31,4 +31,7 @@ public interface RoleModuleBackMapper2 {
     //查询角色的模块id列表
     @Select("select a.module_id as id,b.module_name, b.super_id from role_module_back a, module_back b where a.module_id=b.id and a.role_id=#{id}")
     List<DomainModuleBackForLogin> getModuleOfRole(Long id) throws Exception;
+
+    @Select("select module_id from role_module_back where role_id=#{roleId}")
+    List<Long> getModuleIdListOfRole(Long roleId) throws Exception;
 }

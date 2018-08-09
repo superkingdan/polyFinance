@@ -34,6 +34,10 @@ public interface ModuleBackMapper2 {
     @Select("select id, module_name, super_id from module_back")
     List<DomainModuleBackForLogin> getAllModules() throws Exception;
 
+    //获得全部模块id列表。
+    @Select("select id, module_name, super_id from module_back")
+    List<Long> getAllModuleIds() throws Exception;
+
     //查找-通过id查详情。
     @Select("select * from module_back where id=#{id}")
 //    @Select("select id,module_name,super_id,module_type,module_url,menu_id from module_back where id=#{id}")
