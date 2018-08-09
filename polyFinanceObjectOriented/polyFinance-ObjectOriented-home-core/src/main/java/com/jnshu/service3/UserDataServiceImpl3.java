@@ -164,7 +164,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             e.printStackTrace();
         }
 
-        ossClient.shutdown();
+
         String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
         redisCacheManager.set(user.getPhoneNumber()+","+imageName,avatar);
 
