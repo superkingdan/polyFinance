@@ -3,6 +3,7 @@ package com.jnshu.service3;
 import com.alibaba.fastjson.JSONObject;
 import com.jnshu.dto3.MessageListRPO;
 import com.jnshu.entity.Message;
+import com.jnshu.exception.MyException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component(value = "messageService3")
 public interface MessageService3 {
     /*获取后台消息列表*/
-    JSONObject findMessageList(MessageListRPO messageListRPO);
+    JSONObject findMessageList(MessageListRPO messageListRPO) throws MyException;
     /*获取消息详情*/
     JSONObject findMessageById(long id);
     /*删除消息*/

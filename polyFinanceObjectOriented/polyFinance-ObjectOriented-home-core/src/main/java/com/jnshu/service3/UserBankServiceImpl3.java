@@ -8,6 +8,7 @@ import com.jnshu.dto3.BankCardList;
 import com.jnshu.entity.Bank;
 import com.jnshu.entity.BankCard;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +26,22 @@ public class UserBankServiceImpl3 implements UserBankService3 {
     /*默认银行卡拼接*/
     @Override
     public String defaultCard(long id) {
-        BankCard bankCard= bankCardMapper3.findById(id);
-        String name = bankMapper3.findBankById(bankCard.getBankId()).getBankName();
+        BankCard bankCard=bankCardMapper3.findById(id);
+        String name =bankMapper3.findBankById(bankCard.getBankId()).getBankName();
         String cardId=bankCard.getBankCard().substring(bankCard.getBankCard().length()-4,bankCard.getBankCard().length());
         String defaultCard=name+"("+cardId+")";
         return defaultCard;
     }
-    /*获取银行卡*/
+    /*获取银行卡*/ //改
     @Override
     public JSONObject findBankCard(long id) {
         JSONObject json =new JSONObject();
-        List<BankCardList> bankCardList = bankCardMapper3.findListByUser(id);
+        if (userMapper3.findUserById(id).getRealName()==null){
+            json.put("code",1000);
+            json.put("message","未实名");
+            return json;
+        }
+        List<BankCardList> bankCardList =bankCardMapper3.findListByUser(id);
         json.put("code",0);
         json.put("message","成功");
         json.put("data",bankCardList);
@@ -46,7 +52,12 @@ public class UserBankServiceImpl3 implements UserBankService3 {
     @Override
     public JSONObject defaultCardUpdata(long id, long cardId) {
         JSONObject json =new JSONObject();
-        User user= userMapper3.findUserById(id);
+        BankCard bankCard =bankCardMapper3.findById(id);
+        if (bankCard.getCardOrder()==2){
+            bankCard.setCardOrder(1);
+            bankCardMapper3.updateData(bankCard);
+        }
+        User user=userMapper3.findUserById(id);
         user.setDefaultCard(cardId);
         userMapper3.updateData(user);
         json.put("code",0);
@@ -55,19 +66,25 @@ public class UserBankServiceImpl3 implements UserBankService3 {
     }
 
     @Override
-    public JSONObject addBankCard(BankCardList bankCardList, long id) {
+    public JSONObject addBankCard(BankCardList bankCardList,long id) throws MyException {
         JSONObject json =new JSONObject();
         if (bankCardMapper3.findCountByUser(id)>=2){
             json.put("code",-1);
             json.put("message","绑定银行卡超过两张无法添加");
             return json;
         }
+
         BankCard bankCard =new BankCard();
         bankCard.setUserId(id);
         bankCard.setBankCard(bankCardList.getBankCard());
         bankCard.setCity(bankCardList.getCity());
         bankCard.setBankPhone(bankCardList.getBankPhone());
-        bankCard.setBankId(bankMapper3.findBankByName(bankCardList.getBankName()).getId());
+
+        Bank bank=bankMapper3.findBankByName(bankCardList.getBankName());
+        if (bank==null){
+            throw new MyException(-1,"该银行不存在");
+        }
+        bankCard.setBankId(bank.getId());
         if (bankCardMapper3.findCountByUser(id)==0){
             bankCard.setCardOrder(1);
         }
@@ -75,6 +92,12 @@ public class UserBankServiceImpl3 implements UserBankService3 {
             bankCard.setCardOrder(2);
         }
         bankCardMapper3.addBankCard(bankCard);
+
+        User user=userMapper3.findUserById(id);
+        if (user.getDefaultCard()==0){
+            user.setDefaultCard(bankCard.getId());
+            userMapper3.updateData(user);
+        }
         json.put("code",0);
         json.put("message","添加成功");
         return json;
@@ -83,12 +106,13 @@ public class UserBankServiceImpl3 implements UserBankService3 {
     @Override
     public JSONObject findBank() {
         JSONObject json=new JSONObject();
-        List<Bank> banks= bankMapper3.findBank();
+        List<Bank> banks=bankMapper3.findBank();
         json.put("code",0);
         json.put("message","成功");
         json.put("data",banks);
         return json;
     }
+
 
 
 }
