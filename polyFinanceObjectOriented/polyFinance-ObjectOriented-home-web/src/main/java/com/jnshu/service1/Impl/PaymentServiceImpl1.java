@@ -74,8 +74,13 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 throw new MyException(-1,"已购买过新手礼");
             }
         }
-        //查找最新合同号
-        String newestContractCode= contractMapper1.getNewestContractCode();
+        //查找最新合同号,如果没有数据就传""
+        String newestContractCode;
+        try{
+            newestContractCode= contractMapper1.getNewestContractCode();
+        }catch (Exception e){
+            newestContractCode="";
+        }
         System.out.println("最新合同号为"+newestContractCode);
         //查找产品id对应的productCode
         String productCode= product.getProductCode();

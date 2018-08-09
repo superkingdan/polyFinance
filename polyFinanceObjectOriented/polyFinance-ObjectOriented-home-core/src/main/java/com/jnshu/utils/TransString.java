@@ -17,7 +17,7 @@ public class TransString {
             Calendar time = Calendar.getInstance();
             int thisYearWhole = time.get(Calendar.YEAR);
             int thisYear = thisYearWhole % 100;
-             newCode="UKZQ"+thisYear*100000000+10000001;
+             newCode="UKZQ"+(thisYear*100000000+10000001);
         }
         return newCode;
     }
@@ -37,7 +37,7 @@ public class TransString {
         Calendar time = Calendar.getInstance();
         int thisYearWhole = time.get(Calendar.YEAR);
         int thisYear = thisYearWhole % 100;
-        newCode="UK"+productCode+thisYear*100000000+10000001;
+        newCode="UK"+productCode+(thisYear*100000000+10000001);
     }
         return newCode;
     }

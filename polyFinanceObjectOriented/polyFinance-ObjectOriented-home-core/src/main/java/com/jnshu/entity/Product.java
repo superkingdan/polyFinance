@@ -63,23 +63,27 @@ public class Product implements Serializable {
     //利率
     private String interestRate;
     //期限，单位：天
-    private int deadline;
+    private Integer deadline;
     private String investmentAmount;
     //起息日期，0：T+0,1:T+1,2:T+2
-    private int rateOfInterest;
+    private Integer rateOfInterest;
     //还款方式，0:按月付息到期还本，1：本息一次还
-    private int refundStyle;
+    private Integer refundStyle;
     private String remark;
     //状态，0：在售，1：停售
-    private int status;
+    private Integer status;
     //角标，0：啥也不选，1:  新近产品，2：热门产品，默认0
-    private int mark=0;
+    private Integer mark=0;
     //是否推荐，0：不推荐，1：推荐，默认0
-    private int isRecommend=0;
+    private Integer isRecommend=0;
     //是否限购0:否，1:是，默认0
-    private int isLimitePurchase=0;
+    private Integer isLimitePurchase=0;
     //图片url
     private String moreMessage;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public long getId() {
         return id;
@@ -145,11 +149,11 @@ public class Product implements Serializable {
         this.interestRate = interestRate;
     }
 
-    public int getDeadline() {
+    public Integer getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(int deadline) {
+    public void setDeadline(Integer deadline) {
         this.deadline = deadline;
     }
 
@@ -161,19 +165,19 @@ public class Product implements Serializable {
         this.investmentAmount = investmentAmount;
     }
 
-    public int getRateOfInterest() {
+    public Integer getRateOfInterest() {
         return rateOfInterest;
     }
 
-    public void setRateOfInterest(int rateOfInterest) {
+    public void setRateOfInterest(Integer rateOfInterest) {
         this.rateOfInterest = rateOfInterest;
     }
 
-    public int getRefundStyle() {
+    public Integer getRefundStyle() {
         return refundStyle;
     }
 
-    public void setRefundStyle(int refundStyle) {
+    public void setRefundStyle(Integer refundStyle) {
         this.refundStyle = refundStyle;
     }
 
@@ -185,35 +189,35 @@ public class Product implements Serializable {
         this.remark = remark;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public int getMark() {
+    public Integer getMark() {
         return mark;
     }
 
-    public void setMark(int mark) {
+    public void setMark(Integer mark) {
         this.mark = mark;
     }
 
-    public int getIsRecommend() {
+    public Integer getIsRecommend() {
         return isRecommend;
     }
 
-    public void setIsRecommend(int isRecommend) {
+    public void setIsRecommend(Integer isRecommend) {
         this.isRecommend = isRecommend;
     }
 
-    public int getIsLimitePurchase() {
+    public Integer getIsLimitePurchase() {
         return isLimitePurchase;
     }
 
-    public void setIsLimitePurchase(int isLimitePurchase) {
+    public void setIsLimitePurchase(Integer isLimitePurchase) {
         this.isLimitePurchase = isLimitePurchase;
     }
 

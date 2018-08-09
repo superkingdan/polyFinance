@@ -37,7 +37,7 @@ public class ScheduleTask {
 
         System.err.println("scheduleTest开始定时执行"+System.currentTimeMillis());
         /*获取状态为0的任务组  不包括性质为6*/
-        List<TimedTask> timedTasks=timedTaskMapper.findTaskByStatus();
+        List<TimedTask> timedTasks=timedTaskMapper3.findTaskByStatus();
         if (timedTasks.size()>0){
             System.out.println("timedTasks不为0");
             BigDecimal num = new BigDecimal(System.currentTimeMillis());
@@ -54,16 +54,16 @@ public class ScheduleTask {
             }}
 
         /*任务性质为6的任务*/
-        List<TimedTask> timedTasks1=timedTaskMapper.findTaskByNature(6);
+        List<TimedTask> timedTasks1=timedTaskMapper3.findTaskByNature(6);
         System.out.println(timedTasks1);
         if (timedTasks1.size()>0){
             for (int u=0;timedTasks1.size()==u;u++) {
                 /*获取对应交易表组*/
                 List<Transaction> transactions=new ArrayList<>();
-                transactions.add(transactionMapper.findTransaction(timedTasks1.get(u).getTransactionId()));
+                transactions.add(transactionMapper3.findTransaction(timedTasks1.get(u).getTransactionId()));
                 /*获取对应债权表组*/
                 List<Claims> claims=new ArrayList<>();
-                claims.add(claimsMapper.findClaimsById(timedTasks1.get(u).getClaimsId()));
+                claims.add(claimsMapper3.findClaimsById(timedTasks1.get(u).getClaimsId()));
                 /*对比时间*/
                 if (claims.get(u).getLendEndAt()<=transactions.get(u).getEndAt()){
                     timeTask7Service.timedTask(timedTasks1.get(u));
