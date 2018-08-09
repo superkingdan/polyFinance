@@ -28,8 +28,8 @@ public class MessageServiceImpl3 implements MessageService3 {
     UserBackMapper3 userBackMapper3;
     @Autowired
     CookieService3 cookieService3;
-    @Autowired(required=false)
-    OSSClient ossClient;
+    @Autowired
+    AliOSSUtil aliOSSUtil;
     @Autowired
     RedisCacheManager redisCacheManager;
     @Autowired
@@ -154,12 +154,12 @@ public class MessageServiceImpl3 implements MessageService3 {
         String photoKey = "Message/"+userBackId+imageName+"."+photoType;
         String bucketName ="avatarljc1";
         try {
-            ossClient.putObject(bucketName, photoKey, new ByteArrayInputStream(realImage.getBytes()));
+            aliOSSUtil.uploadFile(photoKey, realImage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ossClient.shutdown();
+
         String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
         redisCacheManager.set(userBackId+",image",avatar);
         json.put("code",0);

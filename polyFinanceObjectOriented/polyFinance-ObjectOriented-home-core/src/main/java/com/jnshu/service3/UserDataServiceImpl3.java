@@ -27,8 +27,9 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     UserBankService3 userBankService;
     @Autowired
     CookieService3 cookieService;
-    @Autowired(required = false)
-    OSSClient ossClient;
+    @Autowired
+    AliOSSUtil aliOSSUtil;
+
     @Autowired
     RedisCacheManager redisCacheManager;
     @Autowired
@@ -158,12 +159,12 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         String photoKey = "Task7/"+user.getPhoneNumber()+code+"."+photoType;
         String bucketName ="avatarljc1";
         try {
-            ossClient.putObject(bucketName, photoKey, new ByteArrayInputStream(realImage.getBytes()));
+            aliOSSUtil.uploadFile(photoKey, realImage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ossClient.shutdown();
+
         String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
         redisCacheManager.set(user.getPhoneNumber()+","+imageName,avatar);
 

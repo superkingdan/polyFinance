@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c3d7506e-e66e-4ac7-b9cb-7aeab7b49399" name="Default" comment="修改登录异常。">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/polyFinance.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/utils3/AliOSSUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/configuration/Config.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/interceptor/UserInterceptor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/RoleBackService2.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/RoleBackService2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/RoleBackServiceImpl2.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/RoleBackServiceImpl2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/ModuleBackMapper2.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/ModuleBackMapper2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/MessageServiceImpl3.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/MessageServiceImpl3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/UserDataServiceImpl3.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/UserDataServiceImpl3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/quartz/QuartzConfigration.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/quartz/QuartzConfigration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/quartz/ScheduleTask.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/quartz/ScheduleTask.java" />
     </list>
-    <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/" />
-    <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/target/" />
-    <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/target/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +39,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackController2.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BackController2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
@@ -52,11 +52,21 @@
       <file leaf-file-name="BackControllerVerify.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="190">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,76 +113,12 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
-    </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao3/SystemDataMapper3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/MessageServiceImpl3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/UserLoginService3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/UserSiteService3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/service3/UserSiteServiceImpl3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/quartz/ScheduleTask.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/Service/TimeTask2ServiceImpl.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/Service/TimeTask3ServiceImpl.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service1/ClaimsMatchingService1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service1/impl/ClaimsMatchingServiceImpl1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/ContentService2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller/ClaimsMatchingController1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/service1/Impl/ContractServiceImpl1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/ContractController1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/PaymentController1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/ProductController.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/ProductController1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/RecommendController3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionController1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/TransactionLogController1.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/UserBankController.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/UserBankController3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/UserDataController3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/UserLoginController3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/UserMessageController3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/controller/UserSiteController3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/BackServiceImpl2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/java/com/jnshu/Entry.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/java/com/jnshu/Entry.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao3/TimedTaskMapper3.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/resources/logback_spring.xml" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/resources/logback_spring.xml" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-web/src/main/resources/logback.xml" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/src/main/resources/logback.xml" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/resources/logback.xml" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/resources/logback.xml" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/Entry.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/UserBackService2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/UserBackServiceImpl2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/TokenUtil.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/MyInterceptor.java" />
-        <option value="$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/bind/annotation/RequestMapping.class" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/LoginController2.java" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.11/fastjson-1.2.11.jar!/com/alibaba/fastjson/JSON.class" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/ModuleBackMapper2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/RoleBackService2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/RoleBackServiceImpl2.java" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java" />
-        <option value="$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE.jar!/org/springframework/web/bind/annotation/RestControllerAdvice.class" />
-        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java" />
-      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -596,10 +542,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polyFinance-ObjectOriented-root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="polyFinanceObjectOriented" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="AndroidView" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1062,10 +1025,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="386439000" />
+    <option name="totallyTimeSpent" value="386927000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1391,19 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="66" column="65" lean-forward="true" selection-start-line="66" selection-start-column="65" selection-end-line="66" selection-end-column="65" />
-          <folding>
-            <marker date="1533826798822" expanded="true" signature="100883:100900" ph="..." />
-            <marker date="1533826798822" expanded="true" signature="100883:100918" ph="..." />
-            <marker date="1533826798822" expanded="true" signature="100883:100931" ph="..." />
-            <marker date="1533826798822" expanded="true" signature="100883:100946" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1484,20 +1434,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="617" column="9" lean-forward="false" selection-start-line="617" selection-start-column="9" selection-end-line="617" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="190">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="617" column="9" lean-forward="false" selection-start-line="617" selection-start-column="9" selection-end-line="617" selection-end-column="9" />
+        <state relative-caret-position="171">
+          <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
           <folding />
         </state>
       </provider>
