@@ -33,9 +33,6 @@ public class UserInterceptor implements HandlerInterceptor {
         String userId= String.valueOf(map.get("uid"));
 
 
-        if (!userId.equals(uidS)){
-            throw new MyException(1002,"请登入");
-        }
         if (cookie == null) {
 
             throw new MyException(1002,"请登入");

@@ -2,6 +2,7 @@ package com.jnshu.controller;
 
 import com.alibaba.fastjson.JSONException;
 import com.jnshu.dto3.BankCardList;
+import com.jnshu.exception.MyException;
 import com.jnshu.service3.UserBankService3;
 import com.jnshu.service3.UserDataService3;
 import org.slf4j.Logger;
@@ -54,7 +55,7 @@ public class UserBankController3 {
     @ResponseBody
     public Object userBankUpdate(@PathVariable(value="id") long id,
                                  @ModelAttribute BankCardList bankCardList,
-                                 HttpServletRequest request) {
+                                 HttpServletRequest request) throws MyException {
         return userBankService3.addBankCard(bankCardList,id);
     }
     /**
