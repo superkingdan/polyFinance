@@ -1,5 +1,6 @@
 package com.jnshu.controller2;
 
+import com.alibaba.fastjson.JSON;
 import com.jnshu.Domain2.DomainModuleBackForLogin;
 import com.jnshu.Domain2.DomainRoleBack;
 import com.jnshu.Domain2.DomainRoleBackList;
@@ -9,9 +10,11 @@ import com.jnshu.entity.RoleBack;
 import com.jnshu.entity.RoleModuleBack;
 import com.jnshu.entity.RoleUserBack;
 import com.jnshu.entity.UserBack;
+import com.jnshu.exception.MyException;
 import com.jnshu.service.BackService2;
 import com.jnshu.service.RoleBackService2;
 import com.jnshu.service.RoleUserBackService2;
+import com.jnshu.utils.BackControllerVerify;
 import com.jnshu.utils.DESUtil;
 import com.jnshu.utils.RandomSalt;
 import com.jnshu.utils.TokenUtil;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -526,7 +530,7 @@ public class BackController2 {
 
     //角色管理-新增
     @RequestMapping(value = "/a/u/roles/new",method = RequestMethod.POST)
-    public Map<String, Object> saveRole(@PathVariable String role, @RequestParam List<Long> moduleIds, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object> saveRole(@RequestParam(required = false) String role, @RequestParam(required = false) String moduleIds, HttpServletRequest request, HttpServletResponse response) throws Exception {
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -534,16 +538,41 @@ public class BackController2 {
         //返回数据List。改成map。
         Map<String, Object> result = new HashMap<>();
 
+        //参数验证。
+        try {
+            result = BackControllerVerify.roleInsertReceive(role,moduleIds);
+            if (null != result){
+                return result;
+            }
+        } catch (Exception e) {
+            throw new MyException(-1111, "参数异常。");
+        }
+
+        //将角色对应的模块id list 转化为List。
+        List<Long> inputModuleIds = JSON.parseArray(moduleIds,Long.class);
+
+        System.out.println("*(*(*(*(*(*(*(*(*(");
+        System.out.println(inputModuleIds);
+        System.out.println(inputModuleIds.toString());
+        System.out.println(inputModuleIds.get(1));
+
         //新增角色。
         //查询是否已经存在。
         Long roleId = null;
         try {
             roleId = roleBackService2.getRoleIdByRole(role);
+            List<Long> list = roleBackService2.getAllModuleIds();
 
-            if (null != roleId){
-                result.put("code",-1);
-                result.put("message","角色名已存在，换一个。");
-                return result;
+            //验证角色是否已经存在，同时验证传进来的模块id是否是数据库中的数据。
+            Map<String, Object> veri =null;
+            try {
+                 veri = BackControllerVerify.roleInsert(role,moduleIds,roleId,list,account);
+            }catch (Exception e){
+                throw new MyException(-1111, "参数异常。");
+            }
+
+            if (veri != null){
+                return veri;
             }
 
             //新增角色。
@@ -561,8 +590,7 @@ public class BackController2 {
             }
 
             //角色模块关联表。
-
-            for (Long moduleId : moduleIds){
+            for (Long moduleId : inputModuleIds){
                 RoleModuleBack roleModuleBack = new RoleModuleBack();
                 roleModuleBack.setCreateAt(System.currentTimeMillis());
                 roleModuleBack.setCreateBy((Long) account.get("uid"));
@@ -576,7 +604,6 @@ public class BackController2 {
                     result.put("code"+moduleId,-1);
                     result.put("message"+moduleId,"模块id为："+moduleId+"记录新增失败。");
                 }
-
             }
 
             result.put("code",0);

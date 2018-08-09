@@ -28,6 +28,9 @@ public interface RoleBackService2 {
     //获取角色权限的模块id的list.
     List<Long> getModuleIdListOfRole(Long roleId) throws Exception;
 
+    //获取全部的模块id的list.
+    List<Long> getAllModuleIds() throws Exception;
+
     //通过角色id获取模块信息。模块角色关联表和模块表
     List<DomainModuleBackForLogin> getModuleOfRole(Long id) throws Exception;
 
