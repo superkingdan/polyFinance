@@ -25,6 +25,9 @@ public interface RoleBackService2 {
     //通过id获取角色
     String getRoleNameById(Long id) throws Exception;
 
+    //获取角色权限的模块id的list.
+    List<Long> getModuleIdListOfRole(Long roleId) throws Exception;
+
     //通过角色id获取模块信息。模块角色关联表和模块表
     List<DomainModuleBackForLogin> getModuleOfRole(Long id) throws Exception;
 

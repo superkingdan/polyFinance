@@ -497,25 +497,20 @@ public class BackController2 {
                 return result;
             }
 
-            //获取角色权限模块列表。
-            List<DomainModuleBackForLogin> modules = null;
-            modules = roleBackService2.getModuleOfRole(id);
+            //获取角色权限模块的id列表。
+            List<Long> moduleIds = null;
+            moduleIds = roleBackService2.getModuleIdListOfRole(id);
 
-            //获取全部模块列表。
-            List<DomainModuleBackForLogin> allModules = null;
-            allModules = roleBackService2.getAllModules();
-
-            if (null == allModules){
+            if (null == moduleIds){
                 result.put("code",-1);
-                result.put("message","获取全部模块列表出错。");
+                result.put("message","角色没有任何模块权限。");
                 return result;
             }
 
             result.put("code",0);
             result.put("message","角色详情获取成功。");
-            result.put("modules",modules);
-            result.put("allModules",allModules);
-
+            result.put("role",role);
+            result.put("moduleIds",moduleIds);
         } catch (Exception e) {
             result.put("code",-1);
             result.put("message","服务器错误。");
@@ -611,29 +606,30 @@ public class BackController2 {
         //删除旧的记录。
         Boolean x = false;
         try {
-            x = roleBackService2.deleteRoleModuleByRoleId(id);
+//            x = roleBackService2.deleteRoleModuleByRoleId(id);
 
-            if (!x){
-                result.put("code",-1);
-                result.put("message","角色更新时删除旧关联记录时出错。");
-                return result;
-            }
+//            if (!x){
+//                result.put("code",-1);
+//                result.put("message","角色更新时删除旧关联记录时出错。");
+//                return result;
+//            }
 
+            System.out.println(moduleIds);
             //角色模块关联表。
-            for (Long moduleId : moduleIds){
-                RoleModuleBack roleModuleBack = new RoleModuleBack();
-                roleModuleBack.setCreateAt(System.currentTimeMillis());
-                roleModuleBack.setCreateBy((Long) account.get("uid"));
-                roleModuleBack.setModuleId(moduleId);
-                roleModuleBack.setRoleId(id);
-
-                roleBackService2.saveRoleModule(roleModuleBack);
-                moduleId = roleModuleBack.getModuleId();
-                if (null == moduleId){
-                    result.put("code"+moduleId,-1);
-                    result.put("message"+moduleId,"模块id为："+moduleId+"关联记录新增失败。");
-                }
-            }
+//            for (Long moduleId : moduleIds){
+//                RoleModuleBack roleModuleBack = new RoleModuleBack();
+//                roleModuleBack.setCreateAt(System.currentTimeMillis());
+//                roleModuleBack.setCreateBy((Long) account.get("uid"));
+//                roleModuleBack.setModuleId(moduleId);
+//                roleModuleBack.setRoleId(id);
+//
+//                roleBackService2.saveRoleModule(roleModuleBack);
+//                moduleId = roleModuleBack.getModuleId();
+//                if (null == moduleId){
+//                    result.put("code"+moduleId,-1);
+//                    result.put("message"+moduleId,"模块id为："+moduleId+"关联记录新增失败。");
+//                }
+//            }
 
             result.put("code",0);
             result.put("message","角色更新成功。");
