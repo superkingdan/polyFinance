@@ -352,3 +352,9 @@ java.lang.NumberFormatException: null
 18:04:35.413 ERROR c.j.controller.PaymentController1 - null
 18:57:19.151 ERROR c.j.controller.PaymentController1 - 用户1开始创建合同,但是出错了
 18:57:19.152 ERROR c.j.controller.PaymentController1 - 已购买过新手礼
+18:59:19.706 ERROR c.j.controller.PaymentController1 - 用户1开始创建合同,但是出错了
+18:59:19.707 ERROR c.j.controller.PaymentController1 - 已购买过新手礼
+22:55:19.422 ERROR c.j.controller2.LoginController2 - 用户1上传图片发生问题
+22:55:19.422 ERROR c.j.controller2.LoginController2 - null
+22:57:37.437 ERROR c.j.controller2.LoginController2 - 用户1上传图片发生问题
+22:57:37.437 ERROR c.j.controller2.LoginController2 - null

@@ -160,7 +160,6 @@ public class MessageServiceImpl3 implements MessageService3 {
             e.printStackTrace();
         }
 
-//        ossClient.shutdown();
         String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
         redisCacheManager.set(userBackId+",image",avatar);
         json.put("code",0);

@@ -37,7 +37,7 @@ public interface ClaimsMapper1 {
     Claims getClaimsMoneyById(long claimsId);
 
     //修改债权信息，需要先计算时间和待匹配金额
-    @Update("update claims set update_at=#{updateAt},update_by=#{updateBy},claims_code=#{claimsCode},creditor=#{creditor},creditor_phone_number=#{creditorPhoneNumber},creditor_id_card=#{creditorIdCard},lend_deadline=#{lendDeadline},lend_start_at=#{lendStartAt},lend_end_at=#{lendEndAt},lend_money=#{lendMoney},claims_nature=#{claimsNature},claims_interest_rate=#{claimsInterestRate},remark=#{remark},remanent_money=#{remanentMoney} where id=#{id}")
+    @Update("update claims set update_at=#{updateAt},update_by=#{updateBy},creditor=#{creditor},creditor_phone_number=#{creditorPhoneNumber},creditor_id_card=#{creditorIdCard},lend_deadline=#{lendDeadline},lend_start_at=#{lendStartAt},lend_end_at=#{lendEndAt},lend_money=#{lendMoney},claims_nature=#{claimsNature},claims_interest_rate=#{claimsInterestRate},remark=#{remark},remanent_money=#{remanentMoney} where id=#{id}")
     int updateClaims(Claims claims);
 
     //修改债权待匹配金额
