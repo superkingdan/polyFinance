@@ -20,7 +20,7 @@ public interface TimedTaskMapper3 {
       * 新增定时任务
       */
      @Insert("insert into timed_task (create_at,create_by,status,task_time,money,transaction_id,message_id,claims_id,bank_log,super_id) " +
-             "values (#{createAt},#{createBy},#{status},#{taskTime},#{money},#{transactionId},#{messageId},#{claimId},#{bankLog},#{superId})")
+             "values (#{createAt},#{createBy},#{status},#{taskTime},#{money},#{transactionId},#{messageId},#{claimsId},#{bankLog},#{superId})")
      @Options(useGeneratedKeys=true,keyProperty="id")
      int addTask(TimedTask timedTask);
 
@@ -29,6 +29,11 @@ public interface TimedTaskMapper3 {
       */
      @Select("select * from timed_task where id=#{id} ")
      TimedTask findTaskById(long id);
+     /**
+      * 根据id查找任务
+      */
+     @Select("select * from timed_task where message_id=#{id} ")
+     TimedTask findMessage(long id);
 
     /**
      * 总定时任务扫描
@@ -78,7 +83,7 @@ public interface TimedTaskMapper3 {
        * 删除任务
        */
       @Delete("delete from timed_task where id={id}")
-      boolean deleteTask(int id);
+      boolean deleteTask(long id);
 
 
 

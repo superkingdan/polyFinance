@@ -34,11 +34,11 @@ public interface MessageMapper3 {
     List<Message> findAllByUser(@Param("id") long id);
 
     /**
-      * 多条件查询
-      */
-     @SelectProvider(type = FindMessageListRPO.class,method = "findMessageListRPO")
-     List<MessageListRPO> findMessageListRPO(MessageListRPO messageListRPO);
-     class  FindMessageListRPO{
+     * 多条件查询
+     */
+    @SelectProvider(type = FindMessageListRPO.class,method = "findMessageListRPO")
+    List<MessageListRPO> findMessageListRPO(MessageListRPO messageListRPO);
+    class  FindMessageListRPO{
         public String findMessageListRPO(MessageListRPO rpo){
             if (rpo.getPageNum()==0){rpo.setPageNum(1);}
             if (rpo.getPageSize()==0){rpo.setPageSize(10);}
@@ -53,11 +53,11 @@ public interface MessageMapper3 {
                     WHERE("create_at>=#{createMin}");
                 if (rpo.getCreateMax()!=0)
                     WHERE("create_at<=#{createMax}");
-                if (rpo.getLoginName()!=null)
-                    WHERE("create_by=#{loginName}");
-                if(rpo.getIsSent()!=0)
+                if (rpo.getCreateBy()!=0)
+                    WHERE("create_by=#{createBy}");
+                if(rpo.getIsSent()!=3)
                     WHERE("is_sent=#{isSent}");
-                if(rpo.getSentPersonType()!=0)
+                if(rpo.getSentPersonType()!=2)
                     WHERE("sent_person_type=#{sentPersonType}");
                 if (rpo.getTitle()!=null)
                     WHERE("title like \"%\"#{title}\"%\"");
@@ -96,7 +96,7 @@ public interface MessageMapper3 {
                 if (message.getUpdateBy()!=0){
                     SET("update_by=#{updateBy}");}
                 if (message.getTitle()!=null){
-                    SET("status=#{status}");}
+                    SET("title=#{title}");}
                 if (message.getContent()!=null){
                     SET("content=#{content}");}
                 if (message.getSentPersonType()!=0){

@@ -9,6 +9,9 @@ import com.jnshu.dao3.UserBackMapper3;
 import com.jnshu.dto3.MessageListRPO;
 import com.jnshu.entity.Message;
 import com.jnshu.entity.TimedTask;
+import com.jnshu.entity.UserBack;
+import com.jnshu.exception.MyException;
+import com.jnshu.utils3.AliOSSUtil;
 import com.jnshu.utils3.OSSUtil;
 import com.jnshu.utils3.VerificationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +40,17 @@ public class MessageServiceImpl3 implements MessageService3 {
 
     /*消息列表*/
     @Override
-    public JSONObject findMessageList(MessageListRPO messageListRPO) {
+    public JSONObject findMessageList(MessageListRPO messageListRPO) throws MyException {
         JSONObject json =new JSONObject();
-        messageListRPO.setCreateBy(userBackMapper3.findByName(messageListRPO.getLoginName()).getCreateBy());
+        if (messageListRPO.getLoginName()!=null) {
+            UserBack userBack;
+            userBack=userBackMapper3.findByName(messageListRPO.getLoginName());
+            if (userBack==null){
+                throw new MyException(-1, "没有该用户");
+            }
+            messageListRPO.setCreateBy(userBack.getCreateBy());
+        }
+
         List<MessageListRPO> messageListRPOS= messageMapper3.findMessageListRPO(messageListRPO);
         json.put("code",0);
         json.put("message","成功");
@@ -70,10 +81,18 @@ public class MessageServiceImpl3 implements MessageService3 {
 
     /*新增消息*/
     @Override
-    public JSONObject addMessage(Message message, HttpServletRequest request) throws Exception {
+    public JSONObject addMessage(Message message,HttpServletRequest request) throws MyException {
         JSONObject json =new JSONObject();
+        if (message.getIntroduce()==null){
+            throw new MyException(-1,"简述为空");
+        }
         message.setCreateAt(System.currentTimeMillis());
-        Long userBackId= cookieService3.findByCookie(request);
+        Long userBackId= null;
+        try {
+            userBackId = cookieService3.findByCookie(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         message.setCreateBy(userBackId);
 
@@ -81,7 +100,8 @@ public class MessageServiceImpl3 implements MessageService3 {
         if(content!=null) {
             message.setContent(content);
         }
-
+        messageMapper3.addMessage(message);
+        long id=message.getId();
 
         if (message.getMessageType()==1){
             /*添加定时任务*/
@@ -89,22 +109,37 @@ public class MessageServiceImpl3 implements MessageService3 {
             TimedTask timedTask=new TimedTask();
             timedTask.setTaskTime(taskTime);
             timedTask.setNature(5);
-            timedTask.setMessageId(message.getId());
+            timedTask.setMessageId(id);
             timedTaskMapper3.addTask(timedTask);
             message.setIsSent(1);
         }
-        messageMapper3.addMessage(message);
+
         json.put("code",0);
         json.put("message","成功");
         return json;
     }
 
-    /*编辑消息*/
+    /*消息上下线*/
     @Override
     public JSONObject updateMessage(int isSent,long id, HttpServletRequest request) {
         JSONObject json =new JSONObject();
-        Message message= messageMapper3.findById(id);
+        Message message=messageMapper3.findById(id);
         message.setIsSent(isSent);
+
+        if(isSent==0&&message.getMessageType()==1){
+            /*添加定时任务*/
+            long taskTime=message.getUpdateAt();//需要知道前台传回来的是什么类型
+            TimedTask timedTask=new TimedTask();
+            timedTask.setTaskTime(taskTime);
+            timedTask.setNature(5);
+            timedTask.setMessageId(message.getId());
+            timedTaskMapper3.addTask(timedTask);
+        }
+        if(isSent==2&&message.getMessageType()==1){
+            /*删除定时任务*/
+            timedTaskMapper3.deleteTask(timedTaskMapper3.findMessage(id).getId());
+        }
+
         try {
             message.setUpdateBy(cookieService3.findByCookie(request));
         } catch (Exception e) {
