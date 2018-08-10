@@ -20,7 +20,7 @@ public interface ClaimsMapper1 {
     List<Claims> getClaimsListByRpo(ClaimsListRPO rpo);
 
     //按id查找指定债权详情
-    @Select("select id,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_money,claims_nature,claims_interest_rate,remark from claims where id=#{id}")
+    @Select("select id,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,status,lend_money,lend_end_at,claims_nature,claims_interest_rate,remark,remanent_money from claims where id=#{id}")
     Claims getClaimsById(long id);
 
     //按id查询债权出借结束时间
@@ -45,7 +45,7 @@ public interface ClaimsMapper1 {
     int updateClaimsMoney(Claims claims);
 
     //新增债权信息,其中lendEndAt需要手动计算后填入
-    @Insert("insert into claims (create_at,create_by,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_money,claims_nature,claims_interest_rate,remark,lend_end_at,remanent_money,status) values (#{createAt},#{createBy},#{claimsCode},#{creditor},#{creditorPhoneNumber},#{creditorIdCard},#{lendDeadline},#{lendStartAt},#{lendMoney},#{claimsNature},#{claimsInterestRate},#{remark},#{lendEndAt},#{lendMoney},#{)")
+    @Insert("insert into claims (create_at,create_by,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_money,claims_nature,claims_interest_rate,remark,lend_end_at,remanent_money,status) values (#{createAt},#{createBy},#{claimsCode},#{creditor},#{creditorPhoneNumber},#{creditorIdCard},#{lendDeadline},#{lendStartAt},#{lendMoney},#{claimsNature},#{claimsInterestRate},#{remark},#{lendEndAt},#{lendMoney},#{status})")
     @Options(useGeneratedKeys=true,keyProperty="id")
     int addClaims(Claims claims);
 

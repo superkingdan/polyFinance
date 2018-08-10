@@ -162,8 +162,10 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
      */
     @Override
     public int saveClaimsMatching(ClaimsMatching claimsMatching) {
+        log.info("开始债权匹配，债权id为"+claimsMatching.getClaimsId()+"出借合同编号为"+claimsMatching.getContractCode());
         //查询交易对应的金额
         String money= transactionMapper1.getContractInfoByContractCode(claimsMatching.getContractCode()).getMoney();
+        System.out.println(money);
         //获得最新的债权协议编号
         String newestClaimsProtocolCode;
         try{

@@ -69,8 +69,8 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         //查找用户是否够买过新手礼包以及此产品是否是新手礼包
         Product product=productMapper1.getProductById(productId);
         if(product.getDeadline()<30){
-            int isNew=userMapper1.getIsNewById(userId);
-            if(isNew==1){
+            Integer isNew=userMapper1.getIsNewById(userId);
+            if(isNew!=null){
                 throw new MyException(-1,"已购买过新手礼");
             }
         }

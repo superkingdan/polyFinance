@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 /**
  * 债权相关service
@@ -70,8 +71,16 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
         Claims oldClaims= claimsMapper1.getClaimsMatchingById(claims.getId());
         //获取旧过期时间
         long oldLendEndAt=oldClaims.getLendEndAt();
+        System.out.println("旧过期时间————"+oldLendEndAt);
         //计算新过期时间
-        long newLendEndAt=claims.getLendStartAt()+claims.getLendDeadline()*30*24*3600*1000;
+        Calendar startAtC=Calendar.getInstance();
+        startAtC.clear();
+        startAtC.setTimeInMillis(claims.getLendStartAt());
+        startAtC.add(Calendar.MONTH,claims.getLendDeadline());
+        long newLendEndAt=startAtC.getTimeInMillis();
+        System.out.println("新开始时间为————————————————————"+claims.getLendStartAt());
+        System.out.println("出借时间为————————————————————————"+claims.getLendDeadline());
+        System.out.println("新到期时间为——————————————————————————"+newLendEndAt);
         //设置新过期时间
         claims.setLendEndAt(newLendEndAt);
         //获取旧定时任务时间
@@ -113,7 +122,11 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
         //设置待匹配金额
         claims.setRemanentMoney(claims.getLendMoney());
         //设置到期时间
-        long lendEndAt=claims.getLendStartAt()+claims.getLendDeadline()*30*24*3600*1000;
+        Calendar lendEndAtC=Calendar.getInstance();
+        lendEndAtC.clear();
+        lendEndAtC.setTimeInMillis(claims.getLendStartAt());
+        lendEndAtC.add(Calendar.MONTH,claims.getLendDeadline());
+        long lendEndAt=lendEndAtC.getTimeInMillis();
         claims.setLendEndAt(lendEndAt);
         //设置债权状态为未使用
         claims.setStatus(Claims.STATUS_NOT_USE);
