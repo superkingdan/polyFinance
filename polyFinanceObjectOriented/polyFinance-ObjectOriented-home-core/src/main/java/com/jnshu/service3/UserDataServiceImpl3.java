@@ -156,7 +156,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         String code = VerificationUtil.getVerificationCode();
         /*图片存储路径*/
         String photoKey = "Task7/"+user.getPhoneNumber()+code+"."+photoType;
-        String bucketName ="avatarljc1";
+        String bucketName ="jnshuphoto";
         try {
             aliOSSUtil.uploadFile(photoKey, realImage.getBytes());
         } catch (IOException e) {

@@ -70,5 +70,15 @@ public class UserBankController3 {
 
         return userBankService3.defaultCardUpdata(id,cardId);
     }
+    /**
+     * 添加银行页面 /修改 8/10
+     * @return
+     */
+    @GetMapping("/bank")
+    @ResponseBody
+    public Object bank(HttpServletRequest request) throws JSONException {
+
+        return userBankService3.findBank();
+    }
 
 }

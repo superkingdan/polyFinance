@@ -57,9 +57,9 @@ public interface MessageMapper3 {
                     WHERE("create_at<=#{createMax}");
                 if (rpo.getCreateBy()!=0)
                     WHERE("create_by=#{createBy}");
-                if(rpo.getIsSent()!=3)
+                if(rpo.getIsSent()!=0)
                     WHERE("is_sent=#{isSent}");
-                if(rpo.getSentPersonType()!=2)
+                if(rpo.getSentPersonType()!=0)
                     WHERE("sent_person_type=#{sentPersonType}");
                 if (rpo.getTitle()!=null)
                     WHERE("title like \"%\"#{title}\"%\"");
