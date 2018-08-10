@@ -142,29 +142,8 @@ public class OtherController2 {
             return result;
         }
 
-        /*//先备份
-        Integer num = null;
-        if (null != officialSeal || null != investmentDay || null != creditorDay || null != creditorLine){
-            try {
-                num = dataService2.updateAsBackup();
-                if (0 == num){
-                    CAM cam1 = new CAM(0, "不需要备份,没有参数更新。");
-                    result.add(cam1);
-                }
-                logger.info("后台 运营管理--参数设置--更新参数时备份成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            } catch (Exception e) {
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                cam1.setErrorMessage("服务器在获取参数时出错");
-                e.printStackTrace();
-                logger.info("后台 运营管理--参数更新--备份参数时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-                result.add(cam1);
-                return result;
-            }
-        }
-*/
         //更新操作。
         Boolean s1 = false;
-
         try {
             //更新 公章。
             if (a) {
@@ -254,30 +233,30 @@ public class OtherController2 {
 
     //参数设置-参数还原。
     @RequestMapping(value = "/a/u/datas/reduction",method = RequestMethod.PUT)
-    public List<Object> returnDatas(HttpServletRequest request, HttpServletResponse response) {
+    public Map<String,Object> returnDatas(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> account = new HashMap<>();
         CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
-        //返回数据List。
-        List<Object> result = new ArrayList<>();
+        //返回数据List。改为map
+        Map<String,Object> result = new HashMap<>();
 
         //参数还原。
         Integer num = null;
         try {
             num = dataService2.updataDataFromBackup();
             if (0 != num){
-                CAM cam1 = new CAM(0,"参数还原成功。");
-                result.add(cam1);
+                result.put("code",0);
+                result.put("message","参数还原成功。");
             }else {
-                CAM cam1 = new CAM(-1,"没有参数需要还原。");
-                result.add(cam1);
+                result.put("code",-1);
+                result.put("message","没有参数需要还原。");
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在还原参数时出错");
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage", "服务器在还原参数时出错");
             e.printStackTrace();
             logger.info("后台 运营管理--参数设置--还原参数时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
         return result;
@@ -285,28 +264,28 @@ public class OtherController2 {
 
     //版本管理-获取
     @RequestMapping(value = "/a/u/versions",method = RequestMethod.GET)
-    public List<Object> getVersion(HttpServletRequest request, HttpServletResponse response){
+    public Map<String,Object> getVersion(HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> account = new HashMap<>();
         CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
         //返回数据List。
-        List<Object> result = new ArrayList<>();
+        Map<String,Object> result = new HashMap<>();
 
         List<SystemData> versionData = new ArrayList<>();
         try {
             versionData = dataService2.getSystemDataOfVersion();
             if (null == versionData){
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                cam1.setErrorMessage("服务器在获取版本参数时出错");
-                result.add(cam1);
+                result.put("code",-1);
+                result.put("message","服务器错误。");
+                result.put("errorMessage", "服务器在获取版本参数时出错.");
                 return result;
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在获取版本参数时出错");
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage", "服务器在获取版本参数时出错.");
             e.printStackTrace();
             logger.info("后台 运营管理--版本管理--获取版本参数时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
 
@@ -316,32 +295,30 @@ public class OtherController2 {
         }
 
         cam.setMessage("版本参数获取成功。");
-        result.add(cam);
-        result.add(version);
+        result.put("version",version);
         logger.info("后台 运营管理--版本管理--获取版本参数成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
 
     //版本管理-更新
     @RequestMapping(value = "/a/u/versions",method = RequestMethod.PUT)
-    public List<Object> saveVersion(
+    public Map<String,Object> saveVersion(
             @RequestParam(required = false) String versionName,
             @RequestParam(required = false) String version,
             @RequestParam(required = false) String url,
             @RequestParam(required = false) String versionInfo,
             HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> account = new HashMap<>();
-        CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
         //返回数据List。
-        List<Object> result = new ArrayList<>();
+        Map<String,Object> result = new HashMap<>();
 
         List<SystemData> versionData = new ArrayList<>();
 
         //参数校验
         if ((null == versionName || ("").equals(versionName)) && (null == version || ("").equals(version)) && (null == url || ("").equals(url)) && (null == versionInfo || ("").equals(versionInfo))){
-            CAM cam1 = new CAM(-1, "版本信息不能全为空或无值");
-            result.add(cam1);
+            result.put("code",-1);
+            result.put("message","版本信息不能全为空或无值。");
             return result;
         }
 
@@ -356,11 +333,11 @@ public class OtherController2 {
             try {
                 d = dataService2.updateSystemDataOfVersion(systemData);
             } catch (Exception e) {
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                cam1.setErrorMessage("服务器在更新版本名时出错");
+                result.put("code",-1);
+                result.put("message","服务器错误。");
+                result.put("errorMessage", "服务器在更新版本名时出错.");
                 e.printStackTrace();
                 logger.info("后台 运营管理--版本管理--版本更新时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-                result.add(cam1);
                 return result;
             }
         }
@@ -376,11 +353,11 @@ public class OtherController2 {
             try {
                 a = dataService2.updateSystemDataOfVersion(systemData);
             } catch (Exception e) {
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                cam1.setErrorMessage("服务器在更新版本号时出错");
+                result.put("code",-1);
+                result.put("message","服务器错误。");
+                result.put("errorMessage", "服务器在更新版本号时出错.");
                 e.printStackTrace();
                 logger.info("后台 运营管理--版本管理--版本号更新时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-                result.add(cam1);
                 return result;
             }
         }
@@ -396,11 +373,12 @@ public class OtherController2 {
             try {
                 b = dataService2.updateSystemDataOfVersion(systemData);
             } catch (Exception e) {
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                cam1.setErrorMessage("服务器在更新版本URL地址时出错");
+
+                result.put("code",-1);
+                result.put("message","服务器错误。");
+                result.put("errorMessage", "服务器在更新版本URL地址时出错.");
                 e.printStackTrace();
                 logger.info("后台 运营管理--版本管理--更新版本URL地址时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-                result.add(cam1);
                 return result;
             }
         }
@@ -416,41 +394,41 @@ public class OtherController2 {
             try {
                 c = dataService2.updateSystemDataOfVersion(systemData);
             } catch (Exception e) {
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                cam1.setErrorMessage("服务器在更新版本信息时出错");
+
+                result.put("code",-1);
+                result.put("message","服务器错误。");
+                result.put("errorMessage", "服务器在更新版本信息时出错.");
                 e.printStackTrace();
                 logger.info("后台 运营管理--版本管理--更新版本信息时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-                result.add(cam1);
                 return result;
             }
         }
 
         if (a || b || c || d){
-            cam.setMessage("版本更新成功。");
+            result.put("code",0);
+            result.put("message","版本更新成功。");
         }
 
-        result.add(cam);
         logger.info("后台 运营管理--版本管理--版本参数更新成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
 
     //意见反馈-意见列表
     @RequestMapping(value = "/a/u/feedbacks",method = RequestMethod.GET)
-    public List<Object> getFeedbacks(
+    public Map<String,Object> getFeedbacks(
             @RequestParam(required = false,defaultValue = "1") Integer pageNum,
             @RequestParam(required = false,defaultValue = "10") Integer pageSize,
             @ModelAttribute FeedbackRPO rpo,
             HttpServletRequest request,HttpServletResponse response) {
         Map<String, Object> account = new HashMap<>();
-        CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
         //返回数据List。
-        List<Object> result = new ArrayList<>();
+        Map<String,Object> result = new HashMap<>();
 
         if (!(("").equals(rpo.getCreateAt1())) || !(("").equals(rpo.getCreateAt2()))){
            if ((null == rpo.getCreateAt1() ||("").equals(rpo.getCreateAt1()) )   || (null == rpo.getCreateAt2() ||("").equals(rpo.getCreateAt2()) )){
-               CAM cam1 = new CAM(-1,"两个查询日期都要有值。");
-               result.add(cam1);
+               result.put("code",-1);
+               result.put("message","两个查询日期都要有值。");
                return result;
            }
         }
@@ -459,38 +437,37 @@ public class OtherController2 {
         try {
             list = feedbackService2.getFeedbackList(rpo);
             if (null == list){
-                CAM cam1 = new CAM(0,"此条件下无值。");
-                result.add(cam1);
+                result.put("code",0);
+                result.put("message","此条件下无值。");
                 return result;
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在查询意见反馈时出错");
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage", "服务器在查询意见反馈时出错");
             e.printStackTrace();
             logger.info("后台 运营管理--版本管理--查询意见反馈时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
 
-        cam.setMessage("查询成功。");
-        result.add(cam);
-        result.add(list);
+        result.put("code",0);
+        result.put("message","查询成功。");
+        result.put("data",list);
         logger.info("后台 运营管理--版本管理--查询意见成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
 
     //意见反馈-意见详情
     @RequestMapping(value = "/a/u/feedbacks/{id}",method = RequestMethod.GET)
-    public List<Object> getFeedback(@PathVariable long id, HttpServletRequest request,HttpServletResponse response) {
+    public Map<String,Object> getFeedback(@PathVariable long id, HttpServletRequest request,HttpServletResponse response) {
         Map<String, Object> account = new HashMap<>();
-        CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
         //返回数据List。
-        List<Object> result = new ArrayList<>();
+        Map<String,Object> result = new HashMap<>();
 
         if (id<1){
-            CAM cam1 = new CAM(-1,"非法参数。");
-            result.add(cam1);
+            result.put("code",-1);
+            result.put("message","id错误非法参数。");
             return result;
         }
         DomainFeedBackDetail detail = null;
@@ -498,38 +475,38 @@ public class OtherController2 {
         try {
             detail = feedbackService2.getFeedbackDetail(id);
             if (detail == null){
-                CAM cam1 = new CAM(0,"此id没有对应记录。");
-                result.add(cam1);
+                result.put("code",-1);
+                result.put("message","此id没有对应记录。");
                 return result;
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在查询意见反馈详情时出错");
+
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage", "服务器在查询意见反馈详情时出错.");
             e.printStackTrace();
             logger.info("后台 运营管理--版本管理--查询意见反馈详情时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
 
-        cam.setMessage("查询成功。");
-        result.add(cam);
-        result.add(detail);
+        result.put("code",0);
+        result.put("message","查询成功。");
+        result.put("data",detail);
         logger.info("后台 运营管理--版本管理--查询意见反馈详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
 
     //意见反馈-意见详情
     @RequestMapping(value = "/a/u/feedbacks/{id}",method = RequestMethod.DELETE)
-    public List<Object> deleteFeedback(@PathVariable long id, HttpServletRequest request,HttpServletResponse response) {
+    public Map<String,Object> deleteFeedback(@PathVariable long id, HttpServletRequest request,HttpServletResponse response) {
         Map<String, Object> account = new HashMap<>();
-        CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
         //返回数据List。
-        List<Object> result = new ArrayList<>();
+        Map<String,Object> result = new HashMap<>();
 
         if (id<1){
-            CAM cam1 = new CAM(-1,"非法参数。");
-            result.add(cam1);
+            result.put("code",-1);
+            result.put("message","id错误非法参数。");
             return result;
         }
 
@@ -537,21 +514,22 @@ public class OtherController2 {
         try {
             a = feedbackService2.deleteFeedback(id);
             if (!a){
-                CAM cam1 = new CAM(-1,"此id无对应记录。");
-                result.add(cam1);
+                result.put("code",-1);
+                result.put("message","此id无对应记录。");
                 return result;
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在删除意见反馈详情时出错");
+
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage", "服务器在删除意见反馈详情时出错。");
             e.printStackTrace();
             logger.info("后台 运营管理--版本管理--删除意见反馈详情时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
 
-        cam.setMessage("删除成功。");
-        result.add(cam);
+        result.put("code",-1);
+        result.put("message","删除成功。");
         return result;
     }
 }
