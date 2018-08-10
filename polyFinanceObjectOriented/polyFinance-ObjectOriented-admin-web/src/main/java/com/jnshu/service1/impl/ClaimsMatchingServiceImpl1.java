@@ -165,7 +165,12 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
         //查询交易对应的金额
         String money= transactionMapper1.getContractInfoByContractCode(claimsMatching.getContractCode()).getMoney();
         //获得最新的债权协议编号
-        String newestClaimsProtocolCode= claimsMatchingMapper1.getNewestClaimsProtocolCode();
+        String newestClaimsProtocolCode;
+        try{
+            newestClaimsProtocolCode= claimsMatchingMapper1.getNewestClaimsProtocolCode();
+        }catch (Exception e){
+            newestClaimsProtocolCode="";
+        }
         System.out.println(newestClaimsProtocolCode);
         //生成新的债权协议编号,并存入claimsMatching对象
         String claimsProtocolCode= TransString.transClaimsCode(newestClaimsProtocolCode);

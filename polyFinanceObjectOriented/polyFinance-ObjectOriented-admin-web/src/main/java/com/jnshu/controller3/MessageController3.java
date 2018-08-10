@@ -31,7 +31,7 @@ public class MessageController3 {
     @GetMapping("/messages")
     @ResponseBody
     public Object messages(@ModelAttribute MessageListRPO messageListRPO,
-                           HttpServletRequest request){
+                           HttpServletRequest request)throws Exception{
         return messageService3.findMessageList(messageListRPO);
     }
 
