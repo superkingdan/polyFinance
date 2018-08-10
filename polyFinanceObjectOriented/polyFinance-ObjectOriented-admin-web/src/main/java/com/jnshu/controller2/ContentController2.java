@@ -26,7 +26,7 @@ public class ContentController2 {
 
     //内容列表
     @RequestMapping(value = "/a/u/contents",method = RequestMethod.GET)
-    public Object getContents(@RequestParam(defaultValue = "1") int pageNum,
+    public List<Object> getContents(@RequestParam(defaultValue = "1") int pageNum,
                               @RequestParam(defaultValue = "10") int pageSize,
                               @ModelAttribute ContentListRPO contentListRPO,
                               HttpServletRequest request,
@@ -67,7 +67,7 @@ public class ContentController2 {
         List<DomainContent> contents = null;
         try {
             contents = contentService2.getContentList(pageNum,pageSize,contentListRPO);
-            if (null == contents){
+            if (contents.size() ==0){
                 CAM cam1 = new CAM(-1,"当前条件无符合条件记录。");
                 cam1.setErrorMessage("换条件试试。");
                 result.add(cam1);
@@ -102,7 +102,10 @@ public class ContentController2 {
 
         cam.setMessage("查询成功。total为全部内容数。与条件查询无关。");
         result.add(cam);
-        System.out.println(contents);
+        System.out.println("*********内容列表**********");
+        for(DomainContent content : contents){
+            System.out.println(content);
+        }
         result.add(contents);
 
         return result;
@@ -145,7 +148,7 @@ public class ContentController2 {
 
         cam.setMessage("查询成功。");
         result.add(cam);
-        System.out.println("*(*(*(*(*(*(*(*内容列表打印内容列表。(*(*(*(*(*(*((*(");
+        System.out.println("*(*(*(*(*(*(*(*打印内容详情。(*(*(*(*(*(*((*(");
         result.add(content);
         return result;
     }
@@ -156,7 +159,7 @@ public class ContentController2 {
                                    @RequestParam String title,
                                    @RequestParam Integer type,
                                    @RequestParam(required = false) String bannerCover,
-                                   @RequestParam(required = false) String detail,
+                                   @RequestParam(required = false) String details,
                                    @RequestParam Integer status,
                                    HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> account = new HashMap<>();
@@ -203,8 +206,8 @@ public class ContentController2 {
         //当type为1或2时，detail不能为没有或者没有值。同时也不需要bannerCover。
         if(type == 1 || 2 == type){
             System.out.println("*********编辑内容接口，打印detail***********");
-            System.out.println(detail);
-            if (null == detail || detail.equals("")){
+            System.out.println(details);
+            if (null == details || details.equals("")){
                 cam.setCode(-1);
                 cam.setErrorMessage("类型为”帮助中心“或”关于我们“时，内容不能为空。");
                 result.add(cam);
@@ -225,7 +228,7 @@ public class ContentController2 {
         content.setTitle(title);
         content.setType(type);
         content.setBannerCover(bannerCover);
-        content.setDetails(detail);
+        content.setDetails(details);
         content.setStatus(status);
 
         Boolean x = false;
@@ -240,13 +243,13 @@ public class ContentController2 {
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("更新内容详情时服务器错误。");
-            logger.info("后台 运营管理--内容详情-更新--服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ detail+ ", status:"+status);
+            logger.info("后台 运营管理--内容详情-更新--服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", details:"+ details+ ", status:"+status);
             result.add(cam1);
             return result;
         }
         cam.setMessage("更新成功。");
         result.add(cam);
-        logger.info("后台 运营管理--内容详情-更新成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ detail+ ", status:"+status);
+        logger.info("后台 运营管理--内容详情-更新成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ details+ ", status:"+status);
         return result;
     }
 

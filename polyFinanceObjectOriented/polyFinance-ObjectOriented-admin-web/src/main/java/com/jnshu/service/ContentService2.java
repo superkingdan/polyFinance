@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public interface ContentService2 {
 
     //内容列表--多条件查询
