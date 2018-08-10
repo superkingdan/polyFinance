@@ -82,6 +82,7 @@ public class ClaimsController1 {
      */
     @PutMapping(value = "/a/u/claims/{id}")
     public Map updateClaims(@ModelAttribute Claims claims, @PathVariable(value = "id")long id, HttpServletRequest request)throws Exception{
+        System.out.println(claims);
         if(claims.getClaimsCode()==null||claims.getCreditor()==null||claims.getCreditorIdCard()==null||claims.getCreditorPhoneNumber()==null||
                 claims.getLendDeadline()==null||claims.getLendStartAt()==null||claims.getLendMoney()==null||claims.getClaimsNature()==null||claims.getClaimsInterestRate()==null||claims.getRemark()==null){
             throw new MyException(10002,"参数不能为空");

@@ -23,12 +23,12 @@ public interface BankCardMapper3 {
        */
        @Select("select bank_card.id,bank_card.bank_card,bank.bank_name,bank.icon," +
                "bank.single_limited,bank.day_limited from bank_card " +
-               "inner join bank on bank_card.bank_id=bank.id where bank_card.user_id=#{id} order by bank_card.order")
+               "inner join bank on bank_card.bank_id=bank.id where bank_card.user_id=#{id} order by bank_card.card_order")
        List<BankCardList> findListByUser(long id);
        /**
         * 根据userid获取银行卡
         */
-       @Select("select * from bank_card where user_id=#{id} order by order desc")
+       @Select("select * from bank_card where user_id=#{id} order by card_order desc")
        List<BankCard> findBankCardByUser(long id);
        /**
         * 根据id获取银行卡数量
@@ -51,7 +51,7 @@ public interface BankCardMapper3 {
        /**
         * 设置银行卡顺序
         */
-       @Update("update bank_card set order=#{order} where id=#{id}")
+       @Update("update bank_card set card_order=#{cardOrder} where id=#{id}")
        boolean updateOder(BankCard bankCard);
 
         /**

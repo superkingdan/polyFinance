@@ -21,12 +21,19 @@ public class MyInterceptor implements HandlerInterceptor {
         request.setAttribute("startTime", startTime);
 
         TokenUtil tokenUtil = new TokenUtil();
-        Cookie cookie = tokenUtil.getCookie(request);
-        Cookie cookie1 = tokenUtil.getCookie2(request);
+        Cookie cookie;
+        Cookie cookie1;
+        try {
+            cookie = tokenUtil.getCookie(request);
+            cookie1 = tokenUtil.getCookie2(request);
+        }catch (Exception e){
+            throw new MyException(10001,"重新登录。");
+        }
+
 
 //        System.out.println("拦截器中打印cookie name="+cookie.getName());
         //验证cookie
-        if (!"uid".equals(cookie.getName())){
+        if (cookie==null||!"uid".equals(cookie.getName())){
 //            System.out.println("拦截器中验证 cookie name="+cookie.getName());
             //第一种方式，直接设置状态码
 //            httpServletResponse.sendError(403, " you need loginIn.");
@@ -36,7 +43,7 @@ public class MyInterceptor implements HandlerInterceptor {
             throw new MyException(10001,"重新登录。");
         }
 
-        if (!"token".equals(cookie1.getName())){
+        if (cookie1==null||!"token".equals(cookie1.getName())){
             throw new MyException(10001,"重新登录。");
         }
 //        System.out.println("拦截器中打印 cookie 时间="+cookie.getMaxAge());
@@ -49,14 +56,19 @@ public class MyInterceptor implements HandlerInterceptor {
         //验证token
 //        String token = tokenUtil.getToken(request);
 //        System.out.println(token);
-        Map<String, Object> token2 =tokenUtil.deToken(cookie1.getValue());
+        Map<String, Object> token2;
+        try{
+            token2 =tokenUtil.deToken(cookie1.getValue());
+        }catch (Exception e){
+            throw new MyException(10001,"验证失败，请重新登录");
+        }
         Boolean s = (Boolean) token2.get("verifyResult");
 //        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
         if (!s){
             throw new MyException(10001,"重新登录。");
 //            response.sendRedirect("/a/login");
         }
-        return s;
+        return true;
     }
 
     @Override

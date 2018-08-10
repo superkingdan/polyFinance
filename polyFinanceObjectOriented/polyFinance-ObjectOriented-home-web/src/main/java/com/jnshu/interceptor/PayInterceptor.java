@@ -29,16 +29,28 @@ public class PayInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         //获取用户id
         long id=0;
-        String uidS= CookieUtil.getCookieValue(httpServletRequest,"uid");
-        if (uidS!=null) {
-            id = Long.parseLong(uidS);
+        String uidS;
+        try{
+            uidS= CookieUtil.getCookieValue(httpServletRequest,"uid");
+        }catch (Exception e){
+            log.error("用户未登录，跳转登录接口");
+            throw new MyException(10001,"用户未登录，请先登录");
         }
         if(uidS==null){
             log.error("用户未登录，跳转登录接口");
             throw new MyException(10001,"用户未登录，请先登录");
         }
+
         System.out.println("开始支付拦截，用户id为"+id);
-        User user= userMapper1.getUserRealStatusById(id);
+        User user;
+        try{
+            id = Long.parseLong(uidS);
+            user= userMapper1.getUserRealStatusById(id);
+        }catch (Exception e){
+            log.error("用户id有误，跳转登录接口");
+            throw new MyException(10001,"用户uid有误，请重新登录");
+
+        }
         if(user.getRealStatus()==1&&user.getDefaultCard()>0){
             System.out.println("验证通过，放行");
             return true;

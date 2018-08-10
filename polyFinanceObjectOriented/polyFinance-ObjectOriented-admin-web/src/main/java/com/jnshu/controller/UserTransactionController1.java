@@ -3,6 +3,7 @@ package com.jnshu.controller;
 import com.github.pagehelper.Page;
 import com.jnshu.dto1.*;
 import com.jnshu.entity.*;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.UserTransactionService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,19 +28,26 @@ public class UserTransactionController1 {
     UserTransactionService1 userTransactionService1;
 
     /**
-     * 获得指定用户e
+     * 获得指定用户流水列表
      * @param rpo 接收前端分页参数的对象
      * @param id 指定用户id
      * @return 返回参数，code,message,用户流水列表
      */
     @GetMapping(value = "/a/u/user/transaction-log/list/{id}")
-    public Map getTransactionLogList(@ModelAttribute TransactionLogRPO rpo, @PathVariable(value = "id")long id){
+    public Map getTransactionLogList(@ModelAttribute TransactionLogRPO rpo, @PathVariable(value = "id")long id)throws Exception{
         rpo.setId(id);
         log.info("查询指定用户"+id+"流水记录，查询条件为"+rpo);
         Map<String,Object> map=new HashMap<>();
+        Page<TransactionLog> logPage;
+        try{
+            logPage= userTransactionService1.getTransactionLogList(rpo);
+        }catch (Exception e){
+            log.error("获得用户"+id+"交易流水列表发生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         map.put("code",0);
         map.put("message","success");
-        Page<TransactionLog> logPage= userTransactionService1.getTransactionLogList(rpo);
         map.put("total",logPage.getTotal());
         map.put("size",rpo.getSize());
         map.put("data",logPage);
@@ -53,10 +61,17 @@ public class UserTransactionController1 {
      * @return 返回参数，code,message,投资列表
      */
     @GetMapping(value = "/a/u/user/transaction/list/{id}")
-    public Map getTransactionList(@ModelAttribute TransactionListRPO rpo, @PathVariable(value = "id")long id){
+    public Map getTransactionList(@ModelAttribute TransactionListRPO rpo, @PathVariable(value = "id")long id)throws Exception{
         rpo.setId(id);
         log.info("查询指定用户"+id+"投资列表");
-        Page<TransactionListBackRO> page= userTransactionService1.getTransactionList(rpo);
+        Page<TransactionListBackRO> page;
+        try {
+            page= userTransactionService1.getTransactionList(rpo);
+        }catch (Exception e){
+            log.error("获得用户"+id+"交易流水列表发生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
@@ -72,12 +87,19 @@ public class UserTransactionController1 {
      * @return 合同相关信息
      */
     @GetMapping(value = "/a/u/user/transaction/contract/{code}")
-    public Map getContract(@PathVariable(value = "code")String code){
+    public Map getContract(@PathVariable(value = "code")String code)throws Exception{
         log.info("查看合同编号为"+code+"的合同");
         Map<String,Object> map=new HashMap<>();
+        ContractRO ro;
+        try{
+            ro= userTransactionService1.getContract(code);
+        }catch (Exception e){
+            log.error("获得合同编号是"+code+"的合同信息发生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         map.put("code",0);
         map.put("message","success");
-        ContractRO ro= userTransactionService1.getContract(code);
        map.put("data",ro);
        return map;
     }
@@ -88,10 +110,17 @@ public class UserTransactionController1 {
      * @return 返回参数,code,message,协议内容
      */
     @GetMapping(value = "/a/u/user/transaction/claims/{code}")
-    public Map getClaimsProtocolCode(@PathVariable(value = "code")String code){
+    public Map getClaimsProtocolCode(@PathVariable(value = "code")String code)throws Exception{
         log.info("查看债权协议编号为"+code+"的债权转让协议");
         Map<String,Object> map=new HashMap<>();
-        ClaimsProtocolCodeRO ro= userTransactionService1.getClaimsProtocolCode(code);
+        ClaimsProtocolCodeRO ro;
+        try{
+            ro= userTransactionService1.getClaimsProtocolCode(code);
+        }catch (Exception e){
+            log.error("获得债权编号是"+code+"的债权装让协议时发生错误");
+            log.error(e.getMessage());
+            throw new MyException(-1,"未知错误");
+        }
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);
