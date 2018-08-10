@@ -15,11 +15,11 @@ import java.util.List;
 @Component
 public class AliOSSUtil {
     //endpoint是杭州的公网
-    String endpoint = "oss-cn-hangzhou.aliyuncs.com";
+    String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
     //阿里云主账号的accessKey拥有所有API的AccessKey的访问权限。
-    String accessKeyId = "LTAIjz8Fwoftg2KX";
-    String accessKeyScret = "XxwUShVA8TFCj7sWmIyps7DARgjkxN";
-    String bucketName = "avatarljc1";
+    String accessKeyId = "LTAId24pSzJ3t4HV";
+    String accessKeyScret = "XDQtFJrxoARO74CBqatavOqmtpSBk9";
+    String bucketName = "jnshuphoto";
 
     //创建OSSClient实例
     private OSSClient client = new OSSClient(endpoint, accessKeyId, accessKeyScret);
