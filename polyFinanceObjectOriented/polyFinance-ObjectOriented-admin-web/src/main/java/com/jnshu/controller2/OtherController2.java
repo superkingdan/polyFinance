@@ -32,28 +32,28 @@ public class OtherController2 {
 
     //参数设置-参数获取
     @RequestMapping(value = "/a/u/datas",method = RequestMethod.GET)
-    public List<Object> getDatas(HttpServletRequest request, HttpServletResponse response) {
+    public Map<String, Object> getDatas(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> account = new HashMap<>();
         CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
 
-        //返回数据List。
-        List<Object> result = new ArrayList<>();
+        //返回数据List。改为map。
+        Map<String, Object> result = new HashMap<>();
+//        List<Object> result = new ArrayList<>();
 
         List<SystemData> systemDataList = new ArrayList<>();
         try {
             systemDataList = dataService2.getSystemData();
             if (null == systemDataList){
-                CAM cam1 = new CAM(-1,"服务器错误。");
-                result.add(cam1);
+                result.put("code",-1);
+                result.put("message","获取参数时 数据库 错误。");
                 return result;
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在获取参数时出错");
+            result.put("code",-1);
+            result.put("message","获取参数时 服务器 错误。");
             e.printStackTrace();
             logger.info("后台 运营管理--参数设置--获取参数时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
 
@@ -63,16 +63,16 @@ public class OtherController2 {
             dataMap.put(systemData.getDataName(), systemData.getDataValue());
         }
 
-        cam.setMessage("获取参数成功。");
-        result.add(cam);
-        result.add(dataMap);
+        result.put("code",0);
+        result.put("message","获取参数成功。");
+        result.put("data",dataMap);
         logger.info("后台 运营管理--参数设置--获取参数成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
 
     //参数设置-参数保存
     @RequestMapping(value = "/a/u/datas",method = RequestMethod.PUT)
-    public List<Object> saveDatas(
+    public  Map<String, Object> saveDatas(
             @RequestParam(required = false) String officialSeal
             ,@RequestParam(required = false) String investmentDay,
             @RequestParam(required = false) String creditorDay,
@@ -82,16 +82,17 @@ public class OtherController2 {
         CAM cam = new CAM();
         account = tokenUtil.getAccount(request);
 
-        //返回数据List。
-        List<Object> result = new ArrayList<>();
+        //返回数据List。改为map
+//        List<Object> result = new ArrayList<>();
+        Map<String, Object> result = new HashMap<>();
 
         //参数校验。不能全部没有，或者没有值。
         if ((null == officialSeal || ("").equals(officialSeal))
                 && (null == investmentDay || ("").equals(investmentDay))
                 && (null == creditorDay || ("").equals(creditorDay))
                 && (null == creditorLine || ("").equals(creditorLine))) {
-            CAM cam1 = new CAM(-1, "需要更新的参数不能为空。");
-            result.add(cam1);
+            result.put("code",-1);
+            result.put("message","需要更新的参数不能为空。");
             return result;
         }
 
@@ -125,19 +126,19 @@ public class OtherController2 {
             if (a || b|| c|| d){
                 dataService2.updateAsBackup();
                 logger.info("后台 运营管理--参数设置--更新参数时备份成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-                CAM cam1 = new CAM(0,"备份成功。");
-                result.add(cam1);
+                result.put("code",0);
+                result.put("message","备份成功。");
             }else {
-                CAM cam1 = new CAM(-1,"没有新参数，不需要更新。");
-                result.add(cam1);
+                result.put("code",-1);
+                result.put("message","没有新参数，不需要更新。");
                 return result;
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在获取参数或备份时出错");
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage","服务器在获取参数或备份时出错");
             e.printStackTrace();
             logger.info("后台 运营管理--参数更新--服务器在获取参数或备份时出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
 
@@ -177,11 +178,11 @@ public class OtherController2 {
                 s1 = dataService2.updateSystemData(systemData);
 
                 if (s1){
-                    CAM cam1 = new CAM(0,"公章保存，更新成功。");
-                    result.add(cam1);
+                    result.put("code1",0);
+                    result.put("message1","公章保存，更新成功。");
                 }else {
-                    CAM cam1 = new CAM(-1,"公章要更新的值与原值相同。");
-                    result.add(cam1);
+                    result.put("code1",-1);
+                    result.put("message1","公章要更新的值与原值相同。");
                 }
             }
 
@@ -196,11 +197,11 @@ public class OtherController2 {
 
                 s1 = dataService2.updateSystemData(systemData1);
                 if (s1){
-                    CAM cam1 = new CAM(0,"投资到期消息提前天数，更新成功。");
-                    result.add(cam1);
+                    result.put("code2",0);
+                    result.put("message2","投资到期消息提前天数，更新成功。");
                 }else {
-                    CAM cam1 = new CAM(-1,"投资到期消息提前天数  要更新的值与原值相同。");
-                    result.add(cam1);
+                    result.put("code2",-1);
+                    result.put("message2","投资到期消息提前天数  要更新的值与原值相同。");
                 }
             }
 
@@ -214,11 +215,11 @@ public class OtherController2 {
                 systemData2.setDataValue(creditorDay);
 
                 if (s1){
-                    CAM cam1 = new CAM(0,"债权到期提前天数,更新成功。");
-                    result.add(cam1);
+                    result.put("code3",0);
+                    result.put("message3","债权到期提前天数,更新成功。");
                 }else {
-                    CAM cam1 = new CAM(-1,"债权到期提前天数  要更新的值与原值相同。");
-                    result.add(cam1);
+                    result.put("code3",-1);
+                    result.put("message3","债权到期提前天数  要更新的值与原值相同。");
                 }
             }
 
@@ -232,19 +233,19 @@ public class OtherController2 {
 
                 s1 = dataService2.updateSystemData(systemData3);
                 if (s1){
-                    CAM cam1 = new CAM(0,"总债权投满警戒线,更新成功。");
-                    result.add(cam1);
+                    result.put("code4",0);
+                    result.put("message4","总债权投满警戒线,更新成功。");
                 }else {
-                    CAM cam1 = new CAM(-1,"总债权投满警戒线  要更新的值与原值相同。");
-                    result.add(cam1);
+                    result.put("code4",0);
+                    result.put("message4","总债权投满警戒线  要更新的值与原值相同。");
                 }
             }
         } catch (Exception e) {
-            CAM cam1 = new CAM(-1,"服务器错误。");
-            cam1.setErrorMessage("服务器在更新参数时出错");
+            result.put("code",-1);
+            result.put("message","服务器错误。");
+            result.put("errorMessage","服务器在更新参数时出错。");
             e.printStackTrace();
             logger.info("后台 运营管理--参数设置--更新参数时服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
-            result.add(cam1);
             return result;
         }
         logger.info("后台 运营管理--参数设置--更新参数成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));

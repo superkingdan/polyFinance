@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@Component(value = "userService2")
 public interface UserService2 {
 
     List<DomainUserFront> getAllUser(int pageNum, int pageSize, UserFrontListRPO userFrontListRPO) throws Exception;

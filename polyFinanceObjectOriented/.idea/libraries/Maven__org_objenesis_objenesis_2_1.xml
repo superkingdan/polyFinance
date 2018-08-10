@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.objenesis:objenesis:2.1">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/org/objenesis/objenesis/2.1/objenesis-2.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/2.1/objenesis-2.1.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/org/objenesis/objenesis/2.1/objenesis-2.1-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/2.1/objenesis-2.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/org/objenesis/objenesis/2.1/objenesis-2.1-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/org/objenesis/objenesis/2.1/objenesis-2.1.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/org/objenesis/objenesis/2.1/objenesis-2.1-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/org/objenesis/objenesis/2.1/objenesis-2.1-sources.jar!/" />
->>>>>>> 9631e328f35973a4a4fd81150c91f2d57080b588
+      <root url="jar://$MAVEN_REPOSITORY$/org/objenesis/objenesis/2.1/objenesis-2.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

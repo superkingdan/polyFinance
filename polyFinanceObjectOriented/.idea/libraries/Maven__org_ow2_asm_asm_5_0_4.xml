@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.ow2.asm:asm:5.0.4">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.4/asm-5.0.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4-sources.jar!/" />
->>>>>>> 9631e328f35973a4a4fd81150c91f2d57080b588
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.4/asm-5.0.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.google.guava:guava:25.1-jre">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/com/google/guava/guava/25.1-jre/guava-25.1-jre.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/25.1-jre/guava-25.1-jre.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/com/google/guava/guava/25.1-jre/guava-25.1-jre-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/25.1-jre/guava-25.1-jre-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/com/google/guava/guava/25.1-jre/guava-25.1-jre-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/com/google/guava/guava/25.1-jre/guava-25.1-jre.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/com/google/guava/guava/25.1-jre/guava-25.1-jre-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/com/google/guava/guava/25.1-jre/guava-25.1-jre-sources.jar!/" />
->>>>>>> 9631e328f35973a4a4fd81150c91f2d57080b588
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/25.1-jre/guava-25.1-jre-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.aliyun:aliyun-java-sdk-core:3.3.1">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1-sources.jar!/" />
->>>>>>> 9631e328f35973a4a4fd81150c91f2d57080b588
+      <root url="jar://$MAVEN_REPOSITORY$/com/aliyun/aliyun-java-sdk-core/3.3.1/aliyun-java-sdk-core-3.3.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

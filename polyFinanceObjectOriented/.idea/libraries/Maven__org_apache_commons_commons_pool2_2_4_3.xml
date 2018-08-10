@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.apache.commons:commons-pool2:2.4.3">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3-sources.jar!/" />
->>>>>>> 9631e328f35973a4a4fd81150c91f2d57080b588
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.4.3/commons-pool2-2.4.3-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

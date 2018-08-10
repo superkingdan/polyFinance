@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Component
+@Component(value = "contentService2")
 public class ContentServiceImpl2 implements ContentService2 {
 
     @Autowired

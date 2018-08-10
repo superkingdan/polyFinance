@@ -102,6 +102,7 @@ public class ContentController2 {
 
         cam.setMessage("查询成功。total为全部内容数。与条件查询无关。");
         result.add(cam);
+        System.out.println(contents);
         result.add(contents);
 
         return result;
@@ -144,6 +145,7 @@ public class ContentController2 {
 
         cam.setMessage("查询成功。");
         result.add(cam);
+        System.out.println("*(*(*(*(*(*(*(*内容列表打印内容列表。(*(*(*(*(*(*((*(");
         result.add(content);
         return result;
     }
@@ -200,6 +202,8 @@ public class ContentController2 {
 
         //当type为1或2时，detail不能为没有或者没有值。同时也不需要bannerCover。
         if(type == 1 || 2 == type){
+            System.out.println("*********编辑内容接口，打印detail***********");
+            System.out.println(detail);
             if (null == detail || detail.equals("")){
                 cam.setCode(-1);
                 cam.setErrorMessage("类型为”帮助中心“或”关于我们“时，内容不能为空。");
