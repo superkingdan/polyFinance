@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Component
+@Component(value = "userService2")
 public class UserFrontServiceImpl2 implements UserService2 {
 
     @Autowired

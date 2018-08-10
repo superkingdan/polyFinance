@@ -32,7 +32,7 @@ public class LoginController2 {
     private static final Logger log= LoggerFactory.getLogger(LoginController2.class);
 
     @RequestMapping(value = "/a/login",method = RequestMethod.POST)
-    public Object loginBackEnd(@RequestParam String loginName, @RequestParam String hashKey, HttpServletRequest request, HttpServletResponse response){
+    public Object loginBackEnd(@RequestParam(required = false) String loginName, @RequestParam(required = false) String hashKey, HttpServletRequest request, HttpServletResponse response){
         UserBack userBack = new UserBack();
         userBack.setLoginName(loginName);
         userBack.setHashKey(hashKey);
