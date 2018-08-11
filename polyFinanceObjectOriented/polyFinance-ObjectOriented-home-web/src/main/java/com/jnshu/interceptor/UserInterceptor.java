@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 用户拦截器
@@ -25,32 +26,35 @@ public class UserInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         System.out.println("进入拦截器");
-//        JSONObject json=new JSONObject();
-        String uidS;
-        String cookie;
-        try {
-            uidS = CookieUtil.getCookieValue(httpServletRequest, "uid");
-            cookie = CookieUtil.getCookieValue(httpServletRequest, "token");
-        }catch (Exception e){
-            throw new MyException(10001,"请登入");
-        }
-        if (cookie==null||uidS==null){
-            throw new MyException(10001,"请登入");
-        }
-        Map<String, Object> map;
-        try{
-            map = TokenJWT.validToken(cookie);
-        }catch (Exception e){
-            throw new MyException(10001,"token不正确,请重新登入");
-        }
+        JSONObject json = new JSONObject();
+        String uidS= CookieUtil.getCookieValue(httpServletRequest,"uid");
+        String cookie = CookieUtil.getCookieValue(httpServletRequest, "token");
+        Map<String, Object> map = TokenJWT.validToken(cookie);
         String state = (String) map.get("state");
         String userId= String.valueOf(map.get("uid"));
-        if (state.equals("EXPIRED")) {
-            throw new MyException(10001,"已过期,请登入");
-        }
-        return true;
 
+
+        if (cookie == null) {
+//            json.put("code",10001);
+//            json.put("message","cookie无效");
+            throw new MyException(10001,"cookie无效");
+//            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
+//            return false;
+
+        }
+        if (state.equals("EXPIRED")) {
+//            json.put("code",1002);
+//            json.put("message","已过期,请登入");
+//            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
+            throw new MyException(10001,"已过期,请登入");
+//            return false;
+        }
+
+
+
+        return true;
     }
+
 
 
     @Override

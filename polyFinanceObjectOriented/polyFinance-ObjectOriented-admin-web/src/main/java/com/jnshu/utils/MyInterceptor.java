@@ -1,6 +1,8 @@
 package com.jnshu.utils;
 
 import com.jnshu.exception.MyException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +14,7 @@ import java.util.Map;
 
 @Component
 public class MyInterceptor implements HandlerInterceptor {
-
+    private static final Logger log= LoggerFactory.getLogger(MyInterceptor.class);
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         System.out.println("你好，我是拦截器。");
@@ -27,7 +29,9 @@ public class MyInterceptor implements HandlerInterceptor {
             cookie = tokenUtil.getCookie(request);
             cookie1 = tokenUtil.getCookie2(request);
         }catch (Exception e){
-            throw new MyException(10001,"重新登录。");
+            log.error("取出cookie过程出现问题，跳转登陆页面");
+            response.sendRedirect(request.getContextPath()+"/a/unlogin");
+            return false;
         }
 
 
@@ -40,11 +44,15 @@ public class MyInterceptor implements HandlerInterceptor {
             //第二种方式。通过接口返回信息。
 //            response.sendRedirect("/intercepted?next=" + request.getRequestURI());
 //            response.sendRedirect("/a/login");
-            throw new MyException(10001,"重新登录。");
+            log.error("取出的cookie为空，跳转登陆页面");
+            response.sendRedirect(request.getContextPath()+"/a/unlogin");
+            return false;
         }
 
         if (cookie1==null||!"token".equals(cookie1.getName())){
-            throw new MyException(10001,"重新登录。");
+            log.error("取出的cookie出现问题，跳转登陆页面");
+            response.sendRedirect(request.getContextPath()+"/a/unlogin");
+            return false;
         }
 //        System.out.println("拦截器中打印 cookie 时间="+cookie.getMaxAge());
 //        if (System.currentTimeMillis()>cookie.getMaxAge()){
@@ -60,12 +68,16 @@ public class MyInterceptor implements HandlerInterceptor {
         try{
             token2 =tokenUtil.deToken(cookie1.getValue());
         }catch (Exception e){
-            throw new MyException(10001,"验证失败，请重新登录");
+            log.error("验证token出现问题，跳转登陆页面");
+            response.sendRedirect(request.getContextPath()+"/a/unlogin");
+            return false;
         }
         Boolean s = (Boolean) token2.get("verifyResult");
 //        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
         if (!s){
-            throw new MyException(10001,"重新登录。");
+            log.error("验证token出现问题，跳转登陆页面");
+            response.sendRedirect(request.getContextPath()+"/a/unlogin");
+            return false;
 //            response.sendRedirect("/a/login");
         }
         return true;

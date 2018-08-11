@@ -5,6 +5,8 @@ import com.jnshu.entity.BankCard;
 import com.jnshu.entity.PaymentRPO;
 import com.jnshu.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface PaymentService1 {
@@ -26,4 +28,6 @@ public interface PaymentService1 {
     Long addTransaction(long transactionLogId,String contractCode);
 
     Long getTransactionIdByContractId(long contractId);
+
+//    Boolean judge(long id, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest)throws Exception;
 }

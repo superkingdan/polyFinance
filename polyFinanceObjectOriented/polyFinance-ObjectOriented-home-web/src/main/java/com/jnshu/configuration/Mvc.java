@@ -22,16 +22,4 @@ public class Mvc extends WebMvcConfigurerAdapter{
         //注册自定义拦截器，添加拦截路径和排除拦截路径
         registry.addInterceptor(payInterceptor).addPathPatterns("/a/u/r/**");
     }
-//    /**
-//     （1）在配置类中继承：WebMvcConfigurerAdapter
-//     （2）覆盖方法：configureContentNegotiation
-//     favorPathExtension表示支持后缀匹配，
-//     属性ignoreAcceptHeader默认为fasle，表示accept-header匹配，defaultContentType开启默认匹配。
-//     例如：请求aaa.xx，若设置<entry key="xx" value="application/xml"/> 也能匹配以xml返回。
-//     根据以上条件进行一一匹配最终，得到相关并符合的策略初始化ContentNegotiationManager
-//     */
-//    @Override
-//    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-//        configurer.favorPathExtension(false);
-//        }
 }

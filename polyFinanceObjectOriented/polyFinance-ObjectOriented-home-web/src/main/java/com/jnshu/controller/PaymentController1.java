@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -49,17 +50,9 @@ public class PaymentController1 {
     @GetMapping(value = "/a/u/r/pay/investment")
     public Map getInvestment(HttpServletRequest request)throws Exception{
         Map<String,Object> map=new HashMap<>();
-        //从cookie获得id
-        long id;
+        //从cookie获得id,未登录在之前就拦截了
         String uidS= CookieUtil.getCookieValue(request,"uid");
-        if (uidS!=null) {
-            id = Long.parseLong(uidS);
-        }
-        //如果cookie中没有uid直接报错
-        else {
-            log.info("获取用户银行卡，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
+        long id = Long.parseLong(uidS);
         log.info("获得id为"+id+"的用户的银行卡信息");
         List<BankCardRO> ros;
         try {
