@@ -281,3 +281,4 @@ java.lang.NumberFormatException: null
 10:45:47.014 ERROR c.jnshu.interceptor.PayInterceptor - 用户3未实名，跳转到返回错误信息为未实名的接口
 10:47:00.430 ERROR c.jnshu.interceptor.PayInterceptor - 用户3未实名，跳转到返回错误信息为未实名的接口
 10:47:29.257 ERROR c.jnshu.interceptor.PayInterceptor - 用户3未绑定银行卡，跳转到返回错误信息为未绑卡的接口
+12:08:33.130 ERROR c.jnshu.interceptor.UserInterceptor - cookie为null，需跳转登录界面
