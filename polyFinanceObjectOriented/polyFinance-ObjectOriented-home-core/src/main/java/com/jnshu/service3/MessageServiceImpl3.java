@@ -157,7 +157,7 @@ public class MessageServiceImpl3 implements MessageService3 {
     }
 
 
-    /*上传图片*/
+    /*上传图片*/ //8/10
     @Override
     public JSONObject imageUpload(MultipartFile realImage, HttpServletRequest request, String imageName) {
         JSONObject json=new JSONObject();
@@ -188,7 +188,7 @@ public class MessageServiceImpl3 implements MessageService3 {
         String code = VerificationUtil.getVerificationCode();
         /*图片存储路径*/
         String photoKey = "Message/"+userBackId+imageName+"."+photoType;
-        String bucketName ="avatarljc1";
+        String bucketName ="jnshuphoto";
 //        try {
 //            ossClient.putObject(bucketName, photoKey, new ByteArrayInputStream(realImage.getBytes()));
 //        } catch (IOException e) {

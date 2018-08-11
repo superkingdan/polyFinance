@@ -57,7 +57,7 @@ public class ScheduleTask {
         List<TimedTask> timedTasks1=timedTaskMapper3.findTaskByNature(6);
         System.out.println(timedTasks1);
         if (timedTasks1.size()>0){
-            for (int u=0;timedTasks1.size()==u;u++) {
+            for (int u=0;timedTasks1.size()>u;u++) {
                 /*获取对应交易表组*/
                 List<Transaction> transactions=new ArrayList<>();
                 transactions.add(transactionMapper3.findTransaction(timedTasks1.get(u).getTransactionId()));

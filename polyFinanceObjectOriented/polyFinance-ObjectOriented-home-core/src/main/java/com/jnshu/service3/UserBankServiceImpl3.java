@@ -107,6 +107,10 @@ public class UserBankServiceImpl3 implements UserBankService3 {
     public JSONObject findBank() {
         JSONObject json=new JSONObject();
         List<Bank> banks=bankMapper3.findBank();
+        if (banks==null){
+            json.put("code",-1);
+            json.put("message","没有数据");
+        }
         json.put("code",0);
         json.put("message","成功");
         json.put("data",banks);

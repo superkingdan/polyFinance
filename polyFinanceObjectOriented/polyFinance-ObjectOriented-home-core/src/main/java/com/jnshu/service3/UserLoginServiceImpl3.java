@@ -29,6 +29,7 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
     public JSONObject setCode(String phoneNumber) {
         JSONObject json =new JSONObject();
         System.out.println("开始判断");
+
         boolean userp = Verification.regexPhone(phoneNumber);
 
         if (!userp) {
@@ -119,6 +120,11 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
     public JSONObject login(String phoneNumber, String password, HttpServletResponse response) {
         JSONObject json =new JSONObject();
         User user= userMapper3.findUserByPhone(phoneNumber);
+        if (password==null){
+            json.put("code",-1);
+            json.put("message","请输入密码");
+            return json;
+        }
         if (user == null){
             json.put("code",-1);
             json.put("message","该手机号未注册");
@@ -126,7 +132,7 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
         }
         if (!SHA.getSHAwithSalt(password, user.getSalt()).equals(user.getHashKey())){
             json.put("code",-1);
-            json.put("message","登入失败");
+            json.put("message","密码错误,登入失败");
             return json;
         }
         addCookie(user,response);
