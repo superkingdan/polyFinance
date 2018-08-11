@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
@@ -389,4 +391,24 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         String contractCode= contractMapper1.getContractCodeById(contractId);
         return transactionMapper1.getTransactionIdByContractCode(contractCode);
     }
+
+//    @Override
+//    public Boolean judge(long id, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) throws Exception{
+//        User user= userMapper1.getUserRealStatusById(id);
+//        if(user.getRealStatus()==1&&user.getDefaultCard()>0){
+//            System.out.println("验证通过，放行");
+//            return true;
+//        }
+//        //如果未实名就去未实名的接口，返回的code是10010
+//        if(user.getRealStatus()!=1){
+//            log.error("用户"+id+"未实名，跳转到返回错误信息为未实名的接口");
+//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unrealname");
+//            return false;
+//        }
+//        else {
+//            log.error("用户"+id+"未绑定银行卡，跳转到返回错误信息为未绑卡的接口");
+//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/nocard");
+//            return false;
+//        }
+//    }
 }

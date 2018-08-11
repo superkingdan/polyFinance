@@ -36,4 +36,15 @@ public class PaymentServiceImplTest {
     public void addTransaction(){
         System.out.println(paymentService.addTransaction(18,"UKZXC1810000020"));
     }
+
+    @Test
+    public void test1(){
+        String cookie=null;
+        if(cookie==null){
+            System.out.println("可以");
+        }
+        else{
+            System.out.println("不可以");
+        }
+    }
 }
