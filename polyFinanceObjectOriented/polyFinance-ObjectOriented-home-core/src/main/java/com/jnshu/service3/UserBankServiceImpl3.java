@@ -48,14 +48,24 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         return json;
     }
 
-    /*默认银行卡*/
+    /*默认银行卡*/  //8.11修改 mapper
     @Override
     public JSONObject defaultCardUpdata(long id, long cardId) {
         JSONObject json =new JSONObject();
-        BankCard bankCard =bankCardMapper3.findById(id);
+        BankCard bankCard =bankCardMapper3.findById(cardId);
+
+        if (bankCard==null){
+            json.put("code",-1);
+            json.put("message","没有银行卡");
+            return json;
+        }
+        System.out.println(bankCard);
         if (bankCard.getCardOrder()==2){
             bankCard.setCardOrder(1);
             bankCardMapper3.updateData(bankCard);
+            BankCard bankCard1=bankCardMapper3.findBankCardByOrder(id,1);
+            bankCard1.setCardOrder(2);
+            bankCardMapper3.updateData(bankCard1);
         }
         User user=userMapper3.findUserById(id);
         user.setDefaultCard(cardId);

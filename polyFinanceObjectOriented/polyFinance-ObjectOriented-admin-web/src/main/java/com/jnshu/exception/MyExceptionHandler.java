@@ -1,13 +1,13 @@
 package com.jnshu.exception;
 
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 自定义异常处理器
@@ -17,10 +17,14 @@ import java.util.Map;
 public class MyExceptionHandler {
     @ExceptionHandler(MyException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, Object> handlerMyException(MyException ex) {
-        Map<String,Object> result = new HashMap<>();
-        result.put("code", ex.getCode());
-        result.put("message", ex.getMessage());
-        return result;
+    public void handlerMyException(MyException ex, HttpServletResponse response) {
+        JSONObject json = new JSONObject();
+        json.put("code", ex.getCode());
+        json.put("message", ex.getMessage());
+        try {
+            SendMsgUtil.sendJsonMessage(response,json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

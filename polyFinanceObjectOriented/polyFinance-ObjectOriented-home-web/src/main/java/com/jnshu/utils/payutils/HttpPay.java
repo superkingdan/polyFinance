@@ -87,6 +87,7 @@ public class HttpPay {
                     .append(bankCard).append("|").append(privateKey);
             //获得加密之后的签名
             String newSign=MD5.MD5Encode(signPlain.toString());
+            System.out.println(newSign);
             return newSign.equals(sign);
     }
 }
