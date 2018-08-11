@@ -26,46 +26,35 @@ public class UserInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         System.out.println("进入拦截器");
-//        JSONObject json=new JSONObject();
-        String uidS="";
-        String cookie="";
-        try {
-//            uidS = CookieUtil.getCookieValue(httpServletRequest, "uid");
-            cookie = CookieUtil.getCookieValue(httpServletRequest, "token");
-        }catch (Exception e){
-            log.error("无法取出cookie，需跳转登录界面");
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unlogin");
-            return false;
-        }
-        try {
-            if (null==cookie||cookie.length()<=0) {
-                log.error("cookie为null，需跳转登录界面");
-                httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unlogin");
-                return false;
-            }
-        }catch (Exception e){
-            log.error("cookie判断出现异常，需跳转登录界面");
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unlogin");
-            return false;
-        }
-        Map<String, Object> map;
-        try{
-            map = TokenJWT.validToken(cookie);
-            String state = (String) map.get("state");
-            String userId= String.valueOf(map.get("uid"));
-            if (state.equals("EXPIRED")) {
-                log.error("cookie过期，需跳转登录界面");
-                httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unlogin");
-                return false;
-            }
-        }catch (Exception e){
-            log.error("无法转化token，需跳转登录界面");
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unlogin");
-            return false;
-        }
-        return true;
+        JSONObject json = new JSONObject();
+        String uidS= CookieUtil.getCookieValue(httpServletRequest,"uid");
+        String cookie = CookieUtil.getCookieValue(httpServletRequest, "token");
+        Map<String, Object> map = TokenJWT.validToken(cookie);
+        String state = (String) map.get("state");
+        String userId= String.valueOf(map.get("uid"));
 
+
+        if (cookie == null) {
+//            json.put("code",10001);
+//            json.put("message","cookie无效");
+            throw new MyException(10001,"cookie无效");
+//            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
+//            return false;
+
+        }
+        if (state.equals("EXPIRED")) {
+//            json.put("code",1002);
+//            json.put("message","已过期,请登入");
+//            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
+            throw new MyException(10001,"已过期,请登入");
+//            return false;
+        }
+
+
+
+        return true;
     }
+
 
 
     @Override

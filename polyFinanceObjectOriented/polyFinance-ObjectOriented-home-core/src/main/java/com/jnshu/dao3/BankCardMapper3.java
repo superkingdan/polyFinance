@@ -21,16 +21,23 @@ public interface BankCardMapper3 {
       /**
        * 根据userid获取整合过的银行卡信息
        */
-       @Select("select bank_card.id,bank_card.bank_card,bank.bank_name,bank.icon," +
-               "bank.single_limited,bank.day_limited from bank_card " +
-               "inner join bank on bank_card.bank_id=bank.id where bank_card.user_id=#{id} order by bank_card.card_order")
-       List<BankCardList> findListByUser(long id);
-       /**
-        * 根据userid获取银行卡
-        */
-       @Select("select * from bank_card where user_id=#{id} order by card_order desc")
-       List<BankCard> findBankCardByUser(long id);
-       /**
+      @Select("select bank_card.id,bank_card.bank_card,bank.bank_name,bank.icon," +
+              "bank.single_limited,bank.day_limited from bank_card " +
+              "inner join bank on bank_card.bank_id=bank.id where bank_card.user_id=#{id} order by bank_card.card_order")
+      List<BankCardList> findListByUser(long id);
+      /**
+       * 根据userid获取银行卡
+       */
+      @Select("select * from bank_card where user_id=#{id} order by card_order desc")
+      List<BankCard> findBankCardByUser(long id);
+
+      /**
+       * 根据userid获取银行卡
+       */
+      @Select("select * from bank_card where user_id=#{id} and where card_order=#{cardOrder}")
+      BankCard findBankCardByOrder(long id,int order);
+
+    /**
         * 根据id获取银行卡数量
         */
        @Select("select count(*) from bank_card where user_id=#{id} ")
