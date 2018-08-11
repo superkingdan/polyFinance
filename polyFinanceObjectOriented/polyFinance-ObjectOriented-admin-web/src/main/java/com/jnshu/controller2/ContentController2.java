@@ -97,10 +97,10 @@ public class ContentController2 {
         Map<String, Object> map = new HashMap<>();
         map.put("pageNum", pageNum);
         map.put("pageSize", pageSize);
-        map.put("total", total);
+        map.put("total", contents.size());
         result.add(map);
 
-        cam.setMessage("查询成功。total为全部内容数。与条件查询无关。");
+        cam.setMessage("查询成功");
         result.add(cam);
         System.out.println("*********内容列表**********");
         for(DomainContent content : contents){
@@ -155,12 +155,12 @@ public class ContentController2 {
 
     //保存内容编辑
     @RequestMapping(value = "/a/u/contents/{id}",method = RequestMethod.PUT)
-    public List<Object> updateInfo(@PathVariable Long id,
-                                   @RequestParam String title,
-                                   @RequestParam Integer type,
+    public List<Object> updateInfo(@PathVariable(required = false) Long id,
+                                   @RequestParam(required = false) String title,
+                                   @RequestParam(required = false) Integer type,
                                    @RequestParam(required = false) String bannerCover,
                                    @RequestParam(required = false) String details,
-                                   @RequestParam Integer status,
+                                   @RequestParam(required = false) Integer status,
                                    HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> account = new HashMap<>();
         CAM cam = new CAM();
@@ -170,7 +170,7 @@ public class ContentController2 {
         List<Object> result = new ArrayList<>();
 
         //参数验证。
-        if (null == id || id < 1){
+        if ((null == id || id < 1) && (null == title || ("").equals(title)) && (null == type || ("").equals(type)) && (null == status || ("").equals(status))){
             cam.setCode(-1);
             cam.setErrorMessage("id不能为空或小于1。");
             result.add(cam);
@@ -203,9 +203,9 @@ public class ContentController2 {
             }
         }
 
-        //当type为1或2时，detail不能为没有或者没有值。同时也不需要bannerCover。
+        //当type为1或2时，details不能为没有或者没有值。同时也不需要bannerCover。
         if(type == 1 || 2 == type){
-            System.out.println("*********编辑内容接口，打印detail***********");
+            System.out.println("*********编辑内容接口，打印details***********");
             System.out.println(details);
             if (null == details || details.equals("")){
                 cam.setCode(-1);
@@ -249,17 +249,17 @@ public class ContentController2 {
         }
         cam.setMessage("更新成功。");
         result.add(cam);
-        logger.info("后台 运营管理--内容详情-更新成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ details+ ", status:"+status);
+        logger.info("后台 运营管理--内容详情-更新成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", details:"+ details+ ", status:"+status);
         return result;
     }
 
     //新增内容
     @RequestMapping(value = "/a/u/contents/new",method = RequestMethod.POST)
-        public List<Object> saveInfo(@RequestParam String title,
-                                 @RequestParam Integer type,
+        public List<Object> saveInfo(@RequestParam(required = false) String title,
+                                 @RequestParam(required = false) Integer type,
                                  @RequestParam(required = false) String bannerCover,
-                                 @RequestParam(required = false) String detail,
-                                 @RequestParam Integer status,
+                                 @RequestParam(required = false) String details,
+                                 @RequestParam(required = false) Integer status,
                                  HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> account = new HashMap<>();
         CAM cam = new CAM();
@@ -269,6 +269,13 @@ public class ContentController2 {
         List<Object> result = new ArrayList<>();
 
         //参数验证。
+        if ((null == title || ("").equals(title)) && (null == type || ("").equals(type)) && (null == status || ("").equals(status))){
+            cam.setCode(-1);
+            cam.setErrorMessage("id不能为空或小于1。");
+            result.add(cam);
+            return result;
+        }
+
         //type不能没有，而且只能时0，1，2之中的一个。
         if (null == type ||0 != type && 1 != type && 2 != type){
             cam.setCode(-1);
@@ -295,9 +302,9 @@ public class ContentController2 {
             }
         }
 
-        //当type等于1或2时，detail不能没有或者无值，同时不需要bannerCover。
+        //当type等于1或2时，details不能没有或者无值，同时不需要bannerCover。
         if(type == 1 || 2 == type){
-            if (null == detail || detail.equals("")){
+            if (null == details || details.equals("")){
                 cam.setCode(-1);
                 cam.setErrorMessage("类型为”帮助中心“ 或”关于我们“时，内容不能为空。");
                 result.add(cam);
@@ -325,7 +332,7 @@ public class ContentController2 {
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("新增内容查询是否已经有重复title时服务器错误。");
-            logger.info("后台 运营管理--新增内容-查询是否已经有重复title时-服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ detail+ ", status:"+status);
+            logger.info("后台 运营管理--新增内容-查询是否已经有重复title时-服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", details:"+ details+ ", status:"+status);
             result.add(cam1);
             return result;
         }
@@ -337,7 +344,7 @@ public class ContentController2 {
         content.setTitle(title);
         content.setType(type);
         content.setBannerCover(bannerCover);
-        content.setDetails(detail);
+        content.setDetails(details);
         content.setStatus(status);
 
         //新增
@@ -348,14 +355,14 @@ public class ContentController2 {
                 result.add(cam1);
                 return result;
             }
-            logger.info("后台 运营管理--新增内容成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ detail+ ", status:"+status);
+            logger.info("后台 运营管理--新增内容成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", details:"+ details+ ", status:"+status);
             cam.setMessage("新增成功。");
             result.add(cam);
             return result;
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("新增内容时服务器错误。");
-            logger.info("后台 运营管理--新增内容--服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", detail:"+ detail+ ", status:"+status);
+            logger.info("后台 运营管理--新增内容--服务器错误。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+", title:"+title+ ", type:"+type +", bannerCover:"+bannerCover+ ", details:"+ details+ ", status:"+status);
             result.add(cam1);
             return result;
         }
@@ -364,7 +371,7 @@ public class ContentController2 {
     //指定内容上下线操作
     @RequestMapping(value = "/a/u/contents/{id}/status",method = RequestMethod.PUT)
     public List<Object> updateContentStatus(@PathVariable Long id,
-                                            @RequestParam Integer status,
+                                            @RequestParam(required = false) Integer status,
                                             HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> account = new HashMap<>();
         CAM cam = new CAM();
@@ -374,6 +381,12 @@ public class ContentController2 {
         List<Object> result = new ArrayList<>();
 
         //参数验证。
+        if (null == status ||("").equals(status)){
+            cam.setCode(-1);
+            cam.setErrorMessage("status不能为空。");
+            result.add(cam);
+            return result;
+        }
         //id不能没有值，也不能小于1。
         if (null == id || 1 > id){
             cam.setCode(-1);
