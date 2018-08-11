@@ -85,7 +85,7 @@ public class BackController2 {
 
         result.put("code",0);
         result.put("message","成功获取账户列表。");
-        result.put("total",total);
+        result.put("total",userBacks.size());
         logger.info("后台 后台管理--账户列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
         result.put("data", userBacks);
         return result;
@@ -318,10 +318,10 @@ public class BackController2 {
     @RequestMapping(value = "/a/u/managers/new"
             , method = RequestMethod.POST)
     public Map<String, Object>  saveManager(
-            @RequestParam String loginName,
-            @RequestParam String phoneNumber,
-            @RequestParam String hashKey,
-            @RequestParam Long roleId, HttpServletRequest request, HttpServletResponse response){
+            @RequestParam(required = false) String loginName,
+            @RequestParam(required = false) String phoneNumber,
+            @RequestParam(required = false) String hashKey,
+            @RequestParam(required = false) Long roleId, HttpServletRequest request, HttpServletResponse response){
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -330,7 +330,11 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //参数验证。
-
+        if ((null == loginName || ("").equals(loginName)) && (null == phoneNumber || ("").equals(phoneNumber)) && (null == hashKey || ("").equals(hashKey)) && (null == request || ("").equals(request))){
+            result.put("code3",-1);
+            result.put("message3","loginName, phoneNumber, hashKey, roleId可能有空值。");
+            return result;
+        }
         //生成随机盐。
         RandomSalt randomSalt = new RandomSalt();
         String salt = randomSalt.getSalt(16);
@@ -397,7 +401,7 @@ public class BackController2 {
 
     //更新密码
     @RequestMapping(value = "/a/u/roles/passwd",method = RequestMethod.PUT)
-    public Map<String,Object>  updatePassword(@RequestParam String hashKey,HttpServletRequest request, HttpServletResponse response) {
+    public Map<String,Object>  updatePassword(@RequestParam(required = false) String hashKey,HttpServletRequest request, HttpServletResponse response) {
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -406,7 +410,7 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //新密码不能小于8位。
-        if (("").equals(hashKey) || hashKey.length() < 8){
+        if (null == hashKey || ("").equals(hashKey) || hashKey.length() < 8){
             result.put("code",-1);
             result.put("message","密码不能小于八位。");
             return result;
@@ -492,6 +496,11 @@ public class BackController2 {
         //返回数据List。改成map。
         Map<String, Object> result = new HashMap<>();
 
+        if (id <1){
+            result.put("code",-1);
+            result.put("message","id错误。");
+            return result;
+        }
         String role = null;
         try {
             role = roleBackService2.getRoleNameById(id);

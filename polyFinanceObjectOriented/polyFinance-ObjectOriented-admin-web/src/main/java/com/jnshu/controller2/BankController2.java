@@ -104,7 +104,7 @@ public class BankController2 {
         Map<String, Object> s = new HashMap<>();
         s.put("pageNum", pageNum);
         s.put("pageSize", pageSize);
-        s.put("total", total);
+        s.put("total", banks.size());
         result.add(s);
         result.add(cam);
         result.add(banks);

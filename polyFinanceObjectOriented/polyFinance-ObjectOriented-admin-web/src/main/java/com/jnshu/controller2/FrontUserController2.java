@@ -71,12 +71,9 @@ public class FrontUserController2 {
         }
 
         Map<String,Integer> s = new HashMap<>();
-        s.put("total", total);
+        s.put("total", users.size());
         s.put("pageNum", pageNum);
         s.put("pageSize", pageSize);
-        if (!userFrontListRPO.equals(null)){
-            s.remove("total");
-        }
         result.add(s);
 
         if (0 == users.size()){
@@ -138,7 +135,7 @@ public class FrontUserController2 {
 
     //用户列表-冻结/解冻
     @RequestMapping(value = "/a/u/users/{id}/status",method = RequestMethod.PUT)
-    public Object userStatus(@PathVariable BigDecimal id, @RequestParam Integer status,HttpServletRequest request,HttpServletResponse response){
+    public Object userStatus(@PathVariable BigDecimal id, @RequestParam(required = false) Integer status,HttpServletRequest request,HttpServletResponse response){
 
         CAM cam = new CAM();
         Map<String, Object> account = new HashMap<>();
@@ -146,9 +143,9 @@ public class FrontUserController2 {
         List<Object> result = new ArrayList<>();
 
         //参数验证
-        if (null == status){
+        if (null == status || ("").equals(status)){
             cam.setCode(-1);
-            cam.setErrorMessage("status不能为空。");
+            cam.setErrorMessage("status 不能为空。");
             result.add(cam);
             return result;
         }
@@ -246,16 +243,16 @@ public class FrontUserController2 {
 
     //修改理财经理
     @RequestMapping(value = "/a/u/users/{id}/referrer",method = RequestMethod.PUT)
-    public Object userReferrer(@PathVariable long id, @RequestParam String referrerId,HttpServletRequest request, HttpServletResponse response){
+    public Object userReferrer(@PathVariable long id, @RequestParam(required = false) String referrerId,HttpServletRequest request, HttpServletResponse response){
         CAM cam = new CAM();
         List<Object> result = new ArrayList<>();
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
 
         //参数验证
-        if (null == referrerId){
+        if (null == referrerId || ("").equals(referrerId)){
             cam.setCode(-1);
-            cam.setErrorMessage("referrerId不能为空。");
+            cam.setErrorMessage("referrerId 不能为空。");
             result.add(cam);
             return result;
         }
@@ -287,14 +284,14 @@ public class FrontUserController2 {
 
     //取消实名
     @RequestMapping(value = "/a/u/users/{id}/realStatus",method = RequestMethod.PUT)
-    public Object userRealStatus(@PathVariable long id, @RequestParam Integer realStatus,HttpServletRequest request, HttpServletResponse response){
+    public Object userRealStatus(@PathVariable long id, @RequestParam(required = false) Integer realStatus,HttpServletRequest request, HttpServletResponse response){
         CAM cam = new CAM();
         List<Object> result = new ArrayList<>();
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
 
         //参数验证
-        if (null == realStatus){
+        if (null == realStatus || ("").equals(realStatus)){
             cam.setCode(-1);
             cam.setErrorMessage("realStatus不能为空。");
             result.add(cam);
@@ -365,14 +362,14 @@ public class FrontUserController2 {
 
     //解绑银行卡
     @RequestMapping(value = "/a/u/users/{id}/bankCard",method = RequestMethod.PUT)
-    public Object userBankCard(@PathVariable long id,@RequestParam Long defaultCard , @RequestParam Long bankId,HttpServletRequest request, HttpServletResponse response){
+    public Object userBankCard(@PathVariable long id,@RequestParam(required = false) Long defaultCard , @RequestParam(required = false) Long bankId,HttpServletRequest request, HttpServletResponse response){
         CAM cam = new CAM();
         List<Object> result = new ArrayList<>();
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
 
         //参数验证
-        if (null == bankId){
+        if ((null == defaultCard || ("").equals(defaultCard)) || (null == bankId || ("").equals(bankId))){
             cam.setCode(-1);
             cam.setErrorMessage("bankId不能为空。");
             result.add(cam);

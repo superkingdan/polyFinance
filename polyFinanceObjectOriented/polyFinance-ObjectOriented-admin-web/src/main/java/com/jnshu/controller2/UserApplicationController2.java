@@ -82,11 +82,8 @@ public class UserApplicationController2 {
         }
 
         result.add(cam);
-        result.add(total);
+        result.add(userApplications.size());
         result.add(userApplications);
-        if (null != rpo){
-            result.remove(total);
-        }
         logger.info("业务管理--实名认证管理--实名列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
         return result;
     }
