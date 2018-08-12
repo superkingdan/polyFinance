@@ -175,6 +175,10 @@ public class BackController2 {
             result.put("message","错误参数");
             return result;
         }
+        if ((null == roleId || roleId.equals("")) &&(null != phoneNumber && !("").equals(phoneNumber))){
+            result.put("code",-1);
+            result.put("message","roleId和phoneNumber不能全为空。");
+        }
 
         //手机号不为空，更新user_back表手机号。
         UserBack userBack = new UserBack();
@@ -251,6 +255,7 @@ public class BackController2 {
                     result.put("message","角色id不存在。");
                     return result;
                 }
+                return result;
             } catch (Exception e) {
                 result.put("code",-1);
                 result.put("message","服务器错误。");
@@ -260,6 +265,7 @@ public class BackController2 {
                 return result;
             }
         }
+
 
         return  result;
     }
@@ -333,9 +339,15 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //参数验证。
-        if ((null == loginName || ("").equals(loginName)) && (null == phoneNumber || ("").equals(phoneNumber)) && (null == hashKey || ("").equals(hashKey)) && (null == request || ("").equals(request))){
-            result.put("code3",-1);
-            result.put("message3","loginName, phoneNumber, hashKey, roleId可能有空值。");
+        if ((null == loginName || ("").equals(loginName)) || (null == phoneNumber || ("").equals(phoneNumber)) || (null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) || (null == request || ("").equals(request))){
+            result.put("code",-1);
+            result.put("message","loginName, phoneNumber, hashKey，hashKey2, roleId可能有空值。");
+            return result;
+        }
+
+        if (!hashKey.equals(hashKey2)){
+            result.put("code",-1);
+            result.put("message","两次密码不同。");
             return result;
         }
         //生成随机盐。
@@ -347,9 +359,17 @@ public class BackController2 {
 
         String hashKey22 = null;
         try {
-            hashKey2 = desUtil.encrypt(hashKey,salt);
-
+            //查询数据库是否已经又用户了。
             UserBack userBack = new UserBack();
+            userBack = backService2.getUserBackByLoginName(loginName);
+
+            if (userBack != null){
+                result.put("code",-1);
+                result.put("message","账户名已存在，不能重复。");
+                return result;
+            }
+
+            hashKey2 = desUtil.encrypt(hashKey,salt);
             userBack.setCreateAt(System.currentTimeMillis());
             userBack.setCreateBy((Long) account.get("uid"));
             userBack.setLoginName(loginName);
@@ -413,12 +433,27 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //新密码不能小于8位。
-        if (null == hashKey || ("").equals(hashKey) || hashKey.length() < 8){
+        if ((null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) ||((null == hashKey3 || ("").equals(hashKey3)))){
             result.put("code",-1);
-            result.put("message","密码不能小于八位。");
+            result.put("message","hashKey,hashKey2,hashKey3 不能无值或为空。");
+            return result;
+        }
+        if (hashKey2.length() < 8){
+            result.put("code",-1);
+            result.put("message","新密码不能为空或小于八位。");
+            return result;
+        }
+        if (hashKey3.length() < 8){
+            result.put("code",-1);
+            result.put("message","新密码不能小于八位。");
             return result;
         }
 
+        if (!hashKey2.equals(hashKey3)){
+            result.put("code",-1);
+            result.put("message","两次新密码不同。");
+            return result;
+        }
         //生成hashkey。
         DESUtil desUtil = new DESUtil();
 
@@ -426,6 +461,13 @@ public class BackController2 {
         UserBack userBack = null;
         try {
             userBack = backService2.getUserBackById((Long) account.get("uid"));
+            //比较旧密码是否正确。
+            if (userBack.getHashKey() != desUtil.encrypt(hashKey2,userBack.getSalt())){
+                result.put("code",-1);
+                result.put("message","旧密码错误。");
+                return result;
+            }
+
             String hashKey22 =desUtil.encrypt(hashKey, userBack.getSalt());
             userBack.setHashKey(hashKey2);
             userBack.setUpdateBy((Long) account.get("uid"));

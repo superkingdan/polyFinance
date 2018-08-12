@@ -32,6 +32,7 @@ public interface UserBackMapper2 {
     @Select("select id,login_name, salt, hash_key,phone_number from user_back where id=#{id}")
     UserBack getUserBackById(Long id) throws Exception;
 
+    //通过登录名获取账户信息
     @Select("select id,login_name,hash_key,salt from user_back where login_name=#{loginName}")
     UserBack getUserBackByLoginName(String loginName) throws Exception;
 

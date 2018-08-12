@@ -68,4 +68,10 @@ public class BackServiceImpl2 implements BackService2 {
     public Long getRoleIdByUserId(Long id) throws Exception {
         return roleUserBackMapper2.getRoleIdByUserId(id);
     }
+
+    //通过登录名获取账户信息
+    @Override
+    public UserBack getUserBackByLoginName(String loginName) throws Exception {
+        return userBackMapper2.getUserBackByLoginName(loginName);
+    }
 }
