@@ -425,7 +425,7 @@ public class OtherController2 {
         //返回数据List。
         Map<String,Object> result = new HashMap<>();
 
-        if (!(("").equals(rpo.getCreateAt1())) || !(("").equals(rpo.getCreateAt2()))){
+        if (null != rpo.getCreateAt1() || null != rpo.getCreateAt2()){
            if ((null == rpo.getCreateAt1() ||("").equals(rpo.getCreateAt1()) )   || (null == rpo.getCreateAt2() ||("").equals(rpo.getCreateAt2()) )){
                result.put("code",-1);
                result.put("message","两个查询日期都要有值。");
@@ -496,7 +496,7 @@ public class OtherController2 {
         return result;
     }
 
-    //意见反馈-意见详情
+    //意见反馈-意见删除
     @RequestMapping(value = "/a/u/feedbacks/{id}",method = RequestMethod.DELETE)
     public Map<String,Object> deleteFeedback(@PathVariable long id, HttpServletRequest request,HttpServletResponse response) {
         Map<String, Object> account = new HashMap<>();

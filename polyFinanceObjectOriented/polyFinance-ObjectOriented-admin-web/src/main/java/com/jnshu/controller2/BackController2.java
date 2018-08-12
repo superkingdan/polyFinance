@@ -138,6 +138,8 @@ public class BackController2 {
             return result;
         }
 
+        userBack.setHashKey(null);
+        userBack.setSalt(null);
         result.put("code",0);
         result.put("message","查询成功。");
         logger.info("后台 后台管理--账户详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id);
@@ -321,6 +323,7 @@ public class BackController2 {
             @RequestParam(required = false) String loginName,
             @RequestParam(required = false) String phoneNumber,
             @RequestParam(required = false) String hashKey,
+            @RequestParam(required = false) String hashKey2,
             @RequestParam(required = false) Long roleId, HttpServletRequest request, HttpServletResponse response){
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
@@ -342,7 +345,7 @@ public class BackController2 {
         //生成hashkey。
         DESUtil desUtil = new DESUtil();
 
-        String hashKey2 = null;
+        String hashKey22 = null;
         try {
             hashKey2 = desUtil.encrypt(hashKey,salt);
 
@@ -401,7 +404,7 @@ public class BackController2 {
 
     //更新密码
     @RequestMapping(value = "/a/u/roles/passwd",method = RequestMethod.PUT)
-    public Map<String,Object>  updatePassword(@RequestParam(required = false) String hashKey,HttpServletRequest request, HttpServletResponse response) {
+    public Map<String,Object>  updatePassword(@RequestParam(required = false) String hashKey,@RequestParam(required = false) String hashKey2,@RequestParam(required = false) String hashKey3,HttpServletRequest request, HttpServletResponse response) {
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -423,7 +426,7 @@ public class BackController2 {
         UserBack userBack = null;
         try {
             userBack = backService2.getUserBackById((Long) account.get("uid"));
-            String hashKey2 =desUtil.encrypt(hashKey, userBack.getSalt());
+            String hashKey22 =desUtil.encrypt(hashKey, userBack.getSalt());
             userBack.setHashKey(hashKey2);
             userBack.setUpdateBy((Long) account.get("uid"));
             userBack.setUpdateAt(System.currentTimeMillis());
@@ -608,8 +611,7 @@ public class BackController2 {
 
                 //新增角色模块关联记录。
                 roleBackService2.saveRoleModule(roleModuleBack);
-                moduleId = roleModuleBack.getModuleId();
-                if (null == moduleId){
+                if (null ==(Long) roleModuleBack.getModuleId()){
                     result.put("code"+moduleId,-1);
                     result.put("message"+moduleId,"模块id为："+moduleId+"记录新增失败。");
                 }
