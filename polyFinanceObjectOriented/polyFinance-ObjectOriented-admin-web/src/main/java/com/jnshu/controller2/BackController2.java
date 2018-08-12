@@ -218,7 +218,13 @@ public class BackController2 {
 
         //更新角色。
         if (null != roleId && !roleId.equals("")){
-            //判断角色id
+            //超级用户admin的id为1，不允许修改角色。
+            if (id == 1){
+                result.put("code2",-1);
+                result.put("message2","超级用户不可以修改角色。");
+                return result;
+            }
+            //判断角色id是否存在
             Boolean x = false;
             try {
                 List<DomainRoleBack> roleBacks = roleBackService2.getAll();
@@ -240,8 +246,8 @@ public class BackController2 {
                     y = roleUserBackService2.updateRoleUserBack(roleUserBack);
 
                     if (!y){
-                        result.put("code",-1);
-                        result.put("message","账户角色更新失败。");
+                        result.put("code2",-1);
+                        result.put("message2","账户角色更新失败。");
                         return result;
                     }
 
@@ -339,7 +345,7 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //参数验证。
-        if ((null == loginName || ("").equals(loginName)) || (null == phoneNumber || ("").equals(phoneNumber)) || (null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) || (null == request || ("").equals(request))){
+        if ((null == loginName || ("").equals(loginName)) || (null == phoneNumber || ("").equals(phoneNumber)) || (null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) || (null == roleId|| ("").equals(roleId))){
             result.put("code",-1);
             result.put("message","loginName, phoneNumber, hashKey，hashKey2, roleId可能有空值。");
             return result;
@@ -462,14 +468,14 @@ public class BackController2 {
         try {
             userBack = backService2.getUserBackById((Long) account.get("uid"));
             //比较旧密码是否正确。
-            if (userBack.getHashKey() != desUtil.encrypt(hashKey2,userBack.getSalt())){
+            if (!userBack.getHashKey().equals(desUtil.encrypt(hashKey,userBack.getSalt()))){
                 result.put("code",-1);
                 result.put("message","旧密码错误。");
                 return result;
             }
 
-            String hashKey22 =desUtil.encrypt(hashKey, userBack.getSalt());
-            userBack.setHashKey(hashKey2);
+            String hashKey22 =desUtil.encrypt(hashKey2, userBack.getSalt());
+            userBack.setHashKey(hashKey22);
             userBack.setUpdateBy((Long) account.get("uid"));
             userBack.setUpdateAt(System.currentTimeMillis());
 
