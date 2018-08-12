@@ -222,14 +222,7 @@ public class PaymentController1 {
             }
             log.info("回调修改合同数据成功,其合同编号为"+contractCode);
             //创建交易表新数据
-            long transactionId;
-            try{
-                transactionId=paymentService.addTransaction(Long.valueOf(mchntOrderId),contractCode);
-            }catch (Exception e){
-                log.error("交易流水号为"+mchntOrderId+"的流水在回调时创建新交易数据出错");
-                log.error(e.getMessage());
-                throw new MyException(-1,"未知错误");
-            }
+            long transactionId=paymentService.addTransaction(Long.valueOf(mchntOrderId),contractCode);
             log.info("创建了交易，交易id为："+transactionId);
         }else {
             log.error("回调出现问题，无法创建订单，问题流水号为："+mchntOrderId);

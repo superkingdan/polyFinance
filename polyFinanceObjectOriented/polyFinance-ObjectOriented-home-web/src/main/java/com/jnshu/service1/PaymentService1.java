@@ -25,7 +25,7 @@ public interface PaymentService1 {
 
     String updateContract(long contractId);
 
-    Long addTransaction(long transactionLogId,String contractCode);
+    Long addTransaction(long transactionLogId,String contractCode)throws Exception;
 
     Long getTransactionIdByContractId(long contractId);
 

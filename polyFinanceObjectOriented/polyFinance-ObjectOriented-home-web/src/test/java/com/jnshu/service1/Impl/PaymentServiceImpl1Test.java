@@ -15,8 +15,8 @@ public class PaymentServiceImpl1Test {
 @Autowired
 PaymentServiceImpl1 paymentServiceImpl1;
     @Test
-    public void addTransaction() {
-        System.out.println(paymentServiceImpl1.addTransaction(29,"UKZXC1810000031"));
+    public void addTransaction() throws Exception{
+        System.out.println(paymentServiceImpl1.addTransaction(33,"UKZXC1810000036"));
     }
 
     @Test
