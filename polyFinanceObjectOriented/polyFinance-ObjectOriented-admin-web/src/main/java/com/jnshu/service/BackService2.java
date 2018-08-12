@@ -33,4 +33,7 @@ public interface BackService2 {
 
     //获取用户角色id。
     Long getRoleIdByUserId(Long id) throws Exception;
+
+    //通过登录名获取账户信息
+    UserBack getUserBackByLoginName(String loginName) throws Exception;
 }

@@ -1,4 +1,5 @@
 09:51:30.346 ERROR c.jnshu.interceptor.UserInterceptor - 拦截器token解析失败
+<<<<<<< HEAD
 18:29:02.773 ERROR c.j.controller.ContractController1 - null
 18:30:14.329 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
 java.lang.NullPointerException: null
@@ -80,3 +81,6 @@ java.lang.NullPointerException: null
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+=======
+22:41:32.028 ERROR com.jnshu.utils.MyInterceptor - 取出cookie过程出现问题，跳转登陆页面
+>>>>>>> b50124aaba5cfad95c50275913f1ef89b1d90582

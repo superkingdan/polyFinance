@@ -32,7 +32,6 @@ public interface UserFrontMapper2 {
             return new SQL() {{
                 SELECT("id, user_number, create_at, phone_number, referrer_id, real_name, property, cumulative_income, status");
                 FROM("user");
-//                ORDER_BY("create_at desc");
                 if (rpo.getPhoneNumber() != null) {
                     WHERE("phone_number like '%" + rpo.getPhoneNumber() + "%'");
                 }

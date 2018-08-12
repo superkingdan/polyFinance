@@ -32,6 +32,7 @@ public interface UserBackMapper2 {
     @Select("select id,login_name, salt, hash_key,phone_number from user_back where id=#{id}")
     UserBack getUserBackById(Long id) throws Exception;
 
+    //通过登录名获取账户信息
     @Select("select id,login_name,hash_key,salt from user_back where login_name=#{loginName}")
     UserBack getUserBackByLoginName(String loginName) throws Exception;
 
@@ -42,9 +43,11 @@ public interface UserBackMapper2 {
     class UserBackDaoProvider{
         public String getUserBacks(UserBackListRPO rpo){
             return new SQL(){{
-                SELECT("a.id,a.login_name,c.role,a.create_at,(select login_name from user_back where id=create_by) as createBy,a.update_at,(select login_name from user_back where id=update_by) as updateBy");
-                FROM("user_back a,role_back c");
-                WHERE("c.id=(select role_id from role_user_back where user_id=a.id)");
+                SELECT("a.id,a.login_name,c.role,a.create_at,(select login_name from user_back where id=a.create_by) as createBy,a.update_at,(select login_name from user_back where id=a.update_by) as updateBy");
+//                FROM("user_back a,role_back c");
+//                WHERE("c.id=(select role_id from role_user_back where user_id=a.id)");
+                FROM("user_back a");
+                INNER_JOIN("role_back c on c.id=(select role_id from role_user_back where user_id=a.id)");
                 if (null != rpo.getLoginName()){
                     WHERE("a.login_name like '%"+rpo.getLoginName()+"%'");
                 }

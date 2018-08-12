@@ -138,6 +138,8 @@ public class BackController2 {
             return result;
         }
 
+        userBack.setHashKey(null);
+        userBack.setSalt(null);
         result.put("code",0);
         result.put("message","查询成功。");
         logger.info("后台 后台管理--账户详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id);
@@ -172,6 +174,10 @@ public class BackController2 {
             result.put("code",-1);
             result.put("message","错误参数");
             return result;
+        }
+        if ((null == roleId || roleId.equals("")) &&(null == phoneNumber || ("").equals(phoneNumber))){
+            result.put("code",-1);
+            result.put("message","roleId和phoneNumber不能全为空。");
         }
 
         //手机号不为空，更新user_back表手机号。
@@ -212,7 +218,13 @@ public class BackController2 {
 
         //更新角色。
         if (null != roleId && !roleId.equals("")){
-            //判断角色id
+            //超级用户admin的id为1，不允许修改角色。
+            if (id == 1){
+                result.put("code2",-1);
+                result.put("message2","超级用户不可以修改角色。");
+                return result;
+            }
+            //判断角色id是否存在
             Boolean x = false;
             try {
                 List<DomainRoleBack> roleBacks = roleBackService2.getAll();
@@ -234,8 +246,8 @@ public class BackController2 {
                     y = roleUserBackService2.updateRoleUserBack(roleUserBack);
 
                     if (!y){
-                        result.put("code",-1);
-                        result.put("message","账户角色更新失败。");
+                        result.put("code2",-1);
+                        result.put("message2","账户角色更新失败。");
                         return result;
                     }
 
@@ -249,6 +261,7 @@ public class BackController2 {
                     result.put("message","角色id不存在。");
                     return result;
                 }
+                return result;
             } catch (Exception e) {
                 result.put("code",-1);
                 result.put("message","服务器错误。");
@@ -258,6 +271,7 @@ public class BackController2 {
                 return result;
             }
         }
+
 
         return  result;
     }
@@ -321,6 +335,7 @@ public class BackController2 {
             @RequestParam(required = false) String loginName,
             @RequestParam(required = false) String phoneNumber,
             @RequestParam(required = false) String hashKey,
+            @RequestParam(required = false) String hashKey2,
             @RequestParam(required = false) Long roleId, HttpServletRequest request, HttpServletResponse response){
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
@@ -330,9 +345,15 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //参数验证。
-        if ((null == loginName || ("").equals(loginName)) && (null == phoneNumber || ("").equals(phoneNumber)) && (null == hashKey || ("").equals(hashKey)) && (null == request || ("").equals(request))){
-            result.put("code3",-1);
-            result.put("message3","loginName, phoneNumber, hashKey, roleId可能有空值。");
+        if ((null == loginName || ("").equals(loginName)) || (null == phoneNumber || ("").equals(phoneNumber)) || (null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) || (null == roleId|| ("").equals(roleId))){
+            result.put("code",-1);
+            result.put("message","loginName, phoneNumber, hashKey，hashKey2, roleId可能有空值。");
+            return result;
+        }
+
+        if (!hashKey.equals(hashKey2)){
+            result.put("code",-1);
+            result.put("message","两次密码不同。");
             return result;
         }
         //生成随机盐。
@@ -342,11 +363,19 @@ public class BackController2 {
         //生成hashkey。
         DESUtil desUtil = new DESUtil();
 
-        String hashKey2 = null;
+        String hashKey22 = null;
         try {
-            hashKey2 = desUtil.encrypt(hashKey,salt);
-
+            //查询数据库是否已经又用户了。
             UserBack userBack = new UserBack();
+            userBack = backService2.getUserBackByLoginName(loginName);
+
+            if (userBack != null){
+                result.put("code",-1);
+                result.put("message","账户名已存在，不能重复。");
+                return result;
+            }
+
+            hashKey2 = desUtil.encrypt(hashKey,salt);
             userBack.setCreateAt(System.currentTimeMillis());
             userBack.setCreateBy((Long) account.get("uid"));
             userBack.setLoginName(loginName);
@@ -401,7 +430,7 @@ public class BackController2 {
 
     //更新密码
     @RequestMapping(value = "/a/u/roles/passwd",method = RequestMethod.PUT)
-    public Map<String,Object>  updatePassword(@RequestParam(required = false) String hashKey,HttpServletRequest request, HttpServletResponse response) {
+    public Map<String,Object>  updatePassword(@RequestParam(required = false) String hashKey,@RequestParam(required = false) String hashKey2,@RequestParam(required = false) String hashKey3,HttpServletRequest request, HttpServletResponse response) {
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -410,12 +439,27 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         //新密码不能小于8位。
-        if (null == hashKey || ("").equals(hashKey) || hashKey.length() < 8){
+        if ((null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) ||((null == hashKey3 || ("").equals(hashKey3)))){
             result.put("code",-1);
-            result.put("message","密码不能小于八位。");
+            result.put("message","hashKey,hashKey2,hashKey3 不能无值或为空。");
+            return result;
+        }
+        if (hashKey2.length() < 8){
+            result.put("code",-1);
+            result.put("message","新密码不能为空或小于八位。");
+            return result;
+        }
+        if (hashKey3.length() < 8){
+            result.put("code",-1);
+            result.put("message","新密码不能小于八位。");
             return result;
         }
 
+        if (!hashKey2.equals(hashKey3)){
+            result.put("code",-1);
+            result.put("message","两次新密码不同。");
+            return result;
+        }
         //生成hashkey。
         DESUtil desUtil = new DESUtil();
 
@@ -423,8 +467,15 @@ public class BackController2 {
         UserBack userBack = null;
         try {
             userBack = backService2.getUserBackById((Long) account.get("uid"));
-            String hashKey2 =desUtil.encrypt(hashKey, userBack.getSalt());
-            userBack.setHashKey(hashKey2);
+            //比较旧密码是否正确。
+            if (!userBack.getHashKey().equals(desUtil.encrypt(hashKey,userBack.getSalt()))){
+                result.put("code",-1);
+                result.put("message","旧密码错误。");
+                return result;
+            }
+
+            String hashKey22 =desUtil.encrypt(hashKey2, userBack.getSalt());
+            userBack.setHashKey(hashKey22);
             userBack.setUpdateBy((Long) account.get("uid"));
             userBack.setUpdateAt(System.currentTimeMillis());
 
@@ -608,8 +659,7 @@ public class BackController2 {
 
                 //新增角色模块关联记录。
                 roleBackService2.saveRoleModule(roleModuleBack);
-                moduleId = roleModuleBack.getModuleId();
-                if (null == moduleId){
+                if (null ==(Long) roleModuleBack.getModuleId()){
                     result.put("code"+moduleId,-1);
                     result.put("message"+moduleId,"模块id为："+moduleId+"记录新增失败。");
                 }
