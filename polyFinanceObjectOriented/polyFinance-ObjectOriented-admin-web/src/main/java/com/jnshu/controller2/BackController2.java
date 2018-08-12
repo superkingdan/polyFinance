@@ -175,7 +175,7 @@ public class BackController2 {
             result.put("message","错误参数");
             return result;
         }
-        if ((null == roleId || roleId.equals("")) &&(null != phoneNumber && !("").equals(phoneNumber))){
+        if ((null == roleId || roleId.equals("")) &&(null == phoneNumber || ("").equals(phoneNumber))){
             result.put("code",-1);
             result.put("message","roleId和phoneNumber不能全为空。");
         }

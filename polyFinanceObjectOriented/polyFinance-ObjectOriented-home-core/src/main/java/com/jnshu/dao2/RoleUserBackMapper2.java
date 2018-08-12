@@ -22,7 +22,7 @@ public interface RoleUserBackMapper2 {
     Boolean deleteRoleUserBackByRole(Long roleId) throws Exception;
 
     //更新--也是通过后台用户id定位。
-    @Update("update role_user_back set update_at=#{updateAt},update_by=#{updateBy},role_id=#{roleId} where user_id = #{userId}")
+    @Update("update role_user_back set update_at=#{updateAt},update_by=#{updateBy},role_id=#{roleId} where user_id=#{userId}")
     Boolean updateRoleUserBack(RoleUserBack roleUserBack) throws Exception;
 
     @Select("select role_id from role_user_back where user_id =#{id}")
