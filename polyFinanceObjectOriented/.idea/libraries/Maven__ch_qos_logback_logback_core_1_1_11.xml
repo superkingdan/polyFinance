@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: ch.qos.logback:logback-core:1.1.11">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11-sources.jar!/" />
->>>>>>> d4edc603d5d75f7b3f27799d3fb9ec4e74600f89
+      <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/1.1.11/logback-core-1.1.11-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

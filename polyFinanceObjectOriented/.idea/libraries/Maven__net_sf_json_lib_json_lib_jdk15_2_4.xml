@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: net.sf.json-lib:json-lib:jdk15:2.4">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/net/sf/json-lib/json-lib/2.4/json-lib-2.4-jdk15.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/json-lib/json-lib/2.4/json-lib-2.4-jdk15.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/net/sf/json-lib/json-lib/2.4/json-lib-2.4-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/json-lib/json-lib/2.4/json-lib-2.4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/net/sf/json-lib/json-lib/2.4/json-lib-2.4-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/net/sf/json-lib/json-lib/2.4/json-lib-2.4-jdk15.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/net/sf/json-lib/json-lib/2.4/json-lib-2.4-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/net/sf/json-lib/json-lib/2.4/json-lib-2.4-sources.jar!/" />
->>>>>>> d4edc603d5d75f7b3f27799d3fb9ec4e74600f89
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/json-lib/json-lib/2.4/json-lib-2.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

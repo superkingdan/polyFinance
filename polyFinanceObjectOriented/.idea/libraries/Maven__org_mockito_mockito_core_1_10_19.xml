@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.mockito:mockito-core:1.10.19">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$USER_HOME$/.m2/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.m2/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.m2/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-sources.jar!/" />
-=======
-      <root url="jar://E:/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://E:/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://E:/repository/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-sources.jar!/" />
->>>>>>> d4edc603d5d75f7b3f27799d3fb9ec4e74600f89
+      <root url="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
