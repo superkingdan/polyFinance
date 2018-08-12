@@ -30,8 +30,7 @@ public class MyInterceptor implements HandlerInterceptor {
             cookie1 = tokenUtil.getCookie2(request);
         }catch (Exception e){
             log.error("取出cookie过程出现问题，跳转登陆页面");
-            response.sendRedirect(request.getContextPath()+"/a/unlogin");
-            return false;
+            throw new MyException(10001,"已过期,请登入");
         }
 
 
@@ -45,14 +44,12 @@ public class MyInterceptor implements HandlerInterceptor {
 //            response.sendRedirect("/intercepted?next=" + request.getRequestURI());
 //            response.sendRedirect("/a/login");
             log.error("取出的cookie为空，跳转登陆页面");
-            response.sendRedirect(request.getContextPath()+"/a/unlogin");
-            return false;
+            throw new MyException(10001,"已过期,请登入");
         }
 
         if (cookie1==null||!"token".equals(cookie1.getName())){
             log.error("取出的cookie出现问题，跳转登陆页面");
-            response.sendRedirect(request.getContextPath()+"/a/unlogin");
-            return false;
+            throw new MyException(10001,"已过期,请登入");
         }
 //        System.out.println("拦截器中打印 cookie 时间="+cookie.getMaxAge());
 //        if (System.currentTimeMillis()>cookie.getMaxAge()){
@@ -69,15 +66,13 @@ public class MyInterceptor implements HandlerInterceptor {
             token2 =tokenUtil.deToken(cookie1.getValue());
         }catch (Exception e){
             log.error("验证token出现问题，跳转登陆页面");
-            response.sendRedirect(request.getContextPath()+"/a/unlogin");
-            return false;
+            throw new MyException(10001,"已过期,请登入");
         }
         Boolean s = (Boolean) token2.get("verifyResult");
 //        if (!s) response.sendRedirect("/intercepted?next=" + request.getRequestURI());
         if (!s){
             log.error("验证token出现问题，跳转登陆页面");
-            response.sendRedirect(request.getContextPath()+"/a/unlogin");
-            return false;
+            throw new MyException(10001,"已过期,请登入");
 //            response.sendRedirect("/a/login");
         }
         return true;

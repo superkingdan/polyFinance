@@ -21,11 +21,11 @@ public interface PaymentService1 {
 
     BankCard getBankCard(long bankCardId);
 
-    Long updateTransactionLog(long transactionLogId);
+    Long updateTransactionLog(long transactionLogId,String bankLog);
 
     String updateContract(long contractId);
 
-    Long addTransaction(long transactionLogId,String contractCode);
+    Long addTransaction(long transactionLogId,String contractCode)throws Exception;
 
     Long getTransactionIdByContractId(long contractId);
 

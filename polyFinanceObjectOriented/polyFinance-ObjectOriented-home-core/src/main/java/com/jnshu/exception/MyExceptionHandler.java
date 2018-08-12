@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MyExceptionHandler {
     @ExceptionHandler(MyException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public boolean handlerMyException(MyException ex, HttpServletResponse response) {
+    public void handlerMyException(MyException ex, HttpServletResponse response) {
         JSONObject json = new JSONObject();
         json.put("code", ex.getCode());
         json.put("message", ex.getMessage());
@@ -26,6 +26,5 @@ public class MyExceptionHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 }

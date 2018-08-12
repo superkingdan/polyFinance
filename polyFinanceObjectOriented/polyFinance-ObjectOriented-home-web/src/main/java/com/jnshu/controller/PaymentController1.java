@@ -178,26 +178,39 @@ public class PaymentController1 {
     public void callBack(HttpServletRequest request)throws Exception{
         //首先从请求中将数据拿出来
         // 其中只有响应码，商户号，商户订单号，富友订单号，银行卡号，金额比较重要，需要提取出来做MD5加密对比用
+        String version=request.getParameter("VERSION");
+        System.out.println(version);
+        String type=request.getParameter("TYPE");
+        System.out.println(type);
         String responseCode=request.getParameter("RESPONSECODE");
+        System.out.println(responseCode);
         String mchntCd=request.getParameter("MCHNTCD");
+        System.out.println(mchntCd);
         String mchntOrderId=request.getParameter("MCHNTORDERID");
+        System.out.println(mchntOrderId);
         String orderId=request.getParameter("ORDERID");
+        System.out.println(orderId);
         String bankCard=request.getParameter("BANKCARD");
+        System.out.println(bankCard);
         String amt=request.getParameter("AMT");
+        System.out.println(amt);
         String sign=request.getParameter("SIGN");
+        System.out.println(sign);
         log.info("回调接口被调用，交易流水号为"+mchntOrderId);
         //然后将其加密一遍，看是否被修改过
-        Boolean comparedResult=HttpPay.comparedParam(responseCode,mchntCd,mchntOrderId,orderId,bankCard,amt,sign);
+        Boolean comparedResult=HttpPay.comparedParam(version,type,responseCode,mchntCd,mchntOrderId,orderId,bankCard,amt,sign);
+        System.out.println(comparedResult);
         if(responseCode.equals("0000")&&comparedResult) {
             //修改交易流水表之前的数据,并返回合同id
             long contractId;
             try {
-                contractId = paymentService.updateTransactionLog(Long.valueOf(mchntOrderId));
+                contractId = paymentService.updateTransactionLog(Long.valueOf(mchntOrderId),orderId);
             }catch (Exception e){
                 log.error("交易流水号为"+mchntOrderId+"的流水在回调时修改交易流水表数据出错");
                 log.error(e.getMessage());
                 throw new MyException(-1,"未知错误");
             }
+            log.info("回调修改交易流水,其合同id为"+contractId);
             //验证通过，修改合同表之前的数据,并返回合同编号
             String contractCode;
             try {
@@ -207,15 +220,9 @@ public class PaymentController1 {
                 log.error(e.getMessage());
                 throw new MyException(-1,"未知错误");
             }
+            log.info("回调修改合同数据成功,其合同编号为"+contractCode);
             //创建交易表新数据
-            long transactionId;
-            try{
-                transactionId=paymentService.addTransaction(Long.valueOf(mchntOrderId),contractCode);
-            }catch (Exception e){
-                log.error("交易流水号为"+mchntOrderId+"的流水在回调时创建新交易数据出错");
-                log.error(e.getMessage());
-                throw new MyException(-1,"未知错误");
-            }
+            long transactionId=paymentService.addTransaction(Long.valueOf(mchntOrderId),contractCode);
             log.info("创建了交易，交易id为："+transactionId);
         }else {
             log.error("回调出现问题，无法创建订单，问题流水号为："+mchntOrderId);

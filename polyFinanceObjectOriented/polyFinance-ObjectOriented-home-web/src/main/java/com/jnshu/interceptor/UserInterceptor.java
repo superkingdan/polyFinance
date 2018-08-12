@@ -27,9 +27,22 @@ public class UserInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         System.out.println("进入拦截器");
         JSONObject json = new JSONObject();
-        String uidS= CookieUtil.getCookieValue(httpServletRequest,"uid");
-        String cookie = CookieUtil.getCookieValue(httpServletRequest, "token");
-        Map<String, Object> map = TokenJWT.validToken(cookie);
+        String uidS;
+        String cookie;
+        try {
+            uidS = CookieUtil.getCookieValue(httpServletRequest, "uid");
+            cookie = CookieUtil.getCookieValue(httpServletRequest, "token");
+        }catch (Exception e){
+            log.error("拦截器空指针，cookie为空");
+            throw new MyException(10001,"cookie为空，请登录");
+        }
+        Map<String, Object> map;
+        try {
+            map = TokenJWT.validToken(cookie);
+        }catch (Exception e){
+            log.error("拦截器token解析失败");
+            throw new MyException(10001,"token解析失败，请登录");
+        }
         String state = (String) map.get("state");
         String userId= String.valueOf(map.get("uid"));
 
@@ -37,7 +50,8 @@ public class UserInterceptor implements HandlerInterceptor {
         if (cookie == null) {
 //            json.put("code",10001);
 //            json.put("message","cookie无效");
-            throw new MyException(10001,"cookie无效");
+            log.error("coolie为null");
+            throw new MyException(10001,"cookie无效，请登录");
 //            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
 //            return false;
 
@@ -46,6 +60,7 @@ public class UserInterceptor implements HandlerInterceptor {
 //            json.put("code",1002);
 //            json.put("message","已过期,请登入");
 //            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
+            log.error("拦截器token解析失败");
             throw new MyException(10001,"已过期,请登入");
 //            return false;
         }

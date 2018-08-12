@@ -31,7 +31,7 @@ public class PayInterceptor implements HandlerInterceptor {
         long id=0;
         String uidS="";
         uidS= CookieUtil.getCookieValue(httpServletRequest,"uid");
-        System.out.println("开始支付拦截，用户id为"+id);
+        System.out.println("开始支付拦截，用户id为"+uidS);
         if(uidS==null){
             log.error("无法取出uid，需跳转登录界面");
             throw new MyException(10001,"cookie无效");
