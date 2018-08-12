@@ -155,13 +155,14 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 合同id
      */
     @Override
-    public Long updateTransactionLog(long transactionLogId) {
+    public Long updateTransactionLog(long transactionLogId,String bankLog) {
         TransactionLog log= transactionLogMapper1.getTransLogById(transactionLogId);
         long contractId=log.getContractId();
         log.setUpdateAt(System.currentTimeMillis());
         log.setUpdateBy(log.getCreateBy());
         log.setId(transactionLogId);
         log.setStatus(TransactionLog.STATUS_PAY_SUCCESS);
+        log.setBankLog(bankLog);
         transactionLogMapper1.updateTransactionLogById(log);
         return contractId;
     }

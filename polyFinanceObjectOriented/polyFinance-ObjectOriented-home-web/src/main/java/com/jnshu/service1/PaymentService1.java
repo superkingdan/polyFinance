@@ -21,7 +21,7 @@ public interface PaymentService1 {
 
     BankCard getBankCard(long bankCardId);
 
-    Long updateTransactionLog(long transactionLogId);
+    Long updateTransactionLog(long transactionLogId,String bankLog);
 
     String updateContract(long contractId);
 

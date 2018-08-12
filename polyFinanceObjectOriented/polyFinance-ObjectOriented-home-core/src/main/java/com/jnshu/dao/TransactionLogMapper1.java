@@ -30,7 +30,7 @@ public interface TransactionLogMapper1 {
     int addTransactionLog(TransactionLog transactionLog);
 
     //修改交易流水状态
-    @Update("update transaction_log set status=#{status},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
+    @Update("update transaction_log set status=#{status},update_at=#{updateAt},update_by=#{updateBy},bank_log=#{bankLog} where id=#{id}")
     int updateTransactionLogById(TransactionLog transactionLog);
 
     //后台按条件查找指定用户

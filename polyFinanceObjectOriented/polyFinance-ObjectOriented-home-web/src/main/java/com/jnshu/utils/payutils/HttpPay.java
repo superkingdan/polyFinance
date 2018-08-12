@@ -76,10 +76,8 @@ public class HttpPay {
      * @param sign md5签名
      * @return 比对结果
      */
-    public static  Boolean comparedParam(String responseCode,String mchntCd,String mchtOrderId,String orderId,String bankCard,String amt,String sign){
+    public static  Boolean comparedParam(String version,String type,String responseCode,String mchntCd,String mchtOrderId,String orderId,String bankCard,String amt,String sign){
             StringBuilder signPlain=new StringBuilder();
-            String version="2.0";
-            String type="10";
             String privateKey= Constants.H5_MCHNT_KEY;
             //拼接签名模板
             signPlain.append(type).append("|").append(version).append("|").append(responseCode).append("|").append(mchntCd)

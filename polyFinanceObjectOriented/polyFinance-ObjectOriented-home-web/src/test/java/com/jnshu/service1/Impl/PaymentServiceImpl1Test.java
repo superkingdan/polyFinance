@@ -21,7 +21,7 @@ PaymentServiceImpl1 paymentServiceImpl1;
 
     @Test
     public void updateTransaction(){
-        System.out.println(paymentServiceImpl1.updateTransactionLog(29));
+        System.out.println(paymentServiceImpl1.updateTransactionLog(29L,"1234567"));
     }
 
     @Test
