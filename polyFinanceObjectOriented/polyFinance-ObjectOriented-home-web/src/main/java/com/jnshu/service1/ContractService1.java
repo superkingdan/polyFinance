@@ -4,9 +4,9 @@ import com.jnshu.dto1.ContractRO;
 
 public interface ContractService1 {
 
-    String getContractUnsigned(int type);
+    String getContractUnsigned(int type)throws Exception;
 
-    ContractRO getContractReadySign(long id);
+    ContractRO getContractReadySign(long id)throws Exception;
 
-    ContractRO getContractById(long id);
+    ContractRO getContractById(long id)throws Exception;
 }

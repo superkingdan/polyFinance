@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 产品管理相关模块,1E
+ * 产品管理相关模块,2E
  * @author wangqichao
  */
 @RestController
@@ -35,14 +35,7 @@ public class ProductController1 {
     @GetMapping(value = "/a/product/list")
     public Map getProductList(ProductListRPO rpo)throws Exception{
         log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+rpo.getIsRecommend());
-        List<Product> products;
-        try{
-            products= productService1.getProductList(rpo);
-        }catch (Exception e){
-            log.error("查询产品列表失败");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        List<Product> products= productService1.getProductList(rpo);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
@@ -59,14 +52,7 @@ public class ProductController1 {
     public Map getProduct(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得id为"+id+"的产品");
         Map<String,Object> map=new HashMap<>();
-        Product product;
-        try{
-            product= productService1.getProductById(id);
-        }catch (Exception e){
-            log.error("查询指定产品"+id+"失败");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Product product= productService1.getProductById(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",product);

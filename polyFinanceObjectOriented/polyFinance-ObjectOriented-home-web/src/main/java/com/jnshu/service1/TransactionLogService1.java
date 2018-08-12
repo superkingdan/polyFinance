@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TransactionLogService1 {
 
-    List<TransactionLog> getTransactionLogList(long userId);
+    List<TransactionLog> getTransactionLogList(long userId) throws Exception;
 
-    TransactionLog getTransactionLogById(long id);
+    TransactionLog getTransactionLogById(long id)throws Exception;
 }

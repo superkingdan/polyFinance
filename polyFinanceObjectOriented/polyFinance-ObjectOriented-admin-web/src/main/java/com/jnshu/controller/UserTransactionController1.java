@@ -82,7 +82,7 @@ public class UserTransactionController1 {
     }
 
     /**
-     * 获得用户指定合同信息
+     * 获得用户指定合同信息，2E
      * @param code 合同编号
      * @return 合同相关信息
      */
@@ -90,14 +90,7 @@ public class UserTransactionController1 {
     public Map getContract(@PathVariable(value = "code")String code)throws Exception{
         log.info("查看合同编号为"+code+"的合同");
         Map<String,Object> map=new HashMap<>();
-        ContractRO ro;
-        try{
-            ro= userTransactionService1.getContract(code);
-        }catch (Exception e){
-            log.error("获得合同编号是"+code+"的合同信息发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        ContractRO ro= userTransactionService1.getContract(code);
         map.put("code",0);
         map.put("message","success");
        map.put("data",ro);

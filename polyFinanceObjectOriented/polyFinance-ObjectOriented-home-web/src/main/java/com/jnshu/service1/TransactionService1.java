@@ -6,11 +6,11 @@ import com.jnshu.dto1.TransactionRO;
 import java.util.List;
 
 public interface TransactionService1 {
-    List<TransactionListRO> getContinueInvList(long id);
+    List<TransactionListRO> getContinueInvList(long id)throws Exception;
 
-    int addRenewal(long oldId,String userSign);
+    long addRenewal(long oldId,String userSign)throws Exception;
 
-    List<TransactionListRO> getTransactionListRO(long userId,int status);
+    List<TransactionListRO> getTransactionListRO(long userId,int status)throws Exception;
 
-    TransactionRO getTransactionById(long id);
+    TransactionRO getTransactionById(long id)throws Exception;
 }
