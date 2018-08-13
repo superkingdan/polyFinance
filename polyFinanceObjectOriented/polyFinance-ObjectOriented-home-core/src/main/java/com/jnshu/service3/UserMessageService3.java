@@ -7,4 +7,6 @@ import org.springframework.stereotype.Component;
 public interface UserMessageService3 {
     /*获取消息列表*/
     JSONObject findMessageList(long id);
+    /*获取消息*/
+    JSONObject findMessage(long id);
 }
