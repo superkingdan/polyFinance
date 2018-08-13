@@ -3,6 +3,7 @@ package com.jnshu.service1.Impl;
 import com.jnshu.dao.ProductMapper1;
 import com.jnshu.dto1.ProductListRPO;
 import com.jnshu.entity.Product;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.ProductService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +30,17 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @return 查询结果
      */
     @Override
-    public List<Product> getProductList(ProductListRPO rpo) {
+    public List<Product> getProductList(ProductListRPO rpo) throws Exception{
+        log.info("获得产品列表");
         //设置状态为在售
-        rpo.setStatus(0);
-        return productMapper1.getProductListByRpo(rpo);
+        List<Product> list;
+       try {
+           rpo.setStatus(0);
+           list = productMapper1.getProductListByRpo(rpo);
+       }catch (Exception e){
+           throw new MyException(-1,"获得产品列表失败");
+       }
+        return list;
     }
 
     /**
@@ -41,7 +49,14 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @return 产品详情
      */
     @Override
-    public Product getProductById(long id) {
-        return productMapper1.getProductById(id);
+    public Product getProductById(long id) throws Exception{
+        log.info("获得指定id为"+id+"的产品");
+        Product product;
+        try{
+            product=productMapper1.getProductById(id);
+        }catch (Exception e){
+            throw new MyException(-1,"获取指定产品信息失败");
+        }
+        return product;
     }
 }

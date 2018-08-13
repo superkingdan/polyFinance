@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductService1 {
 
-    List<Product> getProductList(ProductListRPO rpo);
+    List<Product> getProductList(ProductListRPO rpo)throws Exception;
 
-    Product getProductById(long id);
+    Product getProductById(long id)throws Exception;
 }

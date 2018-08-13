@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 查看合同相关接口,1E
+ * 查看合同相关接口,2E
  * @author wangqichao
  */
 @RestController
@@ -39,14 +39,7 @@ public class ContractController1 {
             log.error("请求合同类型有误");
             throw new MyException(10040,"无效的请求类型");
         }
-        String contractUrl="";
-        try {
-            contractUrl = contractService.getContractUnsigned(type);
-        }catch (Exception e){
-            log.error("请求合同时发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        String contractUrl = contractService.getContractUnsigned(type);
         map.put("code",0);
         map.put("message","success");
         map.put("contract",contractUrl);
@@ -61,26 +54,10 @@ public class ContractController1 {
     public Map getReadyContract(HttpServletRequest request)throws Exception{
         Map<String,Object> map=new HashMap<>();
         //从cookie获得id
-        long id;
         String uidS= CookieUtil.getCookieValue(request,"uid");
-        if (uidS!=null) {
-            id = Long.parseLong(uidS);
-        }
-        //如果cookie中没有uid直接报错
-        else {
-            log.info("获取待签署合同，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
+        long id = Long.parseLong(uidS);
         log.info("用户"+id+"获得待签署合同");
-        ContractRO ro;
-        try {
-            ro = contractService.getContractReadySign(id);
-        }catch (Exception e)
-        {
-            log.error("用户"+id+"获得待签署合同，产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        ContractRO ro = contractService.getContractReadySign(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);
@@ -95,15 +72,8 @@ public class ContractController1 {
     @GetMapping(value = "/a/u/contract/{id}")
     public Map getContract(@PathVariable(value = "id")long id)throws Exception{
         log.info("查看合同id为"+id+"的合同");
-        ContractRO ro;
         Map<String,Object> map=new HashMap<>();
-        try {
-            ro=contractService.getContractById(id);
-        }catch (Exception e){
-            log.info("查看合同id为"+id+"的合同,产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        ContractRO ro=contractService.getContractById(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);

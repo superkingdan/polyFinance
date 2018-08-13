@@ -15,7 +15,7 @@ public interface UserTransactionService1 {
 
     Page<TransactionListBackRO> getTransactionList(TransactionListRPO rpo);
 
-    ContractRO getContract(String contractCode);
+    ContractRO getContract(String contractCode)throws Exception;
 
     ClaimsProtocolCodeRO getClaimsProtocolCode(String claimsProtocolCode);
 }

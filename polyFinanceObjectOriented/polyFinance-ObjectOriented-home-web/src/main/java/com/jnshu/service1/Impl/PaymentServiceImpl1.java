@@ -49,18 +49,25 @@ public class PaymentServiceImpl1 implements PaymentService1 {
     MessageMapper1 messageMapper1;
 
     /**
-     * 获得用户银行卡信息
+     * 获得用户银行卡信息，2E
      * @param id 用户id
      * @return 用户银行卡信息
      */
     @Override
-    public List<BankCardRO> getInvestment(long id) {
+    public List<BankCardRO> getInvestment(long id) throws Exception{
         log.info("获取用户"+id+"的银行卡信息");
-        return bankCardMapper1.getBankCardInfoByUserId(id);
+        List<BankCardRO> ros;
+        try{
+            ros=bankCardMapper1.getBankCardInfoByUserId(id);
+        }catch (Exception e){
+            log.error("获取用户"+id+"的银行卡信息时出错");
+            throw new MyException(-1,"获取银行卡信息出错");
+        }
+        return ros;
     }
 
     /**
-     *根据用户签名，用户id和产品id生成新的合同
+     *根据用户签名，用户id和产品id生成新的合同,2E
      * @param userSign 用户签名
      * @param productId 产品id
      * @param userId 用户id
@@ -68,28 +75,41 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      */
     @Override
     public Long addContract(String userSign, long productId, long userId) throws Exception{
+        log.info("根据用户签名，用户id和产品id生成新的合同");
         //查找用户是否够买过新手礼包以及此产品是否是新手礼包
-        Product product=productMapper1.getProductById(productId);
-        if(product.getDeadline()<30){
-            Integer isNew=userMapper1.getIsNewById(userId);
-            if(isNew!=null){
-                throw new MyException(-1,"已购买过新手礼");
+    try {
+        Product product;
+        try {
+            product = productMapper1.getProductById(productId);
+        } catch (Exception e) {
+            throw new MyException(-1, "获取旧产品信息产生错误");
+        }
+        if (product == null) {
+            throw new MyException(-1, "获取旧产品信息为空");
+        }
+        if (product.getDeadline() < 30) {
+            Integer isNew = userMapper1.getIsNewById(userId);
+            if (isNew != null) {
+                throw new MyException(-1, "已购买过新手礼");
             }
         }
         //查找最新合同号,如果没有数据就传""
         String newestContractCode;
-        try{
-            newestContractCode= contractMapper1.getNewestContractCode();
-        }catch (Exception e){
-            newestContractCode="";
+        try {
+            newestContractCode = contractMapper1.getNewestContractCode();
+        } catch (Exception e) {
+            throw new MyException(-1, "查找最新合同出错");
         }
-        System.out.println("最新合同号为"+newestContractCode);
+        if (newestContractCode == null) {
+            newestContractCode = "";
+        }
+        System.out.println("最新合同号为" + newestContractCode);
         //查找产品id对应的productCode
-        String productCode= product.getProductCode();
+        String productCode = product.getProductCode();
         //生成合同编号
-        String contractCode= TransString.transContractCode(newestContractCode,productCode);
-        System.out.println("新合同编号为"+contractCode);
-        Contract contract=new Contract();
+        String contractCode = TransString.transContractCode(newestContractCode, productCode);
+        System.out.println("新合同编号为" + contractCode);
+        Contract contract = new Contract();
         contract.setCreateAt(System.currentTimeMillis());
         contract.setCreateBy(userId);
         contract.setUserSign(userSign);
@@ -97,8 +117,15 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         contract.setIsPay(Contract.IS_PAY_NO);
         contract.setIsMatchingClaims(Contract.IS_MATCHING_CLAIMS_NO);
         //添加到合同表中去
-        contractMapper1.addContractCode(contract);
+        try {
+            contractMapper1.addContractCode(contract);
+        } catch (Exception e) {
+            throw new MyException(-1, "创建新合同信息产生错误");
+        }
         return contract.getId();
+    }catch (Exception e){
+        throw new MyException(-1, "创建新合同信息未知错误");
+    }
     }
 
     /**
@@ -107,26 +134,50 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 生成的流水id
      */
     @Override
-    public Long addPayTransactionLog(PaymentRPO rpo) {
+    public Long addPayTransactionLog(PaymentRPO rpo) throws Exception{
+        log.info("生成交易流水");
         //创建新的交易流水对象
-        TransactionLog transactionLog=new TransactionLog();
-        transactionLog.setCreateAt(System.currentTimeMillis());
-        transactionLog.setCreateBy(rpo.getUserId());
-        transactionLog.setUserId(rpo.getUserId());
-        transactionLog.setContractId(rpo.getContractId());
-        //查询产品名
-        String productName= productMapper1.getProductNameByProductId(rpo.getProductId());
-        transactionLog.setProductName(productName);
-        transactionLog.setTransactionAt(System.currentTimeMillis());
-        transactionLog.setMoney(rpo.getMoney());
-        transactionLog.setStatus(TransactionLog.STATUS_PAY_FAIL);
-        BankCard card= bankCardMapper1.getBankIdById(rpo.getBankCardId());
-        String bankName= bankMapper1.getBankNameById(card.getBankId());
-        String transactionWay=bankName+","+card.getBankCard();
-        transactionLog.setTransactionWay(transactionWay);
-        //插入交易流水
-        int a= transactionLogMapper1.addTransactionLog(transactionLog);
-        return transactionLog.getId();
+        try {
+            TransactionLog transactionLog = new TransactionLog();
+            transactionLog.setCreateAt(System.currentTimeMillis());
+            transactionLog.setCreateBy(rpo.getUserId());
+            transactionLog.setUserId(rpo.getUserId());
+            transactionLog.setContractId(rpo.getContractId());
+            //查询产品名
+            String productName;
+            try {
+                productName = productMapper1.getProductNameByProductId(rpo.getProductId());
+            } catch (Exception e) {
+                throw new MyException(-1, "获取产品名失败");
+            }
+            transactionLog.setProductName(productName);
+            transactionLog.setTransactionAt(System.currentTimeMillis());
+            transactionLog.setMoney(rpo.getMoney());
+            transactionLog.setStatus(TransactionLog.STATUS_PAY_FAIL);
+            BankCard card;
+            try {
+                card = bankCardMapper1.getBankIdById(rpo.getBankCardId());
+            } catch (Exception e) {
+                throw new MyException(-1, "获取银行卡失败");
+            }
+            String bankName;
+            try {
+                bankName = bankMapper1.getBankNameById(card.getBankId());
+            } catch (Exception e) {
+                throw new MyException(-1, "获取银行信息失败");
+            }
+            String transactionWay = bankName + "," + card.getBankCard();
+            transactionLog.setTransactionWay(transactionWay);
+            //插入交易流水
+            try {
+                transactionLogMapper1.addTransactionLog(transactionLog);
+            } catch (Exception e) {
+                throw new MyException(-1, "插入交易流水失败");
+            }
+            return transactionLog.getId();
+        }catch (Exception e) {
+            throw new MyException(-1, "插入交易未知错误");
+        }
     }
 
     /**
@@ -135,8 +186,15 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 用户真实信息
      */
     @Override
-    public User getUserInfo(long userId) {
-        return userMapper1.getUserRealInfo(userId);
+    public User getUserInfo(long userId) throws Exception{
+        log.info("获取用户信息");
+        User user;
+        try{
+            user=userMapper1.getUserRealInfo(userId);
+        }catch (Exception e){
+            throw new MyException(-1,"获取用户信息失败");
+        }
+        return user;
     }
 
     /**
@@ -145,8 +203,15 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 银行卡信息
      */
     @Override
-    public BankCard getBankCard(long bankCardId) {
-        return bankCardMapper1.getBankIdById(bankCardId);
+    public BankCard getBankCard(long bankCardId) throws Exception{
+        log.info("获取用户银行卡信息");
+        BankCard bankCard;
+        try{
+            bankCard=bankCardMapper1.getBankIdById(bankCardId);
+        }catch (Exception e){
+            throw new MyException(-1,"获取银行卡信息失败");
+        }
+        return bankCard;
     }
 
     /**
@@ -155,16 +220,33 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 合同id
      */
     @Override
-    public Long updateTransactionLog(long transactionLogId,String bankLog) {
-        TransactionLog log= transactionLogMapper1.getTransLogById(transactionLogId);
-        long contractId=log.getContractId();
-        log.setUpdateAt(System.currentTimeMillis());
-        log.setUpdateBy(log.getCreateBy());
-        log.setId(transactionLogId);
-        log.setStatus(TransactionLog.STATUS_PAY_SUCCESS);
-        log.setBankLog(bankLog);
-        transactionLogMapper1.updateTransactionLogById(log);
-        return contractId;
+    public Long updateTransactionLog(long transactionLogId,String bankLog) throws Exception{
+        log.info("更新交易流水表");
+        try {
+            TransactionLog transactionLog;
+            try{
+                transactionLog=transactionLogMapper1.getTransLogById(transactionLogId);
+            } catch (Exception e){
+                throw new MyException(-1,"获取旧交易流水失败");
+            }
+            if ((transactionLog==null)){
+                throw new MyException(-1,"获取的交易流水为空");
+            }
+            long contractId = transactionLog.getContractId();
+            transactionLog.setUpdateAt(System.currentTimeMillis());
+            transactionLog.setUpdateBy(transactionLog.getCreateBy());
+            transactionLog.setId(transactionLogId);
+            transactionLog.setStatus(TransactionLog.STATUS_PAY_SUCCESS);
+            transactionLog.setBankLog(bankLog);
+            try{
+                transactionLogMapper1.updateTransactionLogById(transactionLog);
+            }catch (Exception e){
+                throw new MyException(-1,"更新交易流水失败");
+            }
+            return contractId;
+        }catch (Exception e){
+            throw new MyException(-1,"更新交易流水表产生未知错误");
+        }
     }
 
     /**
@@ -173,14 +255,26 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 合同code
      */
     @Override
-    public String updateContract(long contractId) {
-        Contract contract= contractMapper1.getContractById(contractId);
+    public String updateContract(long contractId) throws Exception{
+        log.info("更新合同表");
+        Contract contract;
+        try{
+            contract= contractMapper1.getContractById(contractId);
+        }catch (Exception e){
+            throw new MyException(-1,"获得合同失败");
+        }
+        if (contract==null){
+            throw new MyException(-1,"获得合同为空");
+        }
         contract.setIsPay(Contract.IS_PAY_YES);
         contract.setUpdateAt(System.currentTimeMillis());
         contract.setUpdateBy(contract.getCreateBy());
         //更新合同表
-        contractMapper1.updateIsPay(contract);
-        contractMapper1.updateIsPay(contract);
+        try{
+            contractMapper1.updateIsPay(contract);
+        }catch (Exception e){
+            throw new MyException(-1,"更新合同失败");
+        }
         return contract.getContractCode();
     }
 
@@ -213,7 +307,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 product = productMapper1.getProductByName(productName);
             } catch (Exception e) {
                 log.error("添加订单时获取产品信息失败");
-                throw new MyException(-1, "获取交易流水出错");
+                throw new MyException(-1, "获取产品信息出错");
             }
             int rateOfInterest = product.getRateOfInterest();
             long productId = product.getId();
@@ -223,7 +317,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 try{
                     userMapper1.updateIsNewById(userId);
                 }catch (Exception e) {
-                    log.error("更新用户状态失败");
                     throw new MyException(-1, "更新用户状态出错");
                 }
             }
@@ -266,7 +359,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             try{
                 transactionMapper1.addTransaction(transaction);
             }catch (Exception e) {
-                log.error("添加新交易失败");
                 throw new MyException(-1, "添加新交易出错");
             }
             long transactionId = transaction.getId();
@@ -289,7 +381,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 try{
                     timedTaskMapper1.addTaskedTime(newTimedTask);
                 }catch (Exception e) {
-                    log.error("添加本息一次还定时任务失败");
                     throw new MyException(-1, "添加本息一次还定时任务出错");
                 }
                 System.out.println("本息一次还的还款定时任务id为:" + newTimedTask.getId());
@@ -338,7 +429,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                             try{
                                 timedTaskMapper1.addTaskedTime(newTimedTask);
                             }catch (Exception e) {
-                                log.error("添加第一次返息任务失败");
                                 throw new MyException(-1, "添加第一次返息任务出错");
                             }
                             log.info("第一次返息定时任务id:" + newTimedTask.getId());
@@ -360,7 +450,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                             try{
                                 timedTaskMapper1.addTaskedTime(newTimedTask);
                             }catch (Exception e) {
-                                log.error("添加第一次返息任务失败");
                                 throw new MyException(-1, "添加第一次返息任务出错");
                             }
                             log.info("第一次返息定时任务id:" + newTimedTask.getId());
@@ -381,8 +470,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                         try{
                             timedTaskMapper1.addTaskedTime(newTimedTask);
                         }catch (Exception e) {
-                            log.error("添加第"+(i+1)+"次返息任务失败");
-                            throw new MyException(-1, "添加第一次返息任务出错");
+                            throw new MyException(-1, "添加第"+(i+1)+"次返息任务出错");
                         }
                         log.info("第" + (i + 1) + "次返息定时任务id:" + newTimedTask.getId());
                         //计算剩余未返金额
@@ -400,7 +488,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                         try{
                             timedTaskMapper1.addTaskedTime(newTimedTask);
                         }catch (Exception e) {
-                            log.error("添加最后一次返息任务失败");
                             throw new MyException(-1, "添加最后一次返息任务出错");
                         }
                         log.info("最后一次返息定时任务id:" + newTimedTask.getId());
@@ -423,7 +510,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 try{
                     timedTaskMapper1.addTaskedTime(renewalTask);
                 }catch (Exception e) {
-                    log.error("添加修改续投定时任务失败");
                     throw new MyException(-1, "添加修改续投定时任务出错");
                 }
                 log.info("改变续投状态的定时任务id为" + renewalTask.getId());
@@ -439,7 +525,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             try{
                 messageMapper1.addMessage(message);
             }catch (Exception e) {
-                log.error("添加消息列表失败");
                 throw new MyException(-1, "添加消息出错");
             }
             log.info("新建消息id为" + message.getId());
@@ -448,7 +533,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             try{
                 property = userMapper1.getPropertyById(userId);
             }catch (Exception e) {
-                log.error("获得用户资产失败");
                 throw new MyException(-1, "获得用户资产出错");
             }
             BigDecimal newPropertyB = new BigDecimal(property).add(moneyB);
@@ -460,13 +544,11 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             try{
                 userMapper1.updatePropertyById(user);
             }catch (Exception e) {
-                log.error("修改用户资产失败");
                 throw new MyException(-1, "修改用户资产出错");
             }
             return transactionId;
         }catch (Exception e){
-            log.error("新建交易时出错");
-            throw new MyException(-1,"未知错误");
+            throw new MyException(-1,"新建交易产生未知错误");
         }
     }
 
@@ -476,9 +558,21 @@ public class PaymentServiceImpl1 implements PaymentService1 {
      * @return 交易id
      */
     @Override
-    public Long getTransactionIdByContractId(long contractId) {
-        String contractCode= contractMapper1.getContractCodeById(contractId);
-        return transactionMapper1.getTransactionIdByContractCode(contractCode);
+    public Long getTransactionIdByContractId(long contractId) throws Exception {
+        log.info("通过合同id获得交易id");
+        Long transactionId;
+        String contractCode;
+        try{
+            contractCode= contractMapper1.getContractCodeById(contractId);
+        }catch (Exception e){
+            throw new MyException(-1,"获得合同编号出错");
+        }
+        try{
+            transactionId=transactionMapper1.getTransactionIdByContractCode(contractCode);
+        }catch (Exception e){
+            throw new MyException(-1,"获得交易id出错");
+        }
+        return transactionId;
     }
 
 //    @Override

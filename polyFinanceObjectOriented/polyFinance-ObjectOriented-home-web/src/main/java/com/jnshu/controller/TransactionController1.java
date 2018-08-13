@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 投资信息相关接口，1E
+ * 投资信息相关接口，2E
  * @author wangqichao
  */
 @RestController
@@ -36,25 +36,10 @@ public class TransactionController1 {
         Map<String,Object> map=new HashMap<>();
         //注意要判断续投时间
         //从cookie获得id
-        long id;
         String uidS= CookieUtil.getCookieValue(request,"uid");
-        if (uidS!=null) {
-            id = Long.parseLong(uidS);
-        }
-        //如果cookie中没有uid直接报错
-        else {
-            log.info("获取用户可续投列表，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
+        long id = Long.parseLong(uidS);
         log.info("获得用户"+id+"的可续投列表");
-        List<TransactionListRO> ros;
-        try{
-            ros=transactionService.getContinueInvList(id);
-        }catch (Exception e){
-            log.error("查询用户"+id+"可续投列表失败");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        List<TransactionListRO> ros=transactionService.getContinueInvList(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",ros);
@@ -69,25 +54,10 @@ public class TransactionController1 {
     @GetMapping(value = "/a/u/transaction/list/{status}")
     public Map getTransactionList(@PathVariable(value = "status")Integer status,HttpServletRequest request)throws Exception{
         Map<String,Object> map=new HashMap<>();
-        long id;
         String uidS= CookieUtil.getCookieValue(request,"uid");
-        if (uidS!=null) {
-            id = Long.parseLong(uidS);
-        }
-        //如果cookie中没有uid直接报错
-        else {
-            log.info("获得用户投资列表，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
-        log.info("获得用户:{ }的投资列表列表，投资状态为:{ }",id,status);
-        List<TransactionListRO> ros;
-        try{
-            ros=transactionService.getTransactionListRO(id,status);
-        }catch (Exception e){
-            log.error("查询用户"+id+"投资列表失败");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        long id= Long.parseLong(uidS);
+        log.info("获得用户:"+id+"的投资列表列表，投资状态为:"+status);
+        List<TransactionListRO> ros=transactionService.getTransactionListRO(id,status);
         map.put("code",0);
         map.put("message","success");
         map.put("data",ros);
@@ -103,14 +73,7 @@ public class TransactionController1 {
     public Map getTransaction(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得用户的具体投资详情，交易id为"+id);
         Map<String,Object> map=new HashMap<>();
-        TransactionRO ro;
-        try{
-            ro=transactionService.getTransactionById(id);
-        }catch (Exception e){
-            log.error("查询指定交易"+id+"投资详情失败");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        TransactionRO ro=transactionService.getTransactionById(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);

@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.jnshu.dao.*;
 import com.jnshu.dto1.*;
 import com.jnshu.entity.*;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.UserTransactionService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,26 +64,48 @@ public class UserTransactionServiceImpl1 implements UserTransactionService1 {
      * @return 合同具体详情
      */
     @Override
-    public ContractRO getContract(String contractCode) {
+    public ContractRO getContract(String contractCode) throws Exception{
         ContractRO ro=new ContractRO();
         //设置固定数据
-        ro.setContractCode(contractCode);
-        ro.setContract(systemDataMapper1.getContractUrl());
-        ro.setCompanyCachet(systemDataMapper1.getCompanyCachet());
+        try {
+            ro.setContractCode(contractCode);
+            ro.setContract(systemDataMapper1.getContractUrl());
+            ro.setCompanyCachet(systemDataMapper1.getCompanyCachet());
+        }catch (Exception e){
+            log.error("获取合同的系统数据时出错");
+            throw new MyException(-1,"获取合同的系统数据时出错");
+        }
         //设置合同相关信息
-        Contract contract= contractMapper1.getHaveSignContractByCode(contractCode);
-        ro.setUserSign(contract.getUserSign());
-        ro.setContractCreateAt(contract.getCreateAt());
+        Contract contract;
+        try {
+            contract = contractMapper1.getHaveSignContractByCode(contractCode);
+            ro.setUserSign(contract.getUserSign());
+            ro.setContractCreateAt(contract.getCreateAt());
+        }catch (Exception e){
+            log.error("获取合同数据时出错");
+            throw new MyException(-1,"获取合同数据时出错");
+        }
         //如果已经匹配债权的话，将债权人信息放进去
         if(contract.getCurrentClaimsCode()!=null){
-            Claims claims= claimsMapper1.getCreditorInfoByClaimsCode(contract.getCurrentClaimsCode());
-            ro.setCreditor(claims.getCreditor());
-            ro.setCreditorIdCard(claims.getCreditorIdCard());
+            Claims claims;
+            try {
+                claims = claimsMapper1.getCreditorInfoByClaimsCode(contract.getCurrentClaimsCode());
+                ro.setCreditor(claims.getCreditor());
+                ro.setCreditorIdCard(claims.getCreditorIdCard());
+            }catch (Exception e){
+                log.error("获取债权数据时出错");
+                throw new MyException(-1,"获取债权数据时出错");
+            }
         }
         //设置用户信息
-        User user= userMapper1.getUserInfoByContractCode(contractCode);
-        ro.setUserName(user.getRealName());
-        ro.setUserIdCard(user.getIdCard());
+        try {
+            User user = userMapper1.getUserInfoByContractCode(contractCode);
+            ro.setUserName(user.getRealName());
+            ro.setUserIdCard(user.getIdCard());
+        }catch (Exception e){
+            log.error("获取用户数据时出错");
+            throw new MyException(-1,"获取用户数据时出错");
+        }
         return ro;
     }
 

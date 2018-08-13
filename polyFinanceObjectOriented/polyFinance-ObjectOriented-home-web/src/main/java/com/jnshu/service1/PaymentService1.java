@@ -11,23 +11,23 @@ import java.util.List;
 
 public interface PaymentService1 {
 
-    List<BankCardRO> getInvestment(long id);
+    List<BankCardRO> getInvestment(long id)throws Exception;
 
     Long addContract(String userSign,long productId,long userId)throws Exception;
 
-    Long addPayTransactionLog(PaymentRPO rpo);
+    Long addPayTransactionLog(PaymentRPO rpo)throws Exception;
 
-    User getUserInfo(long userId);
+    User getUserInfo(long userId)throws Exception;
 
-    BankCard getBankCard(long bankCardId);
+    BankCard getBankCard(long bankCardId)throws Exception;
 
-    Long updateTransactionLog(long transactionLogId,String bankLog);
+    Long updateTransactionLog(long transactionLogId,String bankLog)throws Exception;
 
-    String updateContract(long contractId);
+    String updateContract(long contractId)throws Exception;
 
     Long addTransaction(long transactionLogId,String contractCode)throws Exception;
 
-    Long getTransactionIdByContractId(long contractId);
+    Long getTransactionIdByContractId(long contractId)throws  Exception;
 
 //    Boolean judge(long id, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest)throws Exception;
 }
