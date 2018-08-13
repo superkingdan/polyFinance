@@ -44,6 +44,13 @@ public class BackController2 {
     @Autowired
     RoleUserBackService2 roleUserBackService2;
 
+    /**
+     * 账户列表
+     * @param rpo
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/a/u/managers",method = RequestMethod.GET)
     public Map<String, Object> getManagers(@ModelAttribute UserBackListRPO rpo, HttpServletRequest request, HttpServletResponse response){
 
@@ -88,7 +95,9 @@ public class BackController2 {
         return result;
     }
 
-    //账户列表-详情
+    /**
+     *账户列表-详情
+     */
     @RequestMapping(value = "/a/u/managers/{id}",method = RequestMethod.GET)
     public Map<String, Object> getManager(
             @PathVariable long id, HttpServletRequest request, HttpServletResponse response){
@@ -167,11 +176,18 @@ public class BackController2 {
             return result;
         }
 
+        if (roleId<1 ){
+            result.put("code",-1);
+            result.put("message","roleId错误参数");
+            return result;
+        }
+
         if (null != roleId && ("").equals(roleId)){
             result.put("code",-1);
             result.put("message","错误参数");
             return result;
         }
+
         if ((null == roleId || roleId.equals("")) &&(null == phoneNumber || ("").equals(phoneNumber))){
             result.put("code",-1);
             result.put("message","roleId和phoneNumber不能全为空。");
@@ -360,7 +376,6 @@ public class BackController2 {
         //生成hashkey。
         DESUtil desUtil = new DESUtil();
 
-        String hashKey22 = null;
         try {
             //查询数据库是否已经又用户了。
             UserBack userBack = new UserBack();

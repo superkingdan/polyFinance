@@ -25,7 +25,7 @@ public interface ApplicationMapper2 {
         public String updateSQL(RealNameApplication realNameApplication){
             return new SQL(){{
                 UPDATE("real_name_application");
-                SET("application_status=#{applicationStatus}, refuse_reason=#{refuseReason}");
+                SET("update_at=#{updateAt},update_by=#{updateBy},application_status=#{applicationStatus}, refuse_reason=#{refuseReason}");
                 if (2 == realNameApplication.getApplicationStatus() && null != realNameApplication.getRefuseReason() ){
                     WHERE("application_status =1 and id=#{id}");
                 }
@@ -50,6 +50,7 @@ public interface ApplicationMapper2 {
     //总数
     @Select("select count(*) from real_name_application")
     Integer getTotal() throws Exception;
+
     //实名详情--id
     @Select("select a.id, a.user_id, b.user_number, a.real_name, a.id_card, b.phone_number, b.create_at, b.email, b.address, a.front_card, a.reverse_card,a.application_status, a.refuse_reason, a.is_first  from real_name_application a inner join user b on a.user_id=b.id where a.id=#{id}")
     DomainApplication getApplicationById(Long id) throws Exception;

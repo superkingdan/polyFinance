@@ -33,6 +33,7 @@ public interface UserService2 {
 
     //取消用户实名，同时删除银行卡
     Boolean updateUserFrontRealStatus(User user) throws Exception;
+
     Integer deleteUserBankCard(Long id) throws Exception;
 
     //解绑银行卡

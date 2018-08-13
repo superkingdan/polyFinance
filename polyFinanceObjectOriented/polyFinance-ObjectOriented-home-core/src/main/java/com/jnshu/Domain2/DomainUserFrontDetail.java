@@ -3,16 +3,16 @@ package com.jnshu.Domain2;
 public class DomainUserFrontDetail {
     private Long id;
     private String userNumber;
+    private Long createAt;
+    private String referrerId;
     private Integer realStatus;
     private String realName;
     private String idCard;
     private String phoneNumber;
-    private Long createAt;
     private String email;
     private String address;
     private String property;
     private String cumulativeIncome;
-    private String referrerId;
     private String frontCard;
     private String reverseCard;
     private Integer applicationStatus;

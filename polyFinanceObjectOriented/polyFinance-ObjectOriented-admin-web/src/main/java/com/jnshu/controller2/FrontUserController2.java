@@ -221,12 +221,14 @@ public class FrontUserController2 {
         user.setUpdateAt(System.currentTimeMillis());
 
         try {
-            if (userService2.updateUserPhone(user)){
-                cam.setMessage("修改成功。");
-            }else {
+
+            Boolean x =userService2.updateUserPhone(user);
+            if (!x){
                 cam.setCode(-1);
                 cam.setMessage("修改失败。");
-                cam.setErrorMessage("手机号相同");
+                cam.setErrorMessage("id对应记录不存在或手机号相同");
+                result.add(cam);
+                return result;
             }
         } catch (Exception e) {
             cam.setErrorMessage("服务器修改手机号出错。");
@@ -236,6 +238,7 @@ public class FrontUserController2 {
             return result;
         }
 
+        cam.setMessage("手机号修改成功。");
         result.add(cam);
         logger.info("后台 业务管理--用户详情-修改手机。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。修改成功。请求参数id= "+id+"，phoneNumber="+phoneNumber +"，修改成功。");
         return result;
@@ -404,7 +407,10 @@ public class FrontUserController2 {
             return result;
         }
 
-        if (defaultCard.equals(user.getDefaultCard())){
+        System.out.println(user.getDefaultCard());
+        System.out.println(defaultCard);
+        System.out.println((long) defaultCard != (long) (user.getDefaultCard()));
+        if ((long) defaultCard != (long) (user.getDefaultCard())){
             cam.setCode(-1);
             cam.setMessage("defaultCard错误");
             cam.setErrorMessage("非当前用户默认银行卡。");
