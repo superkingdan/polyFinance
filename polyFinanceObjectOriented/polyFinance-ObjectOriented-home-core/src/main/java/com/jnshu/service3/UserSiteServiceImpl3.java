@@ -4,14 +4,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.jnshu.dao3.ContentMapper3;
 import com.jnshu.dao3.FeedbackMapper3;
 import com.jnshu.dao3.SystemDataMapper3;
+import com.jnshu.entity.Content;
 import com.jnshu.entity.Feedback;
 import com.jnshu.entity.SystemData;
+import com.jnshu.exception.MyException;
 import com.jnshu.utils3.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Service
 public class UserSiteServiceImpl3 implements UserSiteService3 {
@@ -24,29 +27,29 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
 
     /*帮助*/
     @Override
-    public JSONObject getHelp() {
+    public JSONObject getHelp() throws MyException {
         JSONObject json = new JSONObject();
-        if (contentMapper3.findToList(1).get(0)==null){
-            json.put("code",-1);
-            json.put("message","没有数据");
+        List<Content> contents=contentMapper3.findToList(1);
+        if (contents==null||contents.size()==0){
+            throw new MyException(-1,"没有数据");
         }
         json.put("code",0);
         json.put("message","成功");
-        json.put("data", contentMapper3.findToList(1).get(0));
+        json.put("data", contents.get(0));
         return json;
     }
 
     /*关于我们*/
     @Override
-    public JSONObject getAbout() {
+    public JSONObject getAbout() throws MyException {
         JSONObject json = new JSONObject();
-        if (contentMapper3.findToList(2).get(0)==null){
-            json.put("code",-1);
-            json.put("message","没有数据");
+        List<Content> contents=contentMapper3.findToList(2);
+        if (contents==null||contents.size()==0){
+            throw new MyException(-1,"没有数据");
         }
         json.put("code",0);
         json.put("message","成功");
-        json.put("data", contentMapper3.findToList(2));
+        json.put("data", contents.get(0));
         return json;
     }
 
@@ -65,18 +68,16 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
 
     /*更新内容*/
     @Override
-    public JSONObject getUpdata() {
+    public JSONObject getUpdata() throws MyException {
         JSONObject json = new JSONObject();
-        SystemData systemData= systemDataMapper3.findByDataName("gengxin");
-        if (systemData.equals(null)){
-            json.put("code",0);
-            json.put("message","没有更新");
-            json.put("data","已是最新版本");
-            return json;
+        List<SystemData> systemDatas= systemDataMapper3.findByDataName("更新");
+        System.out.println(systemDatas);
+        if (systemDatas==null||systemDatas.size()==0){
+            throw new MyException(-1,"已是最新版本");
         }
         json.put("code",0);
         json.put("message","有更新");
-        json.put("data",systemData);
+        json.put("data",systemDatas.get(0));
         return json;
     }
 
