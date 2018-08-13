@@ -1,6 +1,8 @@
 package com.jnshu.controller;
 
+import com.jnshu.entity.RealNameApplication;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import com.jnshu.service3.UserDataService3;
 import com.jnshu.service3.UserLoginService3;
 import org.slf4j.Logger;
@@ -55,9 +57,9 @@ public class UserDataController3 {
     @PostMapping("/user/verification/{id}")
     @ResponseBody
     public Object verification(@PathVariable(value="id") long id,
-                               @ModelAttribute User user,
-                               HttpServletRequest request){
-        return userDataService3.verificationReal(id,user);
+                               RealNameApplication realNameApplication,
+                               HttpServletRequest request) throws MyException {
+        return userDataService3.verificationReal(id,realNameApplication);
     }
     /**
      * 上传图片
