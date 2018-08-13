@@ -174,10 +174,9 @@ public class FrontUserController2 {
                     cam.setMessage("冻结成功。");
                     sta = "冻结";
                 }
-                result.add(cam);
             }else {
                 cam.setCode(-1);
-                cam.setErrorMessage("参数错误。");
+                cam.setErrorMessage("id对应记录不存在或已经是要修改的状态。");
             }
             logger.info("后台 业务管理--用户冻结-解冻。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数id= "+id+"，操作="+sta+"成功。");
 
@@ -264,23 +263,27 @@ public class FrontUserController2 {
         user.setReferrerId(referrerId);
         user.setUpdateBy((Long) account.get("uid"));
         user.setUpdateAt(System.currentTimeMillis());
-
+        Boolean x =false;
         try {
-            Boolean x = userService2.updateUserFrontReferrerId(user);
+            x = userService2.updateUserFrontReferrerId(user);
             System.out.println(user);
             System.out.println(x);
+
             if (x){
                 cam.setMessage("修改成功。");
-            }else {
+            }
+
+            if(!x){
                 cam.setCode(-1);
-                cam.setErrorMessage("修改失败。理财经理工号相同。");
-                return result;
+                cam.setErrorMessage("修改失败。理财经理工号相同。或id对应记录不存在。");
             }
         } catch (Exception e) {
             cam.setErrorMessage("服务器修改理财经理出错。");
             logger.info("服务器修改理财经理出错。账户id="+account.get("uid")+", 被操作用户id="+id);
             e.printStackTrace();
         }
+
+
         result.add(cam);
         logger.info("后台 业务管理--用户详情-更换理财经理。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。"+"用户id="+id+", 的理财经理工号修改成功。");
         return result;
@@ -401,7 +404,7 @@ public class FrontUserController2 {
             return result;
         }
 
-        if (defaultCard != user.getDefaultCard()){
+        if (defaultCard.equals(user.getDefaultCard())){
             cam.setCode(-1);
             cam.setMessage("defaultCard错误");
             cam.setErrorMessage("非当前用户默认银行卡。");
@@ -431,7 +434,7 @@ public class FrontUserController2 {
         //新的默认银行卡id。
         Long newDefaultBankCardId = null;
         for (UserBankCard card : bankCards){
-            if (bankId != card.getCardId()){
+            if ((long) bankId != card.getCardId()){
                 newDefaultBankCardId = card.getCardId();
             }
         }
