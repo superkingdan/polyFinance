@@ -378,7 +378,7 @@ public class BackController2 {
 
         try {
             //查询数据库是否已经又用户了。
-            UserBack userBack = new UserBack();
+            UserBack userBack = null;
             userBack = backService2.getUserBackByLoginName(loginName);
 
             if (userBack != null){
@@ -387,7 +387,29 @@ public class BackController2 {
                 return result;
             }
 
+            //如果userback为空表示新增账户的loginName不冲突。
+            if (userBack == null){
+                userBack = new UserBack();
+            }
+
+            //判断角色id是否为当前数据库存在的。如果不存在，返回错误。
+            List<DomainRoleBack>  roleBacks=roleBackService2.getAll();
+            boolean x = false;
+            for (DomainRoleBack roleBack : roleBacks){
+                if ((long)roleBack.getId() == roleId){
+                    x = true;
+                    break;
+                }
+            }
+
+            if (!x){
+                result.put("code",-1);
+                result.put("message","角色id不是当前系统中的，请确认。");
+                return result;
+            }
             hashKey2 = desUtil.encrypt(hashKey,salt);
+            System.out.println("*(*(*(*(*(*(*(*(*(*(*(");
+            System.out.println(userBack);
             userBack.setCreateAt(System.currentTimeMillis());
             userBack.setCreateBy((Long) account.get("uid"));
             userBack.setLoginName(loginName);
@@ -623,11 +645,6 @@ public class BackController2 {
         //将角色对应的模块id list 转化为List。
         List<Long> inputModuleIds = JSON.parseArray(moduleIds,Long.class);
 
-        System.out.println("*(*(*(*(*(*(*(*(*(");
-        System.out.println(inputModuleIds);
-        System.out.println(inputModuleIds.toString());
-        System.out.println(inputModuleIds.get(1));
-
         //新增角色。
         //查询是否已经存在。
         Long roleId = null;
@@ -714,6 +731,12 @@ public class BackController2 {
             return result;
         }
 
+        //判断moduleIds格式是否正确。
+        if (!moduleIds.contains("[") || !moduleIds.contains("]")){
+            result.put("code",-1);
+            result.put("message","moduleIds格式不对，需要数组[]。");
+            return result;
+        }
 
         Boolean x = false;
         try {
@@ -740,7 +763,7 @@ public class BackController2 {
             for (Long id1 : inputModuleIds){
                 int times = 0;
                 for (Long id2 : inputModuleIds){
-                    if (Objects.equals(id, id2)){
+                    if (Objects.equals(id1, id2)){
                         times++;
                     }
                 }
