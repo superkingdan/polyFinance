@@ -29,6 +29,10 @@ public class Verification {
     public static boolean regexkQQ(String qq){
         return qq.matches("^[1-9][0-9]{6,14}$");
     }
+
+    public static boolean regexIdCard(String idCard) {
+        return idCard.matches("^[1-9]\\d{5}[1-9]\\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\\d)|(3[0-1]))((\\d{4})|(\\d{3}[Xx]))$");
+    }
 }
 
     //        String pattern = "^[a-zA-Z0-9]{8,16}$";

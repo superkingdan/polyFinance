@@ -9,6 +9,7 @@ import com.jnshu.dao2.UserBackMapper2;
 import com.jnshu.dto2.UserBackListRPO;
 import com.jnshu.entity.RoleBack;
 import com.jnshu.entity.UserBack;
+import com.jnshu.exception.MyException;
 import com.jnshu.service.UserBackService2;
 import com.jnshu.utils.CAM;
 import com.jnshu.utils.DESUtil;
@@ -47,10 +48,11 @@ public class UserBackServiceImpl2 implements UserBackService2 {
         //通过用户名获得数据库中用户信息。
         UserBack userBackData = userBackMapper2.getUserBackByLoginName(userBack.getLoginName());
         if (null == userBackData){
-            cam.setCode(-1);
-            cam.setMessage("账户不存在");
-            result.add(cam);
-            return result;
+            System.out.println("fuck.");
+            Map<String,Object> v2 = new HashMap<>();
+            v2.put("code",-1);
+            v2.put("message","用户账户不存在");
+            return v2;
         }
 
         //判断密码是否正确。

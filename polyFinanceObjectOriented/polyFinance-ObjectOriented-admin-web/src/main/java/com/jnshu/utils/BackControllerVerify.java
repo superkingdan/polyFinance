@@ -19,7 +19,7 @@ public class BackControllerVerify {
         Map<String, Object> result = new HashMap<>();
         if ((null == role || ("").equals(role)) || (null == moduleIds || ("").equals(moduleIds))){
             result.put("code",-1);
-            result.put("message","role和required不能为空。");
+            result.put("message","role和moduleIds不能为空。");
             return result;
         }
         return null;
@@ -28,6 +28,12 @@ public class BackControllerVerify {
     public static Map<String, Object> roleInsert(String role, String moduleIds,Long roleId, List<Long> list,Map<String, Object> account) throws Exception{
         Map<String, Object> result = new HashMap<>();
 
+        //判断moduleIds格式是否正确。
+        if (!moduleIds.contains("[") || !moduleIds.contains("]")){
+            result.put("code",-1);
+            result.put("message","moduleIds格式不对，需要数组[]。");
+            return result;
+        }
         //将角色对应的模块id list 转化为List。
         List<Long> inputModuleIds = JSON.parseArray(moduleIds,Long.class);
 
@@ -61,7 +67,7 @@ public class BackControllerVerify {
         for (Long id : inputModuleIds){
             int times = 0;
             for (Long id2 : inputModuleIds){
-                if (id == id2){
+                if ((long) id == id2){
                     times++;
                 }
             }

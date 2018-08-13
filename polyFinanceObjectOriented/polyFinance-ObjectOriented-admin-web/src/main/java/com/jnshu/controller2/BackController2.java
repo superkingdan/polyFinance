@@ -25,10 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //后台管理
 @RestController
@@ -47,6 +44,13 @@ public class BackController2 {
     @Autowired
     RoleUserBackService2 roleUserBackService2;
 
+    /**
+     * 账户列表
+     * @param rpo
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/a/u/managers",method = RequestMethod.GET)
     public Map<String, Object> getManagers(@ModelAttribute UserBackListRPO rpo, HttpServletRequest request, HttpServletResponse response){
 
@@ -91,7 +95,9 @@ public class BackController2 {
         return result;
     }
 
-    //账户列表-详情
+    /**
+     *账户列表-详情
+     */
     @RequestMapping(value = "/a/u/managers/{id}",method = RequestMethod.GET)
     public Map<String, Object> getManager(
             @PathVariable long id, HttpServletRequest request, HttpServletResponse response){
@@ -170,11 +176,18 @@ public class BackController2 {
             return result;
         }
 
+        if (roleId<1 ){
+            result.put("code",-1);
+            result.put("message","roleId错误参数");
+            return result;
+        }
+
         if (null != roleId && ("").equals(roleId)){
             result.put("code",-1);
             result.put("message","错误参数");
             return result;
         }
+
         if ((null == roleId || roleId.equals("")) &&(null == phoneNumber || ("").equals(phoneNumber))){
             result.put("code",-1);
             result.put("message","roleId和phoneNumber不能全为空。");
@@ -363,10 +376,9 @@ public class BackController2 {
         //生成hashkey。
         DESUtil desUtil = new DESUtil();
 
-        String hashKey22 = null;
         try {
             //查询数据库是否已经又用户了。
-            UserBack userBack = new UserBack();
+            UserBack userBack = null;
             userBack = backService2.getUserBackByLoginName(loginName);
 
             if (userBack != null){
@@ -375,7 +387,29 @@ public class BackController2 {
                 return result;
             }
 
+            //如果userback为空表示新增账户的loginName不冲突。
+            if (userBack == null){
+                userBack = new UserBack();
+            }
+
+            //判断角色id是否为当前数据库存在的。如果不存在，返回错误。
+            List<DomainRoleBack>  roleBacks=roleBackService2.getAll();
+            boolean x = false;
+            for (DomainRoleBack roleBack : roleBacks){
+                if ((long)roleBack.getId() == roleId){
+                    x = true;
+                    break;
+                }
+            }
+
+            if (!x){
+                result.put("code",-1);
+                result.put("message","角色id不是当前系统中的，请确认。");
+                return result;
+            }
             hashKey2 = desUtil.encrypt(hashKey,salt);
+            System.out.println("*(*(*(*(*(*(*(*(*(*(*(");
+            System.out.println(userBack);
             userBack.setCreateAt(System.currentTimeMillis());
             userBack.setCreateBy((Long) account.get("uid"));
             userBack.setLoginName(loginName);
@@ -608,13 +642,15 @@ public class BackController2 {
             throw new MyException(-1111, "参数异常。");
         }
 
+        result = new HashMap<>();
+        //判断moduleIds格式是否正确。
+        if (!moduleIds.contains("[") || !moduleIds.contains("]")){
+            result.put("code",-1);
+            result.put("message","moduleIds格式不对，需要数组[]。");
+            return result;
+        }
         //将角色对应的模块id list 转化为List。
         List<Long> inputModuleIds = JSON.parseArray(moduleIds,Long.class);
-
-        System.out.println("*(*(*(*(*(*(*(*(*(");
-        System.out.println(inputModuleIds);
-        System.out.println(inputModuleIds.toString());
-        System.out.println(inputModuleIds.get(1));
 
         //新增角色。
         //查询是否已经存在。
@@ -702,6 +738,12 @@ public class BackController2 {
             return result;
         }
 
+        //判断moduleIds格式是否正确。
+        if (!moduleIds.contains("[") || !moduleIds.contains("]")){
+            result.put("code",-1);
+            result.put("message","moduleIds格式不对，需要数组[]。");
+            return result;
+        }
 
         Boolean x = false;
         try {
@@ -728,7 +770,7 @@ public class BackController2 {
             for (Long id1 : inputModuleIds){
                 int times = 0;
                 for (Long id2 : inputModuleIds){
-                    if (id == id2){
+                    if (Objects.equals(id1, id2)){
                         times++;
                     }
                 }
@@ -740,13 +782,18 @@ public class BackController2 {
                 }
             }
 
-            //删除旧的角色模块旧的记录。
-            x = roleBackService2.deleteRoleModuleByRoleId(id);
+            //新建角色没有关联模块所以是删除时是false。这里先做一个查询角色关联模块数量，如果是0直接新增。
+            List<Long> roleModuleIds = roleBackService2.getRoleModuleIdList(id);
 
-            if (!x){
-                result.put("code",-1);
-                result.put("message","角色更新时删除旧关联记录时出错。");
-                return result;
+            if (0 != roleModuleIds.size()){
+                //删除旧的角色模块旧的记录。
+                x = roleBackService2.deleteRoleModuleByRoleId(id);
+
+                if (!x){
+                    result.put("code",-1);
+                    result.put("message","角色更新时 删除旧关联记录时出错。");
+                    return result;
+                }
             }
 
             System.out.println(moduleIds);

@@ -78,7 +78,6 @@ public class BankController2 {
                 result.add(cam);
                 return result;
             }
-            cam.setMessage("总数与查询条件无关。");
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("服务器在获取银行列表时出错");

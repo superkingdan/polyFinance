@@ -3,15 +3,16 @@ package com.jnshu.Domain2;
 public class DomainUserFrontDetail {
     private Long id;
     private String userNumber;
-    private String realName;
-    private String id_card;
-    private String phone_number;
     private Long createAt;
+    private String referrerId;
+    private Integer realStatus;
+    private String realName;
+    private String idCard;
+    private String phoneNumber;
     private String email;
     private String address;
     private String property;
     private String cumulativeIncome;
-    private String referrerId;
     private String frontCard;
     private String reverseCard;
     private Integer applicationStatus;
@@ -36,6 +37,14 @@ public class DomainUserFrontDetail {
         this.userNumber = userNumber;
     }
 
+    public Integer getRealStatus() {
+        return realStatus;
+    }
+
+    public void setRealStatus(Integer realStatus) {
+        this.realStatus = realStatus;
+    }
+
     public String getRealName() {
         return realName;
     }
@@ -44,20 +53,20 @@ public class DomainUserFrontDetail {
         this.realName = realName;
     }
 
-    public String getId_card() {
-        return id_card;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setId_card(String id_card) {
-        this.id_card = id_card;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getCreateAt() {
@@ -145,9 +154,10 @@ public class DomainUserFrontDetail {
         return "DomainUserFrontDetail{" +
                 "id=" + id +
                 ", userNumber='" + userNumber + '\'' +
+                ", realStatus=" + realStatus +
                 ", realName='" + realName + '\'' +
-                ", id_card='" + id_card + '\'' +
-                ", phone_number='" + phone_number + '\'' +
+                ", idCard='" + idCard + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", createAt=" + createAt +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
@@ -158,6 +168,6 @@ public class DomainUserFrontDetail {
                 ", reverseCard='" + reverseCard + '\'' +
                 ", applicationStatus=" + applicationStatus +
                 ", defaultCard=" + defaultCard +
-                '}' +"\n";
+                '}';
     }
 }

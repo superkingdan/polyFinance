@@ -43,7 +43,7 @@ public class LoginController2 {
             return cam;
         }
 
-        Object result = new ArrayList<>();
+        Object result = null;
         try {
             result = userBackService2.verifyUserBack(userBack,request,response);
         } catch (Exception e) {

@@ -6,8 +6,10 @@ import com.jnshu.dao3.RealNameApplicationMapper3;
 import com.jnshu.dao3.UserMapper3;
 import com.jnshu.entity.RealNameApplication;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import com.jnshu.utils3.AliOSSUtil;
 import com.jnshu.utils3.OSSUtil;
+import com.jnshu.utils3.Verification;
 import com.jnshu.utils3.VerificationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,12 +67,15 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         return json;
     }
 
-    /*用户账户设置页面*/
+    /*用户账户设置页面*/ //8/13修改
     @Override
     public JSONObject findData(long id) {
         JSONObject json=new JSONObject();
         User user= userMapper3.findUserById(id);
-        String defaultCard= userBankService3.defaultCard(user.getDefaultCard());
+        String defaultCard = null;
+        if (user.getDefaultCard()!=0) {
+            defaultCard = userBankService3.defaultCard(user.getDefaultCard());
+        }
         Map<String ,String> map = new HashMap<String ,String>();
         map.put("phoneNumber",user.getPhoneNumber());
         map.put("idCard",user.getIdCard());
@@ -163,34 +168,52 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             e.printStackTrace();
         }
 
-        String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
-        redisCacheManager.set(user.getPhoneNumber()+","+imageName,avatar);
+        String data = OSSUtil.getImgUrl(photoKey,bucketName);
+//        redisCacheManager.set(user.getPhoneNumber()+","+imageName,data);
 
         json.put("code",0);
         json.put("message","成功");
+        json.put("data",data);
         return json;
     }
     /*实名验证*/
     @Override
-    public JSONObject verificationReal(long id, User user) {
+    public JSONObject verificationReal(long id, RealNameApplication realNameApplication) throws MyException {
         JSONObject json=new JSONObject();
-        RealNameApplication realNameApplication =new RealNameApplication();
-        if (realNameApplicationMapper3.findByUserId(id)!=null){
-            realNameApplication.setIsFirst(1);
+        System.out.println("输入的=="+realNameApplication);
+        if (!Verification.regexIdCard(realNameApplication.getIdCard())){
+            throw new MyException(-1,"身份证号格式不正确");
         }
-        User user1= userMapper3.findUserById(id);
-        String frontCard= (String) redisCacheManager.get(user1.getPhoneNumber()+",frontCard");
-        String reverseCard=(String) redisCacheManager.get(user1.getPhoneNumber()+",reverseCard");
-        realNameApplication.setFrontCard(frontCard);
-        realNameApplication.setReverseCard(reverseCard);
-        realNameApplication.setCreateAt(System.currentTimeMillis());
-        realNameApplication.setUserId(id);
-        realNameApplication.setIdCard(user.getIdCard());
-        realNameApplication.setRealName(user.getRealName());
-        realNameApplicationMapper3.addRealName(realNameApplication);
-        json.put("code",0);
-        json.put("message","成功");
-        return json;
+        if (realNameApplication.getRealName()==null){
+            throw new MyException(-1,"姓名不能为空");
+        }
+        RealNameApplication realNameApplication1=realNameApplicationMapper3.findIdCard(realNameApplication.getIdCard());
+        System.out.println(realNameApplication1);
+        if (realNameApplication1==null) {
+            if (realNameApplicationMapper3.findByUserId(id) != null) {
+                if (realNameApplicationMapper3.findByUserId(id).getApplicationStatus() != 1) {
+                    realNameApplication.setIsFirst(1);
+                    realNameApplicationMapper3.updateData(realNameApplication);
+                    json.put("code", 0);
+                    json.put("message", "成功");
+                    System.out.println("实名注册表更新" + realNameApplication);
+                    return json;
+                }
+                json.put("code", -1);
+                json.put("message", "成功");
+                System.out.println("请不要重复认证");
+                return json;
+            }
+            realNameApplication.setCreateAt(System.currentTimeMillis());
+            realNameApplication.setUserId(id);
+            realNameApplicationMapper3.addRealName(realNameApplication);
+            System.out.println(realNameApplication);
+            json.put("code", 0);
+            json.put("message", "成功");
+
+            return json;
+        }
+        throw new MyException(-1,"该身份证只能绑定一个账户");
     }
 
 

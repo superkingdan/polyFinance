@@ -50,7 +50,7 @@ public class ContentController2 {
 
         if (null != contentListRPO.getType()){
             if (contentListRPO.getType() != 0 && 1 != contentListRPO.getType() && 2 != contentListRPO.getType()){
-                CAM cam1 = new CAM(-1, "类型为非法参数。");
+                CAM cam1 = new CAM(-1, "type参数值不允许。");
                 result.add(cam1);
                 return result;
             }
@@ -58,7 +58,7 @@ public class ContentController2 {
 
         if (null != contentListRPO.getStatus()){
             if (0 != contentListRPO.getStatus() && 1 != contentListRPO.getStatus()){
-                CAM cam1 = new CAM(-1,"状态为非法参数。");
+                CAM cam1 = new CAM(-1,"status参数值不允许。");
                 result.add(cam1);
                 return result;
             }
@@ -170,9 +170,15 @@ public class ContentController2 {
         List<Object> result = new ArrayList<>();
 
         //参数验证。
-        if ((null == id || id < 1) && (null == title || ("").equals(title)) && (null == type || ("").equals(type)) && (null == status || ("").equals(status))){
+        if (null == id || 1 > id){
             cam.setCode(-1);
-            cam.setErrorMessage("id不能为空或小于1。");
+            cam.setErrorMessage("id参数错误。");
+            result.add(cam);
+            return result;
+        }
+        if ((null == title || ("").equals(title)) || (null == type || ("").equals(type)) || (null == status || ("").equals(status))){
+            cam.setCode(-1);
+            cam.setErrorMessage("title, type, status不能为空或无值。");
             result.add(cam);
             return result;
         }
@@ -180,7 +186,7 @@ public class ContentController2 {
         //type不能为空，或者时0，1，2之外的数字
         if (null == type || 0 != type && 1 != type && 2 != type){
             cam.setCode(-1);
-            cam.setErrorMessage("type参数错误。");
+            cam.setErrorMessage("type参数值不允许。");
             result.add(cam);
             return result;
         }
@@ -188,7 +194,7 @@ public class ContentController2 {
         //status不能为空，或者是0，1之外的数字
         if (null == status || 0 != status && 1 != status){
             cam.setCode(-1);
-            cam.setErrorMessage("status参数错误。");
+            cam.setErrorMessage("status参数值不允许。");
             result.add(cam);
             return result;
         }
@@ -269,9 +275,9 @@ public class ContentController2 {
         List<Object> result = new ArrayList<>();
 
         //参数验证。
-        if ((null == title || ("").equals(title)) && (null == type || ("").equals(type)) && (null == status || ("").equals(status))){
+        if ((null == title || ("").equals(title)) || (null == type || ("").equals(type)) || (null == status || ("").equals(status))){
             cam.setCode(-1);
-            cam.setErrorMessage("id不能为空或小于1。");
+            cam.setErrorMessage("title, type, status 不能为空或无值。");
             result.add(cam);
             return result;
         }
@@ -390,7 +396,7 @@ public class ContentController2 {
         //id不能没有值，也不能小于1。
         if (null == id || 1 > id){
             cam.setCode(-1);
-            cam.setErrorMessage("非法参数。");
+            cam.setErrorMessage("id参数错误。");
             result.add(cam);
             return result;
         }
@@ -398,7 +404,7 @@ public class ContentController2 {
         //status不能没有值，同时不能是0和1之外的值。
         if (null == status ||0 != status && 1 != status){
             cam.setCode(-1);
-            cam.setErrorMessage("status非法参数。");
+            cam.setErrorMessage("status参数错误。");
             result.add(cam);
             return result;
         }

@@ -33,4 +33,13 @@ public class UserMessageController3 {
     public Object messageUser(@PathVariable(value="id") long id, HttpServletRequest request){
         return userMessageService3.findMessageList(id);
     }
+    /**
+     * 活动消息
+     * @return 消息列表
+     */
+    @GetMapping("/user/userMessage/banner/{id}")
+    @ResponseBody
+    public Object message(@PathVariable(value="id") long id, HttpServletRequest request){
+        return userMessageService3.findMessage(id);
+    }
 }

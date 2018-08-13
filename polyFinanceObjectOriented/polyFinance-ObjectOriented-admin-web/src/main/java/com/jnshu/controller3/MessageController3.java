@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-@RequestMapping("/admin/a/u")
+@RequestMapping("/a/u")
 public class MessageController3 {
 
     @Autowired
@@ -32,6 +32,7 @@ public class MessageController3 {
     @ResponseBody
     public Object messages(@ModelAttribute MessageListRPO messageListRPO,
                            HttpServletRequest request)throws Exception{
+        System.out.println("消息列表");
         return messageService3.findMessageList(messageListRPO);
     }
 

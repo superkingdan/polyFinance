@@ -1,7 +1,9 @@
 package com.jnshu.service3;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jnshu.entity.RealNameApplication;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +28,7 @@ public interface UserDataService3 {
     /*上传图片*/
     JSONObject updataImg(MultipartFile realImage, HttpServletRequest request, long id, String imageName);
     /*实名验证*/
-    JSONObject verificationReal(long id, User user);
+    JSONObject verificationReal(long id, RealNameApplication realNameApplication) throws MyException;
 
 
 

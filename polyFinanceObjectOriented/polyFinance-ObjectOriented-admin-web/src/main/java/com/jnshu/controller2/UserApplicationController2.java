@@ -81,8 +81,11 @@ public class UserApplicationController2 {
             return result;
         }
 
+        Map<String, Object> x = new HashMap<>();
+        x.put("total",userApplications.size());
+        x.put("pageSize",pageSize);
         result.add(cam);
-        result.add(userApplications.size());
+        result.add(x);
         result.add(userApplications);
         logger.info("业务管理--实名认证管理--实名列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
         return result;
@@ -152,7 +155,7 @@ public class UserApplicationController2 {
                 result.add(cam1);
                 logger.info("业务管理--实名认证管理--实名列表取消实名成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求id参数： "+id+", applicationStatus="+applicationStatus);
             }else {
-                CAM cam1 = new CAM(-1,"取消实名失败。原因：实名申请本身未认证。只有认证用户才可以取消实名。");
+                CAM cam1 = new CAM(-1,"取消实名失败。原因：实名申请记录非“实名”状态。只有被实名认证的用户才可以取消实名。");
                 result.add(cam1);
                 return result;
             }
@@ -168,6 +171,7 @@ public class UserApplicationController2 {
 
         //同时修改用户表对应id记录和对应银行卡表中对应记录。
         if (update){
+            //通过获取实名申请信息得到用户id，以在下面更新用户表时使用。
             DomainApplication domainApplication =null;
             try {
                 domainApplication = userApplicationService2.getApplicationById(id);
