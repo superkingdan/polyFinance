@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-@RequestMapping("/admin/a/u")
+@RequestMapping("/a/u")
 public class MessageController3 {
 
     @Autowired
