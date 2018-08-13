@@ -33,6 +33,15 @@ public class UserMessageServiceImpl3 implements UserMessageService3 {
         json.put("data",messageList);
         return json;
         }
+    @Override
+    public JSONObject findMessage(long id) {
+        JSONObject json=new JSONObject();
+        Message message =messageMapper3.findById(id);
+        json.put("code",0);
+        json.put("message","成功");
+        json.put("data",message);
+        return json;
+    }
 //        List<Message> messages=messageMapper3.findByTpye(user.getRealStatus());
 //        json.put("code",0);
 //        json.put("message","成功");

@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * SystemData相关sql语句
  */
@@ -19,7 +21,7 @@ public interface SystemDataMapper3 {
     /**
      * 根据dataName查找
      */
-    @Select("select * from system_data where data_name='${value}' ")
-    SystemData findByDataName(String dataName);
+    @Select("select * from system_data where data_name='${value}' order by create_at desc")
+    List<SystemData> findByDataName(String dataName);
 
 }

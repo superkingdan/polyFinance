@@ -1,5 +1,6 @@
 package com.jnshu.controller;
 
+import com.jnshu.exception.MyException;
 import com.jnshu.service3.UserSiteService3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class UserSiteController3 {
      */
     @GetMapping("/user/help")
     @ResponseBody
-    public Object help(HttpServletRequest request) {
+    public Object help(HttpServletRequest request) throws MyException {
         return userSiteService3.getHelp();
     }
     /**
@@ -33,7 +34,7 @@ public class UserSiteController3 {
      */
     @GetMapping("/user/about")
     @ResponseBody
-    public Object about(HttpServletRequest request) {
+    public Object about(HttpServletRequest request) throws MyException {
         return userSiteService3.getAbout();
     }
     /**
@@ -62,7 +63,7 @@ public class UserSiteController3 {
      */
     @GetMapping("/user/Update")
     @ResponseBody
-    public Object Update(HttpServletRequest request) {
+    public Object Update(HttpServletRequest request) throws MyException {
         return userSiteService3.getUpdata();
     }
 }

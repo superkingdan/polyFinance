@@ -69,6 +69,7 @@ public class UserDataController3 {
                             @RequestParam MultipartFile realImage,
                             @RequestParam(value = "imageName") String imageName,
                             HttpServletRequest request){
+        System.out.println("开始上传");
         return userDataService3.updataImg(realImage,request,id,imageName);
     }
     /**
