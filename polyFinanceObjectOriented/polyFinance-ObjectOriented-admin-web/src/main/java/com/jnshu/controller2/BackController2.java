@@ -25,10 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //后台管理
 @RestController
@@ -728,7 +725,7 @@ public class BackController2 {
             for (Long id1 : inputModuleIds){
                 int times = 0;
                 for (Long id2 : inputModuleIds){
-                    if (id == id2){
+                    if (Objects.equals(id, id2)){
                         times++;
                     }
                 }
@@ -740,13 +737,18 @@ public class BackController2 {
                 }
             }
 
-            //删除旧的角色模块旧的记录。
-            x = roleBackService2.deleteRoleModuleByRoleId(id);
+            //新建角色没有关联模块所以是删除时是false。这里先做一个查询角色关联模块数量，如果是0直接新增。
+            List<Long> roleModuleIds = roleBackService2.getRoleModuleIdList(id);
 
-            if (!x){
-                result.put("code",-1);
-                result.put("message","角色更新时删除旧关联记录时出错。");
-                return result;
+            if (0 != roleModuleIds.size()){
+                //删除旧的角色模块旧的记录。
+                x = roleBackService2.deleteRoleModuleByRoleId(id);
+
+                if (!x){
+                    result.put("code",-1);
+                    result.put("message","角色更新时 删除旧关联记录时出错。");
+                    return result;
+                }
             }
 
             System.out.println(moduleIds);

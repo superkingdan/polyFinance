@@ -5,6 +5,8 @@ import com.jnshu.entity.RoleModuleBack;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 @Mapper
@@ -23,6 +25,10 @@ public interface RoleModuleBackMapper2 {
     //删除
     @Delete("delete from role_module_back where role_id=#{roleId}")
     Boolean deleteByRoleId(Long roleId) throws Exception;
+
+    //获得角色关联的模块id list。
+    @Select("select id from role_module_back where role_id=#{roleId}")
+    List<Long> getRoleModuleIdList(Long roleId) throws Exception;
 
     //查询总数
     @Select("select count(*) from role_module_back")

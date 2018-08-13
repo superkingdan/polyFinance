@@ -208,8 +208,9 @@ public class FrontUserController2 {
             cam.setErrorMessage("手机号不能为空。");
         }
 
-        if (!phoneNumber.matches("^(1[345789]d{9})")){
+        if (!phoneNumber.matches("^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\\d{8}$")){
             cam.setCode(-1);
+            cam.setMessage("null");
             cam.setErrorMessage("请正确填写手机号。");
         }
 
@@ -265,7 +266,10 @@ public class FrontUserController2 {
         user.setUpdateAt(System.currentTimeMillis());
 
         try {
-            if (userService2.updateUserFrontReferrerId(user)){
+            Boolean x = userService2.updateUserFrontReferrerId(user);
+            System.out.println(user);
+            System.out.println(x);
+            if (x){
                 cam.setMessage("修改成功。");
             }else {
                 cam.setCode(-1);
@@ -371,7 +375,7 @@ public class FrontUserController2 {
         //参数验证
         if ((null == defaultCard || ("").equals(defaultCard)) || (null == bankId || ("").equals(bankId))){
             cam.setCode(-1);
-            cam.setErrorMessage("bankId不能为空。");
+            cam.setErrorMessage("bankId或defaultCard不能为空。");
             result.add(cam);
             return result;
         }

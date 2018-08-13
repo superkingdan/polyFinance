@@ -109,6 +109,12 @@ public class RoleBackServiceImpl2 implements RoleBackService2 {
         return roleModuleBackMapper2.deleteByRoleId(roleId);
     }
 
+    @Override
+    //获得角色关联的模块id list。
+    public List<Long> getRoleModuleIdList(Long roleId) throws Exception{
+        return roleModuleBackMapper2.getRoleModuleIdList(roleId);
+    }
+
     //删除角色记录。
     @Override
     public Boolean deleteRoleBackById(Long id) throws Exception {
@@ -120,5 +126,4 @@ public class RoleBackServiceImpl2 implements RoleBackService2 {
     public Boolean deleteRoleUserByRoleId(Long id) throws Exception {
         return roleUserBackMapper2.deleteRoleUserBackByRole(id);
     }
-
 }

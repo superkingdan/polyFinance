@@ -57,4 +57,7 @@ public interface RoleBackService2 {
 
     //删除用户角色关联记录。
     Boolean deleteRoleUserByRoleId(Long id) throws Exception;
+
+    //获得角色关联的模块id list。
+    List<Long> getRoleModuleIdList(Long roleId) throws Exception;
 }

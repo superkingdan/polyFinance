@@ -79,7 +79,7 @@ public interface UserFrontMapper2 {
     /**
      *用户详情--更换理财经理
      */
-    @Update("update user set referrer_id=#{referrerId}, update_at=#{updateAt}, update_by=#{updateBy} where id=#{id} and not(referrer_id=#{referrerId}")
+    @Update("update user set referrer_id=#{referrerId}, update_at=#{updateAt}, update_by=#{updateBy} where id=#{id} and not(referrer_id=#{referrerId})")
     Boolean updateUserFrontReferrerId(User user) throws Exception;
 
     /**
