@@ -642,6 +642,13 @@ public class BackController2 {
             throw new MyException(-1111, "参数异常。");
         }
 
+        result = new HashMap<>();
+        //判断moduleIds格式是否正确。
+        if (!moduleIds.contains("[") || !moduleIds.contains("]")){
+            result.put("code",-1);
+            result.put("message","moduleIds格式不对，需要数组[]。");
+            return result;
+        }
         //将角色对应的模块id list 转化为List。
         List<Long> inputModuleIds = JSON.parseArray(moduleIds,Long.class);
 

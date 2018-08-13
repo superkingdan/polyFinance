@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="550e0442-d4d1-4a27-8dc2-cb474e52c8dd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/error/error.2018-08-13.log" afterPath="$PROJECT_DIR$/logs/error/error.2018-08-13.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/warn/warn.2018-08-13.log" afterPath="$PROJECT_DIR$/logs/warn/warn.2018-08-13.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java" />
     </list>
     <ignored path="C:\software\localRepository\IdeaProjects\fupan\polyFinance\polyFinanceObjectOriented\.idea\shelf/" />
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/target/" />
@@ -25,8 +27,20 @@
       <file leaf-file-name="BackController2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="823" column="13" lean-forward="true" selection-start-line="823" selection-start-column="13" selection-end-line="823" selection-end-column="13" />
+            <state relative-caret-position="135">
+              <caret line="644" column="33" lean-forward="false" selection-start-line="644" selection-start-column="33" selection-end-line="644" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BackControllerVerify.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="35" column="9" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="35" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -46,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/RoleBackServiceImpl2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
-              <caret line="42" column="34" lean-forward="true" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+              <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -55,7 +69,7 @@
       <file leaf-file-name="RoleBackMapper2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/RoleBackMapper2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
+            <state relative-caret-position="382">
               <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
               <folding />
             </state>
@@ -85,7 +99,7 @@
       <file leaf-file-name="UserBackMapper2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/UserBackMapper2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="174">
               <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
               <folding />
             </state>
@@ -128,6 +142,7 @@
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/UserApplicationController2.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/ContentController2.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BankController2.java" />
+        <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java" />
         <option value="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java" />
       </list>
     </option>
@@ -999,12 +1014,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1534128111580</updated>
-      <workItem from="1534128113301" duration="28023000" />
+      <workItem from="1534128113301" duration="28952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28023000" />
+    <option name="totallyTimeSpent" value="28952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -1262,7 +1277,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/UserBackMapper2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="174">
           <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
           <folding />
         </state>
@@ -1279,24 +1294,34 @@
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/service/implement/RoleBackServiceImpl2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
-          <caret line="42" column="34" lean-forward="true" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/src/main/java/com/jnshu/dao2/RoleBackMapper2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="382">
           <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/utils/BackControllerVerify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="35" column="9" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="35" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/BackController2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="823" column="13" lean-forward="true" selection-start-line="823" selection-start-column="13" selection-end-line="823" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="135">
+          <caret line="644" column="33" lean-forward="false" selection-start-line="644" selection-start-column="33" selection-end-line="644" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
