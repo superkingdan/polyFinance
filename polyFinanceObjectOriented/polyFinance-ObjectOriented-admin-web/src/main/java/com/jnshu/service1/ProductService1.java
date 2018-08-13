@@ -9,13 +9,13 @@ import java.util.List;
 
 @Component(value = "productService1")
 public interface ProductService1 {
-    Page<Product> getProductList(ProductListRPO rpo);
+    Page<Product> getProductList(ProductListRPO rpo)throws Exception;
 
-    Product getProductById(long id);
+    Product getProductById(long id)throws Exception;
 
-    int addProduct(Product product);
+    int addProduct(Product product)throws Exception;
 
-    int updateProduct(Product product);
+    int updateProduct(Product product)throws Exception;
 
-    int updateProductStatus(Product product);
+    int updateProductStatus(Product product)throws Exception;
 }

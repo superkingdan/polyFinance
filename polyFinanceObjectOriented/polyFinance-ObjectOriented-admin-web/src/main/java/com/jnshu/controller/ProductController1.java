@@ -30,7 +30,7 @@ ProductService1 productService1;
      * @return 返回参数，包括code,message,total,size,产品列表
      */
     @GetMapping(value = "/a/u/product/list")
-    public Map getProductList(@ModelAttribute ProductListRPO rpo){
+    public Map getProductList(@ModelAttribute ProductListRPO rpo)throws Exception{
         log.info("获得产品列表，查询条件为"+rpo);
         Page<Product> products= productService1.getProductList(rpo);
         Map<String,Object> map=new HashMap<>();
@@ -53,14 +53,7 @@ ProductService1 productService1;
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
-        Product product;
-        try {
-            product= productService1.getProductById(id);
-        }catch (Exception e){
-            log.error("获得id为"+id+"的产品详细信息时发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Product product= productService1.getProductById(id);
         map.put("data",product);
         return map;
     }
@@ -79,21 +72,9 @@ ProductService1 productService1;
         log.info("修改，产品id为"+id+"修改为"+product);
         product.setId(id);
         String updateByS=CookieUtil.getCookieValue(request,"uid");
-        if (updateByS!=null) {
-            long updateBy = Long.parseLong(updateByS);
-            product.setUpdateBy(updateBy);
-        }else {
-            log.info("修改指定产品，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
-        try{
-            productService1.updateProduct(product);
-        }catch (Exception e){
-            log.error("修改id为"+id+"的产品信息时发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
-
+        long updateBy = Long.parseLong(updateByS);
+        product.setUpdateBy(updateBy);
+        productService1.updateProduct(product);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
@@ -114,20 +95,9 @@ ProductService1 productService1;
         log.info("新增产品，产品详情为"+product);
         Map<String,Object> map=new HashMap<>();
         String createByS= CookieUtil.getCookieValue(request,"uid");
-        if(createByS!=null) {
-            long createBy = Long.parseLong(createByS);
-            product.setCreateBy(createBy);
-        }else {
-            log.info("新增产品，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
-        try{
-            productService1.addProduct(product);
-        }catch (Exception e){
-            log.error("新增产品信息时发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"注意产品名和产品编号不要重复");
-        }
+        long createBy = Long.parseLong(createByS);
+        product.setCreateBy(createBy);
+        productService1.addProduct(product);
         map.put("code",0);
         map.put("message","success");
         return map;
@@ -149,20 +119,9 @@ ProductService1 productService1;
         product.setId(id);
         product.setStatus(status);
         String updateByS=CookieUtil.getCookieValue(request,"uid");
-        if (updateByS!=null) {
-            long updateBy = Long.parseLong(updateByS);
-            product.setUpdateBy(updateBy);
-        }else {
-            log.info("修改产品状态，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
-       try{
-            productService1.updateProductStatus(product);
-       }catch (Exception e){
-           log.error("新增产品信息时发生错误");
-           log.error(e.getMessage());
-           throw new MyException(-1,"未知错误");
-       }
+        long updateBy = Long.parseLong(updateByS);
+        product.setUpdateBy(updateBy);
+        productService1.updateProductStatus(product);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component(value = "claimsService1")
 public interface ClaimsService1 {
-     Page<Claims> getClaimsList(ClaimsListRPO rpo);
+     Page<Claims> getClaimsList(ClaimsListRPO rpo)throws Exception;
 
-    Claims getClaimsById(long id);
+    Claims getClaimsById(long id)throws Exception;
 
-    int updateClaims(Claims claims);
+    int updateClaims(Claims claims)throws Exception;
 
-    int addClaims(Claims claims);
+    int addClaims(Claims claims)throws Exception;
 }

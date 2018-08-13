@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 债权匹配相关接口，1E
+ * 债权匹配相关接口，2E
  */
 @RestController
 public class ClaimsMatchingController1 {
@@ -39,23 +39,9 @@ ClaimsMatchingService1 claimsMatchingService1;
         rpo.setId(id);
         log.info("查找指定债权"+id+"匹配信息");
         Map<String,Object> map=new HashMap<>();
-        Claims claims;
-       try{
-           claims= claimsMatchingService1.getClaimsInfoById(id);
-       }catch (Exception e){
-           log.error("获取债权"+id+"信息产生错误");
-           log.error(e.getMessage());
-           throw new MyException(-1,"未知错误");
-       }
+        Claims claims= claimsMatchingService1.getClaimsInfoById(id);
         map.put("data1",claims);
-        Page<ClaimsMatchingRO> claimsMatchingROPage;
-        try{
-            claimsMatchingROPage= claimsMatchingService1.getClaimsMatchingListByRpo(rpo);
-        }catch (Exception e){
-            log.error("获取债权"+id+"匹配产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Page<ClaimsMatchingRO> claimsMatchingROPage= claimsMatchingService1.getClaimsMatchingListByRpo(rpo);
         map.put("total",claimsMatchingROPage.getTotal());
         map.put("size",rpo.getSize());
         map.put("data2",claimsMatchingROPage);
@@ -73,14 +59,7 @@ ClaimsMatchingService1 claimsMatchingService1;
     public Map getRecommendContractList(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得指定债权"+id+"的适宜匹配合同列表");
         Map<String,Object> map=new HashMap<>();
-        List<ContractMatchingRO> matchingROList;
-        try{
-            matchingROList= claimsMatchingService1.getClaimsMatchingListById(id);
-        }catch (Exception e){
-            log.error("获取债权"+id+"推荐匹配列表产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        List<ContractMatchingRO> matchingROList = claimsMatchingService1.getClaimsMatchingListById(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",matchingROList);
@@ -103,22 +82,9 @@ ClaimsMatchingService1 claimsMatchingService1;
         claimsMatching.setClaimsId(id);
         claimsMatching.setContractCode(contractCode);
         String createByS= CookieUtil.getCookieValue(request,"uid");
-        if(createByS!=null) {
-            long createBy = Long.parseLong(createByS);
-            claimsMatching.setCreateBy(createBy);
-        }
-        //如果cookie中没有uid直接报错
-        else {
-            log.info("保存匹配的债权信息，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
-        try {
-            claimsMatchingService1.saveClaimsMatching(claimsMatching);
-        }catch (Exception e){
-            log.error("保存债权匹配信息，但是出错了");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        long createBy = Long.parseLong(createByS);
+        claimsMatching.setCreateBy(createBy);
+        claimsMatchingService1.saveClaimsMatching(claimsMatching);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");

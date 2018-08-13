@@ -8,6 +8,7 @@ import com.jnshu.dao.TimedTaskMapper1;
 import com.jnshu.dto1.ClaimsListRPO;
 import com.jnshu.entity.Claims;
 import com.jnshu.entity.TimedTask;
+import com.jnshu.exception.MyException;
 import com.jnshu.service1.ClaimsService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,11 +42,14 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
      * @return 债权列表
      */
     @Override
-    public Page<Claims> getClaimsList(ClaimsListRPO rpo){
-
+    public Page<Claims> getClaimsList(ClaimsListRPO rpo)throws Exception{
+        log.info("获得债权列表");
         Page<Claims> claimsPage= PageHelper.startPage(rpo.getPage(),rpo.getSize());
-        claimsMapper1.getClaimsListByRpo(rpo);
-//        System.out.println(claimsPage.getResult());
+        try{
+            claimsMapper1.getClaimsListByRpo(rpo);
+        }catch (Exception e){
+            throw new MyException(-1,"获得债权列表失败");
+        }
         return claimsPage;
     }
 
@@ -55,9 +59,15 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
      * @return 指定id债权详情
      */
     @Override
-    public Claims getClaimsById(long id) {
-
-        return claimsMapper1.getClaimsById(id);
+    public Claims getClaimsById(long id) throws Exception{
+        log.info("获取指定债权"+id+"详情");
+        Claims claims;
+        try{
+            claims=claimsMapper1.getClaimsById(id);
+        }catch (Exception e){
+            throw new MyException(-1,"获取债权"+id+"失败");
+        }
+        return claims;
     }
 
     /**
@@ -67,48 +77,71 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
      * @return 修改结果，0代表失败，大于0代表成功
      */
     @Override
-    public int updateClaims(Claims claims) {
-        Claims oldClaims= claimsMapper1.getClaimsMatchingById(claims.getId());
-        //获取旧过期时间
-        long oldLendEndAt=oldClaims.getLendEndAt();
-        System.out.println("旧过期时间————"+oldLendEndAt);
-        //计算新过期时间
-        Calendar startAtC=Calendar.getInstance();
-        startAtC.clear();
-        startAtC.setTimeInMillis(claims.getLendStartAt());
-        startAtC.add(Calendar.MONTH,claims.getLendDeadline());
-        long newLendEndAt=startAtC.getTimeInMillis();
-        System.out.println("新开始时间为————————————————————"+claims.getLendStartAt());
-        System.out.println("出借时间为————————————————————————"+claims.getLendDeadline());
-        System.out.println("新到期时间为——————————————————————————"+newLendEndAt);
-        //设置新过期时间
-        claims.setLendEndAt(newLendEndAt);
-        //获取旧定时任务时间
-        long oldTaskTime= timedTaskMapper1.getOldTaskTimeByClaimsId(claims.getId());
-        //获取旧出借金额
-        BigDecimal oldLendMoney=new BigDecimal(oldClaims.getLendMoney());
+    public int updateClaims(Claims claims) throws Exception{
+        log.info("修改债权"+claims.getId());
+        try {
+            Claims oldClaims;
+            try {
+                oldClaims = claimsMapper1.getClaimsMatchingById(claims.getId());
+            } catch (Exception e) {
+                throw new MyException(-1, "获取旧债权失败");
+            }
+            if (oldClaims == null) {
+                throw new MyException(-1, "旧债权信息不存在");
+            }
+            //获取旧过期时间
+            long oldLendEndAt = oldClaims.getLendEndAt();
+            System.out.println("旧过期时间————" + oldLendEndAt);
+            //计算新过期时间
+            Calendar startAtC = Calendar.getInstance();
+            startAtC.clear();
+            startAtC.setTimeInMillis(claims.getLendStartAt());
+            startAtC.add(Calendar.MONTH, claims.getLendDeadline());
+            long newLendEndAt = startAtC.getTimeInMillis();
+            //设置新过期时间
+            claims.setLendEndAt(newLendEndAt);
+            //获取旧定时任务时间
+            long oldTaskTime;
+            try {
+                oldTaskTime = timedTaskMapper1.getOldTaskTimeByClaimsId(claims.getId());
+            } catch (Exception e) {
+                throw new MyException(-1, "旧债权定时任务信息不存在");
+            }
+            //获取旧出借金额
+            BigDecimal oldLendMoney = new BigDecimal(oldClaims.getLendMoney());
 //        System.out.println(oldLendMoney);
-        //获取旧待匹配金额
-        BigDecimal oldRemanentMoney=new BigDecimal(oldClaims.getRemanentMoney());
-        //获取新出借金额
-        BigDecimal newLendMoney=new BigDecimal(claims.getLendMoney());
-        //计算新待匹配金额
-        String newRemanentMoney=(newLendMoney.add(oldRemanentMoney).subtract(oldLendMoney)).toString();
+            //获取旧待匹配金额
+            BigDecimal oldRemanentMoney = new BigDecimal(oldClaims.getRemanentMoney());
+            //获取新出借金额
+            BigDecimal newLendMoney = new BigDecimal(claims.getLendMoney());
+            //计算新待匹配金额
+            String newRemanentMoney = (newLendMoney.add(oldRemanentMoney).subtract(oldLendMoney)).toString();
 //        System.out.println(newRemanentMoney);
-        //设置新待匹配金额
-        claims.setRemanentMoney(newRemanentMoney);
-        //更新债权
-        int a= claimsMapper1.updateClaims(claims);
-        //计算新定时任务时间
-        long newTaskTime=newLendEndAt-oldLendEndAt+oldTaskTime;
-        TimedTask timedTask=new TimedTask();
-        timedTask.setClaimsId(claims.getId());
-        timedTask.setTaskTime(newTaskTime);
-        timedTask.setUpdateAt(System.currentTimeMillis());
-        timedTask.setUpdateBy(claims.getUpdateBy());
-        //更新定时任务时间
-        int b= timedTaskMapper1.updateTaskTimeByClaimsId(timedTask);
-        return a*b;
+            //设置新待匹配金额
+            claims.setRemanentMoney(newRemanentMoney);
+            //更新债权
+            try {
+                claimsMapper1.updateClaims(claims);
+            } catch (Exception e) {
+                throw new MyException(-1, "更新债权失败");
+            }
+            //计算新定时任务时间
+            long newTaskTime = newLendEndAt - oldLendEndAt + oldTaskTime;
+            TimedTask timedTask = new TimedTask();
+            timedTask.setClaimsId(claims.getId());
+            timedTask.setTaskTime(newTaskTime);
+            timedTask.setUpdateAt(System.currentTimeMillis());
+            timedTask.setUpdateBy(claims.getUpdateBy());
+            //更新定时任务时间
+            try {
+                timedTaskMapper1.updateTaskTimeByClaimsId(timedTask);
+            } catch (Exception e) {
+                throw new MyException(-1, "更新债权定时任务失败");
+            }
+            return 1;
+        }catch (Exception e){
+            throw new MyException(-1,"更新债权未知错误");
+        }
     }
 
     /**
@@ -118,38 +151,56 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
      * @return 新增结果
      */
     @Override
-    public int addClaims(Claims claims) {
-        //设置待匹配金额
-        claims.setRemanentMoney(claims.getLendMoney());
-        //设置到期时间
-        Calendar lendEndAtC=Calendar.getInstance();
-        lendEndAtC.clear();
-        lendEndAtC.setTimeInMillis(claims.getLendStartAt());
-        lendEndAtC.add(Calendar.MONTH,claims.getLendDeadline());
-        long lendEndAt=lendEndAtC.getTimeInMillis();
-        claims.setLendEndAt(lendEndAt);
-        //设置债权状态为未使用
-        claims.setStatus(Claims.STATUS_NOT_USE);
-        //新增债权
-        int a= claimsMapper1.addClaims(claims);
-        //获取新增债权id
-        long claimsId=claims.getId();
-        log.info("新增债权，id为"+claimsId);
-        //新建定时任务
-        TimedTask timedTask=new TimedTask();
-        //获取债权到期天数设置,单位天,转化为long
-        BigDecimal creditorDay=new BigDecimal(systemDataMapper1.getCreditorDay());
-        long creditorDayLong=creditorDay.longValue();
-        //计算定时任务时间
-        long taskTime=lendEndAt-creditorDayLong*24*3600*1000;
-        timedTask.setTaskTime(taskTime);
-        timedTask.setClaimsId(claimsId);
-        timedTask.setNature(TimedTask.NATURE_CLAIMS);
-        timedTask.setStatus(TimedTask.STATUS_NOT_EXECUTE);
-        timedTask.setCreateBy(claims.getCreateBy());
-        timedTask.setCreateAt(System.currentTimeMillis());
-        //插入定时任务
-        int b= timedTaskMapper1.addTaskedTime(timedTask);
-        return a*b;
+    public int addClaims(Claims claims) throws Exception{
+        log.info("新增债权，其信息为："+claims);
+        try {
+            //设置待匹配金额
+            claims.setRemanentMoney(claims.getLendMoney());
+            //设置到期时间
+            Calendar lendEndAtC = Calendar.getInstance();
+            lendEndAtC.clear();
+            lendEndAtC.setTimeInMillis(claims.getLendStartAt());
+            lendEndAtC.add(Calendar.MONTH, claims.getLendDeadline());
+            long lendEndAt = lendEndAtC.getTimeInMillis();
+            claims.setLendEndAt(lendEndAt);
+            //设置债权状态为未使用
+            claims.setStatus(Claims.STATUS_NOT_USE);
+            //新增债权
+            try {
+                claimsMapper1.addClaims(claims);
+            } catch (Exception e) {
+                throw new MyException(-1, "新增债权失败");
+            }
+            //获取新增债权id
+            long claimsId = claims.getId();
+            log.info("新增债权，id为" + claimsId);
+            //新建定时任务
+            TimedTask timedTask = new TimedTask();
+            //获取债权到期天数设置,单位天,转化为long
+            BigDecimal creditorDay;
+            try {
+                creditorDay = new BigDecimal(systemDataMapper1.getCreditorDay());
+            } catch (Exception e) {
+                throw new MyException(-1, "获得债权到期天数失败");
+            }
+            long creditorDayLong = creditorDay.longValue();
+            //计算定时任务时间
+            long taskTime = lendEndAt - creditorDayLong * 24 * 3600 * 1000;
+            timedTask.setTaskTime(taskTime);
+            timedTask.setClaimsId(claimsId);
+            timedTask.setNature(TimedTask.NATURE_CLAIMS);
+            timedTask.setStatus(TimedTask.STATUS_NOT_EXECUTE);
+            timedTask.setCreateBy(claims.getCreateBy());
+            timedTask.setCreateAt(System.currentTimeMillis());
+            //插入定时任务
+            try {
+                timedTaskMapper1.addTaskedTime(timedTask);
+            } catch (Exception e) {
+                throw new MyException(-1, "新增债权失败");
+            }
+            return 1;
+        }catch (Exception e){
+            throw new MyException(-1,"新增债权失败");
+        }
     }
 }
