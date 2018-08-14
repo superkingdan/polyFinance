@@ -52,7 +52,7 @@ public interface BankMapper2 {
                     WHERE("a.bank_name like '%" + rpo.getBankName()+"%'");
                 }
                 if (null != rpo.getUpdateBy()){
-                    WHERE("b.login_name=#{updateBy}");
+                    WHERE("b.login_name like '%" +rpo.getUpdateBy()+"%'");
                 }
                 if (null != rpo.getUpdateAt1()){
                     WHERE("a.update_at >= #{updateAt1}");

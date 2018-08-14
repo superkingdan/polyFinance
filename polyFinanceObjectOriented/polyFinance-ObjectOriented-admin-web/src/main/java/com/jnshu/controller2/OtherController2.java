@@ -452,6 +452,10 @@ public class OtherController2 {
             return result;
         }
 
+        System.out.println("***********((((((((((((((");
+        System.out.println(list);
+        System.out.println(total);
+        System.out.println(rpo);
         result.put("code",0);
         result.put("message","查询成功。");
         result.put("pageNum",pageNum);
