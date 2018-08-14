@@ -358,6 +358,7 @@ public class BackController2 {
         //返回数据List。改成map。
         Map<String, Object> result = new HashMap<>();
 
+        logger.info("&&&&&&&&&&账户新增&&&&&" +", roleId: " + roleId);
         //参数验证。
         if ((null == loginName || ("").equals(loginName)) || (null == phoneNumber || ("").equals(phoneNumber)) || (null == hashKey || ("").equals(hashKey)) || (null == hashKey2 || ("").equals(hashKey2)) || (null == roleId|| ("").equals(roleId))){
             result.put("code",-1);
@@ -639,6 +640,7 @@ public class BackController2 {
         //返回数据List。改成map。
         Map<String, Object> result = new HashMap<>();
 
+        logger.info("&&&&&&&&&&角色新增&&&&&, role: "+ role +", moduleIds: " + moduleIds);
         //参数验证。
         try {
             result = BackControllerVerify.roleInsertReceive(role,moduleIds);
@@ -732,6 +734,7 @@ public class BackController2 {
         //返回数据List。改成map。
         Map<String, Object> result = new HashMap<>();
 
+        logger.info("&&&&&&&&&&角色编辑&&&&&, id: "+ id +", moduleIds: " + moduleIds);
         //验证参数。
         if (null == id || id < 1){
             result.put("code",-1);
