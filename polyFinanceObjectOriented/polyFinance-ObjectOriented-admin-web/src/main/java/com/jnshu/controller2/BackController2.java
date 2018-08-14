@@ -1,7 +1,6 @@
 package com.jnshu.controller2;
 
 import com.alibaba.fastjson.JSON;
-import com.jnshu.Domain2.DomainModuleBackForLogin;
 import com.jnshu.Domain2.DomainRoleBack;
 import com.jnshu.Domain2.DomainRoleBackList;
 import com.jnshu.Domain2.DomainUserBack;
@@ -65,7 +64,7 @@ public class BackController2 {
         Integer total = null;
         try {
             userBacks = backService2.getUserBacksByNameAndRole(rpo);
-            total = backService2.getTotal();
+            total = backService2.getUserBacksByNameAndRole2(rpo).size();
         } catch (Exception e) {
             result.put("code",-1);
             result.put("message","服务器错误。");
@@ -89,7 +88,9 @@ public class BackController2 {
 
         result.put("code",0);
         result.put("message","成功获取账户列表。");
-        result.put("total",userBacks.size());
+        result.put("total",total);
+        result.put("pageNum",rpo.getPageNum());
+        result.put("pageSize",rpo.getPageSize());
         logger.info("后台 后台管理--账户列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
         result.put("data", userBacks);
         return result;
@@ -463,7 +464,7 @@ public class BackController2 {
     }
 
     //更新密码
-    @RequestMapping(value = "/a/u/roles/passwd",method = RequestMethod.PUT)
+    @RequestMapping(value = "/a/u/managers/passwd",method = RequestMethod.PUT)
     public Map<String,Object>  updatePassword(@RequestParam(required = false) String hashKey,@RequestParam(required = false) String hashKey2,@RequestParam(required = false) String hashKey3,HttpServletRequest request, HttpServletResponse response) {
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
@@ -549,13 +550,15 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         List<DomainRoleBackList> roleBacks = null;
+        Integer total = null;
 
         try {
-            roleBacks = roleBackService2.getRoleBacks();
+            roleBacks = roleBackService2.getRoleBacks(pageNum,pageSize);
             if (null == roleBacks){
                 result.put("code",-1);
                 result.put("message","角色列表为空。");
             }
+            total = roleBacks.size();
         } catch (Exception e) {
             result.put("code",-1);
             result.put("message","服务器错误。");
@@ -568,6 +571,9 @@ public class BackController2 {
         result.put("code",0);
         result.put("message","角色列表获取成功。");
         result.put("roleList",roleBacks);
+        result.put("total",total);
+        result.put("pageNum",pageNum);
+        result.put("pageSize",pageSize);
         return result;
     }
 
@@ -607,6 +613,7 @@ public class BackController2 {
 
             result.put("code",0);
             result.put("message","角色详情获取成功。");
+            result.put("id",id);
             result.put("role",role);
             result.put("moduleIds",moduleIds);
         } catch (Exception e) {
@@ -717,7 +724,7 @@ public class BackController2 {
 
     //角色管理-更新
     @RequestMapping(value = "/a/u/roles/{id}",method = RequestMethod.PUT)
-    public Map<String, Object>  updateRole(@PathVariable(required = false) Long id, @RequestParam(required = false) String moduleIds, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object>  updateRole(@PathVariable(required = false) Long id, @RequestParam(required = false) String moduleIds, HttpServletRequest request, HttpServletResponse response) {
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);

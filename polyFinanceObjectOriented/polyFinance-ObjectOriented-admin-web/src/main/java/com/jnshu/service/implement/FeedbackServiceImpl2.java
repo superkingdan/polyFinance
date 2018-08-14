@@ -1,5 +1,6 @@
 package com.jnshu.service.implement;
 
+import com.github.pagehelper.PageHelper;
 import com.jnshu.Domain2.DomainFeedBackDetail;
 import com.jnshu.dao2.FeedbackMapper2;
 import com.jnshu.dto2.FeedbackRPO;
@@ -21,7 +22,13 @@ public class FeedbackServiceImpl2 implements FeedbackService2 {
     @Autowired
     FeedbackMapper2 feedbackMapper2;
     @Override
-    public List<DomainFeedBackDetail> getFeedbackList(FeedbackRPO rpo) throws Exception {
+    public List<DomainFeedBackDetail> getFeedbackList(Integer pageNum,Integer pageSize,FeedbackRPO rpo) throws Exception {
+        PageHelper.startPage(pageNum,pageSize);
+        return feedbackMapper2.getFeedbackList(rpo);
+    }
+
+    @Override
+    public List<DomainFeedBackDetail> getFeedbackList2(FeedbackRPO rpo) throws Exception {
         return feedbackMapper2.getFeedbackList(rpo);
     }
 

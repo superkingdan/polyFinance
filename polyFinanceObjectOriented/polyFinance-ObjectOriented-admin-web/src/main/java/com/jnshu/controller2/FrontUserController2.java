@@ -44,7 +44,7 @@ public class FrontUserController2 {
         //返回数据List。
         List<Object> result = new ArrayList<>();
 
-        if (null !=userFrontListRPO.getCreateAt1() || null != userFrontListRPO.getCreateAt2()){
+        /*if (null !=userFrontListRPO.getCreateAt1() || null != userFrontListRPO.getCreateAt2()){
 
             if (null ==userFrontListRPO.getCreateAt1() || null == userFrontListRPO.getCreateAt2()){
                 cam.setCode(-1);
@@ -52,14 +52,14 @@ public class FrontUserController2 {
                 result.add(cam);
                 return result;
             }
-        }
+        }*/
 
         List<DomainUserFront> users = null;
         Integer total =null;
 
         try {
             users = userService2.getAllUser(pageNum, pageSize,userFrontListRPO);
-            total = userService2.getCount();
+            total = userService2.getAllUser2(userFrontListRPO).size();
             logger.info("后台 业务管理--用户列表。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+userFrontListRPO);
         } catch (Exception e) {
             cam.setCode(-1);
@@ -71,7 +71,7 @@ public class FrontUserController2 {
         }
 
         Map<String,Integer> s = new HashMap<>();
-        s.put("total", users.size());
+        s.put("total", total);
         s.put("pageNum", pageNum);
         s.put("pageSize", pageSize);
         result.add(s);

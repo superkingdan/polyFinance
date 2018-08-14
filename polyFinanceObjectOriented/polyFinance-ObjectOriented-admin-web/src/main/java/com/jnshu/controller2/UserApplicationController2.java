@@ -43,7 +43,7 @@ public class UserApplicationController2 {
 
         List<Object> result = new ArrayList<>();
 
-        if (null !=rpo.getCreateAt1() || null != rpo.getCreateAt2()){
+        /*if (null !=rpo.getCreateAt1() || null != rpo.getCreateAt2()){
 
             if (null ==rpo.getCreateAt1() || null == rpo.getCreateAt2()){
                 cam.setCode(-1);
@@ -51,11 +51,13 @@ public class UserApplicationController2 {
                 result.add(cam);
                 return result;
             }
-        }
+        }*/
 
         List<DomainApplication> userApplications = null;
+        Integer total = null;
         try {
             userApplications = userApplicationService2.getAllUser(pageNum, pageSize,rpo);
+            total = userApplicationService2.getAllUser2(rpo).size();
         } catch (Exception e) {
             cam.setCode(-1);
             cam.setMessage("服务器错误");
@@ -66,24 +68,10 @@ public class UserApplicationController2 {
             return result;
         }
 
-        //获取列表总数
-
-        Integer total = null;
-        try {
-            total = userApplicationService2.getCount();
-        } catch (Exception e) {
-            cam.setCode(-1);
-            cam.setMessage("服务器错误");
-            cam.setErrorMessage("获取实名列表总数时出错。");
-            logger.info("业务管理--实名认证管理--实名列表总数出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求id参数： "+rpo);
-            e.printStackTrace();
-            result.add(cam);
-            return result;
-        }
-
         Map<String, Object> x = new HashMap<>();
-        x.put("total",userApplications.size());
+        x.put("total",total);
         x.put("pageSize",pageSize);
+        x.put("pageNum",pageNum);
         result.add(cam);
         result.add(x);
         result.add(userApplications);

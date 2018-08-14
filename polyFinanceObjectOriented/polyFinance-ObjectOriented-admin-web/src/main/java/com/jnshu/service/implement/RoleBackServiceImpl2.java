@@ -1,5 +1,6 @@
 package com.jnshu.service.implement;
 
+import com.github.pagehelper.PageHelper;
 import com.jnshu.Domain2.DomainModuleBackForLogin;
 import com.jnshu.Domain2.DomainRoleBack;
 import com.jnshu.Domain2.DomainRoleBackList;
@@ -45,7 +46,12 @@ public class RoleBackServiceImpl2 implements RoleBackService2 {
 
     //角色列表
     @Override
-    public List<DomainRoleBackList> getRoleBacks() throws Exception {
+    public List<DomainRoleBackList> getRoleBacks(Integer pageNum,Integer pageSize) throws Exception {
+        PageHelper.startPage(pageNum,pageSize);
+        return roleBackMapper2.getRoleBacks();
+    }
+    @Override
+    public List<DomainRoleBackList> getRoleBacks2() throws Exception {
         return roleBackMapper2.getRoleBacks();
     }
 

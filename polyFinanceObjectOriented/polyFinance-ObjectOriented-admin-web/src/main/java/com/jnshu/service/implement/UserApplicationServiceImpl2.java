@@ -25,6 +25,11 @@ public class UserApplicationServiceImpl2 implements UserApplicationService2 {
         return applicationMapper2.getApplicationList(rpo);
     }
 
+    @Override
+    public List<DomainApplication> getAllUser2(ApplicationListRPO rpo) throws Exception {
+        return applicationMapper2.getApplicationList(rpo);
+    }
+
     //获得总数。
     @Override
     public Integer getCount() throws Exception {

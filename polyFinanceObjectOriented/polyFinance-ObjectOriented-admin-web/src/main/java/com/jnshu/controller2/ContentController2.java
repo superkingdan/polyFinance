@@ -38,15 +38,15 @@ public class ContentController2 {
         //返回数据List。
         List<Object> result = new ArrayList<>();
 
-        if (null !=contentListRPO.getUpdateAt1() || null != contentListRPO.getUpdateAt2()){
-
-            if (null ==contentListRPO.getUpdateAt1() || null == contentListRPO.getUpdateAt2()){
-                cam.setCode(-1);
-                cam.setMessage("通过日期查询时，两个日期都要有值。");
-                result.add(cam);
-                return result;
-            }
-        }
+//        if (null !=contentListRPO.getUpdateAt1() || null != contentListRPO.getUpdateAt2()){
+//
+//            if (null ==contentListRPO.getUpdateAt1() || null == contentListRPO.getUpdateAt2()){
+//                cam.setCode(-1);
+//                cam.setMessage("通过日期查询时，两个日期都要有值。");
+//                result.add(cam);
+//                return result;
+//            }
+//        }
 
         if (null != contentListRPO.getType()){
             if (contentListRPO.getType() != 0 && 1 != contentListRPO.getType() && 2 != contentListRPO.getType()){
@@ -85,7 +85,7 @@ public class ContentController2 {
         //查询总数。
         Integer total = null;
         try {
-            total = contentService2.getCount();
+            total = contentService2.getContentList2(contentListRPO).size();
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("查询内容列表总数时服务器错误。");
@@ -97,7 +97,7 @@ public class ContentController2 {
         Map<String, Object> map = new HashMap<>();
         map.put("pageNum", pageNum);
         map.put("pageSize", pageSize);
-        map.put("total", contents.size());
+        map.put("total", total);
         result.add(map);
 
         cam.setMessage("查询成功");

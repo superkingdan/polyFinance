@@ -12,6 +12,7 @@ public interface ContentService2 {
 
     //内容列表--多条件查询
     List<DomainContent> getContentList(Integer pageNum, Integer pageSize, ContentListRPO rpo) throws Exception;
+    List<DomainContent> getContentList2(ContentListRPO rpo) throws Exception;
 
     //查询内容记录总数。
     Integer getCount() throws Exception;

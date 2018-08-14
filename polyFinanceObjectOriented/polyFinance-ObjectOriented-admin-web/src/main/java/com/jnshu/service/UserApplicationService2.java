@@ -13,6 +13,8 @@ public interface UserApplicationService2 {
     //实名列表
     List<DomainApplication> getAllUser(Integer pageNum, Integer pageSize, ApplicationListRPO rpo) throws Exception;
 
+    List<DomainApplication> getAllUser2(ApplicationListRPO rpo) throws Exception;
+
     //列表总数
     Integer getCount() throws Exception;
 

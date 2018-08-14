@@ -14,6 +14,7 @@ import java.util.List;
 public interface UserService2 {
 
     List<DomainUserFront> getAllUser(int pageNum, int pageSize, UserFrontListRPO userFrontListRPO) throws Exception;
+    List<DomainUserFront> getAllUser2(UserFrontListRPO userFrontListRPO) throws Exception;
 
     Integer getCount() throws Exception;
 

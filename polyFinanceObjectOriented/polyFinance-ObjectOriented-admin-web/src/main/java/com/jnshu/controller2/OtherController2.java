@@ -425,17 +425,19 @@ public class OtherController2 {
         //返回数据List。
         Map<String,Object> result = new HashMap<>();
 
-        if (null != rpo.getCreateAt1() || null != rpo.getCreateAt2()){
+        /*if (null != rpo.getCreateAt1() || null != rpo.getCreateAt2()){
            if ((null == rpo.getCreateAt1() ||("").equals(rpo.getCreateAt1()) )   || (null == rpo.getCreateAt2() ||("").equals(rpo.getCreateAt2()) )){
                result.put("code",-1);
                result.put("message","两个查询日期都要有值。");
                return result;
            }
-        }
+        }*/
 
         List<DomainFeedBackDetail> list = null;
+        Integer total = null;
         try {
-            list = feedbackService2.getFeedbackList(rpo);
+            list = feedbackService2.getFeedbackList(pageNum,pageSize,rpo);
+            total = feedbackService2.getFeedbackList2(rpo).size();
             if (null == list){
                 result.put("code",0);
                 result.put("message","此条件下无值。");
@@ -452,6 +454,9 @@ public class OtherController2 {
 
         result.put("code",0);
         result.put("message","查询成功。");
+        result.put("pageNum",pageNum);
+        result.put("pageSize",pageSize);
+        result.put("total",total);
         result.put("data",list);
         logger.info("后台 运营管理--版本管理--查询意见成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;

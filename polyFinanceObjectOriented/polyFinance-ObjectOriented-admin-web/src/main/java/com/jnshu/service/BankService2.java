@@ -12,6 +12,7 @@ public interface BankService2 {
 
     //银行列表
     List<DomainBank> getBankList(Integer pageNum, Integer pageSize, BankListRPO rpo) throws Exception;
+    List<DomainBank> getBankList2(BankListRPO rpo) throws Exception;
 
     //查询银行总数。
     Integer getTotal() throws Exception;
