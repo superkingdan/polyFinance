@@ -13,8 +13,8 @@ import java.util.List;
 @Component(value = "statisticsService1")
 public interface StatisticsService1 {
 
-    Page<StatisticsSalesListRO> getStatisticsSalesList(StatisticsSalesListRPO rpo);
+    Page<StatisticsSalesListRO> getStatisticsSalesList(StatisticsSalesListRPO rpo)throws Exception;
 
-    List<StatisticsSalesRO> getStatisticsSales(StatisticsSalesRPO rpo);
+    List<StatisticsSalesRO> getStatisticsSales(StatisticsSalesRPO rpo)throws Exception;
 
 }

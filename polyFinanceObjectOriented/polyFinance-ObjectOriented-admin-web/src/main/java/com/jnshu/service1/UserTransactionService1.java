@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Component(value = "userTransactionService1")
 public interface UserTransactionService1 {
-    Page<TransactionLog> getTransactionLogList(TransactionLogRPO rpo);
+    Page<TransactionLog> getTransactionLogList(TransactionLogRPO rpo)throws Exception;
 
-    Page<TransactionListBackRO> getTransactionList(TransactionListRPO rpo);
+    Page<TransactionListBackRO> getTransactionList(TransactionListRPO rpo)throws Exception;
 
     ContractRO getContract(String contractCode)throws Exception;
 
-    ClaimsProtocolCodeRO getClaimsProtocolCode(String claimsProtocolCode);
+    ClaimsProtocolCodeRO getClaimsProtocolCode(String claimsProtocolCode)throws Exception;
 }

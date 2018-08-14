@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 产品模块相关接口，1E
+ * 产品模块相关接口，2E
  * @author wangqichao
  */
 @RestController
