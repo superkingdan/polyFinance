@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 实名验证相关sql语句
  */
@@ -22,9 +24,8 @@ public interface RealNameApplicationMapper3 {
     @Select("select * from real_name_application where user_id=#{id}")
     RealNameApplication findByUserId(long id);
 
-    @Select("select * from real_name_application where id_card=#{idCard}")
-    RealNameApplication findIdCard(String idCard);
-
+    @Select("select * from real_name_application where id_card=#{idCard} and application_status=1")
+    List<RealNameApplication> findIdCard(String idCard);
 
     /**
      * 修改资料(all)

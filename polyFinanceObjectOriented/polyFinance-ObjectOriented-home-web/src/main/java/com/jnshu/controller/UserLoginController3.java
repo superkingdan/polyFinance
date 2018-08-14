@@ -2,6 +2,7 @@ package com.jnshu.controller;
 
 import com.alibaba.fastjson.JSONException;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import com.jnshu.service3.UserLoginService3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 用户注册及登入
@@ -34,7 +33,7 @@ public class UserLoginController3 {
     @ResponseBody
     public Object login(@RequestParam(value="phoneNumber") String phoneNumber,
                         @RequestParam(value="password") String password,
-                        HttpServletResponse response )  {
+                        HttpServletResponse response ) throws MyException {
         return userLoginService3.login(phoneNumber,password,response);
     }
 
@@ -47,8 +46,8 @@ public class UserLoginController3 {
     public Object register(@ModelAttribute User user,
                            @RequestParam(value="password") String password,
                            @RequestParam(value="code") String code,
-                           HttpServletRequest request) {
-        return userLoginService3.verification(user,password,code);
+                           HttpServletResponse response) {
+        return userLoginService3.verification(user,password,code,response);
     }
 
     /**
