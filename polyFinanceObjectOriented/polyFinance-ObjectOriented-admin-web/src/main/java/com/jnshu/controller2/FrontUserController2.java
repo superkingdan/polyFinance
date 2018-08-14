@@ -279,6 +279,8 @@ public class FrontUserController2 {
             if(!x){
                 cam.setCode(-1);
                 cam.setErrorMessage("修改失败。理财经理工号相同。或id对应记录不存在。");
+                logger.info("后台 业务管理--用户详情-更换理财经理。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。"+"用户id="+id+", 的理财经理工号修改失败。");
+                result.add(cam);
             }
         } catch (Exception e) {
             cam.setErrorMessage("服务器修改理财经理出错。");
