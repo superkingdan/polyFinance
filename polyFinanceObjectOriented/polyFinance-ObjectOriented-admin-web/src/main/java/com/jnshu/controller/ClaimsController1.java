@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 债权管理相关接口，1E
+ * 债权管理相关接口，2E
  * @author  wangqichao
  */
 @RestController
@@ -32,20 +32,12 @@ public class ClaimsController1 {
     @GetMapping(value = "/a/u/claims/list")
     public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo)throws Exception{
         log.info("查询债权列表，条件是"+rpo);
-        Page<Claims> claimsPage;
-        try {
-            claimsPage= claimsService1.getClaimsList(rpo);
-        }catch (Exception e){
-            log.error("获得债权合同列表，产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Page<Claims> claimsPage= claimsService1.getClaimsList(rpo);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
         map.put("total",claimsPage.getTotal());
         map.put("size",claimsPage.getPageSize());
-        System.out.println(claimsPage);
         map.put("data",claimsPage);
         return map;
     }
@@ -59,14 +51,7 @@ public class ClaimsController1 {
     public  Map getClaims(@PathVariable(value = "id")long id)throws Exception{
         log.info("查询债权详情，债权id为"+id);
         Map<String,Object> map=new HashMap<>();
-        Claims claims;
-        try{
-            claims= claimsService1.getClaimsById(id);
-        }catch (Exception e){
-            log.error("获得指定债权"+id+"信息产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Claims claims= claimsService1.getClaimsById(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",claims);
@@ -90,23 +75,11 @@ public class ClaimsController1 {
         claims.setId(id);
         claims.setUpdateAt(System.currentTimeMillis());
         String updateByS=CookieUtil.getCookieValue(request,"uid");
-        if (updateByS!=null) {
-            long updateBy = Long.parseLong(updateByS);
-            claims.setUpdateBy(updateBy);
-        }//如果cookie中没有uid直接报错
-        else {
-            log.info("修改指定债权，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
+        long updateBy = Long.parseLong(updateByS);
+        claims.setUpdateBy(updateBy);
         log.info("修改债权，修改内容为"+claims);
         Map<String,Object> map=new HashMap<>();
-        try {
-            claimsService1.updateClaims(claims);
-        }catch (Exception e){
-            log.error("修改债权产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        claimsService1.updateClaims(claims);
         map.put("code",0);
         map.put("message","success");
         return map;
@@ -127,20 +100,9 @@ public class ClaimsController1 {
         log.info("新增债权，内容为"+claims);
         claims.setCreateAt(System.currentTimeMillis());
         String createByS=CookieUtil.getCookieValue(request,"uid");
-        if(createByS!=null) {
-            long createBy = Long.parseLong(createByS);
-            claims.setCreateBy(createBy);
-        }else {
-            log.info("新增债权，但是cookie中没有uid");
-            throw new MyException(10001,"授权已过期，请重新登录");
-        }
-        try {
-            claimsService1.addClaims(claims);
-        }catch (Exception e){
-            log.error("新增债权产生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        long createBy = Long.parseLong(createByS);
+        claims.setCreateBy(createBy);
+        claimsService1.addClaims(claims);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");

@@ -40,9 +40,14 @@ public class UserTransactionServiceImpl1 implements UserTransactionService1 {
      * @return 查询结果
      */
     @Override
-    public Page<TransactionLog> getTransactionLogList(TransactionLogRPO rpo) {
+    public Page<TransactionLog> getTransactionLogList(TransactionLogRPO rpo) throws Exception{
+        log.info("查询用户"+rpo.getId()+"交易流水");
         Page<TransactionLog> page= PageHelper.startPage(rpo.getPage(),rpo.getSize());
-        transactionLogMapper1.getTransLogListByRpo(rpo);
+        try{
+            transactionLogMapper1.getTransLogListByRpo(rpo);
+        }catch (Exception e){
+            throw new MyException(-1,"查询用户交易流水失败");
+        }
         return  page;
     }
 
@@ -52,9 +57,14 @@ public class UserTransactionServiceImpl1 implements UserTransactionService1 {
      * @return 查询结果
      */
     @Override
-    public Page<TransactionListBackRO> getTransactionList(TransactionListRPO rpo) {
+    public Page<TransactionListBackRO> getTransactionList(TransactionListRPO rpo) throws Exception{
+        log.info("查询用户"+rpo.getId()+"投资列表");
         Page<TransactionListBackRO> page=PageHelper.startPage(rpo.getPage(),rpo.getSize());
-        transactionMapper1.getTransactionListByUserId(rpo);
+        try{
+            transactionMapper1.getTransactionListByUserId(rpo);
+        }catch (Exception e){
+            throw new MyException(-1,"查询用户交易记录失败");
+        }
         return page;
     }
 
@@ -115,24 +125,45 @@ public class UserTransactionServiceImpl1 implements UserTransactionService1 {
      * @return 债权协议详情
      */
     @Override
-    public ClaimsProtocolCodeRO getClaimsProtocolCode(String claimsProtocolCode) {
+    public ClaimsProtocolCodeRO getClaimsProtocolCode(String claimsProtocolCode)throws Exception {
+        log.info("获得指定编号"+claimsProtocolCode+"债权协议");
         ClaimsProtocolCodeRO ro=new ClaimsProtocolCodeRO();
         //设置固定数据
         ro.setClaimsProtocolCode(claimsProtocolCode);
-        ro.setContract(systemDataMapper1.getContractUrl());
-        ro.setCompanyCachet(systemDataMapper1.getCompanyCachet());
+        try{
+            ro.setContract(systemDataMapper1.getContractUrl());
+            ro.setCompanyCachet(systemDataMapper1.getCompanyCachet());
+        }catch (Exception e){
+            throw new MyException(-1,"查询系统数据出错");
+        }
         //设置合同相关信息
-        Contract contract= contractMapper1.getClaimsCodeByCode(claimsProtocolCode);
-        ro.setClaimsCreateAt(contract.getUpdateAt());
-        ro.setUserSign(contract.getUserSign());
+        Contract contract;
+        try{
+            contract= contractMapper1.getClaimsCodeByCode(claimsProtocolCode);
+            ro.setClaimsCreateAt(contract.getUpdateAt());
+            ro.setUserSign(contract.getUserSign());
+        }catch (Exception e){
+            throw new MyException(-1,"查询债权信息失败");
+        }
+
         //设置债权人信息
-        Claims claims= claimsMapper1.getCreditorInfoByClaimsCode(claimsProtocolCode);
-        ro.setCreditor(claims.getCreditor());
-        ro.setCreditorIdCard(claims.getCreditorIdCard());
+        Claims claims;
+        try {
+            claims = claimsMapper1.getCreditorInfoByClaimsCode(claimsProtocolCode);
+            ro.setCreditor(claims.getCreditor());
+            ro.setCreditorIdCard(claims.getCreditorIdCard());
+        }catch (Exception e){
+            throw new MyException(-1,"查询债权人信息失败");
+        }
         //设置用户信息
-        User user= userMapper1.getUserInfoByContractCode(contract.getContractCode());
-        ro.setUserName(user.getRealName());
-        ro.setUserIdCard(user.getIdCard());
+        User user;
+        try {
+            user = userMapper1.getUserInfoByContractCode(contract.getContractCode());
+            ro.setUserName(user.getRealName());
+            ro.setUserIdCard(user.getIdCard());
+        }catch (Exception e){
+            throw new MyException(-1,"查询用户信息失败");
+        }
         return ro;
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 统计模块，销量统计使用相关接口，1E
+ * 统计模块，销量统计使用相关接口，2E
  * @author wangqichao
  */
 @RestController
@@ -38,14 +38,7 @@ public class StatisticsController1 {
     @GetMapping(value = "/a/u/statistics/sales/list")
     public Map getStatisticsSalesList(@ModelAttribute StatisticsSalesListRPO rpo)throws Exception{
     log.info("获得销量统计列表,统计条件为"+rpo);
-        Page<StatisticsSalesListRO> page;
-    try{
-        page= statisticsService1.getStatisticsSalesList(rpo);
-    }catch (Exception e){
-        log.error("获得销量统计信息时发生错误");
-        log.error(e.getMessage());
-        throw new MyException(-1,"未知错误");
-    }
+    Page<StatisticsSalesListRO> page= statisticsService1.getStatisticsSalesList(rpo);
     Map<String,Object> map=new HashMap<>();
     map.put("code",0);
     map.put("message","success");
@@ -65,21 +58,14 @@ public class StatisticsController1 {
     public Map getStatisticsSales(@PathVariable(value = "id")long id, @ModelAttribute StatisticsSalesRPO rpo)throws Exception{
         rpo.setId(id);
         log.info("按条件"+rpo+"查询产品销量");
-        List<StatisticsSalesRO> ros;
-    try{
-            ros= statisticsService1.getStatisticsSales(rpo);
-    }catch (Exception e){
-        log.error("获得指定id"+id+"的产品销量统计信息时发生错误");
-        log.error(e.getMessage());
-        throw new MyException(-1,"未知错误");
+        List<StatisticsSalesRO> ros= statisticsService1.getStatisticsSales(rpo);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("message","success");
+        map.put("total",ros.get(0).getTotal());
+        map.put("size",rpo.getSize());
+        map.put("data",ros);
+        return map;
     }
-    Map<String,Object> map=new HashMap<>();
-    map.put("code",0);
-    map.put("message","success");
-    map.put("total",ros.get(0).getTotal());
-    map.put("size",rpo.getSize());
-    map.put("data",ros);
-    return map;
-}
 
 }

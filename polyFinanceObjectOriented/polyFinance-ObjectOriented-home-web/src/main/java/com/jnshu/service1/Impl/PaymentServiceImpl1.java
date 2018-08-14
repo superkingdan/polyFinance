@@ -495,7 +495,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 }
             }
             //添加定时改变续投状态的任务,可以续投的才可以改变
-            int f = 1;
             if (isLimitedPurchase == 0) {
                 TimedTask renewalTask = new TimedTask();
                 renewalTask.setCreateAt(System.currentTimeMillis());

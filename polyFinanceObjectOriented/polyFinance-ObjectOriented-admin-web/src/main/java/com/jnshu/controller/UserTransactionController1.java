@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *后台用户管理获得指定用户交易和投资记录相关接口
+ *后台用户管理获得指定用户交易和投资记录相关接口,2E
  * @author wangqichao
  */
 @RestController
@@ -38,14 +38,7 @@ public class UserTransactionController1 {
         rpo.setId(id);
         log.info("查询指定用户"+id+"流水记录，查询条件为"+rpo);
         Map<String,Object> map=new HashMap<>();
-        Page<TransactionLog> logPage;
-        try{
-            logPage= userTransactionService1.getTransactionLogList(rpo);
-        }catch (Exception e){
-            log.error("获得用户"+id+"交易流水列表发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Page<TransactionLog> logPage= userTransactionService1.getTransactionLogList(rpo);
         map.put("code",0);
         map.put("message","success");
         map.put("total",logPage.getTotal());
@@ -64,14 +57,7 @@ public class UserTransactionController1 {
     public Map getTransactionList(@ModelAttribute TransactionListRPO rpo, @PathVariable(value = "id")long id)throws Exception{
         rpo.setId(id);
         log.info("查询指定用户"+id+"投资列表");
-        Page<TransactionListBackRO> page;
-        try {
-            page= userTransactionService1.getTransactionList(rpo);
-        }catch (Exception e){
-            log.error("获得用户"+id+"交易流水列表发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        Page<TransactionListBackRO> page= userTransactionService1.getTransactionList(rpo);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
@@ -93,8 +79,8 @@ public class UserTransactionController1 {
         ContractRO ro= userTransactionService1.getContract(code);
         map.put("code",0);
         map.put("message","success");
-       map.put("data",ro);
-       return map;
+        map.put("data",ro);
+        return map;
     }
 
     /**
@@ -106,14 +92,7 @@ public class UserTransactionController1 {
     public Map getClaimsProtocolCode(@PathVariable(value = "code")String code)throws Exception{
         log.info("查看债权协议编号为"+code+"的债权转让协议");
         Map<String,Object> map=new HashMap<>();
-        ClaimsProtocolCodeRO ro;
-        try{
-            ro= userTransactionService1.getClaimsProtocolCode(code);
-        }catch (Exception e){
-            log.error("获得债权编号是"+code+"的债权装让协议时发生错误");
-            log.error(e.getMessage());
-            throw new MyException(-1,"未知错误");
-        }
+        ClaimsProtocolCodeRO ro= userTransactionService1.getClaimsProtocolCode(code);
         map.put("code",0);
         map.put("message","success");
         map.put("data",ro);

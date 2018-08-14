@@ -13,11 +13,11 @@ import java.util.List;
 
 @Component(value = "claimsMatchingService1")
 public interface ClaimsMatchingService1 {
-    Claims getClaimsInfoById(long claimsId);
+    Claims getClaimsInfoById(long claimsId)throws Exception;
 
-    Page<ClaimsMatchingRO> getClaimsMatchingListByRpo(ClaimsMatchingRPO rpo);
+    Page<ClaimsMatchingRO> getClaimsMatchingListByRpo(ClaimsMatchingRPO rpo)throws Exception;
 
-    List<ContractMatchingRO> getClaimsMatchingListById(long claimsId);
+    List<ContractMatchingRO> getClaimsMatchingListById(long claimsId)throws Exception;
 
-    int saveClaimsMatching(ClaimsMatching claimsMatching);
+    int saveClaimsMatching(ClaimsMatching claimsMatching)throws Exception;
 }
