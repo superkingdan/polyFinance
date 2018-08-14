@@ -6,6 +6,7 @@ import com.aliyuncs.exceptions.ClientException;
 import com.jnshu.cache.RedisCacheManager;
 import com.jnshu.dao3.UserMapper3;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import com.jnshu.utils3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,10 +81,16 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
             json.put("message","验证成功");
         return json;
     }
-    /*注册*/
+    /*注册*/ //需要修改 密码验证
     @Override
-    public JSONObject registered(User user, String password) {
+    public JSONObject registered(User user, String password, HttpServletResponse response) {
         JSONObject json =new JSONObject();
+        boolean confirmP = Verification.regexPassword(password);
+        if (!confirmP){
+            json.put("code",-1);
+            json.put("message","密码格式错误");
+            return json;
+        }
         if (userMapper3.findUserByPhone(user.getPhoneNumber())!=null){
             json.put("code",-1);
             json.put("message","该手机已注册");
@@ -100,6 +107,7 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
         json.put("code",0);
         json.put("message","注册成功");
         redisCacheManager.del(user.getPhoneNumber());
+        addCookie(user1,response);
         return json;
     }
     /*验证密码格式*/
@@ -117,23 +125,20 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
     }
     /*登入*/
     @Override
-    public JSONObject login(String phoneNumber, String password, HttpServletResponse response) {
+    public JSONObject login(String phoneNumber, String password, HttpServletResponse response) throws MyException {
         JSONObject json =new JSONObject();
         User user= userMapper3.findUserByPhone(phoneNumber);
         if (password==null){
-            json.put("code",-1);
-            json.put("message","请输入密码");
-            return json;
+            throw new MyException(-1,"请输入密码");
         }
         if (user == null){
-            json.put("code",-1);
-            json.put("message","该手机号未注册");
-            return json;
+            throw new MyException(-1,"该手机号未注册");
         }
         if (!SHA.getSHAwithSalt(password, user.getSalt()).equals(user.getHashKey())){
-            json.put("code",-1);
-            json.put("message","密码错误,登入失败");
-            return json;
+            throw new MyException(-1,"密码错误,登入失败");
+        }
+        if (user.getStatus()==1){
+            throw new MyException(-1,"该账户已冻结");
         }
         addCookie(user,response);
         json.put("code",0);
@@ -157,7 +162,7 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
     }
     /*判断验证*/
     @Override
-    public JSONObject verification(User user, String password, String code) {
+    public JSONObject verification(User user, String password, String code, HttpServletResponse response) {
         if (verificationPas(password).get("code").equals(-1)){
             System.out.println(2);
             return verificationPas(password);
@@ -167,14 +172,17 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
             return verificationCode(user.getPhoneNumber(),code);
         }
         System.out.println(1);
-        return registered(user,password);
+        return registered(user,password,response);
     }
     /*找回密码*/
     @Override
     public JSONObject findBackPassword(String phoneNumber, String password,String code) {
         JSONObject json =new JSONObject();
-        if (verificationPas(password).get("code").equals(-1)){
-            return verificationPas(password);
+        boolean confirmP = Verification.regexPassword(password);
+        if (!confirmP){
+            json.put("code",-1);
+            json.put("message","密码格式错误");
+            return json;
         }
         if (userMapper3.findUserByPhone(phoneNumber)==null){
             json.put("code",-1);

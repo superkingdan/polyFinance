@@ -3,6 +3,7 @@ package com.jnshu.service3;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jnshu.entity.User;
+import com.jnshu.exception.MyException;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ public interface UserLoginService3 {
      * 注册
      * @return json
      */
-    JSONObject registered(User user, String password);
+    JSONObject registered(User user, String password, HttpServletResponse response);
     /**
      * 验证密码格式
      * @return json
@@ -33,7 +34,7 @@ public interface UserLoginService3 {
      * 登入
      * @return json
      */
-    JSONObject login(String phoneNumber, String password, HttpServletResponse response);
+    JSONObject login(String phoneNumber, String password, HttpServletResponse response) throws MyException;
     /**
      * 添加cookie
      * @return json
@@ -43,7 +44,7 @@ public interface UserLoginService3 {
      * 判断验证
      * @return json
      */
-    JSONObject verification(User user, String password, String code);
+    JSONObject verification(User user, String password, String code, HttpServletResponse response);
     /**
      * 找回密码
      * @return json

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -181,15 +182,18 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     public JSONObject verificationReal(long id, RealNameApplication realNameApplication) throws MyException {
         JSONObject json=new JSONObject();
         System.out.println("输入的=="+realNameApplication);
+        if (realNameApplication.getIdCard()==null){
+            throw new MyException(-1,"身份证号不能为空");
+        }
         if (!Verification.regexIdCard(realNameApplication.getIdCard())){
             throw new MyException(-1,"身份证号格式不正确");
         }
         if (realNameApplication.getRealName()==null){
             throw new MyException(-1,"姓名不能为空");
         }
-        RealNameApplication realNameApplication1=realNameApplicationMapper3.findIdCard(realNameApplication.getIdCard());
-        System.out.println(realNameApplication1);
-        if (realNameApplication1==null) {
+        List<RealNameApplication> realNameApplications=realNameApplicationMapper3.findIdCard(realNameApplication.getIdCard());
+        System.out.println(realNameApplications);
+        if (realNameApplications==null) {
             if (realNameApplicationMapper3.findByUserId(id) != null) {
                 if (realNameApplicationMapper3.findByUserId(id).getApplicationStatus() != 1) {
                     realNameApplication.setIsFirst(1);
