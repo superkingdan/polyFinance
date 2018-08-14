@@ -38,9 +38,11 @@ public interface UserFrontMapper2 {
                 if (rpo.getRealName() != null) {
                     WHERE("real_name like '%" + rpo.getRealName() + "%'");
                 }
-                if (rpo.getCreateAt1() != null && rpo.getCreateAt2() != null) {
-                    System.out.println("fuck");
-                    WHERE("create_at between #{createAt1} and #{createAt2}");
+                if (rpo.getCreateAt1() != null) {
+                    WHERE("create_at >= {createAt1}");
+                }
+                if (rpo.getCreateAt2() != null){
+                    WHERE("create_at <= #{createAt2}");
                 }
                 if (rpo.getReferrerId() != null) {
                     WHERE("referrer_id like '%" + rpo.getReferrerId() + "%'");

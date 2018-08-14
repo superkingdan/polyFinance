@@ -42,8 +42,11 @@ public interface FeedbackMapper2 {
                 if (null != rpo.getEmail()){
                     WHERE("b.email like '%"+ rpo.getEmail() +"%'");
                 }
-                if (null != rpo.getCreateAt1() && null != rpo.getCreateAt2()){
-                    WHERE("a.create_at between #{createAt1} and #{createAt2}");
+                if (null != rpo.getCreateAt1()){
+                    WHERE("a.create_at >= #{createAt1}");
+                }
+                if (null != rpo.getCreateAt2()){
+                    WHERE("a.create_at <= #{createAt2}");
                 }
             }}.toString();
         }

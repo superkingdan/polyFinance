@@ -56,8 +56,11 @@ public interface ContentMapper2 {
                 if (null != rpo.getUpdateBy()){
                     WHERE("b.login_name like '%"+rpo.getUpdateBy()+"%'");
                 }
-                if (null != rpo.getUpdateAt1() && null != rpo.getUpdateAt2()){
-                    WHERE("a.update_at between #{updateAt1} and #{updateAt2}");
+                if (null != rpo.getUpdateAt1()){
+                    WHERE("a.update_at >= #{updateAt1}");
+                }
+                if (null != rpo.getUpdateAt2()){
+                    WHERE("a.update_at <= #{updateAt2}");
                 }
                 if (null != rpo.getStatus()){
                     WHERE("a.status =#{status}");
