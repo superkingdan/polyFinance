@@ -188,33 +188,21 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                 int fraction = 0;
                 long userId = contractMatchingROE.getUserId();
                 //如果用户id重复，直接扣除3000分
-<<<<<<< HEAD
-                for (Long userId1 : userIds) {
-                    if (userId == userId1) {
-                        fraction = fraction - 3000;
-                    }
-=======
                 if(userIds!=null) {
                     for (Long userId1 : userIds) {
                         if (userId == userId1)
                             fraction = fraction - 3000;
->>>>>>> 2bc7511c97dea3af43b3e46131433315d5b0005d
 //                System.out.println("userId相等扣分"+fraction);
                     }
                 }
                 System.out.println("计算用户是否重复成功");
                 //如果合同金额大于债权金额，扣3000,小于不得分，等于得1200分
                 BigDecimal money = new BigDecimal(contractMatchingROE.getMoney());
-                if (money.compareTo(claimsRemanentMoney) > 0) {
+                if (money.compareTo(claimsRemanentMoney) > 0)
                     fraction = fraction - 3000;
-                }
-                if (money.compareTo(claimsRemanentMoney) == 0) {
+                if (money.compareTo(claimsRemanentMoney) == 0)
                     fraction = fraction + 1200;
-<<<<<<< HEAD
-                }
-=======
                 System.out.println("计算金额得分成功");
->>>>>>> 2bc7511c97dea3af43b3e46131433315d5b0005d
 //            System.out.println("债权金额之后得分为"+fraction);
                 //计算时间，如果一个是长债权，一个是短债权，则扣3000分，否则相差一天扣1分
                 long endAt = contractMatchingROE.getEndAt();
@@ -222,18 +210,15 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                 long currentAt = System.currentTimeMillis();
                 long sixMonth = 6 * 30 * 24 * 3600 * 1000L;
                 //长短不一扣3000
-                if (((claimsLendEndAt - currentAt - sixMonth) < 0 && (endAt - currentAt - sixMonth) > 0) || ((claimsLendEndAt - currentAt - sixMonth) > 0 && (endAt - currentAt - sixMonth) < 0)) {
+                if (((claimsLendEndAt - currentAt - sixMonth) < 0 && (endAt - currentAt - sixMonth) > 0) || ((claimsLendEndAt - currentAt - sixMonth) > 0 && (endAt - currentAt - sixMonth) < 0))
                     fraction = fraction - 3000;
-                }
                 //债权时间大于合同时间，加600，然后每差一天扣一分
 //            System.out.println("长短不一后得分为"+fraction);
-                if (claimsLendEndAt - endAt > 0) {
+                if (claimsLendEndAt - endAt > 0)
                     fraction = fraction + 600 - (int) ((claimsLendEndAt - endAt) / (3600 * 24 * 1000));
-                }
                 //债权时间小于合同时间，每差一天扣一分
-                if (endAt - claimsLendEndAt > 0) {
+                if (endAt - claimsLendEndAt > 0)
                     fraction = fraction - (int) ((endAt - claimsLendEndAt) / (24 * 3600 * 1000));
-                }
 //            System.out.println("最后得分为"+fraction);
 //            System.out.println("______________________________________");
                 //把fraction放入
