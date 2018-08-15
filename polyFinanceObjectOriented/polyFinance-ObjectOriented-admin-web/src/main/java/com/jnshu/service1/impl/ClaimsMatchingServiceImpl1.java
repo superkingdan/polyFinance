@@ -171,10 +171,12 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                 int fraction = 0;
                 long userId = contractMatchingROE.getUserId();
                 //如果用户id重复，直接扣除3000分
-                for (Long userId1 : userIds) {
-                    if (userId == userId1)
-                        fraction = fraction - 3000;
+                if(userIds!=null) {
+                    for (Long userId1 : userIds) {
+                        if (userId == userId1)
+                            fraction = fraction - 3000;
 //                System.out.println("userId相等扣分"+fraction);
+                    }
                 }
                 //如果合同金额大于债权金额，扣3000,小于不得分，等于得1200分
                 BigDecimal money = new BigDecimal(contractMatchingROE.getMoney());
