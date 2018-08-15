@@ -156,32 +156,42 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                 throw new MyException(-1,"暂无可匹配合同");
             }
             System.out.println("查询尚未匹配合同成功,待匹配合同数量为："+contractCodes.size());
-            List<ContractMatchingRO> contractMatchingROES = new ArrayList<>();
+            List<ContractMatchingRO> contractMatchingROES1 = new ArrayList<>();
             //查询对应信息
             for (int i = 0; i < contractCodes.size(); i++) {
                 try {
                     //查询合同编号对应信息并放进roes对象中
-                    ContractMatchingRO contractMatchingRO=transactionMapper1.getContractInfoByContractCode(contractCodes.get(i));
-                    if(contractMatchingRO==null){
-                        continue;
-                    }
-                    contractMatchingROES.add(contractMatchingRO);
+                    ContractMatchingRO contractMatchingRO = transactionMapper1.getContractInfoByContractCode(contractCodes.get(i));
+                    //即使是空对象也放进去，可以避免数组越界问题
+                    contractMatchingROES1.add(contractMatchingRO);
+                    if (contractMatchingRO != null) {
 //                    System.out.println("查询合同编号对应信息成功");
-                    //将ro对象中的UserName和productName放进去
-                    if(contractMatchingROES.get(i).getUserId()>0) {
-                        contractMatchingROES.get(i).setUserName(userMapper1.getUserNameById(contractMatchingROES.get(i).getUserId()));
-                    }
+                        //将ro对象中的UserName和productName放进去
+                        System.out.println(i);
+                        System.out.println(contractMatchingROES1.size());
+                        if (contractMatchingROES1.get(i).getUserId() > 0) {
+                            contractMatchingROES1.get(i).setUserName(userMapper1.getUserNameById(contractMatchingROES1.get(i).getUserId()));
+                        }
 //                    System.out.println("查询合同编号对应用户名成功，用户id为"+contractMatchingROES.get(i).getUserId());
-                    if (contractMatchingROES.get(i).getProductId()>0) {
-                        contractMatchingROES.get(i).setProductName(productMapper1.getProductNameByProductId(contractMatchingROES.get(i).getProductId()));
-                    }
+                        if (contractMatchingROES1.get(i).getProductId() > 0) {
+                            contractMatchingROES1.get(i).setProductName(productMapper1.getProductNameByProductId(contractMatchingROES1.get(i).getProductId()));
+                            }
 //                    System.out.println("查询合同编号对应产品名成功，产品id为"+contractMatchingROES.get(i).getProductId());
-                } catch (Exception e) {
-                    throw new MyException(-1, "查询合同编号用户产品名失败");
-                }
-                System.out.println("查询第"+i+"个合同对应信息成功");
+                        System.out.println("查询第" + i + "个合同对应信息成功");
+                    }
+                }catch(Exception e){
+//                        e.printStackTrace();
+                        throw new MyException(-1, "查询合同编号用户产品名失败");
+                    }
 //            System.out.println(i);
 //            System.out.println( contractMatchingROES.get(i).getContractCode());
+                }
+                //循环添加对象进去
+            List<ContractMatchingRO> contractMatchingROES = new ArrayList<>();
+            for(int i=0;i<contractMatchingROES1.size();i++){
+                if(contractMatchingROES1.get(i)!=null){
+                    contractMatchingROES.add(contractMatchingROES1.get(i));
+                }
             }
             //计算每个对象的对应分数
             for (ContractMatchingRO contractMatchingROE : contractMatchingROES) {
