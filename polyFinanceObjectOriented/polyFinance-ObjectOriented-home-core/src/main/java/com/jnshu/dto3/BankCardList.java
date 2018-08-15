@@ -1,14 +1,14 @@
 package com.jnshu.dto3;
 
 /**
- * 银行卡列表
+ * 银行卡列表 8.13未push
  */
 public class BankCardList {
     private long id;
     private String bankName;
     private String bankCard;
     private String icon;
-    private String singLimited;
+    private String singleLimited;
     private String dayLimited;
     private String bankPhone;
     private String city;
@@ -62,11 +62,11 @@ public class BankCardList {
     }
 
     public String getSingLimited() {
-        return singLimited;
+        return singleLimited;
     }
 
     public void setSingLimited(String singLimited) {
-        this.singLimited = singLimited;
+        this.singleLimited = singLimited;
     }
 
     public String getDayLimited() {
@@ -84,7 +84,7 @@ public class BankCardList {
                 ", bankName=" + bankName +
                 ", bankCard='" + bankCard + '\'' +
                 ", icon=" + icon +
-                ", singLimited='" + singLimited + '\'' +
+                ", singLimited='" + singleLimited + '\'' +
                 ", dayLimited='" + dayLimited + '\'' +
                 ", bankPhone='" + bankPhone + '\'' +
                 ", city='" + city + '\'' +

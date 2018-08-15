@@ -32,15 +32,18 @@ public interface UserFrontMapper2 {
             return new SQL() {{
                 SELECT("id, user_number, create_at, phone_number,real_status, referrer_id, real_name, property, cumulative_income, status");
                 FROM("user");
+                ORDER_BY("create_at desc");
                 if (rpo.getPhoneNumber() != null) {
                     WHERE("phone_number like '%" + rpo.getPhoneNumber() + "%'");
                 }
                 if (rpo.getRealName() != null) {
                     WHERE("real_name like '%" + rpo.getRealName() + "%'");
                 }
-                if (rpo.getCreateAt1() != null && rpo.getCreateAt2() != null) {
-                    System.out.println("fuck");
-                    WHERE("create_at between #{createAt1} and #{createAt2}");
+                if (rpo.getCreateAt1() != null) {
+                    WHERE("create_at >= #{createAt1}");
+                }
+                if (rpo.getCreateAt2() != null){
+                    WHERE("create_at <= #{createAt2}");
                 }
                 if (rpo.getReferrerId() != null) {
                     WHERE("referrer_id like '%" + rpo.getReferrerId() + "%'");
@@ -79,7 +82,7 @@ public interface UserFrontMapper2 {
     /**
      *用户详情--更换理财经理
      */
-    @Update("update user set referrer_id=#{referrerId}, update_at=#{updateAt}, update_by=#{updateBy} where id=#{id} and not(referrer_id=#{referrerId})")
+    @Update("update user set referrer_id=#{referrerId}, update_at=#{updateAt}, update_by=#{updateBy} where id=#{id} and (referrer_id <> #{referrerId})")
     Boolean updateUserFrontReferrerId(User user) throws Exception;
 
     /**

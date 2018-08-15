@@ -34,9 +34,14 @@ public interface BankCardMapper3 {
       /**
        * 根据userid获取银行卡
        */
-      @Select("select * from bank_card where user_id=#{id} and where card_order=#{cardOrder}")
-      BankCard findBankCardByOrder(long id,int order);
+      @Select("select * from bank_card where user_id=#{id} and card_order=1")
+      BankCard findBankCardByOrder(long id);
 
+     /**
+      * 根据卡号获取银行卡
+      */
+     @Select("select * from bank_card  where bank_card=#{bankCard}")
+     BankCard findBankCardByIdCard(String bankCard);
     /**
         * 根据id获取银行卡数量
         */

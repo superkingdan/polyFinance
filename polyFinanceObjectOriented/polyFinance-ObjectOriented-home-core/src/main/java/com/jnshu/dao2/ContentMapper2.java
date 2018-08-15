@@ -23,7 +23,7 @@ public interface ContentMapper2 {
     Boolean deleteContentById(Long id) throws Exception;
 
     //更新--内容
-    @Update("update content set update_at=#{updateAt},update_by=#{updateBy},title=#{title},type=#{type},status=#{status},details=#{details},banner_cover=#{bannerCover} where id=#{id}")
+    @Update("update content set update_at=#{updateAt},update_by=#{updateBy}, title=#{title}, type=#{type},status=#{status},details=#{details},banner_cover=#{bannerCover} where id=#{id}")
     Boolean updateContentById(Content content) throws Exception;
 
     //更新-状态-上下线
@@ -50,14 +50,18 @@ public interface ContentMapper2 {
                 SELECT("a.id,a.title,a.type,a.status,b.login_name as update_by,a.update_at");
                 FROM("content a");
                 INNER_JOIN("user_back b on a.update_by=b.id");
+                ORDER_BY("update_at desc");
                 if (null != rpo.getTitle()){
                     WHERE("a.title like '%"+rpo.getTitle()+"%'");
                 }
                 if (null != rpo.getUpdateBy()){
                     WHERE("b.login_name like '%"+rpo.getUpdateBy()+"%'");
                 }
-                if (null != rpo.getUpdateAt1() && null != rpo.getUpdateAt2()){
-                    WHERE("a.update_at between #{updateAt1} and #{updateAt2}");
+                if (null != rpo.getUpdateAt1()){
+                    WHERE("a.update_at >= #{updateAt1}");
+                }
+                if (null != rpo.getUpdateAt2()){
+                    WHERE("a.update_at <= #{updateAt2}");
                 }
                 if (null != rpo.getStatus()){
                     WHERE("a.status =#{status}");

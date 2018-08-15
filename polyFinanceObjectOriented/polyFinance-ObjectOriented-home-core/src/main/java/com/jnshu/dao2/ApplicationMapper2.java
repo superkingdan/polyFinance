@@ -71,9 +71,11 @@ public interface ApplicationMapper2 {
                 if (null != rpo.getRealName()){
                     WHERE("a.real_name like'%"+rpo.getRealName()+"%'");
                 }
-                if (null != rpo.getCreateAt1() && null != rpo.getCreateAt2()){
-                    System.out.println("FUCK");
-                    WHERE("a.create_at between #{createAt1} and #{createAt2}");
+                if (null != rpo.getCreateAt1()){
+                    WHERE("a.create_at >= #{createAt1}");
+                }
+                if (null != rpo.getCreateAt2()){
+                    WHERE("a.create_at <= #{createAt2}");
                 }
                 if (null != rpo.getPhoneNumber()){
                     WHERE("b.phone_number like '%"+rpo.getPhoneNumber()+"%'");

@@ -20,7 +20,8 @@ public interface RoleBackService2 {
     List<DomainRoleBack> getAll() throws Exception;
 
     //角色列表
-    List<DomainRoleBackList> getRoleBacks() throws Exception;
+    List<DomainRoleBackList> getRoleBacks(Integer pageNum,Integer pageSize) throws Exception;
+    List<DomainRoleBackList> getRoleBacks2() throws Exception;
 
     //通过id获取角色
     String getRoleNameById(Long id) throws Exception;

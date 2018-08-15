@@ -39,35 +39,35 @@ public class BankController2 {
         List<Object> result = new ArrayList<>();
 
         //参数校验。
-        //编辑时间同时存在。
-        if (null != rpo.getUpdateAt1() || null != rpo.getUpdateAt2()){
-            if (null == rpo.getUpdateAt1() || null == rpo.getUpdateAt2()){
-                cam.setCode(-1);
-                cam.setMessage("两个编辑时间必须同时存在");
-                result.add(cam);
-                return result;
-            }
-        }
-
-        //单笔限额同时存在。
-        if(null != rpo.getSingleLimited1() || null != rpo.getSingleLimited2()){
-            if (null == rpo.getSingleLimited1() || null == rpo.getSingleLimited2()){
-                cam.setCode(-1);
-                cam.setMessage("两个单笔限额必须同时存在");
-                result.add(cam);
-                return result;
-            }
-        }
-
-        //日累计限额同时存在。
-        if (null != rpo.getDayLimited1() || null != rpo.getDayLimited2()){
-            if (null == rpo.getDayLimited1() || null ==rpo.getDayLimited2()){
-                cam.setCode(-1);
-                cam.setMessage("两个单日限额必须同时存在");
-                result.add(cam);
-                return result;
-            }
-        }
+//        //编辑时间同时存在。
+//        if (null != rpo.getUpdateAt1() || null != rpo.getUpdateAt2()){
+//            if (null == rpo.getUpdateAt1() || null == rpo.getUpdateAt2()){
+//                cam.setCode(-1);
+//                cam.setMessage("两个编辑时间必须同时存在");
+//                result.add(cam);
+//                return result;
+//            }
+//        }
+//
+//        //单笔限额同时存在。
+//        if(null != rpo.getSingleLimited1() || null != rpo.getSingleLimited2()){
+//            if (null == rpo.getSingleLimited1() || null == rpo.getSingleLimited2()){
+//                cam.setCode(-1);
+//                cam.setMessage("两个单笔限额必须同时存在");
+//                result.add(cam);
+//                return result;
+//            }
+//        }
+//
+//        //日累计限额同时存在。
+//        if (null != rpo.getDayLimited1() || null != rpo.getDayLimited2()){
+//            if (null == rpo.getDayLimited1() || null ==rpo.getDayLimited2()){
+//                cam.setCode(-1);
+//                cam.setMessage("两个单日限额必须同时存在");
+//                result.add(cam);
+//                return result;
+//            }
+//        }
         //查询银行列表。
         List<DomainBank> banks = null;
         try {
@@ -78,6 +78,7 @@ public class BankController2 {
                 result.add(cam);
                 return result;
             }
+
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("服务器在获取银行列表时出错");
@@ -90,7 +91,7 @@ public class BankController2 {
         //查询银行总数。
         Integer total = null;
         try {
-            total = bankService2.getTotal();
+            total = bankService2.getBankList2(rpo).size();
         } catch (Exception e) {
             CAM cam1 = new CAM(-1,"服务器错误。");
             cam1.setErrorMessage("服务器在获取银行列表总数时出错");
@@ -103,7 +104,7 @@ public class BankController2 {
         Map<String, Object> s = new HashMap<>();
         s.put("pageNum", pageNum);
         s.put("pageSize", pageSize);
-        s.put("total", banks.size());
+        s.put("total", total);
         result.add(s);
         result.add(cam);
         result.add(banks);

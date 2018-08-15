@@ -53,13 +53,14 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
         return json;
     }
 
-    /*反馈*/
+    /*反馈*/ //8.13 未push
     @Override
     public JSONObject feedback(long id,String content){
         JSONObject json = new JSONObject();
         Feedback feedback =new Feedback();
         feedback.setCreateAt(System.currentTimeMillis());
         feedback.setUserId(id);
+        feedback.setContent(content);
         feedbackMapper3.addFeedback(feedback);
         json.put("code",0);
         json.put("message","成功");

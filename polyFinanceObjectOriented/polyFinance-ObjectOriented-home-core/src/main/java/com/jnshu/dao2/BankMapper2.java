@@ -52,16 +52,25 @@ public interface BankMapper2 {
                     WHERE("a.bank_name like '%" + rpo.getBankName()+"%'");
                 }
                 if (null != rpo.getUpdateBy()){
-                    WHERE("b.login_name=#{updateBy}");
+                    WHERE("b.login_name like '%" +rpo.getUpdateBy()+"%'");
                 }
-                if (null != rpo.getUpdateAt1() && null != rpo.getUpdateAt2()){
-                    WHERE("a.update_at between #{updateAt1} and #{updateAt2}");
+                if (null != rpo.getUpdateAt1()){
+                    WHERE("a.update_at >= #{updateAt1}");
                 }
-                if (null != rpo.getSingleLimited1() && null != rpo.getSingleLimited2()){
-                    WHERE("a.single_limited > "+rpo.getSingleLimited1()+"and a.single_limited <"+ rpo.getSingleLimited2());
+                if (null != rpo.getUpdateAt2()){
+                    WHERE("a.update_at <= #{updateAt2}");
                 }
-                if (null != rpo.getDayLimited1() && null != rpo.getDayLimited2()){
-                    WHERE("a.day_limited > "+rpo.getDayLimited1()+" and a.day_limited <"+rpo.getDayLimited2());
+                if (null != rpo.getSingleLimited1()){
+                    WHERE("a.single_limited >= "+rpo.getSingleLimited1());
+                }
+                if (null != rpo.getSingleLimited2()){
+                    WHERE("a.single_limited <= " +rpo.getSingleLimited2());
+                }
+                if (null != rpo.getDayLimited1()){
+                    WHERE("a.day_limited >= "+rpo.getDayLimited1());
+                }
+                if (null != rpo.getDayLimited2()){
+                    WHERE("a.day_limited <= "+ rpo.getDayLimited2());
                 }
             }}.toString();
         }

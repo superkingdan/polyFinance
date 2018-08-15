@@ -25,6 +25,11 @@ public class ContentServiceImpl2 implements ContentService2 {
         return contentMapper2.getContentList(rpo);
     }
 
+    //内容列表--多条件查询。
+    @Override
+    public List<DomainContent> getContentList2(ContentListRPO rpo) throws Exception {
+        return contentMapper2.getContentList(rpo);
+    }
     //查询内容记录总数。
     @Override
     public Integer getCount() throws Exception {

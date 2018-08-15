@@ -48,7 +48,7 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         return json;
     }
 
-    /*默认银行卡*/  //8.11修改 mapper
+    /*默认银行卡*/ //未push
     @Override
     public JSONObject defaultCardUpdata(long id, long cardId) {
         JSONObject json =new JSONObject();
@@ -60,13 +60,14 @@ public class UserBankServiceImpl3 implements UserBankService3 {
             return json;
         }
         System.out.println(bankCard);
-        if (bankCard.getCardOrder()==2){
-            bankCard.setCardOrder(1);
-            bankCardMapper3.updateData(bankCard);
-            BankCard bankCard1=bankCardMapper3.findBankCardByOrder(id,1);
-            bankCard1.setCardOrder(2);
-            bankCardMapper3.updateData(bankCard1);
-        }
+//        if (bankCard.getCardOrder()==2){
+//            BankCard bankCard1=bankCardMapper3.findBankCardByOrder(id);
+//            System.out.println(bankCard1);
+//            bankCard.setCardOrder(1);
+//            bankCard1.setCardOrder(2);
+//            bankCardMapper3.updateData(bankCard);
+//            bankCardMapper3.updateData(bankCard1);
+//        }
         User user=userMapper3.findUserById(id);
         user.setDefaultCard(cardId);
         userMapper3.updateData(user);
@@ -74,17 +75,22 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         json.put("message","成功");
         return json;
     }
-
+    //添加 8/14修改 未push
     @Override
-    public JSONObject addBankCard(BankCardList bankCardList,long id) throws MyException {
+    public JSONObject addBankCard(BankCardList bankCardList, long id) throws MyException {
         JSONObject json =new JSONObject();
+
+        BankCard bankCard1 =bankCardMapper3.findBankCardByIdCard(bankCardList.getBankCard());
+        if (bankCard1!=null){
+            throw new MyException(-1,"该银行卡已绑定");
+        }
         if (bankCardMapper3.findCountByUser(id)>=2){
-            json.put("code",-1);
-            json.put("message","绑定银行卡超过两张无法添加");
-            return json;
+            throw new MyException(-1,"绑定银行卡超过两张无法添加");
         }
 
         BankCard bankCard =new BankCard();
+        bankCard.setCreateAt(System.currentTimeMillis());
+        bankCard.setCreateBy(id);
         bankCard.setUserId(id);
         bankCard.setBankCard(bankCardList.getBankCard());
         bankCard.setCity(bankCardList.getCity());

@@ -19,13 +19,16 @@ public class BankServiceImpl2 implements BankService2 {
     @Autowired
     BankMapper2 bankMapper2;
 
-
     @Override
     public List<DomainBank> getBankList(Integer pageNum, Integer pageSize, BankListRPO rpo) throws Exception {
         PageHelper.startPage(pageNum, pageSize);
         return bankMapper2.getBankList(rpo);
     }
 
+    @Override
+    public List<DomainBank> getBankList2(BankListRPO rpo) throws Exception {
+        return bankMapper2.getBankList(rpo);
+    }
     //查询银行总数。
     @Override
     public Integer getTotal() throws Exception {

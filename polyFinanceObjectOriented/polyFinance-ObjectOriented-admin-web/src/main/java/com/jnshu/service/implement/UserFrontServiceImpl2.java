@@ -30,6 +30,12 @@ public class UserFrontServiceImpl2 implements UserService2 {
         return users;
     }
 
+    @Override
+    public List<DomainUserFront> getAllUser2(UserFrontListRPO userFrontListRPO) throws Exception {
+        List<DomainUserFront> users = new ArrayList<>();
+        users= userFrontMapper2.getUserFrontList(userFrontListRPO);
+        return users;
+    }
     //用户列表--总数
     @Override
     public Integer getCount() throws Exception {

@@ -48,21 +48,11 @@ public class UserInterceptor implements HandlerInterceptor {
 
 
         if (cookie == null) {
-//            json.put("code",10001);
-//            json.put("message","cookie无效");
             log.error("coolie为null");
             throw new MyException(10001,"cookie无效，请登录");
-//            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
-//            return false;
-
         }
         if (state.equals("EXPIRED")) {
-//            json.put("code",1002);
-//            json.put("message","已过期,请登入");
-//            SendMsgUtil.sendJsonMessage(httpServletResponse,json);
             log.error("拦截器token解析失败");
-            throw new MyException(10001,"已过期,请登入");
-//            return false;
         }
 
 

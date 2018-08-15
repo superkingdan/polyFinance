@@ -59,7 +59,7 @@ public class UserBankController3 {
         return userBankService3.addBankCard(bankCardList,id);
     }
     /**
-     * 设置为默认银行卡 /完成
+     * 设置为默认银行卡 /8。13 /未push
      * @return
      */
     @PostMapping("/defultCard/{id}")

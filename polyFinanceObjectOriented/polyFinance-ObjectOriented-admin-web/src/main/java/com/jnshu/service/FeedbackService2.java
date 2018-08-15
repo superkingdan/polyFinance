@@ -12,7 +12,8 @@ import java.util.List;
 @Component(value = "feedbackService2")
 public interface FeedbackService2 {
 
-    List<DomainFeedBackDetail> getFeedbackList(FeedbackRPO rpo) throws Exception;
+    List<DomainFeedBackDetail> getFeedbackList(Integer pageNum,Integer pageSize,FeedbackRPO rpo) throws Exception;
+    List<DomainFeedBackDetail> getFeedbackList2(FeedbackRPO rpo) throws Exception;
 
     DomainFeedBackDetail getFeedbackDetail(Long id) throws Exception;
 
