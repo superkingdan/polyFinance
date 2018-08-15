@@ -155,20 +155,31 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             if(contractCodes==null){
                 throw new MyException(-1,"暂无可匹配合同");
             }
-            System.out.println("查询尚未匹配合同成功");
+            System.out.println("查询尚未匹配合同成功,待匹配合同数量为："+contractCodes.size());
             List<ContractMatchingRO> contractMatchingROES = new ArrayList<>();
             //查询对应信息
             for (int i = 0; i < contractCodes.size(); i++) {
                 try {
                     //查询合同编号对应信息并放进roes对象中
-                    contractMatchingROES.add(transactionMapper1.getContractInfoByContractCode(contractCodes.get(i)));
+                    ContractMatchingRO contractMatchingRO=transactionMapper1.getContractInfoByContractCode(contractCodes.get(i));
+                    if(contractMatchingRO==null){
+                        continue;
+                    }
+                    contractMatchingROES.add(contractMatchingRO);
+//                    System.out.println("查询合同编号对应信息成功");
                     //将ro对象中的UserName和productName放进去
-                    contractMatchingROES.get(i).setUserName(userMapper1.getUserNameById(contractMatchingROES.get(i).getUserId()));
-                    contractMatchingROES.get(i).setProductName(productMapper1.getProductNameByProductId(contractMatchingROES.get(i).getProductId()));
+                    if(contractMatchingROES.get(i).getUserId()>0) {
+                        contractMatchingROES.get(i).setUserName(userMapper1.getUserNameById(contractMatchingROES.get(i).getUserId()));
+                    }
+//                    System.out.println("查询合同编号对应用户名成功，用户id为"+contractMatchingROES.get(i).getUserId());
+                    if (contractMatchingROES.get(i).getProductId()>0) {
+                        contractMatchingROES.get(i).setProductName(productMapper1.getProductNameByProductId(contractMatchingROES.get(i).getProductId()));
+                    }
+//                    System.out.println("查询合同编号对应产品名成功，产品id为"+contractMatchingROES.get(i).getProductId());
                 } catch (Exception e) {
                     throw new MyException(-1, "查询合同编号用户产品名失败");
                 }
-                System.out.println("查询每个合同对应信息成功");
+                System.out.println("查询第"+i+"个合同对应信息成功");
 //            System.out.println(i);
 //            System.out.println( contractMatchingROES.get(i).getContractCode());
             }

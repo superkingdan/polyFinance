@@ -90,7 +90,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         if (product.getDeadline() < 30) {
             Integer isNew = userMapper1.getIsNewById(userId);
             if (isNew != null) {
-                throw new MyException(-1, "已购买过新手礼");
+                throw new MyException(10040, "已购买过新手礼");
             }
         }
         //查找最新合同号,如果没有数据就传""
