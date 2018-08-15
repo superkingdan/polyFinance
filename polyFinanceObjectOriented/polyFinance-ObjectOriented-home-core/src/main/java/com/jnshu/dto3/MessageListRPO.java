@@ -4,6 +4,7 @@ package com.jnshu.dto3;
  * 获得产品列表分页接收数据实体类
  */
 public class MessageListRPO {
+    private long id;
     private long pageNum;
     private long pageSize;
     private long userId;
@@ -20,6 +21,15 @@ public class MessageListRPO {
     private String introduce;
     private String content;
     //发送人群，0：所有人，1：认证投资人
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     //消息类型，0：即时发送，1：定时发送
     private int messageType;
     //是否推送，0：不推送，1：推送

@@ -1,7 +1,6 @@
 package com.jnshu.service3;
 
 import com.alibaba.fastjson.JSONObject;
-import com.aliyun.oss.OSSClient;
 import com.jnshu.cache.RedisCacheManager;
 import com.jnshu.dao3.MessageMapper3;
 import com.jnshu.dao3.TimedTaskMapper3;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -81,7 +79,7 @@ public class MessageServiceImpl3 implements MessageService3 {
 
     /*新增消息*/
     @Override
-    public JSONObject addMessage(Message message,HttpServletRequest request) throws MyException {
+    public JSONObject addMessage(Message message, HttpServletRequest request) throws MyException {
         JSONObject json =new JSONObject();
         if (message.getIntroduce()==null){
             throw new MyException(-1,"简述为空");
@@ -146,9 +144,7 @@ public class MessageServiceImpl3 implements MessageService3 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(message.getUpdateAt()==0) {
-            message.setUpdateAt(System.currentTimeMillis());
-        }
+        message.setUpdateAt(System.currentTimeMillis());
         messageMapper3.updateMessage(message);
 
         json.put("code",0);
