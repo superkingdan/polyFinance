@@ -52,6 +52,6 @@ public interface UserMapper1 {
     int updateIsNewById(long id);
 
     //查找用户是否购买新手礼
-    @Select("select is_new from user where id=#{userId}")
+    @Select("select is_new from user where id=#{id}")
     Integer getIsNewById(long id);
 }

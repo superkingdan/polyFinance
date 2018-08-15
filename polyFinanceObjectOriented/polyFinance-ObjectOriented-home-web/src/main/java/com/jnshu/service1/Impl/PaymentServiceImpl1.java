@@ -88,7 +88,13 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             throw new MyException(-1, "获取旧产品信息为空");
         }
         if (product.getDeadline() < 30) {
-            Integer isNew = userMapper1.getIsNewById(userId);
+            Integer isNew;
+            try{
+                isNew = userMapper1.getIsNewById(userId);
+            }catch (Exception e){
+                throw new MyException(-1, "获取用户购买新手礼包信息失败");
+            }
+            System.out.println(userId+"是否购买过新手礼包"+isNew);
             if (isNew != null) {
                 throw new MyException(10040, "已购买过新手礼");
             }
