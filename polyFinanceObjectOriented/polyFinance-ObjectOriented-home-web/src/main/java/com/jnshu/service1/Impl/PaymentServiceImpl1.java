@@ -95,10 +95,11 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 throw new MyException(-1, "获取用户购买新手礼包信息失败");
             }
             System.out.println(userId+"是否购买过新手礼包"+isNew);
-            if (isNew != null) {
+            if (isNew==1) {
                 throw new MyException(10040, "已购买过新手礼");
             }
         }
+        System.out.println("完成礼包确认，开始创建合同");
         //查找最新合同号,如果没有数据就传""
         String newestContractCode;
         try {
