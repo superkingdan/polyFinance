@@ -87,7 +87,7 @@ public class LoginController2 {
         }
         log.info("用户"+id+"在上传图片");
         //判断是否有图片上传
-        if(file==null||file.equals("")||file.getSize()<=0){
+        if(file==null||("").equals(file)||file.getSize()<=0){
             log.error("用户"+id+"想上传图片，但是无上传图片，很尴尬");
             throw new MyException(10030,"文件不能为空");
         }

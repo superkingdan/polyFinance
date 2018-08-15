@@ -44,16 +44,6 @@ public class FrontUserController2 {
         //返回数据List。
         List<Object> result = new ArrayList<>();
 
-        /*if (null !=userFrontListRPO.getCreateAt1() || null != userFrontListRPO.getCreateAt2()){
-
-            if (null ==userFrontListRPO.getCreateAt1() || null == userFrontListRPO.getCreateAt2()){
-                cam.setCode(-1);
-                cam.setMessage("通过日期查询时，两个日期都要有值。");
-                result.add(cam);
-                return result;
-            }
-        }*/
-
         List<DomainUserFront> users = null;
         Integer total =null;
 
@@ -142,8 +132,9 @@ public class FrontUserController2 {
         account = tokenUtil.getAccount(request);
         List<Object> result = new ArrayList<>();
 
+
         //参数验证
-        if (null == status || ("").equals(status)){
+        if (null == status || status.equals(0)){
             cam.setCode(-1);
             cam.setErrorMessage("status 不能为空。");
             result.add(cam);
@@ -372,7 +363,15 @@ public class FrontUserController2 {
         return result;
     }
 
-    //解绑银行卡
+    /**
+     * 解绑银行卡
+     * @param id
+     * @param defaultCard
+     * @param bankId
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/a/u/users/{id}/bankCard",method = RequestMethod.PUT)
     public Object userBankCard(@PathVariable long id,@RequestParam(required = false) Long defaultCard , @RequestParam(required = false) Long bankId,HttpServletRequest request, HttpServletResponse response){
         CAM cam = new CAM();
@@ -389,6 +388,7 @@ public class FrontUserController2 {
         }
 
         //业务处理
+        //获得用户信息，供后面使用。
         DomainUserFrontDetail user =null;
         try {
             user = userService2.getUserFrontById(id);
@@ -412,6 +412,8 @@ public class FrontUserController2 {
         System.out.println(user.getDefaultCard());
         System.out.println(defaultCard);
         System.out.println((long) defaultCard != (long) (user.getDefaultCard()));
+
+        //比较数据库用户默认银行卡和前端传来的id是否相同。如果不同直接返回。
         if ((long) defaultCard != (long) (user.getDefaultCard())){
             cam.setCode(-1);
             cam.setMessage("defaultCard错误");
@@ -420,16 +422,41 @@ public class FrontUserController2 {
             return result;
         }
 
-        //获取银行卡
+        //获取用户全部银行卡，如果是为0，直接返回。如果为1，需要设置默认银行卡为空。如果为2，需要按情况设置默认银行卡。
         List<UserBankCard> bankCards=null;
+        //新的默认银行卡id。
+        Long newDefaultBankCardId = null;
         try {
             bankCards = userService2.getUserFrontBankCardsById(id);
             if (0 == bankCards.size()){
+                CAM cam1 = new CAM();
                 cam.setCode(-1);
                 cam.setMessage("该用户没有绑定银行卡。");
                 result.add(cam);
                 return result;
             }
+
+            if (1 == bankCards.size()){
+                newDefaultBankCardId = null;
+            }
+
+            if (2 == bankCards.size()){
+                for (UserBankCard card : bankCards){
+                    //设置新的默认银行卡为不被删除的银行卡id。至于是不是与原来的相同，不关注。
+                    if ((long) bankId != card.getCardId()){
+                        newDefaultBankCardId = card.getCardId();
+                    }
+                }
+            }
+
+            if (2 < bankCards.size()){
+                CAM cam1 = new CAM();
+                cam.setCode(-1);
+                cam.setMessage("严重错误，用户银行卡超过2张。");
+                result.add(cam);
+                return result;
+            }
+            System.out.println("newDefaultBankCardId："+newDefaultBankCardId);
         } catch (Exception e) {
             cam.setErrorMessage("服务器获取id="+id+"银行卡出错错误");
             logger.info("解绑银行卡。服务器获取id="+id+"银行卡出错错误。账户id="+account.get("uid")+", 被操作用户id="+id);
@@ -438,15 +465,7 @@ public class FrontUserController2 {
             return result;
         }
 
-
-        //新的默认银行卡id。
-        Long newDefaultBankCardId = null;
-        for (UserBankCard card : bankCards){
-            if ((long) bankId != card.getCardId()){
-                newDefaultBankCardId = card.getCardId();
-            }
-        }
-        System.out.println("newDefaultBankCardId："+newDefaultBankCardId);
+        //解绑银行卡结果。只对银行卡表做删除操作。
         Boolean up = false;
         try {
             up = userService2.untiedUserBankCard(id, bankId);
@@ -474,7 +493,9 @@ public class FrontUserController2 {
 
         }
 
-        if (null != newDefaultBankCardId && bankId ==user.getDefaultCard()){
+
+        //如果要删掉的银行卡是默认银行卡，需要重新设置默认银行卡。
+        if ((long) bankId == user.getDefaultCard()){
             com.jnshu.entity.User user1 = new com.jnshu.entity.User();
             user1.setUpdateBy((Long) account.get("uid"));
             user1.setUpdateAt(System.currentTimeMillis());
