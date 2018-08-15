@@ -7,6 +7,7 @@ import com.jnshu.service1.ProductService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,6 +50,7 @@ public class ProductController1 {
      * @return 返回参数，code,message,产品详情
      */
     @GetMapping(value = "/a/product/{id}")
+//    @Cacheable(cacheNames = "object-home-product",key = "#id")
     public Map getProduct(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得id为"+id+"的产品");
         Map<String,Object> map=new HashMap<>();

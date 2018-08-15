@@ -77,7 +77,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
     public Long addContract(String userSign, long productId, long userId) throws Exception{
         log.info("根据用户签名，用户id和产品id生成新的合同");
         //查找用户是否够买过新手礼包以及此产品是否是新手礼包
-    try {
         Product product;
         try {
             product = productMapper1.getProductById(productId);
@@ -88,11 +87,18 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             throw new MyException(-1, "获取旧产品信息为空");
         }
         if (product.getDeadline() < 30) {
-            Integer isNew = userMapper1.getIsNewById(userId);
-            if (isNew != null) {
-                throw new MyException(-1, "已购买过新手礼");
+            Integer isNew;
+            try{
+                isNew = userMapper1.getIsNewById(userId);
+            }catch (Exception e){
+                throw new MyException(-1, "获取用户购买新手礼包信息失败");
+            }
+            System.out.println(userId+"是否购买过新手礼包"+isNew);
+            if (isNew==1) {
+                throw new MyException(10040, "已购买过新手礼");
             }
         }
+        System.out.println("完成礼包确认，开始创建合同");
         //查找最新合同号,如果没有数据就传""
         String newestContractCode;
         try {
@@ -123,9 +129,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             throw new MyException(-1, "创建新合同信息产生错误");
         }
         return contract.getId();
-    }catch (Exception e){
-        throw new MyException(-1, "创建新合同信息未知错误");
-    }
     }
 
     /**
