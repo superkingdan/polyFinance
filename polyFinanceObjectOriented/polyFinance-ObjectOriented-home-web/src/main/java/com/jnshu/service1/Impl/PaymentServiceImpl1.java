@@ -77,7 +77,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
     public Long addContract(String userSign, long productId, long userId) throws Exception{
         log.info("根据用户签名，用户id和产品id生成新的合同");
         //查找用户是否够买过新手礼包以及此产品是否是新手礼包
-    try {
         Product product;
         try {
             product = productMapper1.getProductById(productId);
@@ -130,9 +129,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             throw new MyException(-1, "创建新合同信息产生错误");
         }
         return contract.getId();
-    }catch (Exception e){
-        throw new MyException(-1, "创建新合同信息未知错误");
-    }
     }
 
     /**
