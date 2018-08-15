@@ -28,7 +28,7 @@ public class ModuleBackTreeInit {
         for (DomainModuleBackForLogin moduleBack : list){
             if (0 != moduleBack.getSuperId()) {
                 for (ModuleBackTree tree : trees) {
-                    if (moduleBack.getSuperId() == tree.getId()) {
+                    if (moduleBack.getSuperId().equals(tree.getId())) {
                         tree.getSubModuleList().add(moduleBack);
                     }
                 }

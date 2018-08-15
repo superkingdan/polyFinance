@@ -23,7 +23,7 @@ public interface BankMapper2 {
     Boolean deleteBank(Long id) throws Exception;
 
     //更新--Bank
-    @Update("update bank set update_at=#{updateAt}, update_by=#{updateBy}, bank_name=#{bankName}, payment_id=#{paymentId}, withdrawal_id=#{withdrawalId}, day_limited=#{dayLimited}, icon=#{icon} where id=#{id}")
+    @Update("update bank set update_at=#{updateAt}, update_by=#{updateBy}, bank_name=#{bankName}, payment_id=#{paymentId}, withdrawal_id=#{withdrawalId},single_limited=#{singleLimited}, day_limited=#{dayLimited}, icon=#{icon} where id=#{id}")
     Boolean updateBank(Bank bank) throws Exception;
 
     //总数

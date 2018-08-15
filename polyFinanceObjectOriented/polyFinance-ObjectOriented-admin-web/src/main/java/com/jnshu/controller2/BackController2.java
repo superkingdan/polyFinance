@@ -189,7 +189,7 @@ public class BackController2 {
             return result;
         }
 
-        if ((null == roleId || roleId.equals("")) &&(null == phoneNumber || ("").equals(phoneNumber))){
+        if ((null == roleId || ("").equals(roleId)) &&(null == phoneNumber || ("").equals(phoneNumber))){
             result.put("code",-1);
             result.put("message","roleId和phoneNumber不能全为空。");
         }
@@ -231,7 +231,7 @@ public class BackController2 {
         }
 
         //更新角色。
-        if (null != roleId && !roleId.equals("")){
+        if (null != roleId && !("").equals(roleId)){
             //超级用户admin的id为1，不允许修改角色。
             if (id == 1){
                 result.put("code2",-1);
@@ -243,7 +243,7 @@ public class BackController2 {
             try {
                 List<DomainRoleBack> roleBacks = roleBackService2.getAll();
                 for (DomainRoleBack roleBack : roleBacks){
-                    if (roleBack.getId() == roleId){
+                    if (Objects.equals(roleBack.getId(), roleId)){
                         x =true;
                         break;
                     }
@@ -414,13 +414,15 @@ public class BackController2 {
             System.out.println(userBack);
             userBack.setCreateAt(System.currentTimeMillis());
             userBack.setCreateBy((Long) account.get("uid"));
+            userBack.setUpdateAt(System.currentTimeMillis());
+            userBack.setUpdateBy((Long) account.get("uid"));
             userBack.setLoginName(loginName);
             userBack.setPhoneNumber(phoneNumber);
             userBack.setSalt(salt);
             userBack.setHashKey(hashKey2);
 
+            //账户新增
             backService2.saveUserBack(userBack);
-
 
             Long userId = null;
 
@@ -429,6 +431,8 @@ public class BackController2 {
                 RoleUserBack roleUserBack = new RoleUserBack();
                 roleUserBack.setCreateAt(System.currentTimeMillis());
                 roleUserBack.setCreateBy((Long) account.get("uid"));
+                roleUserBack.setUpdateAt(System.currentTimeMillis());
+                roleUserBack.setUpdateBy((Long) account.get("uid"));
                 roleUserBack.setUserId(userId);
                 roleUserBack.setRoleId(roleId);
 
@@ -480,6 +484,8 @@ public class BackController2 {
             result.put("message","hashKey,hashKey2,hashKey3 不能无值或为空。");
             return result;
         }
+
+        //验证密码长度。
         if (hashKey2.length() < 8){
             result.put("code",-1);
             result.put("message","新密码不能为空或小于八位。");
@@ -652,7 +658,7 @@ public class BackController2 {
         }
 
         result = new HashMap<>();
-        //判断moduleIds格式是否正确。
+        //判断moduleIds格式是否正确，需要是数组[]的字符串。
         if (!moduleIds.contains("[") || !moduleIds.contains("]")){
             result.put("code",-1);
             result.put("message","moduleIds格式不对，需要数组[]。");
@@ -684,6 +690,8 @@ public class BackController2 {
             RoleBack roleBack = new RoleBack();
             roleBack.setCreateAt(System.currentTimeMillis());
             roleBack.setCreateBy((Long) account.get("uid"));
+            roleBack.setUpdateAt(System.currentTimeMillis());
+            roleBack.setUpdateBy((Long) account.get("uid"));
             roleBack.setRole(role);
 
             roleBackService2.saveRoleBack(roleBack);
@@ -812,6 +820,8 @@ public class BackController2 {
                 RoleModuleBack roleModuleBack = new RoleModuleBack();
                 roleModuleBack.setCreateAt(System.currentTimeMillis());
                 roleModuleBack.setCreateBy((Long) account.get("uid"));
+                roleModuleBack.setUpdateAt(System.currentTimeMillis());
+                roleModuleBack.setUpdateBy((Long) account.get("uid"));
                 roleModuleBack.setModuleId(moduleId);
                 roleModuleBack.setRoleId(id);
 
@@ -889,82 +899,80 @@ public class BackController2 {
         logger.info("后台 后台管理--角色删除时成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
-//
-//
-//
-//    //模块管理-模块列表
-//    @RequestMapping(value = "/a/u/modules",method = RequestMethod.GET)
-//    public List<Object> getModules(
-//            @RequestParam(required = false,defaultValue = "1") Integer pageNum,
-//            @RequestParam(required = false,defaultValue = "10") Integer pageSize){
-//        List<Object> result = new ArrayList<>();
-//        List<Map> modules = new ArrayList<>();
-//        for (int s=1;s<pageSize;s++){
-//            Map<String,Object> module = new HashMap<>();
-//            module.put("id", s);
-//            module.put("moduleName", "用户管理");
-//            module.put("moduleUrl", "www.d");
-//            module.put("superId", s+8);
-//            module.put("moduleType", "WEB");
-//            module.put("updateAt", System.currentTimeMillis());
-//            module.put("id2", 3);
-//            module.put("createAt",System.currentTimeMillis() );
-//            module.put("id3", 9);
-//            modules.add(module);
-//        }
-//        result.add(cam);
-//        Map<String,Integer> t= new HashMap<>();
-//        t.put("total", 200);
-//        result.add(modules);
-//        return result;
-//    }
-//
-//    //模块管理-模块详情
-//    @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.GET)
-//    public List<Object> getModule(@PathVariable Long id){
-//        List<Object> result = new ArrayList<>();
-//            Map<String,Object> module = new HashMap<>();
-//            module.put("id", id);
-//            module.put("moduleName", "用户管理");
-//            module.put("moduleUrl", "www.d");
-//            module.put("superId", id+8);
-//            module.put("moduleType", "WEB");
-//            module.put("updateAt", System.currentTimeMillis());
-//            module.put("id2", 3);
-//            module.put("createAt",System.currentTimeMillis() );
-//            module.put("id3", 9);
-//        result.add(cam);
-//        result.add(module);
-//        return result;
-//    }
-//
-//    //模块管理-模块更新
-//    @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.PUT)
-//    public List<Object> updateModule(@PathVariable Long id){
-//        List<Object> result = new ArrayList<>();
-//        result.add(cam);
-//        return result;
-//    }
-//
-//    //模块管理-模块删除
-//    @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.DELETE)
-//    public List<Object> deleteModule(@PathVariable Long id){
-//        List<Object> result = new ArrayList<>();
-//        result.add(cam);
-//        return result;
-//    }
-//
-//    //模块管理-模块新增
-//    @RequestMapping(value = "/a/u/modules/new",method = RequestMethod.POST)
-//    public List<Object> saveModule(
-//            @RequestParam(required = false) String moduleName,
-//            @RequestParam(required = false) String menuId,
-//            @RequestParam(required = false) String moduleUrl,
-//            @RequestParam(required = false) String superId,
-//            @RequestParam(required = false) String moduleType
-//    ){
-//        List<Object> result = new ArrayList<>();
-//        result.add(cam);
-//        return result;
-//    }
+/*
+    //模块管理-模块列表
+    @RequestMapping(value = "/a/u/modules",method = RequestMethod.GET)
+    public List<Object> getModules(
+            @RequestParam(required = false,defaultValue = "1") Integer pageNum,
+            @RequestParam(required = false,defaultValue = "10") Integer pageSize){
+        List<Object> result = new ArrayList<>();
+        List<Map> modules = new ArrayList<>();
+        for (int s=1;s<pageSize;s++){
+            Map<String,Object> module = new HashMap<>();
+            module.put("id", s);
+            module.put("moduleName", "用户管理");
+            module.put("moduleUrl", "www.d");
+            module.put("superId", s+8);
+            module.put("moduleType", "WEB");
+            module.put("updateAt", System.currentTimeMillis());
+            module.put("id2", 3);
+            module.put("createAt",System.currentTimeMillis() );
+            module.put("id3", 9);
+            modules.add(module);
+        }
+        result.add(cam);
+        Map<String,Integer> t= new HashMap<>();
+        t.put("total", 200);
+        result.add(modules);
+        return result;
+    }
+
+    //模块管理-模块详情
+    @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.GET)
+    public List<Object> getModule(@PathVariable Long id){
+        List<Object> result = new ArrayList<>();
+            Map<String,Object> module = new HashMap<>();
+            module.put("id", id);
+            module.put("moduleName", "用户管理");
+            module.put("moduleUrl", "www.d");
+            module.put("superId", id+8);
+            module.put("moduleType", "WEB");
+            module.put("updateAt", System.currentTimeMillis());
+            module.put("id2", 3);
+            module.put("createAt",System.currentTimeMillis() );
+            module.put("id3", 9);
+        result.add(cam);
+        result.add(module);
+        return result;
+    }
+
+    //模块管理-模块更新
+    @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.PUT)
+    public List<Object> updateModule(@PathVariable Long id){
+        List<Object> result = new ArrayList<>();
+        result.add(cam);
+        return result;
+    }
+
+    //模块管理-模块删除
+    @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.DELETE)
+    public List<Object> deleteModule(@PathVariable Long id){
+        List<Object> result = new ArrayList<>();
+        result.add(cam);
+        return result;
+    }
+
+    //模块管理-模块新增
+    @RequestMapping(value = "/a/u/modules/new",method = RequestMethod.POST)
+    public List<Object> saveModule(
+            @RequestParam(required = false) String moduleName,
+            @RequestParam(required = false) String menuId,
+            @RequestParam(required = false) String moduleUrl,
+            @RequestParam(required = false) String superId,
+            @RequestParam(required = false) String moduleType
+    ){
+        List<Object> result = new ArrayList<>();
+        result.add(cam);
+        return result;
+    }*/
 }

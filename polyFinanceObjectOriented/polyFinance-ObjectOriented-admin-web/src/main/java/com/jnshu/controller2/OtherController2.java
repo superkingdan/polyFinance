@@ -193,6 +193,7 @@ public class OtherController2 {
                 systemData2.setDataName("creditorDay");
                 systemData2.setDataValue(creditorDay);
 
+                s1 = dataService2.updateSystemData(systemData2);
                 if (s1){
                     result.put("code3",0);
                     result.put("message3","债权到期提前天数,更新成功。");
@@ -215,7 +216,7 @@ public class OtherController2 {
                     result.put("code4",0);
                     result.put("message4","总债权投满警戒线,更新成功。");
                 }else {
-                    result.put("code4",0);
+                    result.put("code4",-1);
                     result.put("message4","总债权投满警戒线  要更新的值与原值相同。");
                 }
             }
@@ -438,7 +439,7 @@ public class OtherController2 {
         try {
             list = feedbackService2.getFeedbackList(pageNum,pageSize,rpo);
             total = feedbackService2.getFeedbackList2(rpo).size();
-            if (null == list){
+                if (null == list){
                 result.put("code",0);
                 result.put("message","此条件下无值。");
                 return result;

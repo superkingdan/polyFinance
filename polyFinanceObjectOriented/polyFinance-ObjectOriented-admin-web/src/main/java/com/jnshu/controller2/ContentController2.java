@@ -213,7 +213,7 @@ public class ContentController2 {
         if(type == 1 || 2 == type){
             System.out.println("*********编辑内容接口，打印details***********");
             System.out.println(details);
-            if (null == details || details.equals("")){
+            if (null == details || ("").equals(details)){
                 cam.setCode(-1);
                 cam.setErrorMessage("类型为”帮助中心“或”关于我们“时，内容不能为空。");
                 result.add(cam);
@@ -310,7 +310,7 @@ public class ContentController2 {
 
         //当type等于1或2时，details不能没有或者无值，同时不需要bannerCover。
         if(type == 1 || 2 == type){
-            if (null == details || details.equals("")){
+            if (null == details || ("").equals(details)){
                 cam.setCode(-1);
                 cam.setErrorMessage("类型为”帮助中心“ 或”关于我们“时，内容不能为空。");
                 result.add(cam);

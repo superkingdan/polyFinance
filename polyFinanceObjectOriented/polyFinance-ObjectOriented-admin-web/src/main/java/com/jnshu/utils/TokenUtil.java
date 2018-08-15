@@ -56,7 +56,8 @@ public class TokenUtil {
                    .withClaim("uid", userId)
                     .withClaim("loginName", loginName)
                     .withClaim("role", role)
-                    .withExpiresAt(expiresDate)      //设置过期时间
+                    //设置过期时间
+                    .withExpiresAt(expiresDate)
                     .withIssuedAt(iatDate)
                    .sign(Algorithm.HMAC384(secret));
         } catch (UnsupportedEncodingException e) {

@@ -79,7 +79,9 @@ public class OSSUploadUtil {
 
         String bucketName = OSSUploadUtil.getBucketName(fileUrl);       //根据url获取bucketName
         String fileName = OSSUploadUtil.getFileName(fileUrl);           //根据url获取fileName
-        if(bucketName==null||fileName==null) return false;
+        if(bucketName==null||fileName==null) {
+            return false;
+        }
         OSSClient ossClient = null;
         try {
             ossClient = new OSSClient(config.getEndpoint(), config.getAccessKeyId(), config.getAccessKeySecret());
@@ -105,7 +107,9 @@ public class OSSUploadUtil {
         int deleteCount = 0;    //成功删除的个数
         String bucketName = OSSUploadUtil.getBucketName(fileUrls.get(0));       //根据url获取bucketName
         List<String> fileNames = OSSUploadUtil.getFileName(fileUrls);         //根据url获取fileName
-        if(bucketName==null||fileNames.size()<=0) return 0;
+        if(bucketName==null||fileNames.size()<=0) {
+            return 0;
+        }
         OSSClient ossClient = null;
         try {
             ossClient = new OSSClient(config.getEndpoint(), config.getAccessKeyId(), config.getAccessKeySecret());
@@ -256,7 +260,9 @@ public class OSSUploadUtil {
     private static String getFileName(String fileUrl){
         String str = "aliyuncs.com/";
         int beginIndex = fileUrl.indexOf(str);
-        if(beginIndex==-1) return null;
+        if(beginIndex==-1) {
+            return null;
+        }
         return fileUrl.substring(beginIndex+str.length());
     }
 

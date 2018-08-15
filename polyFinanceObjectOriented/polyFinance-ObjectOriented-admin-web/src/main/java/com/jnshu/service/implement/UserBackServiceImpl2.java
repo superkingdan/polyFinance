@@ -89,7 +89,7 @@ public class UserBackServiceImpl2 implements UserBackService2 {
             response.addCookie(cookie1);
 
 
-            logger.info("时间："+new Timestamp(new Date().getTime())+"。后台账户："+userBack.getLoginName()+", 管理角色："+role.getRole()+"。对应模块权限： "+"\n"+returnModules.toString());
+            logger.info("时间："+new Timestamp(System.currentTimeMillis())+"。后台账户："+userBack.getLoginName()+", 管理角色："+role.getRole()+"。对应模块权限： "+"\n"+returnModules.toString());
             return result;
         }
 
