@@ -506,6 +506,7 @@ public class FrontUserController2 {
             user1.setUpdateBy((Long) account.get("uid"));
             user1.setUpdateAt(System.currentTimeMillis());
             user1.setId(id);
+
             user1.setDefaultCard(newDefaultBankCardId);
             System.out.println("更新默认银行卡》》》》"+user1);
             try {
