@@ -61,10 +61,8 @@ public class BackController2 {
         Map<String, Object> result = new HashMap<>();
 
         List<DomainUserBack> userBacks =null;
-        Integer total = null;
         try {
             userBacks = backService2.getUserBacksByNameAndRole(rpo);
-            total = backService2.getUserBacksByNameAndRole2(rpo).size();
         } catch (Exception e) {
             result.put("code",-1);
             result.put("message","服务器错误。");
@@ -88,9 +86,6 @@ public class BackController2 {
 
         result.put("code",0);
         result.put("message","成功获取账户列表。");
-        result.put("total",total);
-        result.put("pageNum",rpo.getPageNum());
-        result.put("pageSize",rpo.getPageSize());
         logger.info("后台 后台管理--账户列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
         result.put("data", userBacks);
         return result;
@@ -174,6 +169,12 @@ public class BackController2 {
         if (id<1 ){
             result.put("code",-1);
             result.put("message","错误参数");
+            return result;
+        }
+
+        if (id == 1 && roleId != null){
+            result.put("code",-1);
+            result.put("message","超级管理员不允许修改角色。");
             return result;
         }
 
@@ -310,6 +311,11 @@ public class BackController2 {
             return result;
         }
 
+        if (id == 1){
+            result.put("code",-1);
+            result.put("message","admin账户不能删除。");
+            return result;
+        }
         Boolean del = false;
         try {
             del = backService2.deleteById(id);
@@ -744,6 +750,11 @@ public class BackController2 {
 
         logger.info("&&&&&&&&&&角色编辑&&&&&, id: "+ id +", moduleIds: " + moduleIds);
         //验证参数。
+        if (id == 1){
+            result.put("code",-1);
+            result.put("message","超级管理员不允许修改。");
+            return result;
+        }
         if (null == id || id < 1){
             result.put("code",-1);
             result.put("message","id不能小于1");
@@ -857,6 +868,12 @@ public class BackController2 {
 
         //返回数据List。改成map。
         Map<String, Object> result = new HashMap<>();
+
+        if (id == 1){
+            result.put("code",-1);
+            result.put("message","超级管理员不允许删除。");
+            return result;
+        }
 
         if (id<1){
             result.put("code",-1);

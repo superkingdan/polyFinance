@@ -357,9 +357,6 @@ public class FrontUserController2 {
                 return result;
             }
         }
-
-
-
         return result;
     }
 
@@ -414,6 +411,14 @@ public class FrontUserController2 {
         System.out.println((long) defaultCard != (long) (user.getDefaultCard()));
 
         //比较数据库用户默认银行卡和前端传来的id是否相同。如果不同直接返回。
+        if (user.getDefaultCard() == null){
+            cam.setCode(-1);
+            cam.setMessage("defaultCard为空。");
+            cam.setErrorMessage("当前用户没有默认银行卡。");
+            result.add(cam);
+            return result;
+        }
+
         if ((long) defaultCard != (long) (user.getDefaultCard())){
             cam.setCode(-1);
             cam.setMessage("defaultCard错误");
@@ -456,6 +461,7 @@ public class FrontUserController2 {
                 result.add(cam);
                 return result;
             }
+
             System.out.println("newDefaultBankCardId："+newDefaultBankCardId);
         } catch (Exception e) {
             cam.setErrorMessage("服务器获取id="+id+"银行卡出错错误");

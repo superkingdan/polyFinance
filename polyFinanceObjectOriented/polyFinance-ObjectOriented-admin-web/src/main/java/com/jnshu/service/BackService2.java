@@ -15,7 +15,6 @@ public interface BackService2 {
 
     //账户列表
     List<DomainUserBack> getUserBacksByNameAndRole(UserBackListRPO rpo) throws Exception ;
-    List<DomainUserBack> getUserBacksByNameAndRole2(UserBackListRPO rpo) throws Exception;
 
     //详情
     UserBack getUserBackById(Long id) throws Exception;
