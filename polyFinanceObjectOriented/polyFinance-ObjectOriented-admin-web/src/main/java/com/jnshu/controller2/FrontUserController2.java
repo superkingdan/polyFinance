@@ -507,6 +507,7 @@ public class FrontUserController2 {
             user1.setUpdateAt(System.currentTimeMillis());
             user1.setId(id);
             user1.setDefaultCard(newDefaultBankCardId);
+            System.out.println("更新默认银行卡》》》》"+user1);
             try {
                 if (userService2.updateUserDefaultBankCard(user1)){
                     cam.setCode(0);
