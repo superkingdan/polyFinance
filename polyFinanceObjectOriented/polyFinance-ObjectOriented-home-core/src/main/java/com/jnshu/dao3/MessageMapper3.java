@@ -107,12 +107,11 @@ public interface MessageMapper3 {
                     SET("message_type=#{messageType}");}
                 if (message.getIsPush()!=0){
                     SET("is_push=#{isPush}");}
-                if (message.getIsSent()!=0){
-                    SET("is_sent=#{isSent}");}
                 if (message.getTransactionId()!=0){
                     SET("transaction_id=#{transactionId}");}
                 if (message.getUserId()!=0){
                     SET("user_id=#{userId}");}
+                SET("is_sent=#{isSent}");
                 WHERE("id=#{id}");
             }}.toString();
         }
