@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -30,13 +31,13 @@ public class ProductController1 {
 
     /**
      * 获得产品列表
-     * @param rpo 是否是推荐产品，区别推荐页
+     * @param isRecommend 是否是推荐产品，区别推荐页
      * @return 返回参数，code,message，产品列表
      */
     @GetMapping(value = "/a/product/list")
-    public Map getProductList(ProductListRPO rpo)throws Exception{
-        log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+rpo.getIsRecommend());
-        List<Product> products= productService1.getProductList(rpo);
+    public Map getProductList(@RequestParam(value = "isRecommend",required = false) Integer isRecommend)throws Exception{
+        log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+isRecommend);
+        List<Product> products= productService1.getProductList(isRecommend);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");

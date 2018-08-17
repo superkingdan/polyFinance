@@ -8,6 +8,7 @@ import com.jnshu.service1.ProductService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,17 +27,16 @@ public class ProductServiceImpl1 implements ProductService1 {
 
     /**
      * 获得产品列表
-     * @param rpo 查询条件，主要是区分是否需要推荐
+     * @param isRecommend 查询条件，主要是区分是否需要推荐
      * @return 查询结果
      */
     @Override
-    public List<Product> getProductList(ProductListRPO rpo) throws Exception{
+    public List<Product> getProductList(Integer isRecommend) throws Exception{
         log.info("获得产品列表");
         //设置状态为在售
         List<Product> list;
        try {
-           rpo.setStatus(0);
-           list = productMapper1.getProductListByRpo(rpo);
+           list = productMapper1.getProductListByIsRecommend(isRecommend);
        }catch (Exception e){
            throw new MyException(-1,"获得产品列表失败");
        }
@@ -49,6 +49,7 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @return 产品详情
      */
     @Override
+    @Cacheable(value = "object-product",key ="#id")
     public Product getProductById(long id) throws Exception{
         log.info("获得指定id为"+id+"的产品");
         Product product;

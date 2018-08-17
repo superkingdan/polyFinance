@@ -51,7 +51,7 @@ ProductService1 productService1;
      * @return 返回参数，code,message,产品详情
      */
     @GetMapping(value = "/a/u/product/{id}")
-    @Cacheable(cacheNames = "object-admin-product",key="#id")
+//    @Cacheable(cacheNames = "object-admin-product",key="#id")
     public Map getProduct(@PathVariable(value = "id")long id)throws Exception{
         log.info("获得指定产品详情，产品id为"+id);
         Map<String,Object> map=new HashMap<>();
@@ -69,7 +69,7 @@ ProductService1 productService1;
      * @return 修改结果，code,message
      */
     @PutMapping(value = "/a/u/product/{id}")
-    @CacheEvict(cacheNames = "object-admin-product",key="#id")
+//    @CacheEvict(cacheNames = "object-admin-product",key="#id")
     public Map updateProduct(@PathVariable(value = "id")long id,@ModelAttribute Product product,HttpServletRequest request)throws Exception{
         if(product.getMark()==null||product.getIsLimitePurchase()==null||product.getIsRecommend()==null){
             throw new MyException(10002,"参数不能为空");
