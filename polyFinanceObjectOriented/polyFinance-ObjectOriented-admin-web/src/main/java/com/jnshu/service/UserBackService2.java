@@ -17,7 +17,7 @@ public interface UserBackService2 {
     //后台账户验证。
     Object verifyUserBack(UserBack userBack, HttpServletRequest request, HttpServletResponse response) throws Exception;
     //账户列表
-    List<DomainUserBack> getUserBackList(UserBackListRPO rpo) throws Exception;
+//    List<DomainUserBack> getUserBackList(UserBackListRPO rpo) throws Exception;
 
     //新增账户
     Long saveUserBack(UserBack userBack) throws Exception;

@@ -100,12 +100,12 @@ public class UserBackServiceImpl2 implements UserBackService2 {
     }
 
 
-    @Override
-    public List<DomainUserBack> getUserBackList(UserBackListRPO rpo) throws Exception {
-        PageHelper.startPage(rpo.getPageNum(), rpo.getPageSize());
-        List<DomainUserBack> userBacks = userBackMapper2.getUserBacksByNameAndRole(rpo);
-        return userBacks;
-    }
+//    @Override
+//    public List<DomainUserBack> getUserBackList(UserBackListRPO rpo) throws Exception {
+//        PageHelper.startPage(rpo.getPageNum(), rpo.getPageSize());
+//        List<DomainUserBack> userBacks = userBackMapper2.getUserBacksByNameAndRole(rpo);
+//        return userBacks;
+//    }
 
     @Override
     public Long saveUserBack(UserBack userBack) throws Exception {

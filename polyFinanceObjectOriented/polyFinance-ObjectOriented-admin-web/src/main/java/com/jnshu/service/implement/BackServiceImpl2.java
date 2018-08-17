@@ -29,14 +29,9 @@ public class BackServiceImpl2 implements BackService2 {
     //账户列表
     @Override
     public List<DomainUserBack> getUserBacksByNameAndRole(UserBackListRPO rpo) throws Exception {
-        PageHelper.startPage(rpo.getPageNum(), rpo.getPageSize());
         return userBackMapper2.getUserBacksByNameAndRole(rpo);
     }
 
-    @Override
-    public List<DomainUserBack> getUserBacksByNameAndRole2(UserBackListRPO rpo) throws Exception {
-        return userBackMapper2.getUserBacksByNameAndRole(rpo);
-    }
     //账户详情
     @Override
     public UserBack getUserBackById(Long id) throws Exception {
