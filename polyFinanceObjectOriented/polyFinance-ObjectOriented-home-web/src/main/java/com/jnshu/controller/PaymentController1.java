@@ -90,6 +90,7 @@ public class PaymentController1 {
         if(rpo.getUserSign()==null||rpo.getProductId()==null||rpo.getBankCardId()==null||rpo.getMoney()==null){
             throw new MyException(10002,"参数不能为空");
         }
+        System.out.println("传入银行卡id为"+rpo.getBankCardId());
         Map<String,Object> map=new HashMap<>();
         //获取用户id
         String uidS= CookieUtil.getCookieValue(request,"uid");
