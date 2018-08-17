@@ -218,3 +218,79 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 21:46:47.989 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
 21:46:47.989 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
 21:46:47.989 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.881 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.881 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.881 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.881 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.882 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+22:25:21.883 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+22:26:01.009 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:30:54.748 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.748 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.749 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.749 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.749 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.749 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.749 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.750 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.750 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.750 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.750 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+22:30:54.751 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.319 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.320 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.321 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.321 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.321 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.322 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.323 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.323 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.323 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.323 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.323 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+22:33:20.324 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+22:35:16.521 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@79f099dc (No operations allowed after connection closed.)
+22:35:16.541 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5b1b9e03 (No operations allowed after connection closed.)
+22:35:16.544 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@20318ac9 (No operations allowed after connection closed.)
+22:35:16.546 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1fe4124f (No operations allowed after connection closed.)
+22:35:16.548 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@47fd0b10 (No operations allowed after connection closed.)
+22:35:16.549 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@40917e6a (No operations allowed after connection closed.)
+22:35:16.551 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6cdad373 (No operations allowed after connection closed.)
+22:35:16.553 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@5313c2cd (No operations allowed after connection closed.)
+22:35:16.556 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@7c99f634 (No operations allowed after connection closed.)
+22:35:16.557 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3730a5e3 (No operations allowed after connection closed.)
+22:35:16.564 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@dcba93d (No operations allowed after connection closed.)
+22:35:16.565 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@408317e3 (No operations allowed after connection closed.)
+22:35:16.567 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@73987191 (No operations allowed after connection closed.)
+22:35:16.569 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@4135cdbc (No operations allowed after connection closed.)
+22:35:16.571 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@116706e6 (No operations allowed after connection closed.)
+22:35:16.574 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@79a7c37e (No operations allowed after connection closed.)
+22:35:16.605 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@1610b9db (No operations allowed after connection closed.)
+22:35:16.607 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@3fe9cdc9 (No operations allowed after connection closed.)
+22:35:16.614 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@6f036705 (No operations allowed after connection closed.)
+22:35:16.626 WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.jdbc.JDBC4Connection@28f8e5a8 (No operations allowed after connection closed.)
+22:35:16.900 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:35:18.601 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:35:19.504 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:35:20.226 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:35:21.002 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:35:21.731 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+22:35:22.535 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved exception caused by Handler execution: com.jnshu.exception.MyException: 获得产品列表失败
+23:21:54.586 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.586 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.586 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.586 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.587 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.587 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.587 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.587 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.587 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.587 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.588 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+23:21:54.588 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!

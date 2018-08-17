@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 //classes后面是启动类.class
 @SpringBootTest(classes = Entry.class)
@@ -101,5 +103,13 @@ public class ProductMapperTest {
     @Test
     public void getPayInfoById(){
         System.out.println(productMapper.getPayInfoById(1));
+    }
+
+    @Test
+    public void getProductList(){
+        List<Product> products=productMapper.getProductList();
+        for (int i=0;i<products.size();i++){
+            System.out.println(products.get(i));
+        }
     }
 }

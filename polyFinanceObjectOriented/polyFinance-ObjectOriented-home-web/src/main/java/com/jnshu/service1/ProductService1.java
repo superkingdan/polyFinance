@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface ProductService1 {
 
-    List<Product> getProductList(Integer isRecommend)throws Exception;
+    List<Product> getProductListRecommend()throws Exception;
+
+    List<Product> getProductList()throws Exception;
 
     Product getProductById(long id)throws Exception;
 }

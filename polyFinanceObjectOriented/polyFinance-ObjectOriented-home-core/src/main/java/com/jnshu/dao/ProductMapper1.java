@@ -62,9 +62,12 @@ public interface ProductMapper1 {
     Long getProductCreateAtById(long id);
 
     //前台获得产品列表
-    @SelectProvider(type = ProductProvider.class,method = "getProductListByIsRecommend")
-//    @Select("select id,product_name,interest_rate,deadline,investment_amount,mark from product where status=0 and where is_recommend=#{isRecommend}")
-    List<Product> getProductListByIsRecommend(Integer isRecommend);
+//    @SelectProvider(type = ProductProvider.class,method = "getProductListByIsRecommend")
+    @Select("select id,product_name,interest_rate,deadline,investment_amount,mark from product where status=0 and where is_recommend=1 order by update_at desc")
+    List<Product> getProductListRecommend();
+
+    @Select("select id,product_name,interest_rate,deadline,investment_amount,mark from product where status=0 order by update_at desc")
+    List<Product> getProductList();
 
     //获得产品列表
     //前台获取需手动将status设置为0在售,并且设置是否推荐
@@ -76,16 +79,16 @@ public interface ProductMapper1 {
     List<StatisticsSalesListRO> getProductIdByProductNameAndCode(StatisticsSalesListRPO rpo);
 
     class  ProductProvider{
-        public String getProductListByIsRecommend(Integer isRecommend){
-            return new SQL(){{
-                SELECT("id,product_name,interest_rate,deadline,investment_amount,mark");
-                FROM("product");
-                WHERE("status=0");
-                if(isRecommend!=null)
-                    WHERE("is_recommend=#{isRecommend}");
-                ORDER_BY("update_at desc");
-            }}.toString();
-        }
+//        public String getProductListByIsRecommend(Integer isRecommend){
+//            return new SQL(){{
+//                SELECT("id,product_name,interest_rate,deadline,investment_amount,mark");
+//                FROM("product");
+//                WHERE("status=0");
+//                if(isRecommend!=null)
+//                    WHERE("is_recommend=#{isRecommend}");
+//                ORDER_BY("update_at desc");
+//            }}.toString();
+//        }
 
         public String getProductListByRpo(ProductListRPO rpo){
             return new SQL(){{

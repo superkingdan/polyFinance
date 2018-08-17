@@ -36,12 +36,19 @@ public class ProductController1 {
      */
     @GetMapping(value = "/a/product/list")
     public Map getProductList(@RequestParam(value = "isRecommend",required = false) Integer isRecommend)throws Exception{
+        long st=System.currentTimeMillis();
         log.info("获得产品列表，1代表推荐页，没有代表全部，条件为："+isRecommend);
-        List<Product> products= productService1.getProductList(isRecommend);
+        List<Product> products;
+        if(isRecommend==null)
+            products=productService1.getProductList();
+        else
+            products=productService1.getProductListRecommend();
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);
         map.put("message","success");
         map.put("data",products);
+        long et=System.currentTimeMillis();
+        log.info("本次访问时间为{}",(et-st));
         return map;
     }
 
@@ -53,12 +60,15 @@ public class ProductController1 {
     @GetMapping(value = "/a/product/{id}")
 //    @Cacheable(cacheNames = "object-home-product",key = "#id")
     public Map getProduct(@PathVariable(value = "id")long id)throws Exception{
+        long st=System.currentTimeMillis();
         log.info("获得id为"+id+"的产品");
         Map<String,Object> map=new HashMap<>();
         Product product= productService1.getProductById(id);
         map.put("code",0);
         map.put("message","success");
         map.put("data",product);
+        long et=System.currentTimeMillis();
+        log.info("本次访问时间为{}",(et-st));
         return map;
     }
 }
