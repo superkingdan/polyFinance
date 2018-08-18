@@ -40,15 +40,17 @@ public class MessageServiceImpl3 implements MessageService3 {
     public JSONObject findMessageList(MessageListRPO messageListRPO) throws MyException {
         JSONObject json =new JSONObject();
         if (messageListRPO.getLoginName()!=null) {
-            UserBack userBack;
-            userBack=userBackMapper3.findByName(messageListRPO.getLoginName());
+            UserBack userBack=userBackMapper3.findByName(messageListRPO.getLoginName());
             if (userBack==null){
                 throw new MyException(-1, "没有该用户");
             }
-            messageListRPO.setCreateBy(userBack.getCreateBy());
+            System.out.println(userBack);
+            messageListRPO.setUpdateBy(userBack.getId());
+            System.out.println(messageListRPO.getCreateBy());
         }
 
         List<MessageListRPO> messageListRPOS= messageMapper3.findMessageListRPO(messageListRPO);
+        System.out.println(messageListRPOS);
         json.put("code",0);
         json.put("message","成功");
         json.put("data",messageListRPOS);
@@ -90,19 +92,18 @@ public class MessageServiceImpl3 implements MessageService3 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         message.setCreateBy(userBackId);
-
-        String content= String.valueOf(redisCacheManager.get(userBackId+",image"));
-        if(content!=null) {
-            message.setContent(content);
+        message.setUpdateBy(userBackId);
+        if (message.getIsSent()==0){
+            if(message.getMessageType()==1) {
+                int isSent = 1;
+                message.setIsSent(isSent);
+            }
         }
         messageMapper3.addMessage(message);
         long id=message.getId();
-
         if (message.getMessageType()==1){
             /*添加定时任务*/
-            int isSent=1;
             int nature=5;
             long taskTime=message.getUpdateAt();//需要知道前台传回来的是什么类型
             TimedTask timedTask=new TimedTask();
@@ -110,7 +111,6 @@ public class MessageServiceImpl3 implements MessageService3 {
             timedTask.setNature(nature);
             timedTask.setMessageId(id);
             timedTaskMapper3.addTask(timedTask);
-            message.setIsSent(isSent);
         }
         json.put("code",0);
         json.put("message","成功");
@@ -183,15 +183,15 @@ public class MessageServiceImpl3 implements MessageService3 {
         String photoKey = "Message/"+userBackId+imageName+code+"."+photoType;
         String bucketName ="jnshuphoto";
         try {
-            aliOSSUtil.uploadFile(photoKey, realImage.getBytes());
+            aliOSSUtil.uploadFile(photoKey,realImage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        String avatar = OSSUtil.getImgUrl(photoKey,bucketName);
-        redisCacheManager.set(userBackId+",image",avatar);
+        String data = OSSUtil.getImgUrl(photoKey,bucketName);
         json.put("code",0);
         json.put("message","成功");
+        json.put("data",data);
         return json;
     }
 }
