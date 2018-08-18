@@ -43,15 +43,6 @@ public class UserApplicationController2 {
 
         List<Object> result = new ArrayList<>();
 
-        /*if (null !=rpo.getCreateAt1() || null != rpo.getCreateAt2()){
-
-            if (null ==rpo.getCreateAt1() || null == rpo.getCreateAt2()){
-                cam.setCode(-1);
-                cam.setMessage("通过日期查询，两个日期都要有值。");
-                result.add(cam);
-                return result;
-            }
-        }*/
 
         List<DomainApplication> userApplications = null;
         Integer total = null;

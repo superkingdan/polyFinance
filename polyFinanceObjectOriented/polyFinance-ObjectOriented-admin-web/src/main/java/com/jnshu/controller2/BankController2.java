@@ -38,36 +38,6 @@ public class BankController2 {
         //返回数据List。
         List<Object> result = new ArrayList<>();
 
-        //参数校验。
-//        //编辑时间同时存在。
-//        if (null != rpo.getUpdateAt1() || null != rpo.getUpdateAt2()){
-//            if (null == rpo.getUpdateAt1() || null == rpo.getUpdateAt2()){
-//                cam.setCode(-1);
-//                cam.setMessage("两个编辑时间必须同时存在");
-//                result.add(cam);
-//                return result;
-//            }
-//        }
-//
-//        //单笔限额同时存在。
-//        if(null != rpo.getSingleLimited1() || null != rpo.getSingleLimited2()){
-//            if (null == rpo.getSingleLimited1() || null == rpo.getSingleLimited2()){
-//                cam.setCode(-1);
-//                cam.setMessage("两个单笔限额必须同时存在");
-//                result.add(cam);
-//                return result;
-//            }
-//        }
-//
-//        //日累计限额同时存在。
-//        if (null != rpo.getDayLimited1() || null != rpo.getDayLimited2()){
-//            if (null == rpo.getDayLimited1() || null ==rpo.getDayLimited2()){
-//                cam.setCode(-1);
-//                cam.setMessage("两个单日限额必须同时存在");
-//                result.add(cam);
-//                return result;
-//            }
-//        }
         //查询银行列表。
         List<DomainBank> banks = null;
         try {

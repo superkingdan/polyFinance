@@ -90,8 +90,13 @@ public class FrontUserController2 {
              user = userService2.getUserFrontById(id);
             if (null == user){
                 cam.setCode(-1);
-                cam.setErrorMessage("id超出范围。");
+                cam.setErrorMessage("id对应记录不存在。");
                 result.add(cam);
+            }
+
+            if (user.getRealStatus() == 0){
+                user.setFrontCard(null);
+                user.setReverseCard(null);
             }
         } catch (Exception e) {
             cam.setCode(-1);
@@ -134,7 +139,7 @@ public class FrontUserController2 {
 
 
         //参数验证
-        if (null == status || status.equals(0)){
+        if (null == status){
             cam.setCode(-1);
             cam.setErrorMessage("status 不能为空。");
             result.add(cam);
