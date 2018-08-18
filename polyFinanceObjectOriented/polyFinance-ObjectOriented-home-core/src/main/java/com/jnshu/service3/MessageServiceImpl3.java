@@ -13,7 +13,6 @@ import com.jnshu.exception.MyException;
 import com.jnshu.utils3.AliOSSUtil;
 import com.jnshu.utils3.CookieUtil;
 import com.jnshu.utils3.OSSUtil;
-import com.jnshu.utils3.VerificationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -97,20 +96,25 @@ public class MessageServiceImpl3 implements MessageService3 {
         if(content!=null) {
             message.setContent(content);
         }
+        if (message.getMessageType()==1) {
+            int isSent=1;
+            message.setIsSent(isSent);
+        }
         messageMapper3.addMessage(message);
         long id=message.getId();
 
         if (message.getMessageType()==1){
             /*添加定时任务*/
-            int isSent=1;
+
             int nature=5;
+
             long taskTime=message.getUpdateAt();//需要知道前台传回来的是什么类型
             TimedTask timedTask=new TimedTask();
             timedTask.setTaskTime(taskTime);
             timedTask.setNature(nature);
             timedTask.setMessageId(id);
             timedTaskMapper3.addTask(timedTask);
-            message.setIsSent(isSent);
+
         }
         json.put("code",0);
         json.put("message","成功");
@@ -178,12 +182,12 @@ public class MessageServiceImpl3 implements MessageService3 {
             json.put("message","图片格式不正确");
             return json;
         }
-        String code = VerificationUtil.getVerificationCode();
+
         /*图片存储路径*/
-        String photoKey = "Message/"+userBackId+imageName+code+"."+photoType;
+        String photoKey = "Message/"+userBackId+imageName+"."+photoType;
         String bucketName ="jnshuphoto";
         try {
-            aliOSSUtil.uploadFile(photoKey, realImage.getBytes());
+            aliOSSUtil.uploadFile(photoKey,realImage.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
