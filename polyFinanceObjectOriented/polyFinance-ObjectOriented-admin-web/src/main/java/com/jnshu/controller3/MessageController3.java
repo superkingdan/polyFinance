@@ -19,8 +19,6 @@ public class MessageController3 {
 
     @Autowired
     MessageService3 messageService3;
-    @Autowired
-    CookieService3 cookieService3;
 
     private static final Logger log= LoggerFactory.getLogger(MessageController3.class);
     /**
