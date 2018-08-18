@@ -20,7 +20,7 @@ public interface FeedbackMapper2 {
     Boolean deleteFeedback(Long id) throws Exception;
 
     //查询--id
-    @Select("select a.id,b.phone_number, b.real_name, b.email, a.content as feedback_content from feedback a inner join user b  on a.user_id=b.id where a.id=#{id}")
+    @Select("select a.id,b.phone_number, b.real_name, b.email, a.content as feedback_content from feedback a inner join user b on a.user_id=b.id where a.id=#{id}")
     DomainFeedBackDetail getFeedbackDetail(Long id) throws Exception;
 
     //查询--多条件
