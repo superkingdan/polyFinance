@@ -51,7 +51,7 @@ public class ClaimsController1 {
      * @return 返回参数，包括code,message,指定债权数据
      */
     @GetMapping(value = "/a/u/claims/{id}")
-    @Cacheable(cacheNames = "object-claims",key = "#id")
+//    @Cacheable(cacheNames = "object-claims",key = "#id")
     public  Map getClaims(@PathVariable(value = "id")long id)throws Exception{
         log.info("查询债权详情，债权id为"+id);
         Map<String,Object> map=new HashMap<>();
@@ -70,7 +70,7 @@ public class ClaimsController1 {
      * 不需要修改债权代号！！！
      */
     @PutMapping(value = "/a/u/claims/{id}")
-    @CacheEvict(cacheNames = "object-claims",key = "#id")
+//    @CacheEvict(cacheNames = "object-claims",key = "#id")
     public Map updateClaims(@ModelAttribute Claims claims, @PathVariable(value = "id")long id, HttpServletRequest request)throws Exception{
         System.out.println(claims);
         if(claims.getClaimsCode()==null||claims.getCreditor()==null||claims.getCreditorIdCard()==null||claims.getCreditorPhoneNumber()==null||

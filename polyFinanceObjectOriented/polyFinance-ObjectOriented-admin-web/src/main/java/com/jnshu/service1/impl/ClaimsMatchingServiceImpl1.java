@@ -127,7 +127,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             } catch (Exception e) {
                 throw new MyException(-1, "查询此债权以匹配用户失败");
             }
-            System.out.println("查询此债权已匹配用户成功");
             //查询此债权到期时间
             long claimsLendEndAt;
             try {
@@ -135,7 +134,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             } catch (Exception e) {
                 throw new MyException(-1, "查询此债权到期时间失败");
             }
-            System.out.println("查询债权到期时间成功"+claimsLendEndAt);
             //查询此债权待匹配金额
             String claimsRemanentMoneyS;
             try {
@@ -144,7 +142,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                 throw new MyException(-1, "查询此债权待匹配金额失败");
             }
             BigDecimal claimsRemanentMoney = new BigDecimal(claimsRemanentMoneyS);
-            System.out.println("查询债权待匹配金额成功"+claimsRemanentMoney.toString());
             //查询尚未匹配债权的合同
             List<String> contractCodes;
             try {
@@ -155,7 +152,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             if(contractCodes==null){
                 throw new MyException(-1,"暂无可匹配合同");
             }
-            System.out.println("查询尚未匹配合同成功,待匹配合同数量为："+contractCodes.size());
             List<ContractMatchingRO> contractMatchingROES1 = new ArrayList<>();
             //查询对应信息
             for (int i = 0; i < contractCodes.size(); i++) {
@@ -165,26 +161,19 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                     //即使是空对象也放进去，可以避免数组越界问题
                     contractMatchingROES1.add(contractMatchingRO);
                     if (contractMatchingRO != null) {
-//                    System.out.println("查询合同编号对应信息成功");
                         //将ro对象中的UserName和productName放进去
                         System.out.println(i);
                         System.out.println(contractMatchingROES1.size());
                         if (contractMatchingROES1.get(i).getUserId() > 0) {
                             contractMatchingROES1.get(i).setUserName(userMapper1.getUserNameById(contractMatchingROES1.get(i).getUserId()));
                         }
-//                    System.out.println("查询合同编号对应用户名成功，用户id为"+contractMatchingROES.get(i).getUserId());
                         if (contractMatchingROES1.get(i).getProductId() > 0) {
                             contractMatchingROES1.get(i).setProductName(productMapper1.getProductNameByProductId(contractMatchingROES1.get(i).getProductId()));
                             }
-//                    System.out.println("查询合同编号对应产品名成功，产品id为"+contractMatchingROES.get(i).getProductId());
-                        System.out.println("查询第" + i + "个合同对应信息成功");
                     }
                 }catch(Exception e){
-//                        e.printStackTrace();
                         throw new MyException(-1, "查询合同编号用户产品名失败");
                     }
-//            System.out.println(i);
-//            System.out.println( contractMatchingROES.get(i).getContractCode());
                 }
                 //循环添加对象进去
             List<ContractMatchingRO> contractMatchingROES = new ArrayList<>();
@@ -202,7 +191,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                     for (Long userId1 : userIds) {
                         if (userId == userId1)
                             fraction = fraction - 3000;
-//                System.out.println("userId相等扣分"+fraction);
                     }
                 }
                 System.out.println("计算用户是否重复成功");
@@ -213,26 +201,20 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
                 if (money.compareTo(claimsRemanentMoney) == 0)
                     fraction = fraction + 1200;
                 System.out.println("计算金额得分成功");
-//            System.out.println("债权金额之后得分为"+fraction);
                 //计算时间，如果一个是长债权，一个是短债权，则扣3000分，否则相差一天扣1分
                 long endAt = contractMatchingROE.getEndAt();
-//            System.out.println(endAt);
                 long currentAt = System.currentTimeMillis();
                 long sixMonth = 6 * 30 * 24 * 3600 * 1000L;
                 //长短不一扣3000
                 if (((claimsLendEndAt - currentAt - sixMonth) < 0 && (endAt - currentAt - sixMonth) > 0) || ((claimsLendEndAt - currentAt - sixMonth) > 0 && (endAt - currentAt - sixMonth) < 0))
                     fraction = fraction - 3000;
                 //债权时间大于合同时间，加600，然后每差一天扣一分
-//            System.out.println("长短不一后得分为"+fraction);
                 if (claimsLendEndAt - endAt > 0)
                     fraction = fraction + 600 - (int) ((claimsLendEndAt - endAt) / (3600 * 24 * 1000));
                 //债权时间小于合同时间，每差一天扣一分
                 if (endAt - claimsLendEndAt > 0)
                     fraction = fraction - (int) ((endAt - claimsLendEndAt) / (24 * 3600 * 1000));
-//            System.out.println("最后得分为"+fraction);
-//            System.out.println("______________________________________");
                 //把fraction放入
-                System.out.println("计算长短债权成功");
                 contractMatchingROE.setFraction(fraction);
             }
             //新建一个roes，将筛选出的fraction>-1000的放进去，不合格的就不要
@@ -265,7 +247,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             } catch (Exception e) {
                 throw new MyException(-1, "查询交易对应金额失败");
             }
-            System.out.println(money);
             //获得最新的债权协议编号
             String newestClaimsProtocolCode;
             try {
@@ -276,7 +257,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             if (newestClaimsProtocolCode == null) {
                 newestClaimsProtocolCode = "";
             }
-            System.out.println(newestClaimsProtocolCode);
             //生成新的债权协议编号,并存入claimsMatching对象
             String claimsProtocolCode = TransString.transClaimsCode(newestClaimsProtocolCode);
             claimsMatching.setClaimsProtocolCode(claimsProtocolCode);
@@ -289,7 +269,6 @@ public class ClaimsMatchingServiceImpl1 implements ClaimsMatchingService1 {
             }
             long id = claimsMatching.getId();
             log.info("新建债权匹配id为" + id);
-//        System.out.println(id);
             //生成新的合同对象
             Contract contract = new Contract();
             contract.setContractCode(claimsMatching.getContractCode());

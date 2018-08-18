@@ -126,7 +126,6 @@ public class ContractServiceImpl1 implements ContractService1 {
                 throw new MyException(-1,"获得债权信息失败");
             }
         }
-        System.out.println(ro);
         return ro;
     }
 }

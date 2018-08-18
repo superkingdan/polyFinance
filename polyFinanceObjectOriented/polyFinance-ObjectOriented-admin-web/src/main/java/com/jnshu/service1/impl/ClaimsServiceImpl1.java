@@ -91,7 +91,6 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
             }
             //获取旧过期时间
             long oldLendEndAt = oldClaims.getLendEndAt();
-            System.out.println("旧过期时间————" + oldLendEndAt);
             //计算新过期时间
             Calendar startAtC = Calendar.getInstance();
             startAtC.clear();
@@ -109,14 +108,12 @@ public class ClaimsServiceImpl1 implements ClaimsService1 {
             }
             //获取旧出借金额
             BigDecimal oldLendMoney = new BigDecimal(oldClaims.getLendMoney());
-//        System.out.println(oldLendMoney);
             //获取旧待匹配金额
             BigDecimal oldRemanentMoney = new BigDecimal(oldClaims.getRemanentMoney());
             //获取新出借金额
             BigDecimal newLendMoney = new BigDecimal(claims.getLendMoney());
             //计算新待匹配金额
             String newRemanentMoney = (newLendMoney.add(oldRemanentMoney).subtract(oldLendMoney)).toString();
-//        System.out.println(newRemanentMoney);
             //设置新待匹配金额
             claims.setRemanentMoney(newRemanentMoney);
             //更新债权

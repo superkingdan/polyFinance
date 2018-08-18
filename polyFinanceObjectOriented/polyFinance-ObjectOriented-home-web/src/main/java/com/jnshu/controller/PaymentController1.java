@@ -90,23 +90,20 @@ public class PaymentController1 {
         if(rpo.getUserSign()==null||rpo.getProductId()==null||rpo.getBankCardId()==null||rpo.getMoney()==null){
             throw new MyException(10002,"参数不能为空");
         }
-        System.out.println("传入银行卡id为"+rpo.getBankCardId());
+        log.info("传入银行卡id为"+rpo.getBankCardId());
         Map<String,Object> map=new HashMap<>();
         //获取用户id
         String uidS= CookieUtil.getCookieValue(request,"uid");
         long id = Long.parseLong(uidS);
         log.info("用户"+id+"签署完合同，开始支付");
         rpo.setUserId(id);
-        System.out.println("开始创建合同");
         long contractId = paymentService.addContract(rpo.getUserSign(), rpo.getProductId(), rpo.getUserId());
         rpo.setContractId(contractId);
-        System.out.println("开始生成交易流水");
         long transactionLogId = paymentService.addPayTransactionLog(rpo);
         User user = paymentService.getUserInfo(id);
         BankCard bankCard = paymentService.getBankCard(rpo.getBankCardId());
         //转化基本信息为需要的map形式
         //首先将金额转化为分为单位
-//        System.out.println("金额为"+rpo.getMoney());
         BigDecimal moneyCent;
         try {
             moneyCent=new BigDecimal(rpo.getMoney()).multiply(BigDecimal.valueOf(100));
@@ -142,27 +139,18 @@ public class PaymentController1 {
         //首先从请求中将数据拿出来
         // 其中只有响应码，商户号，商户订单号，富友订单号，银行卡号，金额比较重要，需要提取出来做MD5加密对比用
         String version=request.getParameter("VERSION");
-        System.out.println(version);
         String type=request.getParameter("TYPE");
-        System.out.println(type);
         String responseCode=request.getParameter("RESPONSECODE");
-        System.out.println(responseCode);
         String mchntCd=request.getParameter("MCHNTCD");
-        System.out.println(mchntCd);
         String mchntOrderId=request.getParameter("MCHNTORDERID");
-        System.out.println(mchntOrderId);
         String orderId=request.getParameter("ORDERID");
-        System.out.println(orderId);
         String bankCard=request.getParameter("BANKCARD");
-        System.out.println(bankCard);
         String amt=request.getParameter("AMT");
-        System.out.println(amt);
         String sign=request.getParameter("SIGN");
-        System.out.println(sign);
-        log.info("回调接口被调用，交易流水号为"+mchntOrderId);
+        log.info("回调接口被调用，交易流水号为{},版本为{}，响应码为{}，商家代号为{}，富友流水为{}，银行卡号为{}，金额为{}，签名为{}",mchntOrderId,version,type,responseCode,mchntCd,orderId,bankCard,amt,sign);
         //然后将其加密一遍，看是否被修改过
         Boolean comparedResult=HttpPay.comparedParam(version,type,responseCode,mchntCd,mchntOrderId,orderId,bankCard,amt,sign);
-        System.out.println(comparedResult);
+        log.info("签名比较结果为{}",comparedResult);
         if(responseCode.equals("0000")&&comparedResult) {
             //修改交易流水表之前的数据,并返回合同id
             long contractId= paymentService.updateTransactionLog(Long.valueOf(mchntOrderId),orderId);
@@ -221,18 +209,6 @@ public class PaymentController1 {
         //判断是否为图片类型
         File f= ConvertToFile.multipartFileToFile(file);//转化文件格式
         String fName=f.getName();
-        System.out.println(fName);
-//        //判断是否为图片格式
-//        if(!IsImage.isImage(fName)){
-//            //如果不是就删除临时文件，并报错
-//            File del = new File(f.toURI());
-//            boolean delete=del.delete();
-//            System.out.println(delete);
-//            map.put("code",10031);
-//            map.put("message","there is error file");
-//            log.info("图片格式不正确，很尴尬");
-//            return map;
-//        }
         String fileUrl="";
         try {
             fileUrl = OSSUploadUtil.uploadFile(f, "jpg");//上传文件,设置后缀为jpg
@@ -241,7 +217,6 @@ public class PaymentController1 {
             //删除临时文件
             File del = new File(f.toURI());
             boolean delete=del.delete();
-            System.out.println(delete);
             throw new MyException(10032,"图片上传失败");
         }
         map.put("code",0);
@@ -251,7 +226,6 @@ public class PaymentController1 {
         //删除临时文件
         File del = new File(f.toURI());
         boolean delete=del.delete();
-        System.out.println(delete);
         return map;
     }
 }

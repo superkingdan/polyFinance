@@ -31,7 +31,9 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
         JSONObject json = new JSONObject();
         List<Content> contents=contentMapper3.findToList(1);
         if (contents==null||contents.size()==0){
-            throw new MyException(-1,"没有数据");
+            json.put("code",-1);
+            json.put("message","没有数据");
+            return json;
         }
         json.put("code",0);
         json.put("message","成功");
@@ -45,7 +47,9 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
         JSONObject json = new JSONObject();
         List<Content> contents=contentMapper3.findToList(2);
         if (contents==null||contents.size()==0){
-            throw new MyException(-1,"没有数据");
+            json.put("code",-1);
+            json.put("message","没有数据");
+            return json;
         }
         json.put("code",0);
         json.put("message","成功");
@@ -74,7 +78,9 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
         List<SystemData> systemDatas= systemDataMapper3.findByDataName("更新");
         System.out.println(systemDatas);
         if (systemDatas==null||systemDatas.size()==0){
-            throw new MyException(-1,"已是最新版本");
+            json.put("code",-1);
+            json.put("message","没有数据");
+            return json;
         }
         json.put("code",0);
         json.put("message","有更新");
@@ -82,7 +88,7 @@ public class UserSiteServiceImpl3 implements UserSiteService3 {
         return json;
     }
 
-    /*清楚缓存*/
+    /*清除缓存*/
     @Override
     public JSONObject clean(HttpServletRequest request, HttpServletResponse response) {
         CookieUtil.delCookie(response,request,"token");

@@ -82,7 +82,6 @@ public class TransactionServiceImpl1 implements TransactionService1 {
             if (oldTransaction == null) {
                 throw new MyException(-1, "无对应旧交易详情");
             }
-            System.out.println("旧交易相关信息为" + oldTransaction);
             long userId = oldTransaction.getUserId();
             long productId = oldTransaction.getProductId();
             long oldEndAt = oldTransaction.getEndAt();
@@ -102,7 +101,6 @@ public class TransactionServiceImpl1 implements TransactionService1 {
             if (product == null) {
                 throw new MyException(-1, "无对应产品详情");
             }
-            System.out.println("产品相关信息为" + product);
             String productCode = product.getProductCode();
             int rateOfInterest = product.getRateOfInterest();
             int deadline = product.getDeadline();
@@ -124,7 +122,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
             System.out.println("最新合同号为" + newestContractCode);
             //生成合同编号
             String contractCode = TransString.transContractCode(newestContractCode, productCode);
-            System.out.println("新合同编号为" + contractCode);
+           log.info("新合同编号为" + contractCode);
             //创建新合同
             Contract contract = new Contract();
             contract.setCreateAt(System.currentTimeMillis());
@@ -140,7 +138,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                 log.error("创建新合同失败");
                 throw new MyException(-1, "创建新合同失败");
             }
-            System.out.println("新合同的id为" + contract.getId());
+            log.info("新合同的id为" + contract.getId());
             //创建新交易
             Transaction newTransaction = new Transaction();
             newTransaction.setCreateAt(System.currentTimeMillis());
@@ -186,7 +184,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                 throw new MyException(-1, "创建新交易失败");
             }
             long newId = newTransaction.getId();
-            System.out.println("新交易的id为" + newId);
+            log.info("新交易的id为" + newId);
             //修改旧交易
             oldTransaction.setUpdateBy(userId);
             oldTransaction.setUpdateAt(System.currentTimeMillis());
@@ -243,7 +241,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                     log.error("添加新本息一次还任务失败");
                     throw new MyException(-1, "添加新本息一次还定时任务失败");
                 }
-                System.out.println("本息一次还的还款定时任务id为" + newTimedTask.getId());
+                log.info("本息一次还的还款定时任务id为" + newTimedTask.getId());
             }
             //如果是先息后本，添加deadlineMonth次返息任务，一次本带最后一次利息任务
             else {
@@ -266,7 +264,6 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                 Calendar startAtCalender = Calendar.getInstance();
                 startAtCalender.clear();
                 startAtCalender.setTimeInMillis(startAt);
-                System.out.println("开始时间为" + startAtCalender.get(Calendar.YEAR) + startAtCalender.get(Calendar.MONTH) + startAtCalender.get(Calendar.DAY_OF_MONTH));
                 for (int i = 0; i < (deadlineMonth + 1); i++) {
                     //判断，前deadlineMonth次是返息，其中第一次的利息比较特殊
                     if (i == 0) {
@@ -284,7 +281,6 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                             //设置第一个月的返息
                             BigDecimal firstMonthReturn = everyDayReturn.multiply(new BigDecimal(20 - dayOfStartAt));
                             newTimedTask.setMoney(firstMonthReturn.toString());
-                            System.out.println("第一次返息定时任务详情" + newTimedTask);
                             //添加定时任务并计算未返收益
                             try {
                                 timedTaskMapper1.addTaskedTime(newTimedTask);
@@ -292,6 +288,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                                 log.error("创建第一次返息定时任务失败");
                                 throw new MyException(-1, "创建第一次返息定时任务失败");
                             }
+                            log.info("第一次返息定时任务Id为"+newTimedTask.getId());
                             notReturn = notReturn.subtract(firstMonthReturn);
                         }
                         //如果是大于等于20号的情况，则在下月20号第一次
@@ -305,7 +302,6 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                             //设置第一个月的返息
                             BigDecimal firstMonthReturn = everyDayReturn.multiply(new BigDecimal(50 - dayOfStartAt));
                             newTimedTask.setMoney(firstMonthReturn.toString());
-                            System.out.println("第一次返息定时任务详情" + newTimedTask);
                             //添加定时任务并计算未返收益
                             try {
                                 timedTaskMapper1.addTaskedTime(newTimedTask);
@@ -313,6 +309,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                                 log.error("创建第一次返息定时任务失败");
                                 throw new MyException(-1, "创建第一次返息定时任务失败");
                             }
+                            log.info("第一次返息定时任务Id为"+newTimedTask.getId());
                             notReturn = notReturn.subtract(firstMonthReturn);
                         }
                     }
@@ -326,13 +323,13 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                         newTimedTask.setTaskTime(startAtCalender.getTimeInMillis());
                         //设置金额
                         newTimedTask.setMoney(everyMonthReturn.toString());
-                        System.out.println("第" + (i + 1) + "月返息定时任务详情" + newTimedTask);
                         try {
                             timedTaskMapper1.addTaskedTime(newTimedTask);
                         } catch (Exception e) {
                             log.error("创建第" + (i + 1) + "次返息定时任务失败");
                             throw new MyException(-1, "创建第一次返息定时任务失败");
                         }
+                        log.info("第" + (i + 1) + "月返息定时任务id为" + newTimedTask.getId());
                         //计算剩余未返金额
                         notReturn = notReturn.subtract(everyMonthReturn);
                     }
@@ -344,13 +341,13 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                         newTimedTask.setTaskTime(endAtCalender.getTimeInMillis());
                         //设置金额,未返回加本金
                         newTimedTask.setMoney(notReturn.add(moneyB).toString());
-                        System.out.println("最后一次定时任务详情" + newTimedTask);
                         try {
                             timedTaskMapper1.addTaskedTime(newTimedTask);
                         } catch (Exception e) {
                             log.error("创建最后一次返息定时任务失败");
                             throw new MyException(-1, "创建最后一次返息定时任务失败");
                         }
+                        log.info("最后一次定时任务id为" + newTimedTask.getId());
                     }
                 }
             }
@@ -364,13 +361,13 @@ public class TransactionServiceImpl1 implements TransactionService1 {
             //设置定时任务时间为交易到期时间-续投提醒时间
             long investmentDay = Long.parseLong(systemDataMapper1.getInvestmentDay());
             renewalTask.setTaskTime(endAt - investmentDay * 24 * 3600 * 1000);
-            System.out.println("改变续投状态的定时任务详情" + renewalTask);
             try {
                 timedTaskMapper1.addTaskedTime(renewalTask);
             } catch (Exception e) {
                 log.error("创建修改续投状态定时任务失败");
                 throw new MyException(-1, "创建修改续投状态定时任务失败");
             }
+            System.out.println("改变续投状态的定时任务id为" + renewalTask.getId());
             //添加消息中心消息
             Message message = new Message();
             message.setCreateAt(System.currentTimeMillis());
@@ -385,7 +382,7 @@ public class TransactionServiceImpl1 implements TransactionService1 {
                 log.error("新增消息失败");
                 throw new MyException(-1, "新增消息失败");
             }
-            System.out.println("新建消息id为" + message.getId());
+            log.info("新建消息id为" + message.getId());
             return newId;
         }catch (Exception e){
             log.error("新增交易失败");
