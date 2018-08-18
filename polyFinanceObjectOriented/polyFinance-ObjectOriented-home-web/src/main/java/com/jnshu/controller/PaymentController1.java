@@ -90,6 +90,7 @@ public class PaymentController1 {
         if(rpo.getUserSign()==null||rpo.getProductId()==null||rpo.getBankCardId()==null||rpo.getMoney()==null){
             throw new MyException(10002,"参数不能为空");
         }
+        System.out.println("传入银行卡id为"+rpo.getBankCardId());
         Map<String,Object> map=new HashMap<>();
         //获取用户id
         String uidS= CookieUtil.getCookieValue(request,"uid");
@@ -186,7 +187,10 @@ public class PaymentController1 {
     public Map getTransactionByContractId(@PathVariable(value = "id")Long contractId)throws Exception{
         log.info("付款成功后通过付款成功界面查看交易详情，请求合同id为"+contractId);
         //通过合同id查找对应的合同code，然后将其转化为交易id
-        long transactionId=paymentService.getTransactionIdByContractId(contractId);
+        Long transactionId=paymentService.getTransactionIdByContractId(contractId);
+        if(transactionId==null){
+            throw new MyException(-1,"新交易还在路上，请勿过快点击哦");
+        }
         //调用transactionService的利用交易id查询交易详情的方法，直接查询
         Map<String,Object> map=new HashMap<>();
         TransactionRO ro=transactionService.getTransactionById(transactionId);

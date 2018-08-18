@@ -8,6 +8,7 @@ import com.jnshu.service1.ProductService1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,22 +25,48 @@ public class ProductServiceImpl1 implements ProductService1 {
     @Autowired
     ProductMapper1 productMapper1;
 
+
     /**
-     * 获得产品列表
-     * @param rpo 查询条件，主要是区分是否需要推荐
-     * @return 查询结果
+     * 获得所有推荐产品列表
+     * @return 产品列表
+     * @throws Exception
      */
     @Override
-    public List<Product> getProductList(ProductListRPO rpo) throws Exception{
-        log.info("获得产品列表");
+    @Cacheable(value = "object-productList-recommend")
+    public List<Product> getProductListRecommend() throws Exception {
+        long st=System.currentTimeMillis();
+        log.info("获得推荐产品列表");
         //设置状态为在售
         List<Product> list;
-       try {
-           rpo.setStatus(0);
-           list = productMapper1.getProductListByRpo(rpo);
-       }catch (Exception e){
-           throw new MyException(-1,"获得产品列表失败");
-       }
+        try {
+            list = productMapper1.getProductListRecommend();
+        }catch (Exception e){
+            throw new MyException(-1,"获得产品列表失败");
+        }
+        long et=System.currentTimeMillis();
+        log.info("本次查询时间为{}",(et-st));
+        return list;
+    }
+
+    /**
+     * 获得所有在售产品列表
+     * @return 产品列表
+     * @throws Exception
+     */
+    @Override
+    @Cacheable(value = "object-productList")
+    public List<Product> getProductList() throws Exception {
+        long st=System.currentTimeMillis();
+        log.info("获得所有在售产品列表");
+        //设置状态为在售
+        List<Product> list;
+        try {
+            list = productMapper1.getProductList();
+        }catch (Exception e){
+            throw new MyException(-1,"获得产品列表失败");
+        }
+        long et=System.currentTimeMillis();
+        log.info("本次查询时间为{}",(et-st));
         return list;
     }
 
@@ -49,7 +76,9 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @return 产品详情
      */
     @Override
+    @Cacheable(value = "object-product",key ="#id")
     public Product getProductById(long id) throws Exception{
+        long st=System.currentTimeMillis();
         log.info("获得指定id为"+id+"的产品");
         Product product;
         try{
@@ -57,6 +86,8 @@ public class ProductServiceImpl1 implements ProductService1 {
         }catch (Exception e){
             throw new MyException(-1,"获取指定产品信息失败");
         }
+        long et=System.currentTimeMillis();
+        log.info("本次查询时间为{}",(et-st));
         return product;
     }
 }
