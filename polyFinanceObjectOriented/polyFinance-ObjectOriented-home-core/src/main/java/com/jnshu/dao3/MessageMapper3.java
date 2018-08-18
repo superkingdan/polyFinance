@@ -80,8 +80,8 @@ public interface MessageMapper3 {
     /**
      * 添加消息
      */
-    @Insert("insert into message (create_at,create_by,title,content,sent_person_type,message_type,is_push,is_sent,transaction_id,user_id,introduce) " +
-            "values (#{createAt},#{createBy},#{title},#{content},#{sentPersonType},#{messageType},#{isPush},#{isSent},#{transactionId},#{userId},#{introduce})")
+    @Insert("insert into message (create_at,create_by,update_by,title,content,sent_person_type,message_type,is_push,is_sent,transaction_id,user_id,introduce) " +
+            "values (#{createAt},#{createBy},#{updateBy},#{title},#{content},#{sentPersonType},#{messageType},#{isPush},#{isSent},#{transactionId},#{userId},#{introduce})")
     @Options(useGeneratedKeys=true,keyProperty="id",keyColumn="id")
     int addMessage(Message message);
 
