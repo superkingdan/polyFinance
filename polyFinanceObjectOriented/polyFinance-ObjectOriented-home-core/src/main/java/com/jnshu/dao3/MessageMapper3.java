@@ -26,7 +26,7 @@ public interface MessageMapper3 {
     /**
      * 查找消息所有人
      */
-    @Select("select * from message where sent_person_type<=#{type} and is_sent=0 order by create_at desc")
+    @Select("select * from message where sent_person_type<=#{type} and is_sent=0 and user_id=0 order by create_at desc")
     List<Message> findByTpye(@Param("type") int type);
 
     /**
