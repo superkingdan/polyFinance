@@ -38,15 +38,6 @@ public class ContentController2 {
         //返回数据List。
         List<Object> result = new ArrayList<>();
 
-//        if (null !=contentListRPO.getUpdateAt1() || null != contentListRPO.getUpdateAt2()){
-//
-//            if (null ==contentListRPO.getUpdateAt1() || null == contentListRPO.getUpdateAt2()){
-//                cam.setCode(-1);
-//                cam.setMessage("通过日期查询时，两个日期都要有值。");
-//                result.add(cam);
-//                return result;
-//            }
-//        }
 
         if (null != contentListRPO.getType()){
             if (contentListRPO.getType() != 0 && 1 != contentListRPO.getType() && 2 != contentListRPO.getType()){

@@ -53,6 +53,7 @@ public class BackController2 {
     @RequestMapping(value = "/a/u/managers",method = RequestMethod.GET)
     public Map<String, Object> getManagers(@ModelAttribute UserBackListRPO rpo, HttpServletRequest request, HttpServletResponse response){
 
+        logger.info("账户列表——请求参数："+ rpo);
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -68,7 +69,7 @@ public class BackController2 {
             result.put("message","服务器错误。");
             result.put("errorMessage","服务器在获取账户列表时出错。");
             e.printStackTrace();
-            logger.info("后台 后台管理--账户列表。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
+            logger.info("后台 后台管理--账户列表。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo+"。"+e);
             return result;
         }
 
@@ -86,7 +87,7 @@ public class BackController2 {
 
         result.put("code",0);
         result.put("message","成功获取账户列表。");
-        logger.info("后台 后台管理--账户列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo);
+        logger.info("后台 后台管理--账户列表成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+rpo +"，查询结果：" +userBacks);
         result.put("data", userBacks);
         return result;
     }
@@ -97,6 +98,7 @@ public class BackController2 {
     @RequestMapping(value = "/a/u/managers/{id}",method = RequestMethod.GET)
     public Map<String, Object> getManager(
             @PathVariable long id, HttpServletRequest request, HttpServletResponse response){
+        logger.info("账户详情——请求参数：id="+ id);
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -144,7 +146,7 @@ public class BackController2 {
         userBack.setSalt(null);
         result.put("code",0);
         result.put("message","查询成功。");
-        logger.info("后台 后台管理--账户详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id);
+        logger.info("后台 后台管理--账户详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id  +"，查询结果：userBack:" +userBack +",roleId :"+roleId+ ", roleList:" + roleList);
         result.put("userBack",userBack);
         result.put("roleId",roleId);
         result.put("roleList",roleList);
@@ -158,6 +160,7 @@ public class BackController2 {
             @RequestParam(required = false) String phoneNumber,
             @RequestParam(required = false) Long roleId,
             HttpServletRequest request, HttpServletResponse response){
+        logger.info("账户更新——请求参数：id="+ id+", phoneNumber="+phoneNumber+", roleId="+roleId);
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -218,6 +221,7 @@ public class BackController2 {
                     return result;
                 }
 
+                logger.info("phoneNumber:"+phoneNumber);
                 result.put("code",0);
                 result.put("message","账户手机号更新成功。");
                 logger.info("后台 后台管理--账户: "+id+"更新手机号成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id);
@@ -296,6 +300,7 @@ public class BackController2 {
     public Map<String, Object>  deleteManager(
             @PathVariable Long id,
             HttpServletRequest request, HttpServletResponse response){
+        logger.info("账户删除——请求参数：id="+ id);
         //登录用户信息。
         Map<String, Object> account = new HashMap<>();
         account = tokenUtil.getAccount(request);
@@ -396,9 +401,7 @@ public class BackController2 {
             }
 
             //如果userback为空表示新增账户的loginName不冲突。
-            if (userBack == null){
-                userBack = new UserBack();
-            }
+            userBack = new UserBack();
 
             //判断角色id是否为当前数据库存在的。如果不存在，返回错误。
             List<DomainRoleBack>  roleBacks=roleBackService2.getAll();
@@ -427,6 +430,7 @@ public class BackController2 {
             userBack.setSalt(salt);
             userBack.setHashKey(hashKey2);
 
+            logger.info("账户新增——请求参数：userBack="+ userBack);
             //账户新增
             backService2.saveUserBack(userBack);
 
@@ -541,7 +545,7 @@ public class BackController2 {
             result.put("message","服务器错误。");
             result.put("errorMessage","服务器更新账户密码时出错。");
             e.printStackTrace();
-            logger.info("后台 后台管理--更新账户密码时出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： ");
+            logger.info("后台 后台管理--更新账户密码时出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
             return result;
         }
 
@@ -587,6 +591,7 @@ public class BackController2 {
         result.put("total",total);
         result.put("pageNum",pageNum);
         result.put("pageSize",pageSize);
+        logger.info("后台 后台管理--获取角色列表时出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") + ", 返回参数："+ roleBacks);
         return result;
     }
 
@@ -779,6 +784,7 @@ public class BackController2 {
 
             //验证moduleIds。
             List<Long> inputModuleIds = JSON.parseArray(moduleIds,Long.class);
+            //查询全部模块id。
             List<Long> list = roleBackService2.getAllModuleIds();
 
             if (list == null){

@@ -39,7 +39,6 @@ public class OtherController2 {
 
         //返回数据List。改为map。
         Map<String, Object> result = new HashMap<>();
-//        List<Object> result = new ArrayList<>();
 
         List<SystemData> systemDataList = new ArrayList<>();
         try {
@@ -83,7 +82,6 @@ public class OtherController2 {
         account = tokenUtil.getAccount(request);
 
         //返回数据List。改为map
-//        List<Object> result = new ArrayList<>();
         Map<String, Object> result = new HashMap<>();
 
         //参数校验。不能全部没有，或者没有值。
@@ -425,14 +423,6 @@ public class OtherController2 {
         account = tokenUtil.getAccount(request);
         //返回数据List。
         Map<String,Object> result = new HashMap<>();
-
-        /*if (null != rpo.getCreateAt1() || null != rpo.getCreateAt2()){
-           if ((null == rpo.getCreateAt1() ||("").equals(rpo.getCreateAt1()) )   || (null == rpo.getCreateAt2() ||("").equals(rpo.getCreateAt2()) )){
-               result.put("code",-1);
-               result.put("message","两个查询日期都要有值。");
-               return result;
-           }
-        }*/
 
         List<DomainFeedBackDetail> list = null;
         Integer total = null;
