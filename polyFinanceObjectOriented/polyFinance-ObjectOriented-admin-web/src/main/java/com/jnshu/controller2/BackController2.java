@@ -1,16 +1,15 @@
 package com.jnshu.controller2;
 
 import com.alibaba.fastjson.JSON;
+import com.jnshu.Domain2.DomainModuleBack;
 import com.jnshu.Domain2.DomainRoleBack;
 import com.jnshu.Domain2.DomainRoleBackList;
 import com.jnshu.Domain2.DomainUserBack;
 import com.jnshu.dto2.UserBackListRPO;
-import com.jnshu.entity.RoleBack;
-import com.jnshu.entity.RoleModuleBack;
-import com.jnshu.entity.RoleUserBack;
-import com.jnshu.entity.UserBack;
+import com.jnshu.entity.*;
 import com.jnshu.exception.MyException;
 import com.jnshu.service.BackService2;
+import com.jnshu.service.ModuleBackService2;
 import com.jnshu.service.RoleBackService2;
 import com.jnshu.service.RoleUserBackService2;
 import com.jnshu.utils.BackControllerVerify;
@@ -42,6 +41,9 @@ public class BackController2 {
 
     @Autowired
     RoleUserBackService2 roleUserBackService2;
+
+    @Autowired
+    ModuleBackService2 moduleBackService2;
 
     /**
      * 账户列表
@@ -222,8 +224,8 @@ public class BackController2 {
                 }
 
                 logger.info("phoneNumber:"+phoneNumber);
-                result.put("code",0);
-                result.put("message","账户手机号更新成功。");
+//                result.put("code",0);
+//                result.put("message","账户手机号更新成功。");
                 logger.info("后台 后台管理--账户: "+id+"更新手机号成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id);
             } catch (Exception e) {
                 result.put("code",-1);
@@ -270,8 +272,8 @@ public class BackController2 {
                         return result;
                     }
 
-                    result.put("code2",0);
-                    result.put("message2","账户角色更新成功。");
+//                    result.put("code2",0);
+//                    result.put("message2","账户角色更新成功。");
                     logger.info("后台 后台管理--账户: "+id+"更新角色成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id+", 角色id: "+roleId);
                 }
 
@@ -290,8 +292,8 @@ public class BackController2 {
                 return result;
             }
         }
-
-
+        result.put("code",0);
+        result.put("message","账户更新成功。");
         return  result;
     }
 
@@ -922,80 +924,177 @@ public class BackController2 {
         logger.info("后台 后台管理--角色删除时成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role"));
         return result;
     }
-/*
-    //模块管理-模块列表
+   /* //模块管理-模块列表
     @RequestMapping(value = "/a/u/modules",method = RequestMethod.GET)
-    public List<Object> getModules(
+    public Map<String, Object> getModules(
             @RequestParam(required = false,defaultValue = "1") Integer pageNum,
-            @RequestParam(required = false,defaultValue = "10") Integer pageSize){
-        List<Object> result = new ArrayList<>();
-        List<Map> modules = new ArrayList<>();
-        for (int s=1;s<pageSize;s++){
-            Map<String,Object> module = new HashMap<>();
-            module.put("id", s);
-            module.put("moduleName", "用户管理");
-            module.put("moduleUrl", "www.d");
-            module.put("superId", s+8);
-            module.put("moduleType", "WEB");
-            module.put("updateAt", System.currentTimeMillis());
-            module.put("id2", 3);
-            module.put("createAt",System.currentTimeMillis() );
-            module.put("id3", 9);
-            modules.add(module);
+            @RequestParam(required = false,defaultValue = "10") Integer pageSize,
+            HttpServletRequest request, HttpServletResponse response){
+        //登录用户信息。
+        Map<String, Object> account = new HashMap<>();
+        account = tokenUtil.getAccount(request);
+
+        //返回数据List。改成map。
+        Map<String, Object> result = new HashMap<>();
+
+        List<DomainModuleBack> domainModuleBackList = null;
+        try {
+            domainModuleBackList = moduleBackService2.getAll();
+            if (null == domainModuleBackList){
+                result.put("code",-1);
+                result.put("message","模块列表查询失败。");
+                return result;
+            }
+        } catch (Exception e) {
+            result.put("code",-1);
+            result.put("message","查询模块列表时服务器错误。");
+            e.printStackTrace();
+            logger.info("后台 运营管理--模块列表查询出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") + ". 异常："+e.getMessage() +", cause："+e.getCause());
+            return result;
         }
-        result.add(cam);
-        Map<String,Integer> t= new HashMap<>();
-        t.put("total", 200);
-        result.add(modules);
+
+        result.put("code",0);
+        result.put("message","模块列表查询成功。");
+        result.put("data",domainModuleBackList);
+        logger.info("后台 运营管理--模块列表查询出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") + "。 模块列表："+domainModuleBackList);
         return result;
     }
 
     //模块管理-模块详情
     @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.GET)
-    public List<Object> getModule(@PathVariable Long id){
-        List<Object> result = new ArrayList<>();
-            Map<String,Object> module = new HashMap<>();
-            module.put("id", id);
-            module.put("moduleName", "用户管理");
-            module.put("moduleUrl", "www.d");
-            module.put("superId", id+8);
-            module.put("moduleType", "WEB");
-            module.put("updateAt", System.currentTimeMillis());
-            module.put("id2", 3);
-            module.put("createAt",System.currentTimeMillis() );
-            module.put("id3", 9);
-        result.add(cam);
-        result.add(module);
+    public Map<String, Object> getModule(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
+        //登录用户信息。
+        Map<String, Object> account = new HashMap<>();
+        account = tokenUtil.getAccount(request);
+
+        //返回数据List。改成map。
+        Map<String, Object> result = new HashMap<>();
+
+        //参数验证
+        if (null == id || 1 > id){
+            result.put("code",-1);
+            result.put("message","id不能为空或者小于1。");
+            return result;
+        }
+        DomainModuleBack domainModuleBack = null;
+        try {
+            domainModuleBack = moduleBackService2.getDomainModuleBack(id);
+            if (null == domainModuleBack){
+                result.put("code",-1);
+                result.put("message","查询模块详情失败，此id可能没有对应模块记录。");
+                return result;
+            }
+        } catch (Exception e) {
+            result.put("code",-1);
+            result.put("message","模块详情查询时服务器出错。");
+            e.printStackTrace();
+            logger.info("后台 运营管理--模块详情服务器查询出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数id="+id+ ". 异常："+e.getMessage() +", cause："+e.getCause());
+            return result;
+        }
+
+        result.put("code",0);
+        result.put("message","查询模块详情成功");
+        result.put("data",domainModuleBack);
+        logger.info("后台 运营管理--模块详情查询成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数id="+id);
         return result;
     }
 
     //模块管理-模块更新
     @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.PUT)
-    public List<Object> updateModule(@PathVariable Long id){
-        List<Object> result = new ArrayList<>();
-        result.add(cam);
+    public Map<String, Object> updateModule(@PathVariable Long id, @ModelAttribute ModuleBack moduleBack, HttpServletRequest request, HttpServletResponse response){
+        //登录用户信息。
+        Map<String, Object> account = new HashMap<>();
+        account = tokenUtil.getAccount(request);
+
+        //返回数据List。改成map。
+        Map<String, Object> result = new HashMap<>();
+
+        Boolean upResult = false;
+        moduleBack.setId(id);
+        try {
+            upResult = moduleBackService2.updateModuleBack(moduleBack);
+            if (!upResult){
+                result.put("code",-1);
+                result.put("message","更新模块详情失败，此id可能没有对应模块记录。");
+                return result;
+            }
+        } catch (Exception e) {
+            result.put("code",-1);
+            result.put("message","更新模块详情查询时服务器出错。");
+            e.printStackTrace();
+            logger.info("后台 运营管理--更新模块详情服务器出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数id="+id+"更新参数 moduleBack="+moduleBack+ "。 异常："+e.getMessage() +", cause："+e.getCause());
+            return result;
+        }
+
+        result.put("code",0);
+        result.put("message","查询模块详情成功");
+        result.put("data",moduleBack);
+        logger.info("后台 运营管理--更新模块详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数id="+id +"更新参数 moduleBack="+moduleBack);
         return result;
     }
 
     //模块管理-模块删除
     @RequestMapping(value = "/a/u/modules/{id}",method = RequestMethod.DELETE)
-    public List<Object> deleteModule(@PathVariable Long id){
-        List<Object> result = new ArrayList<>();
-        result.add(cam);
+    public Map<String, Object> deleteModule(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response){
+        //登录用户信息。
+        Map<String, Object> account = new HashMap<>();
+        account = tokenUtil.getAccount(request);
+
+        //返回数据List。改成map。
+        Map<String, Object> result = new HashMap<>();
+        Boolean delResult = false;
+
+        try {
+            delResult = moduleBackService2.deleteModuleBack(id);
+            if (!delResult){
+                result.put("code",-1);
+                result.put("message","删除模块失败，此id可能没有对应模块记录。");
+                return result;
+            }
+        } catch (Exception e) {
+            result.put("code",-1);
+            result.put("message","删除模块时服务器出错。");
+            e.printStackTrace();
+            logger.info("后台 运营管理--更新模块详情服务器查询出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数id="+id+ "。 异常："+e.getMessage() +", cause："+e.getCause());
+            return result;
+        }
+
+        result.put("code",0);
+        result.put("message","删除模块成功。");
         return result;
     }
 
     //模块管理-模块新增
     @RequestMapping(value = "/a/u/modules/new",method = RequestMethod.POST)
-    public List<Object> saveModule(
-            @RequestParam(required = false) String moduleName,
-            @RequestParam(required = false) String menuId,
-            @RequestParam(required = false) String moduleUrl,
-            @RequestParam(required = false) String superId,
-            @RequestParam(required = false) String moduleType
+    public Map<String, Object> saveModule(@ModelAttribute ModuleBack moduleBack,
+                                          HttpServletRequest request, HttpServletResponse response
     ){
-        List<Object> result = new ArrayList<>();
-        result.add(cam);
+        //登录用户信息。
+        Map<String, Object> account = new HashMap<>();
+        account = tokenUtil.getAccount(request);
+
+        //返回数据List。改成map。
+        Map<String, Object> result = new HashMap<>();
+        Long saveResult = null;
+        try {
+            moduleBackService2.saveModuleBack(moduleBack);
+            saveResult = moduleBack.getId();
+            if (null == saveResult){
+                result.put("code",-1);
+                result.put("message","新增模块失败。");
+                return result;
+            }
+        } catch (Exception e) {
+            result.put("code",-1);
+            result.put("message","新增模块时服务器出错。");
+            e.printStackTrace();
+            logger.info("后台 运营管理--更新模块详情服务器查询出错。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数moduleBack="+moduleBack+ "。 异常："+e.getMessage() +", cause："+e.getCause());
+            return result;
+        }
+        result.put("code",0);
+        result.put("message","新增模块成功。");
+        logger.info("后台 运营管理--新增模块成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role") +"请求参数moduleBack="+moduleBack);
         return result;
-    }*/
+    }
+    */
 }
