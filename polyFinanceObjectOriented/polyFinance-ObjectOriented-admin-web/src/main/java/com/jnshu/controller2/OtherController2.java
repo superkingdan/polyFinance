@@ -94,6 +94,12 @@ public class OtherController2 {
             return result;
         }
 
+        //总债权投资警戒线值应该在0到1之间。
+        if (!Float.isNaN(Float.parseFloat(creditorLine))){
+            result.put("code",-1);
+            result.put("message","总债权投资警戒线值应该在0到1之间。");
+            return result;
+        }
         //获取现有数据。与要更新的键值对比较。如果相同，返回拒绝。否则，更新。
         List<SystemData> systemDatas = null;
 
