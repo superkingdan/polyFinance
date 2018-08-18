@@ -64,7 +64,7 @@ public interface UserFrontMapper2 {
     /**
      * 用户列表--通过id查询
      */
-    @Select("select a.id, a.user_number, a.real_name, a.id_card, a.phone_number, a.create_at, a.email, a.address, a.property, a.cumulative_income, a.referrer_id, b.front_card, b.reverse_card, b.application_status, a.default_card from user a left join real_name_application b on b.user_id=a.id where a.id=#{id}")
+    @Select("select a.id, a.user_number,a.real_status, a.real_name, a.id_card, a.phone_number, a.create_at, a.email, a.address, a.property, a.cumulative_income, a.referrer_id, b.front_card, b.reverse_card, b.application_status, a.default_card from user a left join real_name_application b on b.user_id=a.id where a.id=#{id}")
     DomainUserFrontDetail getUserFrontDetailById(Long id) throws Exception;
 
     /**
