@@ -202,6 +202,7 @@ public class BackController2 {
 
         //手机号不为空，更新user_back表手机号。
         UserBack userBack = new UserBack();
+        Boolean xPhone = false;
         if (null != phoneNumber && !("").equals(phoneNumber)){
             try {
                 userBack = backService2.getUserBackById(id);
@@ -215,9 +216,9 @@ public class BackController2 {
                 userBack.setUpdateBy((Long) account.get("uid"));
                 userBack.setPhoneNumber(phoneNumber);
 
-                Boolean x = false;
-                x = backService2.updateUserBack(userBack);
-                if (!x){
+
+                xPhone = backService2.updateUserBack(userBack);
+                if (!xPhone){
                     result.put("code",-1);
                     result.put("message","手机号更新失败。");
                     return result;
@@ -238,6 +239,7 @@ public class BackController2 {
         }
 
         //更新角色。
+        Boolean yRole = false;
         if (null != roleId && !("").equals(roleId)){
             //超级用户admin的id为1，不允许修改角色。
             if (id == 1){
@@ -282,7 +284,6 @@ public class BackController2 {
                     result.put("message","角色id不存在。");
                     return result;
                 }
-                return result;
             } catch (Exception e) {
                 result.put("code",-1);
                 result.put("message","服务器错误。");
@@ -292,8 +293,11 @@ public class BackController2 {
                 return result;
             }
         }
-        result.put("code",0);
-        result.put("message","账户更新成功。");
+        if (xPhone || yRole){
+            result.put("code",0);
+            result.put("message","账户更新成功。");
+        }
+
         return  result;
     }
 
