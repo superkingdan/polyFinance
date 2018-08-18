@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ad8bf92d-6707-4680-882b-dbdb32c0b13d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/error/error.2018-08-18.log" afterPath="$PROJECT_DIR$/logs/error/error.2018-08-18.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/warn/warn.2018-08-18.log" afterPath="$PROJECT_DIR$/logs/warn/warn.2018-08-18.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/OtherController2.java" afterPath="$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/OtherController2.java" />
     </list>
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-home-core/target/" />
     <ignored path="$PROJECT_DIR$/polyFinance-ObjectOriented-quartz-service/target/" />
@@ -25,7 +22,7 @@
       <file leaf-file-name="OtherController2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/OtherController2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="876">
+            <state relative-caret-position="952">
               <caret line="123" column="109" lean-forward="true" selection-start-line="123" selection-start-column="109" selection-end-line="123" selection-end-column="109" />
               <folding />
             </state>
@@ -735,16 +732,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1534563587035</updated>
-      <workItem from="1534563615893" duration="7369000" />
+      <workItem from="1534563615893" duration="7456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7976000" />
+    <option name="totallyTimeSpent" value="8063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -769,7 +765,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6704918" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33282906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33282906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1209,7 +1205,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/polyFinance-ObjectOriented-admin-web/src/main/java/com/jnshu/controller2/OtherController2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="876">
+        <state relative-caret-position="952">
           <caret line="123" column="109" lean-forward="true" selection-start-line="123" selection-start-column="109" selection-end-line="123" selection-end-column="109" />
           <folding />
         </state>
