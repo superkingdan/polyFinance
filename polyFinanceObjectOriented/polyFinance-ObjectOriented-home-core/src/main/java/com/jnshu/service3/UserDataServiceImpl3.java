@@ -7,10 +7,7 @@ import com.jnshu.dao3.UserMapper3;
 import com.jnshu.entity.RealNameApplication;
 import com.jnshu.entity.User;
 import com.jnshu.exception.MyException;
-import com.jnshu.utils3.AliOSSUtil;
-import com.jnshu.utils3.OSSUtil;
-import com.jnshu.utils3.Verification;
-import com.jnshu.utils3.VerificationUtil;
+import com.jnshu.utils3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,8 +25,6 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     @Autowired
     UserBankService3 userBankService3;
     @Autowired
-    CookieService3 cookieService3;
-    @Autowired
     AliOSSUtil aliOSSUtil;
 
     @Autowired
@@ -43,11 +38,10 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         JSONObject json =new JSONObject();
         Long id= null;
         try {
-            id = cookieService3.findByCookie(request);
+            id=Long.valueOf(CookieUtil.getCookieValue(request,"uid"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         if (id==null){
             json.put("code",-1);
             json.put("message","未登入");
@@ -68,7 +62,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         return json;
     }
 
-    /*用户账户设置页面*/ //8/13修改
+    /*用户账户设置页面*/
     @Override
     public JSONObject findData(long id) {
         JSONObject json=new JSONObject();
@@ -148,8 +142,6 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             return json;
         }
         User user = userMapper3.findUserById(id);
-
-        System.out.println(realImage.getOriginalFilename());
         /*得到图片的类型*/
         String[] photoName = realImage.getOriginalFilename().split("\\.");
         String photoType = photoName[photoName.length-1];
@@ -170,8 +162,6 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         }
 
         String data = OSSUtil.getImgUrl(photoKey,bucketName);
-//        redisCacheManager.set(user.getPhoneNumber()+","+imageName,data);
-
         json.put("code",0);
         json.put("message","成功");
         json.put("data",data);

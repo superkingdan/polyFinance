@@ -46,8 +46,8 @@ public interface BankMapper2 {
         public String getBanks(BankListRPO rpo){
             return new SQL(){{
                 SELECT("a.id, a.bank_name, a.payment_id, a.withdrawal_id, a.single_limited, a.day_limited, b.login_name as update_by, a.update_at");
-                FROM("bank a");
-                INNER_JOIN("user_back b on a.update_by=b.id");
+                FROM("bank a, user_back b ");
+                WHERE("a.update_by=b.id");
                 if (null != rpo.getBankName()){
                     WHERE("a.bank_name like '%" + rpo.getBankName()+"%'");
                 }

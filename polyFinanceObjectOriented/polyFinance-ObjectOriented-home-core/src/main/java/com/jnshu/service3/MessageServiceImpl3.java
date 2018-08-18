@@ -11,6 +11,7 @@ import com.jnshu.entity.TimedTask;
 import com.jnshu.entity.UserBack;
 import com.jnshu.exception.MyException;
 import com.jnshu.utils3.AliOSSUtil;
+import com.jnshu.utils3.CookieUtil;
 import com.jnshu.utils3.OSSUtil;
 import com.jnshu.utils3.VerificationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,6 @@ public class MessageServiceImpl3 implements MessageService3 {
     MessageMapper3 messageMapper3;
     @Autowired
     UserBackMapper3 userBackMapper3;
-    @Autowired
-    CookieService3 cookieService3;
     @Autowired
     AliOSSUtil aliOSSUtil;
     @Autowired
@@ -87,7 +86,7 @@ public class MessageServiceImpl3 implements MessageService3 {
         message.setCreateAt(System.currentTimeMillis());
         Long userBackId= null;
         try {
-            userBackId = cookieService3.findByCookie(request);
+            userBackId=Long.valueOf(CookieUtil.getCookieValue(request,"uid"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,15 +102,16 @@ public class MessageServiceImpl3 implements MessageService3 {
 
         if (message.getMessageType()==1){
             /*添加定时任务*/
+            int isSent=1;
+            int nature=5;
             long taskTime=message.getUpdateAt();//需要知道前台传回来的是什么类型
             TimedTask timedTask=new TimedTask();
             timedTask.setTaskTime(taskTime);
-            timedTask.setNature(5);
+            timedTask.setNature(nature);
             timedTask.setMessageId(id);
             timedTaskMapper3.addTask(timedTask);
-            message.setIsSent(1);
+            message.setIsSent(isSent);
         }
-
         json.put("code",0);
         json.put("message","成功");
         return json;
@@ -124,13 +124,14 @@ public class MessageServiceImpl3 implements MessageService3 {
         Message message=messageMapper3.findById(id);
         message.setIsSent(isSent);
 
-
+        System.out.println("添加isSent="+isSent);
         if(isSent==0&&message.getMessageType()==1){
             /*添加定时任务*/
+            int nature=5;
             long taskTime=message.getUpdateAt();//需要知道前台传回来的是什么类型
             TimedTask timedTask=new TimedTask();
             timedTask.setTaskTime(taskTime);
-            timedTask.setNature(5);
+            timedTask.setNature(nature);
             timedTask.setMessageId(message.getId());
             timedTaskMapper3.addTask(timedTask);
         }
@@ -140,20 +141,19 @@ public class MessageServiceImpl3 implements MessageService3 {
         }
 
         try {
-            message.setUpdateBy(cookieService3.findByCookie(request));
+            message.setUpdateBy(Long.valueOf(CookieUtil.getCookieValue(request,"uid")));
         } catch (Exception e) {
             e.printStackTrace();
         }
         message.setUpdateAt(System.currentTimeMillis());
         messageMapper3.updateMessage(message);
-
         json.put("code",0);
         json.put("message","成功");
         return json;
     }
 
 
-    /*上传图片*/ //8/10
+    /*上传图片*/
     @Override
     public JSONObject imageUpload(MultipartFile realImage, HttpServletRequest request, String imageName) {
         JSONObject json=new JSONObject();
@@ -164,18 +164,15 @@ public class MessageServiceImpl3 implements MessageService3 {
         }
         Long  userBackId;
         try {
-            userBackId = cookieService3.findByCookie(request);
+            userBackId =Long.valueOf(CookieUtil.getCookieValue(request,"uid"));
         } catch (Exception e) {
             json.put("code",-1);
             json.put("message","请登入");
             return json;
         }
-
-        System.out.println(realImage.getOriginalFilename());
         /*得到图片的类型*/
         String[] photoName = realImage.getOriginalFilename().split("\\.");
         String photoType = photoName[photoName.length-1];
-        System.out.println(photoType);
         if (!photoType.equals("png")&!photoType.equals("jpg")&!photoType.equals("img")){
             json.put("code",-1);
             json.put("message","图片格式不正确");
@@ -183,14 +180,8 @@ public class MessageServiceImpl3 implements MessageService3 {
         }
         String code = VerificationUtil.getVerificationCode();
         /*图片存储路径*/
-        String photoKey = "Message/"+userBackId+imageName+"."+photoType;
+        String photoKey = "Message/"+userBackId+imageName+code+"."+photoType;
         String bucketName ="jnshuphoto";
-//        try {
-//            ossClient.putObject(bucketName, photoKey, new ByteArrayInputStream(realImage.getBytes()));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        ossClient.shutdown();
         try {
             aliOSSUtil.uploadFile(photoKey, realImage.getBytes());
         } catch (IOException e) {

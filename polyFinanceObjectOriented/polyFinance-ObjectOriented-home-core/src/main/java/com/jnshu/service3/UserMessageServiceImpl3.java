@@ -42,9 +42,4 @@ public class UserMessageServiceImpl3 implements UserMessageService3 {
         json.put("data",message);
         return json;
     }
-//        List<Message> messages=messageMapper3.findByTpye(user.getRealStatus());
-//        json.put("code",0);
-//        json.put("message","成功");
-//        json.put("data",messages);
-//        return json;
     }

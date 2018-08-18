@@ -32,7 +32,7 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         String defaultCard=name+"("+cardId+")";
         return defaultCard;
     }
-    /*获取银行卡*/ //改
+    /*获取银行卡*/
     @Override
     public JSONObject findBankCard(long id) {
         JSONObject json =new JSONObject();
@@ -48,7 +48,7 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         return json;
     }
 
-    /*默认银行卡*/ //未push
+    /*默认银行卡*/
     @Override
     public JSONObject defaultCardUpdata(long id, long cardId) {
         JSONObject json =new JSONObject();
@@ -59,15 +59,6 @@ public class UserBankServiceImpl3 implements UserBankService3 {
             json.put("message","没有银行卡");
             return json;
         }
-        System.out.println(bankCard);
-//        if (bankCard.getCardOrder()==2){
-//            BankCard bankCard1=bankCardMapper3.findBankCardByOrder(id);
-//            System.out.println(bankCard1);
-//            bankCard.setCardOrder(1);
-//            bankCard1.setCardOrder(2);
-//            bankCardMapper3.updateData(bankCard);
-//            bankCardMapper3.updateData(bankCard1);
-//        }
         User user=userMapper3.findUserById(id);
         user.setDefaultCard(cardId);
         userMapper3.updateData(user);
@@ -75,7 +66,7 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         json.put("message","成功");
         return json;
     }
-    //添加 8/14修改 未push
+    //添加
     @Override
     public JSONObject addBankCard(BankCardList bankCardList, long id) throws MyException {
         JSONObject json =new JSONObject();
@@ -105,7 +96,12 @@ public class UserBankServiceImpl3 implements UserBankService3 {
             bankCard.setCardOrder(1);
         }
         if (bankCardMapper3.findCountByUser(id)==1){
-            bankCard.setCardOrder(2);
+            if (bankCardMapper3.findBankCardBySingle(id).getCardOrder()==1){
+                bankCard.setCardOrder(2);
+            }
+            if (bankCardMapper3.findBankCardBySingle(id).getCardOrder()==2){
+                bankCard.setCardOrder(1);
+            }
         }
         bankCardMapper3.addBankCard(bankCard);
 

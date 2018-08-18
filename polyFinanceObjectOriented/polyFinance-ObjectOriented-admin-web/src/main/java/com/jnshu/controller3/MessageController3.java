@@ -2,7 +2,6 @@ package com.jnshu.controller3;
 
 import com.jnshu.dto3.MessageListRPO;
 import com.jnshu.entity.Message;
-import com.jnshu.service3.CookieService3;
 import com.jnshu.service3.MessageService3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +19,7 @@ public class MessageController3 {
 
     @Autowired
     MessageService3 messageService3;
-    @Autowired
-    CookieService3 cookieService3;
+
 
     private static final Logger log= LoggerFactory.getLogger(MessageController3.class);
     /**
