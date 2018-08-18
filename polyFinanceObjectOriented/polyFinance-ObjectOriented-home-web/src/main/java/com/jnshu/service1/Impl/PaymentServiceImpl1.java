@@ -93,12 +93,11 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             }catch (Exception e){
                 throw new MyException(-1, "获取用户购买新手礼包信息失败");
             }
-            System.out.println(userId+"是否购买过新手礼包"+isNew);
+            log.info(userId+"是否购买过新手礼包"+isNew);
             if (isNew==1) {
                 throw new MyException(10040, "已购买过新手礼");
             }
         }
-        System.out.println("完成礼包确认，开始创建合同");
         //查找最新合同号,如果没有数据就传""
         String newestContractCode;
         try {
@@ -109,12 +108,12 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         if (newestContractCode == null) {
             newestContractCode = "";
         }
-        System.out.println("最新合同号为" + newestContractCode);
+        log.info("最新合同号为" + newestContractCode);
         //查找产品id对应的productCode
         String productCode = product.getProductCode();
         //生成合同编号
         String contractCode = TransString.transContractCode(newestContractCode, productCode);
-        System.out.println("新合同编号为" + contractCode);
+        log.info("新合同编号为" + contractCode);
         Contract contract = new Contract();
         contract.setCreateAt(System.currentTimeMillis());
         contract.setCreateBy(userId);
@@ -386,7 +385,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 }catch (Exception e) {
                     throw new MyException(-1, "添加本息一次还定时任务出错");
                 }
-                System.out.println("本息一次还的还款定时任务id为:" + newTimedTask.getId());
+                log.info("本息一次还的还款定时任务id为:" + newTimedTask.getId());
             }
             //如果是先息后本，添加deadlineMonth次返息任务，一次本带最后一次利息任务
             else {
@@ -409,7 +408,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 Calendar startAtCalender = Calendar.getInstance();
                 startAtCalender.clear();
                 startAtCalender.setTimeInMillis(startAt);
-                System.out.println("开始时间为" + startAtCalender.get(Calendar.YEAR) + startAtCalender.get(Calendar.MONTH) + startAtCalender.get(Calendar.DAY_OF_MONTH));
+                log.info("开始时间为" + startAtCalender.get(Calendar.YEAR) + startAtCalender.get(Calendar.MONTH) + startAtCalender.get(Calendar.DAY_OF_MONTH));
                 for (int i = 0; i < (deadlineMonth + 1); i++) {
                     //判断，前deadlineMonth次是返息，其中第一次的利息比较特殊
                     if (i == 0) {
@@ -427,7 +426,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                             //设置第一个月的返息
                             BigDecimal firstMonthReturn = everyDayReturn.multiply(new BigDecimal(20 - dayOfStartAt));
                             newTimedTask.setMoney(firstMonthReturn.toString());
-                            System.out.println("第一次返息定时任务详情:" + newTimedTask);
                             //添加定时任务并计算未返收益
                             try{
                                 timedTaskMapper1.addTaskedTime(newTimedTask);
@@ -448,7 +446,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                             //设置第一个月的返息
                             BigDecimal firstMonthReturn = everyDayReturn.multiply(new BigDecimal(50 - dayOfStartAt));
                             newTimedTask.setMoney(firstMonthReturn.toString());
-                            System.out.println("第一次返息定时任务详情" + newTimedTask);
                             //添加定时任务并计算未返收益
                             try{
                                 timedTaskMapper1.addTaskedTime(newTimedTask);
@@ -469,7 +466,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                         newTimedTask.setTaskTime(startAtCalender.getTimeInMillis());
                         //设置金额
                         newTimedTask.setMoney(everyMonthReturn.toString());
-                        System.out.println("第" + (i + 1) + "月返息定时任务详情:" + newTimedTask);
                         try{
                             timedTaskMapper1.addTaskedTime(newTimedTask);
                         }catch (Exception e) {
@@ -487,7 +483,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                         newTimedTask.setTaskTime(endAtCalender.getTimeInMillis());
                         //设置金额,未返回加本金
                         newTimedTask.setMoney(notReturn.add(moneyB).toString());
-                        System.out.println("最后一次定时任务详情:" + newTimedTask);
                         try{
                             timedTaskMapper1.addTaskedTime(newTimedTask);
                         }catch (Exception e) {
@@ -508,7 +503,6 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 //设置定时任务时间为交易到期时间-续投提醒时间
                 long investmentDay = Long.parseLong(systemDataMapper1.getInvestmentDay());
                 renewalTask.setTaskTime(endAt - investmentDay * 24 * 3600 * 1000);
-                System.out.println("改变续投状态的定时任务详情" + renewalTask);
                 try{
                     timedTaskMapper1.addTaskedTime(renewalTask);
                 }catch (Exception e) {
@@ -576,24 +570,4 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         }
         return transactionId;
     }
-
-//    @Override
-//    public Boolean judge(long id, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) throws Exception{
-//        User user= userMapper1.getUserRealStatusById(id);
-//        if(user.getRealStatus()==1&&user.getDefaultCard()>0){
-//            System.out.println("验证通过，放行");
-//            return true;
-//        }
-//        //如果未实名就去未实名的接口，返回的code是10010
-//        if(user.getRealStatus()!=1){
-//            log.error("用户"+id+"未实名，跳转到返回错误信息为未实名的接口");
-//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/unrealname");
-//            return false;
-//        }
-//        else {
-//            log.error("用户"+id+"未绑定银行卡，跳转到返回错误信息为未绑卡的接口");
-//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/a/nocard");
-//            return false;
-//        }
-//    }
 }

@@ -107,7 +107,7 @@ public interface ProductMapper1 {
                 if(rpo.getInterestRateMax()!=null)
                     WHERE("interest_rate<=#{interestRateMax}");
                 if(rpo.getInvestmentAmount()!=null)
-                    WHERE("investment_amount=#{investAmount}");
+                    WHERE("investment_amount=#{investmentAmount}");
                 if (rpo.getDeadlineMin()!=null)
                     WHERE("deadline>=#{deadlineMin}");
                 if(rpo.getDeadlineMax()!=null)

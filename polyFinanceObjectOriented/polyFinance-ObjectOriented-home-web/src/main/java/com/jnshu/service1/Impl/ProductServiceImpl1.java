@@ -32,7 +32,7 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @throws Exception
      */
     @Override
-    @Cacheable(value = "object-productList-recommend")
+//    @Cacheable(value = "object-productList-recommend")
     public List<Product> getProductListRecommend() throws Exception {
         long st=System.currentTimeMillis();
         log.info("获得推荐产品列表");
@@ -54,7 +54,7 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @throws Exception
      */
     @Override
-    @Cacheable(value = "object-productList")
+//    @Cacheable(value = "object-productList")
     public List<Product> getProductList() throws Exception {
         long st=System.currentTimeMillis();
         log.info("获得所有在售产品列表");
@@ -76,7 +76,7 @@ public class ProductServiceImpl1 implements ProductService1 {
      * @return 产品详情
      */
     @Override
-    @Cacheable(value = "object-product",key ="#id")
+//    @Cacheable(value = "object-product",key ="#id")
     public Product getProductById(long id) throws Exception{
         long st=System.currentTimeMillis();
         log.info("获得指定id为"+id+"的产品");
