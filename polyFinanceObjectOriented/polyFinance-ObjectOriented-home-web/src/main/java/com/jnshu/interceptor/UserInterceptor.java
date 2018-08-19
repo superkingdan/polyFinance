@@ -1,6 +1,7 @@
 package com.jnshu.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jnshu.entity.User;
 import com.jnshu.exception.MyException;
 import com.jnshu.utils3.CookieUtil;
 import com.jnshu.utils3.TokenJWT;
@@ -35,6 +36,10 @@ public class UserInterceptor implements HandlerInterceptor {
         }catch (Exception e){
             log.error("拦截器空指针，cookie为空");
             throw new MyException(10001,"cookie为空，请登录");
+        }
+        User user=userMapper3.findUserById(Long.parseLong(uidS));
+        if (user==null){
+            throw new MyException(-1,"该用户不存在");
         }
         Map<String, Object> map;
         try {

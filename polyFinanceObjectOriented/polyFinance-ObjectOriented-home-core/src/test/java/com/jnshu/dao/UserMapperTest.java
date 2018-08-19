@@ -77,4 +77,9 @@ UserMapper1 userMapper1;
             System.out.println("新手礼包以购买过");
         }
     }
+
+    @Test
+    public void updateIsNew(){
+        System.out.println(userMapper1.updateIsNewById(2));
+    }
 }

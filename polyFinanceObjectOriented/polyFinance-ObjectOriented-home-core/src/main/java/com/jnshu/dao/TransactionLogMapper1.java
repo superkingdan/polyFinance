@@ -27,11 +27,11 @@ public interface TransactionLogMapper1 {
     //新增交易流水
     @Insert("insert into transaction_log (create_at,create_by,user_id,product_name,transaction_at,transaction_way,money,status,bank_log,contract_id) values (#{createAt},#{createBy},#{userId},#{productName},#{transactionAt},#{transactionWay},#{money},#{status},#{bankLog},#{contractId})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addTransactionLog(TransactionLog transactionLog);
+    Integer addTransactionLog(TransactionLog transactionLog);
 
     //修改交易流水状态
     @Update("update transaction_log set status=#{status},update_at=#{updateAt},update_by=#{updateBy},bank_log=#{bankLog} where id=#{id}")
-    int updateTransactionLogById(TransactionLog transactionLog);
+    Integer updateTransactionLogById(TransactionLog transactionLog);
 
     //后台按条件查找指定用户
     //需手动转化style和status为StyleStatus,12种情况

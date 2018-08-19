@@ -25,7 +25,7 @@ public interface UserMapper1 {
 
     //修改用户资产
     @Update("update user set property=#{property},update_at=#{updateAt},update_by=#{updateBy} where id=#{id} ")
-    int updatePropertyById(User user);
+    Integer updatePropertyById(User user);
 
     //查询默认银行卡id
     @Select("select default_card from user where id=#{userId}")
@@ -49,7 +49,7 @@ public interface UserMapper1 {
 
     //修改用户为已购买新手礼包
     @Select("update user set is_new=1 where id=#{id}")
-    int updateIsNewById(long id);
+    Integer updateIsNewById(long id);
 
     //查找用户是否购买新手礼
     @Select("select is_new from user where id=#{id}")

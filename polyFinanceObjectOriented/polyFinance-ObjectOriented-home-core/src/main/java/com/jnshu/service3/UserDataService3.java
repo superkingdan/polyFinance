@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 @Component(value = "userDataService3")
 public interface UserDataService3 {
     /*查找用户信息 金额等*/
-    JSONObject findUserByRequest(HttpServletRequest request);
+    JSONObject findUserByRequest(HttpServletRequest request) throws MyException;
     /*查找用户信息 金额等*/
-    JSONObject findUserById(long id);
+    JSONObject findUserById(long id) throws MyException;
     /*用户账户设置页面*/
-    JSONObject findData(long id);
+    JSONObject findData(long id) throws MyException;
     /*用户账户资料修改*/
     JSONObject updataUser(long id, User user);
     /*设置手势密码*/
-    JSONObject newGesture(long id, int gesturePassword);
+    JSONObject newGesture(long id, int gesturePassword) throws MyException;
     /*验证手势密码*/
     JSONObject eGesture(long id, int gesturePassword);
     /*修改手势密码*/

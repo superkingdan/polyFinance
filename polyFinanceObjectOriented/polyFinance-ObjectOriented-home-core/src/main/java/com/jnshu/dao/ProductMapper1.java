@@ -23,15 +23,15 @@ public interface ProductMapper1 {
 //插入产品
     @Insert("insert into product (create_at,create_by,product_code,product_name,interest_rate,deadline,investment_amount,rate_of_interest,refund_style,remark,status,mark,is_recommend,is_limite_purchase,more_message) values (#{createAt},#{createBy},#{productCode},#{productName},#{interestRate},#{deadline},#{investmentAmount},#{rateOfInterest},#{refundStyle},#{remark},#{status},#{mark},#{isRecommend},#{isLimitePurchase},#{moreMessage})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addProduct(Product product);
+    Integer addProduct(Product product);
 
     //产品上下架
     @Update("update product set status=#{status},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
-    int updateProductStatus(Product product);
+    Integer updateProductStatus(Product product);
 
     //修改产品信息
     @Update("update product set mark=#{mark},is_recommend=#{isRecommend},is_limite_purchase=#{isLimitePurchase},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
-    int updateProduct(Product product);
+    Integer updateProduct(Product product);
 
     //根据id查找产品详情
     @Select("select id,product_code,product_name,interest_rate,deadline,investment_amount,rate_of_interest,refund_style,mark,is_recommend,is_limite_purchase,more_message,remark from product where id=#{id} ")

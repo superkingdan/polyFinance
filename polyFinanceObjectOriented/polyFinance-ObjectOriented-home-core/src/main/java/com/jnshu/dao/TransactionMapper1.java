@@ -18,10 +18,10 @@ public interface TransactionMapper1 {
     //添加新交易订单
     @Insert("insert into transaction (create_at,create_by,user_id,start_at,end_at,renuwal_status,money,expect_earnings,returned,not_return,product_id,status,contract_code) values (#{createAt},#{createBy},#{userId},#{startAt},#{endAt},#{renuwalStatus},#{money},#{expectEarnings},#{returned},#{notReturn},#{productId},#{status},#{contractCode})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addTransaction(Transaction transaction);
+    Integer addTransaction(Transaction transaction);
     //修改续投状态
     @Update("update transaction set renuwal_status=#{renuwalStatus},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
-    int updateRenuwalStatus(Transaction transaction);
+    Integer updateRenuwalStatus(Transaction transaction);
 //    //获得债权匹配相关信息
 //    @Select("select user_id,product_id,start_at,end_at,money from transaction where claims_id=#{id}")
 //    ClaimsMatchingRO getClaimsMatchingList(long id);
@@ -44,7 +44,7 @@ public interface TransactionMapper1 {
 
     //修改交易表债权信息
     @Update("update transaction set claims_id=#{claimsId},update_at=#{updateAt},update_by=#{updateBy} where contract_code=#{contractCode}")
-    int updateClaimsId(Transaction transaction);
+    Integer updateClaimsId(Transaction transaction);
 
     //查询购买人次
     @Select("select count(distinct user_id) from transaction where product_id=#{id}")
