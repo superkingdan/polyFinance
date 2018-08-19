@@ -44,7 +44,7 @@ public class BankController2 {
             banks = bankService2.getBankList(pageNum,pageSize,rpo);
             if (0 == banks.size()){
                 cam.setCode(-1);
-                cam.setErrorMessage("当前条件没有符合记录。");
+                cam.setErrorMessage("当前条件没有符合条件的银行记录。");
                 result.add(cam);
                 return result;
             }

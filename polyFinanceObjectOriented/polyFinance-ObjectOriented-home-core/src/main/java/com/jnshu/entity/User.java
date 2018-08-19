@@ -56,7 +56,7 @@ public class User implements Serializable {
      private String email;
      private String address;
      //默认银行卡id
-     private Long defaultCard;
+     private long defaultCard;
      //手势密码
      private int gesturePassword;
      //总资产
@@ -194,11 +194,11 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    public Long getDefaultCard() {
+    public long getDefaultCard() {
         return defaultCard;
     }
 
-    public void setDefaultCard(Long defaultCard) {
+    public void setDefaultCard(long defaultCard) {
         this.defaultCard = defaultCard;
     }
 

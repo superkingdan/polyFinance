@@ -34,7 +34,7 @@ public class UserDataServiceImpl3 implements UserDataService3 {
 
     /*用户信息*/
     @Override
-    public JSONObject findUserByRequest(HttpServletRequest request) {
+    public JSONObject findUserByRequest(HttpServletRequest request) throws MyException {
         JSONObject json =new JSONObject();
         Long id= null;
         try {
@@ -43,30 +43,30 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             e.printStackTrace();
         }
         if (id==null){
-            json.put("code",-1);
-            json.put("message","未登入");
-            return json;
+            throw new MyException(10001,"未登入");
         }
+        User user=userMapper3.findUserById(id);
         json.put("code",0);
         json.put("message","成功");
-        json.put("data", userMapper3.findUserById(id));
+        json.put("data",user);
         return json;
     }
 
     @Override
-    public JSONObject findUserById(long id) {
+    public JSONObject findUserById(long id) throws MyException {
         JSONObject json =new JSONObject();
+        User user=userMapper3.findUserById(id);
         json.put("code",0);
         json.put("message","成功");
-        json.put("data", userMapper3.findUserById(id));
+        json.put("data",user);
         return json;
     }
 
     /*用户账户设置页面*/
     @Override
-    public JSONObject findData(long id) {
+    public JSONObject findData(long id) throws MyException {
         JSONObject json=new JSONObject();
-        User user= userMapper3.findUserById(id);
+        User user=userMapper3.findUserById(id);
         String defaultCard = null;
         if (user.getDefaultCard()!=0) {
             defaultCard = userBankService3.defaultCard(user.getDefaultCard());
@@ -97,9 +97,9 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     }
     /*设置手势密码*/
     @Override
-    public JSONObject newGesture(long id,int gesturePassword) {
+    public JSONObject newGesture(long id,int gesturePassword) throws MyException {
         JSONObject json=new JSONObject();
-        User user= userMapper3.findUserById(id);
+        User user=userMapper3.findUserById(id);
         user.setGesturePassword(gesturePassword);
         userMapper3.updateData(user);
         json.put("code",0);
@@ -171,7 +171,6 @@ public class UserDataServiceImpl3 implements UserDataService3 {
     @Override
     public JSONObject verificationReal(long id, RealNameApplication realNameApplication) throws MyException {
         JSONObject json=new JSONObject();
-        System.out.println("输入的=="+realNameApplication);
         if (realNameApplication.getIdCard()==null){
             throw new MyException(-1,"身份证号不能为空");
         }
@@ -182,32 +181,30 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             throw new MyException(-1,"姓名不能为空");
         }
         List<RealNameApplication> realNameApplications=realNameApplicationMapper3.findIdCard(realNameApplication.getIdCard());
-        System.out.println(realNameApplications);
-        if (realNameApplications==null) {
+        if (realNameApplications!=null) {
+            throw new MyException(-1, "该身份证只能绑定一个账户");
+        }
             if (realNameApplicationMapper3.findByUserId(id) != null) {
                 if (realNameApplicationMapper3.findByUserId(id).getApplicationStatus() != 1) {
                     realNameApplication.setIsFirst(1);
                     realNameApplicationMapper3.updateData(realNameApplication);
                     json.put("code", 0);
                     json.put("message", "成功");
-                    System.out.println("实名注册表更新" + realNameApplication);
                     return json;
                 }
                 json.put("code", -1);
-                json.put("message", "成功");
-                System.out.println("请不要重复认证");
+                json.put("message", "请不要重复认证");
                 return json;
             }
             realNameApplication.setCreateAt(System.currentTimeMillis());
             realNameApplication.setUserId(id);
             realNameApplicationMapper3.addRealName(realNameApplication);
-            System.out.println(realNameApplication);
             json.put("code", 0);
             json.put("message", "成功");
 
             return json;
-        }
-        throw new MyException(-1,"该身份证只能绑定一个账户");
+
+
     }
 
 

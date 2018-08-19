@@ -50,11 +50,13 @@ public class MessageServiceImpl3 implements MessageService3 {
         }
 
         Page<MessageListRPO> messageListRPOS= (Page<MessageListRPO>) messageMapper3.findMessageListRPO(messageListRPO);
+
+
         System.out.println(messageListRPOS);
         json.put("code",0);
         json.put("message","成功");
         json.put("data",messageListRPOS);
-        json.put("size",messageListRPO.getPageSize());
+
         json.put("total",messageListRPOS.getTotal());
         return json;
     }
@@ -101,6 +103,7 @@ public class MessageServiceImpl3 implements MessageService3 {
                 message.setIsSent(isSent);
             }
         }
+
         messageMapper3.addMessage(message);
         long id=message.getId();
         if (message.getMessageType()==1){

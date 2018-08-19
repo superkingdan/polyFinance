@@ -433,25 +433,28 @@ public class TransactionServiceImpl1 implements TransactionService1 {
             } catch (Exception e) {
                 throw new MyException(-1, "获取默认银行卡失败");
             }
-            if (defaultCard == null) {
-                throw new MyException(-1, "用户" + userId + "默认银行卡为空");
+            //如果两张卡都被解绑，就设置其为无银行卡
+            if (defaultCard == 0) {
+                ro.setDefaultCardId("0000");
+                ro.setDefaultCardBankName("无默认卡");
+            }else {
+                //查询并设置银行卡号
+                BankCard bankCard;
+                try {
+                    bankCard = bankCardMapper1.getBankIdById(defaultCard);
+                    ro.setDefaultCardId(bankCard.getBankCard());
+                } catch (Exception e) {
+                    throw new MyException(-1, "获取银行卡信息失败");
+                }
+                //查询并设置银行名
+                String bankName;
+                try {
+                    bankName = bankMapper1.getBankNameById(bankCard.getBankId());
+                } catch (Exception e) {
+                    throw new MyException(-1, "获取银行名失败");
+                }
+                ro.setDefaultCardBankName(bankName);
             }
-            //查询并设置银行卡号
-            BankCard bankCard;
-            try {
-                bankCard = bankCardMapper1.getBankIdById(defaultCard);
-                ro.setDefaultCardId(bankCard.getBankCard());
-            } catch (Exception e) {
-                throw new MyException(-1, "获取银行卡信息失败");
-            }
-            //查询并设置银行名
-            String bankName;
-            try {
-                bankName = bankMapper1.getBankNameById(bankCard.getBankId());
-            } catch (Exception e) {
-                throw new MyException(-1, "获取银行名失败");
-            }
-            ro.setDefaultCardBankName(bankName);
             //查询并设置合同id
             Long contractId;
             try {

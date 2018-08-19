@@ -25,18 +25,29 @@ public class UserBankServiceImpl3 implements UserBankService3 {
 
     /*默认银行卡拼接*/
     @Override
-    public String defaultCard(long id) {
+    public String defaultCard(long id) throws MyException {
         BankCard bankCard=bankCardMapper3.findById(id);
-        String name =bankMapper3.findBankById(bankCard.getBankId()).getBankName();
+        if (bankCard==null) {
+            throw new MyException(-1, "没有默认银行卡");
+        }
+        Bank bank=bankMapper3.findBankById(bankCard.getBankId());
+        if (bank==null){
+            throw new MyException(-1, "该银行不存在");
+        }
+        String name =bank.getBankName();
         String cardId=bankCard.getBankCard().substring(bankCard.getBankCard().length()-4,bankCard.getBankCard().length());
         String defaultCard=name+"("+cardId+")";
         return defaultCard;
     }
     /*获取银行卡*/
     @Override
-    public JSONObject findBankCard(long id) {
+    public JSONObject findBankCard(long id) throws MyException {
         JSONObject json =new JSONObject();
-        if (userMapper3.findUserById(id).getRealName()==null){
+        User user=userMapper3.findUserById(id);
+        if (user==null){
+            throw new MyException(-1,"该用户不存在");
+        }
+        if (user.getRealName()==null){
             json.put("code",1000);
             json.put("message","未实名");
             return json;
@@ -72,12 +83,13 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         JSONObject json =new JSONObject();
 
         BankCard bankCard1 =bankCardMapper3.findBankCardByIdCard(bankCardList.getBankCard());
-        if (bankCard1!=null){
-            throw new MyException(-1,"该银行卡已绑定");
-        }
         if (bankCardMapper3.findCountByUser(id)>=2){
             throw new MyException(-1,"绑定银行卡超过两张无法添加");
         }
+        if (bankCard1!=null){
+            throw new MyException(-1,"该银行卡已绑定");
+        }
+
 
         BankCard bankCard =new BankCard();
         bankCard.setCreateAt(System.currentTimeMillis());
@@ -104,7 +116,6 @@ public class UserBankServiceImpl3 implements UserBankService3 {
             }
         }
         bankCardMapper3.addBankCard(bankCard);
-
         User user=userMapper3.findUserById(id);
         if (user.getDefaultCard()==0){
             user.setDefaultCard(bankCard.getId());

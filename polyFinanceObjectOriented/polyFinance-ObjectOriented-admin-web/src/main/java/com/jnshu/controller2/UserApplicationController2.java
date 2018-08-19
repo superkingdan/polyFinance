@@ -63,6 +63,7 @@ public class UserApplicationController2 {
         x.put("total",total);
         x.put("pageSize",pageSize);
         x.put("pageNum",pageNum);
+        cam.setMessage("实名列表查询成功。");
         result.add(cam);
         result.add(x);
         result.add(userApplications);
@@ -190,6 +191,7 @@ public class UserApplicationController2 {
                     result.add(cam);
                 }
             } catch (Exception e) {
+                cam.setMessage("服务器错误。");
                 cam.setErrorMessage("服务器取消用户实名出错。");
                 logger.info("服务器错误。业务管理--实名认证管理--实名列表取消实名成功后更新用户表失败。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。"+"用户id="+id+", 实名取消成功。");
                 e.printStackTrace();

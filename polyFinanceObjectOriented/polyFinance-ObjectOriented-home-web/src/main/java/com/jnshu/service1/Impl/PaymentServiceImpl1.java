@@ -160,6 +160,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             transactionLog.setMoney(rpo.getMoney());
             transactionLog.setStatus(TransactionLog.STATUS_PAY_FAIL);
             BankCard card;
+            // 查找银行卡
             try {
                 card = bankCardMapper1.getBankIdById(rpo.getBankCardId());
             } catch (Exception e) {

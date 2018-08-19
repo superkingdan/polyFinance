@@ -91,14 +91,10 @@ public class ContentController2 {
         map.put("total", total);
         result.add(map);
 
-        cam.setMessage("查询成功");
+        cam.setMessage("内容查询成功");
         result.add(cam);
-        System.out.println("*********内容列表**********");
-        for(DomainContent content : contents){
-            System.out.println(content);
-        }
         result.add(contents);
-
+        logger.info("后台 运营管理--内容列表查询成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+contentListRPO+", 查询结果："+contents);
         return result;
     }
 
@@ -115,6 +111,7 @@ public class ContentController2 {
         //参数验证。
         if(null == id || id < 1){
             cam.setCode(-1);
+            cam.setMessage("id不能为空或小于1.");
             cam.setErrorMessage("id不能为空或小于1.");
             result.add(cam);
             return result;
@@ -163,12 +160,14 @@ public class ContentController2 {
         //参数验证。
         if (null == id || 1 > id){
             cam.setCode(-1);
+            cam.setMessage("id参数错误。");
             cam.setErrorMessage("id参数错误。");
             result.add(cam);
             return result;
         }
         if ((null == title || ("").equals(title)) || (null == type || ("").equals(type)) || (null == status || ("").equals(status))){
             cam.setCode(-1);
+            cam.setMessage("title, type, status不能为空或无值。");
             cam.setErrorMessage("title, type, status不能为空或无值。");
             result.add(cam);
             return result;
@@ -177,6 +176,7 @@ public class ContentController2 {
         //type不能为空，或者时0，1，2之外的数字
         if (null == type || 0 != type && 1 != type && 2 != type){
             cam.setCode(-1);
+            cam.setMessage("type参数值不允许。");
             cam.setErrorMessage("type参数值不允许。");
             result.add(cam);
             return result;
@@ -185,6 +185,7 @@ public class ContentController2 {
         //status不能为空，或者是0，1之外的数字
         if (null == status || 0 != status && 1 != status){
             cam.setCode(-1);
+            cam.setMessage("status参数值不允许。");
             cam.setErrorMessage("status参数值不允许。");
             result.add(cam);
             return result;
@@ -194,6 +195,7 @@ public class ContentController2 {
         if(0 == type){
             if (null == bannerCover ||  "".equals(bannerCover)){
                 cam.setCode(-1);
+                cam.setMessage("类型为 推荐 时，bannerCover不能为空。");
                 cam.setErrorMessage("类型为 推荐 时，bannerCover不能为空。");
                 result.add(cam);
                 return result;
@@ -206,6 +208,7 @@ public class ContentController2 {
             System.out.println(details);
             if (null == details || ("").equals(details)){
                 cam.setCode(-1);
+                cam.setMessage("类型为”帮助中心“或”关于我们“时，内容不能为空。");
                 cam.setErrorMessage("类型为”帮助中心“或”关于我们“时，内容不能为空。");
                 result.add(cam);
                 return result;
@@ -213,6 +216,7 @@ public class ContentController2 {
 
             if (null != bannerCover){
                 cam.setCode(-1);
+                cam.setMessage("类型为”帮助中心“或”关于我们“时，没有封面banner。");
                 cam.setErrorMessage("类型为”帮助中心“或”关于我们“时，没有封面banner。");
                 result.add(cam);
                 return result;
@@ -233,6 +237,7 @@ public class ContentController2 {
             x = contentService2.updateContentById(content);
             if (!x){
                 cam.setCode(-1);
+                cam.setMessage("id 不存在。");
                 cam.setErrorMessage("id 不存在。");
                 result.add(cam);
                 return result;
@@ -268,6 +273,7 @@ public class ContentController2 {
         //参数验证。
         if ((null == title || ("").equals(title)) || (null == type || ("").equals(type)) || (null == status || ("").equals(status))){
             cam.setCode(-1);
+            cam.setMessage("title, type, status 不能为空或无值。");
             cam.setErrorMessage("title, type, status 不能为空或无值。");
             result.add(cam);
             return result;
@@ -276,6 +282,7 @@ public class ContentController2 {
         //type不能没有，而且只能时0，1，2之中的一个。
         if (null == type ||0 != type && 1 != type && 2 != type){
             cam.setCode(-1);
+            cam.setMessage("type参数错误.");
             cam.setErrorMessage("type参数错误.");
             result.add(cam);
             return result;
@@ -284,6 +291,7 @@ public class ContentController2 {
         //status不能没有，而且必须时0或1.
         if (null == status || 0 != status && 1 != status){
             cam.setCode(-1);
+            cam.setMessage("status参数错误.");
             cam.setErrorMessage("status参数错误.");
             result.add(cam);
             return result;
@@ -293,6 +301,7 @@ public class ContentController2 {
         if(0 == type){
             if (null == bannerCover ||  "".equals(bannerCover)){
                 cam.setCode(-1);
+                cam.setMessage("类型为推荐 时，bannerCover不能为空。");
                 cam.setErrorMessage("类型为推荐 时，bannerCover不能为空。");
                 result.add(cam);
                 return result;
@@ -303,6 +312,7 @@ public class ContentController2 {
         if(type == 1 || 2 == type){
             if (null == details || ("").equals(details)){
                 cam.setCode(-1);
+                cam.setMessage("类型为”帮助中心“ 或”关于我们“时，内容不能为空。");
                 cam.setErrorMessage("类型为”帮助中心“ 或”关于我们“时，内容不能为空。");
                 result.add(cam);
                 return result;
@@ -310,6 +320,7 @@ public class ContentController2 {
 
             if (null != bannerCover){
                 cam.setCode(-1);
+                cam.setMessage("类型为”帮助中心“ 或”关于我们“时，没有封面banner。");
                 cam.setErrorMessage("类型为”帮助中心“ 或”关于我们“时，没有封面banner。");
                 result.add(cam);
                 return result;
@@ -322,6 +333,7 @@ public class ContentController2 {
             existId = contentService2.getContentIdByTitle(title);
             if (null != existId){
                 cam.setCode(-1);
+                cam.setMessage("title重复错误。删除之前的或者换个title。");
                 cam.setErrorMessage("title重复错误。删除之前的或者换个title。");
                 result.add(cam);
                 return result;
@@ -380,14 +392,14 @@ public class ContentController2 {
         //参数验证。
         if (null == status ||("").equals(status)){
             cam.setCode(-1);
-            cam.setErrorMessage("status不能为空。");
+            cam.setMessage("status不能为空。");
             result.add(cam);
             return result;
         }
         //id不能没有值，也不能小于1。
         if (null == id || 1 > id){
             cam.setCode(-1);
-            cam.setErrorMessage("id参数错误。");
+            cam.setMessage("id参数错误。");
             result.add(cam);
             return result;
         }
@@ -395,7 +407,7 @@ public class ContentController2 {
         //status不能没有值，同时不能是0和1之外的值。
         if (null == status ||0 != status && 1 != status){
             cam.setCode(-1);
-            cam.setErrorMessage("status参数错误。");
+            cam.setMessage("status参数错误。");
             result.add(cam);
             return result;
         }
@@ -410,7 +422,7 @@ public class ContentController2 {
             up = contentService2.updateContentStatusById(content);
             if (!up){
                 cam.setCode(-1);
-                cam.setErrorMessage("检查id是否正确。或者当前内容状态与要更新的状态相同。");
+                cam.setMessage("检查id是否正确。或者当前内容状态与要更新的状态相同。");
                 result.add(cam);
                 return result;
             }
@@ -449,21 +461,18 @@ public class ContentController2 {
         //参数验证。
         if (0 >= id){
             cam.setCode(-1);
-            cam.setErrorMessage("非法参数.");
+            cam.setMessage("参数id有错误。");
             result.add(cam);
             return result;
         }
 
-        System.out.println("************");
-        System.out.println(id);
         Boolean del = false;
         try {
             del = contentService2.deleteContentById(id);
             System.out.println(del);
             if (!del){
                 cam.setCode(-1);
-                cam.setMessage("删除内容失败。");
-                cam.setErrorMessage("删除失败，检查id。");
+                cam.setMessage("删除内容失败，检查id。");
                 result.add(cam);
                 return result;
             }

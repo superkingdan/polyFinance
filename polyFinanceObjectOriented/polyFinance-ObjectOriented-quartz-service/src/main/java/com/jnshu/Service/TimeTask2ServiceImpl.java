@@ -2,6 +2,7 @@ package com.jnshu.Service;
 
 import com.jnshu.dao3.*;
 import com.jnshu.entity.*;
+import com.jnshu.exception.MyException;
 import com.jnshu.service3.UserBankService3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class TimeTask2ServiceImpl  implements TimeTask2Service{
 
 
     @Override
-    public void timedTask2(TimedTask timedTask) {
+    public void timedTask2(TimedTask timedTask) throws MyException {
 
 
         /*定时任务0 子定时任务2*/

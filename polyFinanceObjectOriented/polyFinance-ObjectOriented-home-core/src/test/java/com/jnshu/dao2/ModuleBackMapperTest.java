@@ -53,6 +53,28 @@ public class ModuleBackMapperTest {
     }
 
     @Test
-    public void getById() {
+    public void getById() throws Exception {
+//        System.out.println(moduleBackMapper.getAll());
+//        System.out.println(moduleBackMapper.getDomainModuleBack(20L));
+
+        //新增对象
+        ModuleBack moduleBack = new ModuleBack();
+        moduleBack.setCreateAt(System.currentTimeMillis());
+        moduleBack.setCreateBy(1L);
+        moduleBack.setUpdateAt(System.currentTimeMillis());
+        moduleBack.setCreateBy(1l);
+        moduleBack.setMenuId("3");
+        moduleBack.setModuleName("测试模块");
+        moduleBack.setModuleType("web");
+        moduleBack.setModuleUrl("/a/u/testModule");
+        moduleBack.setSuperId(0);
+//        System.out.println(moduleBackMapper.saveModuleBack(moduleBack));
+
+        //更新对象
+        moduleBack.setId(23L);
+        moduleBack.setModuleName("测试模块--测试更新");
+        System.out.println(moduleBackMapper.updateModuleBack(moduleBack));
+
+        System.out.println(moduleBackMapper.deleteModuleBack(22L));
     }
 }

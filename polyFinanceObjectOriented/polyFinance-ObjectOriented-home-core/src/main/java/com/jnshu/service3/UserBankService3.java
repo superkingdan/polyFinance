@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 @Component(value = "userBankService3")
 public interface UserBankService3 {
     /*默认银行卡 根据银行卡id*/
-    String defaultCard(long id);
+    String defaultCard(long id) throws MyException;
     /*获取银行卡-整合后*/
-    JSONObject findBankCard(long id);
+    JSONObject findBankCard(long id) throws MyException;
     /*设置默认银行卡*/
     JSONObject defaultCardUpdata(long id, long cardId);
     /*添加银行卡*/

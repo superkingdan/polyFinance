@@ -53,7 +53,7 @@ public class FrontUserController2 {
             logger.info("后台 业务管理--用户列表。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+userFrontListRPO);
         } catch (Exception e) {
             cam.setCode(-1);
-            cam.setErrorMessage("获取用户列表失败。");
+            cam.setMessage("获取用户列表失败。");
             logger.info("获取用户列表失败。账户id="+account.get("uid"));
             e.printStackTrace();
             result.add(cam);
@@ -68,7 +68,7 @@ public class FrontUserController2 {
 
         if (0 == users.size()){
             cam.setCode(-1);
-            cam.setErrorMessage("没有符合条件记录。");
+            cam.setMessage("没有符合条件的用户记录。");
             result.add(cam);
             return result;
         }
@@ -90,7 +90,7 @@ public class FrontUserController2 {
              user = userService2.getUserFrontById(id);
             if (null == user){
                 cam.setCode(-1);
-                cam.setErrorMessage("id对应记录不存在。");
+                cam.setMessage("id对应记录不存在。");
                 result.add(cam);
             }
 
@@ -100,6 +100,7 @@ public class FrontUserController2 {
             }
         } catch (Exception e) {
             cam.setCode(-1);
+            cam.setMessage("服务器错误。");
             cam.setErrorMessage("后端获取id="+id+", 时出错。请重试。");
             logger.info("用户详情。服务器获取id="+id+"详情出错错误。账户id="+account.get("uid")+", 被操作用户id="+id);
             e.printStackTrace();
@@ -115,6 +116,7 @@ public class FrontUserController2 {
             }
             result.add(cam);
         } catch (Exception e) {
+            cam.setMessage("服务器错误。");
             cam.setErrorMessage("服务器获取id="+id+"银行卡出错错误");
             logger.info("用户详情。服务器获取id="+id+"银行卡出错错误。账户id="+account.get("uid")+", 被操作用户id="+id);
             e.printStackTrace();
@@ -141,14 +143,14 @@ public class FrontUserController2 {
         //参数验证
         if (null == status){
             cam.setCode(-1);
-            cam.setErrorMessage("status 不能为空。");
+            cam.setMessage("status 不能为空。");
             result.add(cam);
             return result;
         }
 
         if (0 != status && 1 !=status){
             cam.setCode(-1);
-            cam.setErrorMessage("status值错误。");
+            cam.setMessage("status值错误。");
             result.add(cam);
             return result;
         }
@@ -172,6 +174,7 @@ public class FrontUserController2 {
                 }
             }else {
                 cam.setCode(-1);
+                cam.setMessage("id对应记录不存在或已经是要修改的状态。");
                 cam.setErrorMessage("id对应记录不存在或已经是要修改的状态。");
             }
             logger.info("后台 业务管理--用户冻结-解冻。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数id= "+id+"，操作="+sta+"成功。");
@@ -181,6 +184,7 @@ public class FrontUserController2 {
 
         } catch (Exception e) {
             cam.setCode(-1);
+            cam.setMessage("服务器错误。");
             cam.setErrorMessage("服务器错误。");
             logger.info("用户详情--"+sta+"失败。服务器出错。账户id="+account.get("uid")+", 被操作用户id="+id);
             result.add(cam);
@@ -200,12 +204,13 @@ public class FrontUserController2 {
         //参数验证。
         if (null == phoneNumber){
             cam.setCode(-1);
+            cam.setMessage("手机号不能为空。");
             cam.setErrorMessage("手机号不能为空。");
         }
 
         if (!phoneNumber.matches("^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\\d{8}$")){
             cam.setCode(-1);
-            cam.setMessage("null");
+            cam.setMessage("手机号不符合格式。");
             cam.setErrorMessage("请正确填写手机号。");
         }
 
@@ -227,6 +232,7 @@ public class FrontUserController2 {
                 return result;
             }
         } catch (Exception e) {
+            cam.setMessage("服务器错误。");
             cam.setErrorMessage("服务器修改手机号出错。");
             e.printStackTrace();
             result.add(cam);
@@ -251,6 +257,7 @@ public class FrontUserController2 {
         //参数验证
         if (null == referrerId || ("").equals(referrerId)){
             cam.setCode(-1);
+            cam.setMessage("referrerId 不能为空。");
             cam.setErrorMessage("referrerId 不能为空。");
             result.add(cam);
             return result;
@@ -274,11 +281,13 @@ public class FrontUserController2 {
 
             if(!x){
                 cam.setCode(-1);
+                cam.setMessage("修改失败。理财经理工号相同。或id对应记录不存在。");
                 cam.setErrorMessage("修改失败。理财经理工号相同。或id对应记录不存在。");
                 logger.info("后台 业务管理--用户详情-更换理财经理。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。"+"用户id="+id+", 的理财经理工号修改失败。");
                 result.add(cam);
             }
         } catch (Exception e) {
+            cam.setMessage("服务器修改理财经理出错。");
             cam.setErrorMessage("服务器修改理财经理出错。");
             logger.info("服务器修改理财经理出错。账户id="+account.get("uid")+", 被操作用户id="+id);
             e.printStackTrace();
@@ -301,6 +310,7 @@ public class FrontUserController2 {
         //参数验证
         if (null == realStatus || ("").equals(realStatus)){
             cam.setCode(-1);
+            cam.setMessage("realStatus不能为空。");
             cam.setErrorMessage("realStatus不能为空。");
             result.add(cam);
             return result;
@@ -308,7 +318,8 @@ public class FrontUserController2 {
 
         if (0 != realStatus){
             cam.setCode(-1);
-            cam.setErrorMessage("非法参数。滚蛋。");
+            cam.setMessage("realStatus参数值错误。");
+            cam.setErrorMessage("realStatus参数值错误。");
             result.add(cam);
             return result;
         }
@@ -334,6 +345,7 @@ public class FrontUserController2 {
                 result.add(cam);
             }
         } catch (Exception e) {
+            cam.setMessage("服务器取消用户实名出错。");
             cam.setErrorMessage("服务器取消用户实名出错。");
             logger.info("服务器取消用户实名出错。账户id="+account.get("uid")+", 被操作用户id="+id);
             e.printStackTrace();
@@ -384,6 +396,7 @@ public class FrontUserController2 {
         //参数验证
         if ((null == defaultCard || ("").equals(defaultCard)) || (null == bankId || ("").equals(bankId))){
             cam.setCode(-1);
+            cam.setMessage("bankId或defaultCard不能为空。");
             cam.setErrorMessage("bankId或defaultCard不能为空。");
             result.add(cam);
             return result;
@@ -469,6 +482,7 @@ public class FrontUserController2 {
 
             System.out.println("newDefaultBankCardId："+newDefaultBankCardId);
         } catch (Exception e) {
+            cam.setMessage("服务器获取id="+id+"银行卡出错错误");
             cam.setErrorMessage("服务器获取id="+id+"银行卡出错错误");
             logger.info("解绑银行卡。服务器获取id="+id+"银行卡出错错误。账户id="+account.get("uid")+", 被操作用户id="+id);
             e.printStackTrace();
@@ -530,7 +544,6 @@ public class FrontUserController2 {
                 result.add(cam1);
             }
         }
-
         return result;
     }
 }

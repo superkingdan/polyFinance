@@ -1,10 +1,11 @@
 package com.jnshu.Service;
 
 import com.jnshu.entity.TimedTask;
+import com.jnshu.exception.MyException;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface TimeTask2Service {
     /*任务2性质0 回息是否成功*/
-    void timedTask2(TimedTask timedTask);
+    void timedTask2(TimedTask timedTask) throws MyException;
 }
