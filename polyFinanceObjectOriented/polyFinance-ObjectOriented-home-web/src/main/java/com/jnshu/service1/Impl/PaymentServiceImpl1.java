@@ -294,17 +294,17 @@ public class PaymentServiceImpl1 implements PaymentService1 {
         log.info("付款成功，添加交易信息");
         try {
             //根据交易流水表id查找交易流水相关信息
-            TransactionLog transactionLoglog;
+            TransactionLog transactionLog;
             try {
-                transactionLoglog = transactionLogMapper1.getTransLogById(transactionLogId);
+                transactionLog = transactionLogMapper1.getTransLogById(transactionLogId);
             } catch (Exception e) {
                 log.error("添加订单时获取交易流水失败");
                 throw new MyException(-1, "获取交易流水出错");
             }
-            long userId = transactionLoglog.getUserId();
-            String productName = transactionLoglog.getProductName();
-            long contractId = transactionLoglog.getContractId();
-            String money = transactionLoglog.getMoney();
+            long userId = transactionLog.getUserId();
+            String productName = transactionLog.getProductName();
+            long contractId = transactionLog.getContractId();
+            String money = transactionLog.getMoney();
 
             //根据产品名查找产品相关信息
             Product product;
@@ -325,6 +325,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                     throw new MyException(-1, "更新用户状态出错");
                 }
             }
+            log.info("更新用户状态成功");
             int refundStyle = product.getRefundStyle();
             int isLimitedPurchase = product.getIsLimitePurchase();
             //将时限转化为月，但是新手礼包是用不到这个的
@@ -341,21 +342,24 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             startAtC.setTimeInMillis(System.currentTimeMillis());
             startAtC.add(Calendar.DAY_OF_MONTH, rateOfInterest);
             long startAt = startAtC.getTimeInMillis();
+            log.info("计算起始时间成功"+startAt);
             transaction.setStartAt(startAt);
-            //计算结束时间
+            // 计算结束时间
             if (deadline < 30)
                 startAtC.add(Calendar.DAY_OF_MONTH, deadline);
             else
                 startAtC.add(Calendar.MONTH, deadlineMonth);
             long endAt = startAtC.getTimeInMillis();
             transaction.setEndAt(endAt);
+            log.info("计算结束时间成功"+endAt);
             transaction.setRenuwalStatus(Transaction.RENUWAL_STATUS_NOT);
             transaction.setMoney(money);
-            //计算预期收益
+            // 计算预期收益
             BigDecimal moneyB = new BigDecimal(money);
             BigDecimal interestRateB = new BigDecimal(interestRate);
             BigDecimal expectEarningsB = moneyB.multiply(interestRateB).multiply(new BigDecimal(deadline)).divide(new BigDecimal(360), 2, BigDecimal.ROUND_HALF_UP);
             transaction.setExpectEarnings(expectEarningsB.toString());
+            log.info("计算预期收益成功"+expectEarningsB.toString());
             transaction.setReturned("0");
             transaction.setNotReturn(expectEarningsB.toString());
             transaction.setProductId(productId);
@@ -547,6 +551,7 @@ public class PaymentServiceImpl1 implements PaymentService1 {
             }
             return transactionId;
         }catch (Exception e){
+            e.printStackTrace();
             throw new MyException(-1,"新建交易产生未知错误");
         }
     }
