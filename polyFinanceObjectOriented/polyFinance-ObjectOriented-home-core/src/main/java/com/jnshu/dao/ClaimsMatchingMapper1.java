@@ -21,7 +21,7 @@ public interface ClaimsMatchingMapper1 {
 //   //插入债权匹配数据
     @Insert("insert into claims_matching (create_at,create_by,claims_id,contract_code,claims_protocol_code) values (#{createAt},#{createBy},#{claimsId},#{contractCode},#{claimsProtocolCode})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addClaimsMatching(ClaimsMatching claimsMatching);
+    Integer addClaimsMatching(ClaimsMatching claimsMatching);
 
 
 }

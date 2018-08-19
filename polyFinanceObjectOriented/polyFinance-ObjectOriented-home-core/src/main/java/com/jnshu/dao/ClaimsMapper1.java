@@ -38,16 +38,16 @@ public interface ClaimsMapper1 {
 
     //修改债权信息，需要先计算时间和待匹配金额
     @Update("update claims set update_at=#{updateAt},update_by=#{updateBy},creditor=#{creditor},creditor_phone_number=#{creditorPhoneNumber},creditor_id_card=#{creditorIdCard},lend_deadline=#{lendDeadline},lend_start_at=#{lendStartAt},lend_end_at=#{lendEndAt},lend_money=#{lendMoney},claims_nature=#{claimsNature},claims_interest_rate=#{claimsInterestRate},remark=#{remark},remanent_money=#{remanentMoney} where id=#{id}")
-    int updateClaims(Claims claims);
+    Integer updateClaims(Claims claims);
 
     //修改债权待匹配金额
     @Update("update claims set remanent_money=#{remanentMoney},status=#{status},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
-    int updateClaimsMoney(Claims claims);
+    Integer updateClaimsMoney(Claims claims);
 
     //新增债权信息,其中lendEndAt需要手动计算后填入
     @Insert("insert into claims (create_at,create_by,claims_code,creditor,creditor_phone_number,creditor_id_card,lend_deadline,lend_start_at,lend_money,claims_nature,claims_interest_rate,remark,lend_end_at,remanent_money,status) values (#{createAt},#{createBy},#{claimsCode},#{creditor},#{creditorPhoneNumber},#{creditorIdCard},#{lendDeadline},#{lendStartAt},#{lendMoney},#{claimsNature},#{claimsInterestRate},#{remark},#{lendEndAt},#{lendMoney},#{status})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addClaims(Claims claims);
+    Integer addClaims(Claims claims);
 
     //获得债权人信息
     @Select("select claims.creditor,claims.creditor_id_card from claims inner join claims_matching on claims.id=claims_matching.claims_id where claims_matching.claims_protocol_code=#{currentClaimsCode}")

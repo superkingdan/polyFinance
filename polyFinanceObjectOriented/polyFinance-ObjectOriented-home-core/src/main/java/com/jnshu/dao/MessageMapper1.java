@@ -16,7 +16,7 @@ public interface MessageMapper1 {
     //新增消息
     @Insert("insert into message (create_at,create_by,title,introduce,transaction_id,user_id) values (#{createAt},#{createBy},#{title},#{introduce},#{transactionId},#{userId})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addMessage(Message message);
+    Integer addMessage(Message message);
 
 
 }

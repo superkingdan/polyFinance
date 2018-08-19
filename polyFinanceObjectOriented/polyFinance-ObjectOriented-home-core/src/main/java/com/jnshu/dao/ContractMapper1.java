@@ -20,7 +20,7 @@ public interface ContractMapper1 {
     //添加新合同
     @Insert("insert into contract (create_at,create_by,contract_code,is_pay,is_matching_claims,user_sign) values (#{createAt},#{createBy},#{contractCode},#{isPay},#{isMatchingClaims},#{userSign})")
     @Options(useGeneratedKeys=true,keyProperty="id")
-    int addContractCode(Contract contract);
+    Integer addContractCode(Contract contract);
 
     //根据合同id查找合同编号
     @Select("select contract_code from contract where id=#{contractId}")
@@ -47,7 +47,7 @@ public interface ContractMapper1 {
     List<String> getContractCodeNotMatching();
 
     @Update("update contract set is_matching_claims=#{isMatchingClaims},current_claims_code=#{currentClaimsCode},update_at=#{updateAt},update_by=#{updateBy} where contract_code=#{contractCode}")
-    int updateClaimsInfo(Contract contract);
+    Integer updateClaimsInfo(Contract contract);
 
     @Select("select current_claims_code from contract where contract_code=#{contractCode}")
     String getClaimsCodeByContractCode(String contractCOde);
@@ -56,5 +56,5 @@ public interface ContractMapper1 {
      Contract getContractById(long contractId);
 
      @Update("update contract set is_pay=#{isPay},update_at=#{updateAt},update_by=#{updateBy} where id=#{id}")
-     int updateIsPay(Contract contract);
+     Integer updateIsPay(Contract contract);
 }
