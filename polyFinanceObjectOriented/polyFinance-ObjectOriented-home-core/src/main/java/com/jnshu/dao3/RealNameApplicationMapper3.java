@@ -48,12 +48,12 @@ public interface RealNameApplicationMapper3 {
                     SET("real_name=#{realName}");}
                 if (realNameApplication.getIdCard()!=null){
                     SET("id_card=#{idCard}");}
-                if (realNameApplication.getApplicationStatus()!=0){
-                    SET("application_status=#{applicationStatus}");}
+
                 if (realNameApplication.getIsFirst()!=0){
                     SET("is_first=#{isFirst}");}
                 if (realNameApplication.getRefuseReason()!=null){
                     SET("refuse_reason=#{refuseReason}");}
+                    SET("application_status=#{applicationStatus}");
                     WHERE("id=#{id}");
             }}.toString();
         }

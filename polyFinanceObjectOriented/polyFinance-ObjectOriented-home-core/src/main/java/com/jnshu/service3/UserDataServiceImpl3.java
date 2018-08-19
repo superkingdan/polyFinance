@@ -181,30 +181,43 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             throw new MyException(-1,"姓名不能为空");
         }
         List<RealNameApplication> realNameApplications=realNameApplicationMapper3.findIdCard(realNameApplication.getIdCard());
-        if (realNameApplications!=null) {
+        System.out.println(realNameApplications);
+        if (realNameApplications.size()!=0) {
             throw new MyException(-1, "该身份证只能绑定一个账户");
         }
-            if (realNameApplicationMapper3.findByUserId(id) != null) {
-                if (realNameApplicationMapper3.findByUserId(id).getApplicationStatus() != 1) {
-                    realNameApplication.setIsFirst(1);
-                    realNameApplicationMapper3.updateData(realNameApplication);
-                    json.put("code", 0);
-                    json.put("message", "成功");
+        RealNameApplication realNameApplication1=realNameApplicationMapper3.findByUserId(id);
+        if (realNameApplication1 != null) {
+            System.out.println("不为null");
+            if (realNameApplication1.getApplicationStatus() == 1) {
+                    json.put("code", -1);
+                    json.put("message", "请不要重复认证");
                     return json;
-                }
+            }
+            if (realNameApplication1.getApplicationStatus() == 0) {
                 json.put("code", -1);
-                json.put("message", "请不要重复认证");
+                json.put("message", "请耐心等待审核");
                 return json;
             }
+            int isFirst=1;
+            int s=0;
+            realNameApplication1.setIsFirst(isFirst);
+            realNameApplication1.setUpdateBy(System.currentTimeMillis());
+            realNameApplication1.setUpdateBy(id);
+            realNameApplication1.setRealName(realNameApplication.getRealName());
+            realNameApplication1.setIdCard(realNameApplication.getIdCard());
+            realNameApplication1.setApplicationStatus(s);
+            realNameApplicationMapper3.updateData(realNameApplication1);
+            json.put("code", 0);
+            json.put("message", "更新成功");
+            return json;
+            }
             realNameApplication.setCreateAt(System.currentTimeMillis());
+            realNameApplication.setCreateBy(id);
             realNameApplication.setUserId(id);
             realNameApplicationMapper3.addRealName(realNameApplication);
             json.put("code", 0);
             json.put("message", "成功");
-
             return json;
-
-
     }
 
 
