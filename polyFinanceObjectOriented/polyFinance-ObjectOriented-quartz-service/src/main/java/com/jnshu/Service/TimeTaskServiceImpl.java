@@ -1,6 +1,7 @@
 package com.jnshu.Service;
 
 import com.jnshu.entity.TimedTask;
+import com.jnshu.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class TimeTaskServiceImpl implements TimeTaskService{
     TimeTask7Service timeTask7Service;
 
     @Override
-    public void task(TimedTask timedTask) {
+    public void task(TimedTask timedTask) throws Exception {
         System.out.println("id为"+timedTask.getId()+"的任务进入任务分发器");
         if (timedTask.getNature()==0){
             timeTask0Service.timedTask0(timedTask);

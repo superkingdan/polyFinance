@@ -41,8 +41,8 @@ public class UserInterceptor implements HandlerInterceptor {
             log.error("拦截器空指针，cookie为空");
             throw new MyException(10001,"cookie为空，请登录");
         }
-        User user=userMapper3.findUserById(Long.parseLong(uidS));
-        if (user==null){
+        User user1=userMapper3.findUserById(Long.parseLong(uidS));
+        if (user1==null){
             throw new MyException(-1,"该用户不存在");
         }
         Map<String, Object> map;
