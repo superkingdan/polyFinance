@@ -26,13 +26,13 @@ public interface MessageMapper3 {
     /**
      * 查找消息所有人
      */
-    @Select("select * from message where sent_person_type=#{type} and is_sent=0 order by create_at")
+    @Select("select * from message where sent_person_type<=#{type} and is_sent=0 and user_id=0 order by create_at desc")
     List<Message> findByTpye(@Param("type") int type);
 
     /**
      * 查找消息
      */
-    @Select("select * from message where user_id=#{id}  and is_sent=0 order by create_at")
+    @Select("select * from message where user_id=#{id}  and is_sent=0 order by create_at desc")
     List<Message> findAllByUser(@Param("id") long id);
 
     /**
@@ -49,17 +49,15 @@ public interface MessageMapper3 {
                         "message.content,message.sent_person_type,message.message_type,message.is_push,message.is_sent," +
                         "message.transaction_id,message.user_id,user_back.login_name");
                 FROM("message,user_back");
-                WHERE("message.update_by=user_back.id");
-                if (rpo.getUserId()==0)
-                    WHERE("message.user_id=0");
                 if (rpo.getUserId()!=0)
                     WHERE("message.user_id=#{userId}");
                 if (rpo.getCreateMin()!=0)
                     WHERE("message.create_at>=#{createMin}");
                 if (rpo.getCreateMax()!=0)
                     WHERE("message.create_at<=#{createMax}");
-                if (rpo.getCreateBy()!=0)
-                    WHERE("message.create_by=#{createBy}");
+                if (rpo.getUpdateBy()!=0)
+                    WHERE("message.update_by=#{updateBy}");
+                    WHERE("message.update_by=user_back.id");
                 if(rpo.getIsSent()!=0)
                     WHERE("message.is_sent=#{isSent}");
                 if(rpo.getSentPersonType()!=0)
@@ -74,6 +72,7 @@ public interface MessageMapper3 {
 
 
 
+
     /**
      * 删除消息
      */
@@ -82,8 +81,8 @@ public interface MessageMapper3 {
     /**
      * 添加消息
      */
-    @Insert("insert into message (create_at,create_by,title,content,sent_person_type,message_type,is_push,is_sent,transaction_id,user_id,introduce) " +
-            "values (#{createAt},#{createBy},#{title},#{content},#{sentPersonType},#{messageType},#{isPush},#{isSent},#{transactionId},#{userId},#{introduce})")
+    @Insert("insert into message (create_at,create_by,update_by,title,content,sent_person_type,message_type,is_push,is_sent,transaction_id,user_id,introduce) " +
+            "values (#{createAt},#{createBy},#{updateBy},#{title},#{content},#{sentPersonType},#{messageType},#{isPush},#{isSent},#{transactionId},#{userId},#{introduce})")
     @Options(useGeneratedKeys=true,keyProperty="id",keyColumn="id")
     int addMessage(Message message);
 
