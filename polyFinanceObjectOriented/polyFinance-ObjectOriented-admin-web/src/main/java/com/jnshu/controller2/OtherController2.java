@@ -95,7 +95,7 @@ public class OtherController2 {
         }
 
         //总债权投资警戒线值应该在0到1之间。
-        if (!Float.isNaN(Float.parseFloat(creditorLine))){
+        if (Float.isNaN(Float.parseFloat(creditorLine))){
             result.put("code",-1);
             result.put("message","总债权投资警戒线值应该在0到1之间。");
             return result;
