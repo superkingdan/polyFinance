@@ -30,7 +30,7 @@ public class TimeTask3ServiceImpl implements TimeTask3Service {
 
 
     @Override
-    public void timedTask2(TimedTask timedTask) {
+    public void timedTask2(TimedTask timedTask) throws Exception {
 
 
         /*定时任务0 子定时任务2*/
