@@ -225,13 +225,8 @@ public class BackController2 {
                 }
 
                 logger.info("phoneNumber:"+phoneNumber);
-<<<<<<< HEAD
-//                result.put("code",0);
-//                result.put("message","账户手机号更新成功。");
-=======
                 result.put("code",0);
                 result.put("message","账户更新成功。");
->>>>>>> d548ad81e411b34916900c113884425a5c71006b
                 logger.info("后台 后台管理--账户: "+id+"更新手机号成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id);
             } catch (Exception e) {
                 result.put("code",-1);
