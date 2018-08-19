@@ -147,7 +147,7 @@ public class BackController2 {
         userBack.setHashKey(null);
         userBack.setSalt(null);
         result.put("code",0);
-        result.put("message","查询成功。");
+        result.put("message","账户详情查询成功。");
         logger.info("后台 后台管理--账户详情成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求参数： "+id  +"，查询结果：userBack:" +userBack +",roleId :"+roleId+ ", roleList:" + roleList);
         result.put("userBack",userBack);
         result.put("roleId",roleId);
@@ -343,7 +343,7 @@ public class BackController2 {
             del2 = roleUserBackService2.deleteRoleUserBackByUser(id);
             if (!del2){
                 result.put("code", -1);
-                result.put("message","id对应账户可能不存在。");
+                result.put("message","id对应账户角色可能不存在。");
                 return result;
             }
         } catch (Exception e) {
