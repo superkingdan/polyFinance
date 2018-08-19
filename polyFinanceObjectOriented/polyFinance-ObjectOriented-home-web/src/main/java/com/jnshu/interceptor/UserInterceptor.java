@@ -1,12 +1,14 @@
 package com.jnshu.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jnshu.dao3.UserMapper3;
 import com.jnshu.entity.User;
 import com.jnshu.exception.MyException;
 import com.jnshu.utils3.CookieUtil;
 import com.jnshu.utils3.TokenJWT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +25,8 @@ import java.util.Objects;
 @Component(value = "userInterceptor")
 public class UserInterceptor implements HandlerInterceptor {
 
+    @Autowired
+    UserMapper3 userMapper3;
     private static final Logger log= LoggerFactory.getLogger(UserInterceptor.class);
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
