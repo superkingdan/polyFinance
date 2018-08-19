@@ -196,6 +196,7 @@
 12:02:06.561 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
 =======
 >>>>>>> abd08186c43730aecfb4534e190a660c892a56d2
+<<<<<<< HEAD
 >>>>>>> d66993479773169beeb55d8efe0f4765edec3c03
 17:05:08.238 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
 17:05:08.239 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
@@ -221,3 +222,29 @@
 17:05:58.757 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
 17:05:58.757 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
 17:05:58.757 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+=======
+17:01:41.624 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.625 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.625 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.625 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.625 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.625 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.626 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.626 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.626 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.626 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.626 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+17:01:41.626 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.287 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.288 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.288 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.288 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.288 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.289 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.290 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.290 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.291 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.291 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.291 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+17:03:46.292 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+>>>>>>> 19a54a5a5ffdd6849c451eef2f3022eb241991b7

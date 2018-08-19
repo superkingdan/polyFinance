@@ -94,6 +94,9 @@ public class PaymentServiceImpl1 implements PaymentService1 {
                 throw new MyException(-1, "获取用户购买新手礼包信息失败");
             }
             log.info(userId+"是否购买过新手礼包"+isNew);
+            if (isNew==null){
+                isNew=0;
+            }
             if (isNew==1) {
                 throw new MyException(10040, "已购买过新手礼");
             }

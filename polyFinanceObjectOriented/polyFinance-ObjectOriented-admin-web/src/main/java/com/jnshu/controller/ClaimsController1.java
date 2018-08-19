@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,22 @@ public class ClaimsController1 {
     @GetMapping(value = "/a/u/claims/list")
     public Map getClaimsList(@ModelAttribute ClaimsListRPO rpo)throws Exception{
         log.info("查询债权列表，条件是"+rpo);
+        if ((rpo.getLendDeadlineMin()!=null&&rpo.getLendDeadlineMin()<0)||(rpo.getLendDeadlineMax()!=null&&rpo.getLendDeadlineMax()<0)){
+            throw new MyException(-1,"出借期限请勿输入负数");
+        }
+        if(rpo.getLendMoneyMin()!=null){
+            BigDecimal lendMoneyMinB=new BigDecimal(rpo.getLendMoneyMin());
+
+            if(lendMoneyMinB.compareTo(new BigDecimal("0"))<0){
+                throw new MyException(-1,"出借金额请勿输入负数");
+            }
+        }
+        if(rpo.getLendMoneyMax()!=null){
+            BigDecimal lendMoneyMaxB=new BigDecimal(rpo.getLendMoneyMax());
+            if(lendMoneyMaxB.compareTo(new BigDecimal("0"))<0){
+                throw new MyException(-1,"出借金额请勿输入负数");
+            }
+        }
         Page<Claims> claimsPage= claimsService1.getClaimsList(rpo);
         Map<String,Object> map=new HashMap<>();
         map.put("code",0);

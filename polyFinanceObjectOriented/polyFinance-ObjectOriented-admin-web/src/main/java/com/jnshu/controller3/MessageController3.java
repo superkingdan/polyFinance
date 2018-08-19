@@ -20,7 +20,6 @@ public class MessageController3 {
     @Autowired
     MessageService3 messageService3;
 
-
     private static final Logger log= LoggerFactory.getLogger(MessageController3.class);
     /**
      * 多条件查询消息列表
