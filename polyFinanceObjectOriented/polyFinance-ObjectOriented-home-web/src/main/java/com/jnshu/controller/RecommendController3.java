@@ -1,7 +1,9 @@
 package com.jnshu.controller;
 
 
-import com.jnshu.dao3.ContentMapper3;
+import com.alibaba.fastjson.JSONObject;
+import com.jnshu.exception.MyException;
+import com.jnshu.service3.RecommendService3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/a")
 public class RecommendController3 {
     @Autowired
-    ContentMapper3 contentMapper3;
+    RecommendService3 recommendService3;
     private static final Logger log= LoggerFactory.getLogger(RecommendController3.class);
 
     /**
@@ -29,8 +31,9 @@ public class RecommendController3 {
      */
     @GetMapping("/content/banner")
     @ResponseBody
-    public Object findBack(HttpServletRequest request){
-        return contentMapper3.findToList(0);
+    public JSONObject findBack(HttpServletRequest request)throws MyException {
+
+        return recommendService3.findBanner();
     }
 
 

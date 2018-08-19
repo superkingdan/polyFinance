@@ -33,7 +33,7 @@ public class UserBankController3 {
     @GetMapping("/user/bank/{id}")
     @ResponseBody
     public Object userBank(@PathVariable(value="id") long id,
-                           HttpServletRequest request) throws JSONException {
+                           HttpServletRequest request) throws JSONException, MyException {
         return userBankService3.findBankCard(id);
     }
     /**
@@ -43,7 +43,7 @@ public class UserBankController3 {
     @GetMapping("/userBank/{id}")
     @ResponseBody
     public Object userBankUp(@PathVariable(value="id") long id,
-                             HttpServletRequest request) throws JSONException {
+                             HttpServletRequest request) throws JSONException, MyException {
 
         return userDataService3.findUserById(id);
     }

@@ -5,6 +5,7 @@ import com.jnshu.entity.User;
 import com.jnshu.exception.MyException;
 import com.jnshu.service3.UserDataService3;
 import com.jnshu.service3.UserLoginService3;
+import com.jnshu.utils3.CookieUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class UserDataController3 {
      */
     @GetMapping(value = "/user")
     @ResponseBody
-    public Object user(HttpServletRequest request){
+    public Object user(HttpServletRequest request) throws MyException {
         return userDataService3.findUserByRequest(request);
     }
 
@@ -46,7 +47,7 @@ public class UserDataController3 {
      */
     @GetMapping("/user/set/{id}")
     @ResponseBody
-    public Object userSet(@PathVariable(value="id") long id,HttpServletRequest request){
+    public Object userSet(@PathVariable(value="id") long id,HttpServletRequest request) throws MyException {
         log.info("获得用户id为"+id+"的个人信息");
         return userDataService3.findData(id);
     }
@@ -54,24 +55,33 @@ public class UserDataController3 {
      * 实名验证
      * @return 状态码
      */
-    @PostMapping("/user/verification/{id}")
+    @PostMapping("/user/verification")
     @ResponseBody
-    public Object verification(@PathVariable(value="id") long id,
-                               RealNameApplication realNameApplication,
+    public Object verification(RealNameApplication realNameApplication,
                                HttpServletRequest request) throws MyException {
+        Long id= null;
+        try {
+            id=Long.valueOf(CookieUtil.getCookieValue(request,"uid"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return userDataService3.verificationReal(id,realNameApplication);
     }
     /**
      * 上传图片
      * @return 状态码
      */
-    @PostMapping("/userImage/Upload/{id}")
+    @PostMapping("/userImage/Upload")
     @ResponseBody
-    public Object userImage(@PathVariable(value="id") long id,
-                            @RequestParam MultipartFile realImage,
+    public Object userImage(@RequestParam MultipartFile realImage,
                             @RequestParam(value = "imageName") String imageName,
                             HttpServletRequest request){
-        System.out.println("开始上传");
+        Long id= null;
+        try {
+            id=Long.valueOf(CookieUtil.getCookieValue(request,"uid"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return userDataService3.updataImg(realImage,request,id,imageName);
     }
     /**
@@ -105,7 +115,7 @@ public class UserDataController3 {
     @ResponseBody
     public Object gestureNew(@PathVariable(value="id") long id,
                              @RequestParam(value="gesturePassword") int gesturePassword,
-                             HttpServletRequest request){
+                             HttpServletRequest request) throws MyException {
         return userDataService3.newGesture(id,gesturePassword);
     }
     /**
