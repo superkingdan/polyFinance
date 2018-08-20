@@ -28,11 +28,15 @@ public interface MessageMapper3 {
      */
     @Select("select * from message where sent_person_type<=#{type} and is_sent=0 and user_id=0 order by create_at desc")
     List<Message> findByTpye(@Param("type") int type);
-
+    /**
+     * 查找消息所有人
+     */
+    @Select("select * from message where is_sent=0 and user_id=0 order by create_at desc")
+    List<Message> findByAll();
     /**
      * 查找消息
      */
-    @Select("select * from message where user_id=#{id}  and is_sent=0 order by create_at desc")
+    @Select("select * from message where user_id=#{id} order by create_at desc")
     List<Message> findAllByUser(@Param("id") long id);
 
     /**
@@ -47,17 +51,19 @@ public interface MessageMapper3 {
             return new SQL(){{
                 SELECT("message.id,message.create_at,message.create_by,message.update_at,message.update_by,message.title," +
                         "message.content,message.sent_person_type,message.message_type,message.is_push,message.is_sent," +
-                        "message.transaction_id,message.user_id,user_back.login_name");
-                FROM("message,user_back");
+                        "message.transaction_id,message.user_id");
+                FROM("message");
                 if (rpo.getUserId()!=0)
                     WHERE("message.user_id=#{userId}");
                 if (rpo.getCreateMin()!=0)
                     WHERE("message.create_at>=#{createMin}");
                 if (rpo.getCreateMax()!=0)
                     WHERE("message.create_at<=#{createMax}");
+                if (rpo.getCreateBy()!=0)
+                    WHERE("message.create_by=#{creatBy}");
                 if (rpo.getUpdateBy()!=0)
                     WHERE("message.update_by=#{updateBy}");
-                    WHERE("message.update_by=user_back.id");
+//                    WHERE("message.update_by=user_back.id");
                 if(rpo.getIsSent()!=0)
                     WHERE("message.is_sent=#{isSent}");
                 if(rpo.getSentPersonType()!=0)

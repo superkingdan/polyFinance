@@ -51,7 +51,6 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         if (user==null){
             throw new MyException(-1,"该用户不存在");
         }
-
         if (user.getRealStatus()==0) {
             RealNameApplication realNameApplication = realNameApplicationMapper3.findByUserId(id);
             if (realNameApplication == null) {
@@ -60,6 +59,7 @@ public class UserBankServiceImpl3 implements UserBankService3 {
             if (realNameApplication.getApplicationStatus() == 0) {
                 throw new MyException(1002, "请耐心等待实名通过");
             }
+            throw new MyException(1000, "未实名");
         }
         List<BankCardList> bankCardList =bankCardMapper3.findListByUser(id);
         json.put("code",0);

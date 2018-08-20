@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class MessageServiceImpl3 implements MessageService3 {
@@ -39,6 +40,7 @@ public class MessageServiceImpl3 implements MessageService3 {
     @Override
     public JSONObject findMessageList(MessageListRPO messageListRPO) throws MyException {
         JSONObject json =new JSONObject();
+        System.out.println(messageListRPO.getLoginName());
         if (messageListRPO.getLoginName()!=null) {
             UserBack userBack=userBackMapper3.findByName(messageListRPO.getLoginName());
             if (userBack==null){
@@ -48,11 +50,20 @@ public class MessageServiceImpl3 implements MessageService3 {
             messageListRPO.setUpdateBy(userBack.getId());
             System.out.println(messageListRPO.getCreateBy());
         }
+        List<MessageListRPO> messageListRPOS1=messageMapper3.findMessageListRPO(messageListRPO);
 
-        Page<MessageListRPO> messageListRPOS= (Page<MessageListRPO>) messageMapper3.findMessageListRPO(messageListRPO);
 
 
-        System.out.println(messageListRPOS);
+        for (int i=0;messageListRPOS1.size()>i;i++){
+            if (messageListRPOS1.get(i).getUpdateBy()!=0){
+                messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getUpdateBy()).getLoginName());
+            }
+            if (messageListRPOS1.get(i).getUpdateBy()==0){
+                messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getCreateBy()).getLoginName());
+            }
+        }
+        Page<MessageListRPO> messageListRPOS= (Page<MessageListRPO>) messageListRPOS1;
+
         json.put("code",0);
         json.put("message","成功");
         json.put("data",messageListRPOS);

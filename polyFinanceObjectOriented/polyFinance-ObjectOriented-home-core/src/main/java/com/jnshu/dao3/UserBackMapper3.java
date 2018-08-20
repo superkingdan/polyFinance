@@ -13,4 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface UserBackMapper3 {
     @Select("select *  from user_back where login_name like \"%\"#{loginName}\"%\"")
     UserBack findByName(String loginName);
+    @Select("select * from user_back where id=#{id}")
+    UserBack findById(long id);
 }

@@ -79,6 +79,15 @@ public class UserDataServiceImpl3 implements UserDataService3 {
         map.put("realName",user.getRealName());
         map.put("defaultCard",defaultCard);
         json.put("code",0);
+        if (user.getRealStatus()==0) {
+            RealNameApplication realNameApplication = realNameApplicationMapper3.findByUserId(id);
+            if (realNameApplication==null){
+                json.put("code",0);
+            }
+            if (realNameApplication.getApplicationStatus() == 0) {
+                json.put("code", 1002);
+            }
+        }
         json.put("message","成功");
         json.put("data",map);
         return json;
