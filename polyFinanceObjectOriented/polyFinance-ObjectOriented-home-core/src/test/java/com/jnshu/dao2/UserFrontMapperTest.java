@@ -1,7 +1,9 @@
 package com.jnshu.dao2;
 
+import com.jnshu.Domain2.DomainUserFrontDetail;
 import com.jnshu.Entry;
 import com.jnshu.dto2.UserFrontListRPO;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,6 +37,7 @@ public class UserFrontMapperTest {
 
     @Test
     public void getUserFrontBankCardSById() throws Exception{
-        System.out.println(mapper.deleteUserBankCard(2L));
+        DomainUserFrontDetail U = mapper.getUserFrontDetailById(100L);
+        System.out.println(U);
     }
 }

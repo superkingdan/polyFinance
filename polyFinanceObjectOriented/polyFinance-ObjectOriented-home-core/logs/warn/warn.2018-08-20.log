@@ -1,0 +1,84 @@
+00:02:58.006 WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/Administrator/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/Administrator/.m2/repository/org/json/json/20140107/json-20140107.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behaviour
+
+00:03:00.656 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.656 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.657 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.657 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.657 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.657 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.658 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.658 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.658 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.659 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.659 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+00:03:00.659 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+00:11:48.594 WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/Administrator/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/Administrator/.m2/repository/org/json/json/20140107/json-20140107.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behaviour
+
+00:11:51.552 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.553 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.553 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.554 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.554 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.554 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.555 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.555 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.555 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.555 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.555 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+00:11:51.555 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+00:14:02.346 WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/Administrator/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/Administrator/.m2/repository/org/json/json/20140107/json-20140107.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behaviour
+
+00:14:05.771 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.772 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.772 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.772 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.772 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.773 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.773 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.773 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.773 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.773 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.774 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+00:14:05.774 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!
+00:17:29.879 WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/Administrator/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/Administrator/.m2/repository/org/json/json/20140107/json-20140107.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behaviour
+
+00:17:33.116 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankCardMapper1' and 'com.jnshu.dao.BankCardMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.117 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'bankMapper1' and 'com.jnshu.dao.BankMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.117 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMapper1' and 'com.jnshu.dao.ClaimsMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.117 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'claimsMatchingMapper1' and 'com.jnshu.dao.ClaimsMatchingMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.118 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'contractMapper1' and 'com.jnshu.dao.ContractMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.118 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'messageMapper1' and 'com.jnshu.dao.MessageMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.118 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'productMapper1' and 'com.jnshu.dao.ProductMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.118 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'systemDataMapper1' and 'com.jnshu.dao.SystemDataMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.119 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'timedTaskMapper1' and 'com.jnshu.dao.TimedTaskMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.119 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionLogMapper1' and 'com.jnshu.dao.TransactionLogMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.120 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'transactionMapper1' and 'com.jnshu.dao.TransactionMapper1' mapperInterface. Bean already defined with the same name!
+00:17:33.120 WARN  o.m.s.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMapper1' and 'com.jnshu.dao.UserMapper1' mapperInterface. Bean already defined with the same name!

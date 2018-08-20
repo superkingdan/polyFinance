@@ -460,7 +460,7 @@ public class FrontUserController2 {
             }
 
             if (1 == bankCards.size()){
-                newDefaultBankCardId = null;
+                newDefaultBankCardId = 0L;
             }
 
             if (2 == bankCards.size()){
