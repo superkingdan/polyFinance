@@ -83,9 +83,15 @@ public class UserDataServiceImpl3 implements UserDataService3 {
             RealNameApplication realNameApplication = realNameApplicationMapper3.findByUserId(id);
             if (realNameApplication==null){
                 json.put("code",0);
+                json.put("message","未实名");
+                json.put("data",map);
+                return json;
             }
             if (realNameApplication.getApplicationStatus() == 0) {
                 json.put("code", 1002);
+                json.put("message","实名未通过");
+                json.put("data",map);
+                return json;
             }
         }
         json.put("message","成功");

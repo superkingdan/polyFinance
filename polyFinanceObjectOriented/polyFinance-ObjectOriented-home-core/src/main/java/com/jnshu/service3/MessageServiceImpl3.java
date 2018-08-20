@@ -65,10 +65,10 @@ public class MessageServiceImpl3 implements MessageService3 {
                     }
                     if (userBack==null) {
                         if (messageListRPOS1.get(i).getUpdateBy() != 0) {
-                            messageListRPOS1.get(i).setLoginName("未知管理员");
+                            messageListRPOS1.get(i).setLoginName(String.valueOf(messageListRPOS1.get(i).getUpdateBy()));
                         }
                         if (messageListRPOS1.get(i).getUpdateBy() == 0) {
-                            messageListRPOS1.get(i).setLoginName("未知管理员");
+                            messageListRPOS1.get(i).setLoginName(String.valueOf(messageListRPOS1.get(i).getCreateBy()));
                         }
                     }
                 }
