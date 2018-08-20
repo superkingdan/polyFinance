@@ -3,7 +3,6 @@ package com.jnshu.dao2;
 import com.jnshu.Domain2.DomainUserFrontDetail;
 import com.jnshu.Entry;
 import com.jnshu.dto2.UserFrontListRPO;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
