@@ -46,20 +46,30 @@ public class MessageServiceImpl3 implements MessageService3 {
             if (userBack==null){
                 throw new MyException(-1, "没有该用户");
             }
-            System.out.println(userBack);
             messageListRPO.setUpdateBy(userBack.getId());
-            System.out.println(messageListRPO.getCreateBy());
         }
         List<MessageListRPO> messageListRPOS1=messageMapper3.findMessageListRPO(messageListRPO);
         if (messageListRPOS1!=null) {
             for (int i = 0; messageListRPOS1.size() > i; i++) {
                 MessageListRPO messageListRPO2=messageListRPOS1.get(i);
                 if (messageListRPO2!=null) {
-                    if (messageListRPOS1.get(i).getUpdateBy() != 0) {
-                        messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getUpdateBy()).getLoginName());
+                    UserBack userBack;
+                    userBack=userBackMapper3.findById(messageListRPOS1.get(i).getUpdateBy());
+                    if (userBack!=null) {
+                        if (messageListRPOS1.get(i).getUpdateBy() != 0) {
+                            messageListRPOS1.get(i).setLoginName(userBack.getLoginName());
+                        }
+                        if (messageListRPOS1.get(i).getUpdateBy() == 0) {
+                            messageListRPOS1.get(i).setLoginName(userBack.getLoginName());
+                        }
                     }
-                    if (messageListRPOS1.get(i).getUpdateBy() == 0) {
-                        messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getCreateBy()).getLoginName());
+                    if (userBack==null) {
+                        if (messageListRPOS1.get(i).getUpdateBy() != 0) {
+                            messageListRPOS1.get(i).setLoginName("未知管理员");
+                        }
+                        if (messageListRPOS1.get(i).getUpdateBy() == 0) {
+                            messageListRPOS1.get(i).setLoginName("未知管理员");
+                        }
                     }
                 }
             }
@@ -69,7 +79,6 @@ public class MessageServiceImpl3 implements MessageService3 {
         json.put("code",0);
         json.put("message","成功");
         json.put("data",messageListRPOS);
-
         json.put("total",messageListRPOS.getTotal());
         return json;
     }
