@@ -41,7 +41,15 @@ public class UserInterceptor implements HandlerInterceptor {
             log.error("拦截器空指针，cookie为空");
             throw new MyException(10001,"cookie为空，请登录");
         }
-        User user1=userMapper3.findUserById(Long.parseLong(uidS));
+        if(uidS==null){
+            throw new MyException(10001,"cookie为空，请登录");
+        }
+        User user1;
+        try{
+            user1=userMapper3.findUserById(Long.parseLong(uidS));
+        }catch (Exception e){
+            throw new MyException(10001,"查找失败，请登录");
+        }
         if (user1==null){
             throw new MyException(-1,"该用户不存在");
         }
@@ -63,8 +71,6 @@ public class UserInterceptor implements HandlerInterceptor {
         if (state.equals("EXPIRED")) {
             log.error("拦截器token解析失败");
         }
-
-
 
         return true;
     }
