@@ -337,16 +337,12 @@ public class FrontUserController2 {
 
         Boolean cancelReal = false;
         Boolean update = false;
-        RealNameApplication realNameApplication = new RealNameApplication();
-        realNameApplication.setId(id);
-        realNameApplication.setUpdateAt(System.currentTimeMillis());
-        realNameApplication.setUpdateBy((Long) account.get("uid"));
         try {
             System.out.println(user);
             System.out.println(userService2);
             cancelReal = userService2.updateUserFrontRealStatus(user);
-            update = userApplicationService2.cancelApplicationStatus(realNameApplication);
-            if (cancelReal){
+            update = userApplicationService2.cancelApplicationStatus2(id);
+            if (cancelReal && update){
                 cam.setMessage("取消实名成功。");
                 result.add(cam);
                 logger.info("后台 业务管理--用户详情-取消实名。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。"+"用户id="+id+", 实名取消成功。");
