@@ -53,8 +53,6 @@ public interface MessageMapper3 {
                         "message.content,message.sent_person_type,message.message_type,message.is_push,message.is_sent," +
                         "message.transaction_id,message.user_id");
                 FROM("message");
-                if (rpo.getUserId()!=0)
-                    WHERE("message.user_id=#{userId}");
                 if (rpo.getCreateMin()!=0)
                     WHERE("message.create_at>=#{createMin}");
                 if (rpo.getCreateMax()!=0)
@@ -70,7 +68,7 @@ public interface MessageMapper3 {
                     WHERE("message.sent_person_type=#{sentPersonType}");
                 if (rpo.getTitle()!=null)
                     WHERE("message.title like \"%\"#{title}\"%\"");
-                WHERE("message.user_id=0");
+                WHERE("message.user_id=#{userId}");
                 ORDER_BY("message.create_at desc");
             }}.toString();
         }
