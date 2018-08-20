@@ -48,7 +48,7 @@ public interface UserMapper1 {
     User getUserRealStatusById(long userId);
 
     //修改用户为已购买新手礼包
-    @Select("update user set is_new=1 where id=#{id}")
+    @Update("update user set is_new=1 where id=#{id}")
     Integer updateIsNewById(long id);
 
     //查找用户是否购买新手礼

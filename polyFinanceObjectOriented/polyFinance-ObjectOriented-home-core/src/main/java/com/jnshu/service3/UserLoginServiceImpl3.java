@@ -99,6 +99,9 @@ public class UserLoginServiceImpl3 implements UserLoginService3 {
         User user1=getPassword(password); //加密
         user1.setPhoneNumber(user.getPhoneNumber());
         user1.setCreateAt(System.currentTimeMillis());
+        user1.setIsNew(User.IS_NEW_NOT);
+        user1.setRealStatus(User.REAL_STATUS_NOT);
+        user1.setDefaultCard(0);
 
         String oldNumber= userMapper3.getOldUserNumber();
         user1.setUserNumber(UserNumber.NewUserNumber(oldNumber));   //user_number UK+年份后两位+10+000001（六位递增数字） 唯一索引
