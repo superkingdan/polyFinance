@@ -51,15 +51,14 @@ public class MessageServiceImpl3 implements MessageService3 {
             System.out.println(messageListRPO.getCreateBy());
         }
         List<MessageListRPO> messageListRPOS1=messageMapper3.findMessageListRPO(messageListRPO);
-
-
-
-        for (int i=0;messageListRPOS1.size()>i;i++){
-            if (messageListRPOS1.get(i).getUpdateBy()!=0){
-                messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getUpdateBy()).getLoginName());
-            }
-            if (messageListRPOS1.get(i).getUpdateBy()==0){
-                messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getCreateBy()).getLoginName());
+        if (messageListRPOS1!=null) {
+            for (int i = 0; messageListRPOS1.size() > i; i++) {
+                if (messageListRPOS1.get(i).getUpdateBy() != 0) {
+                    messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getUpdateBy()).getLoginName());
+                }
+                if (messageListRPOS1.get(i).getUpdateBy() == 0) {
+                    messageListRPOS1.get(i).setLoginName(userBackMapper3.findById(messageListRPOS1.get(i).getCreateBy()).getLoginName());
+                }
             }
         }
         Page<MessageListRPO> messageListRPOS= (Page<MessageListRPO>) messageListRPOS1;
