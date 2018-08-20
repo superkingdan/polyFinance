@@ -4,6 +4,8 @@ import com.jnshu.Domain2.DomainUserFront;
 import com.jnshu.Domain2.DomainUserFrontDetail;
 import com.jnshu.Domain2.UserBankCard;
 import com.jnshu.dto2.UserFrontListRPO;
+import com.jnshu.entity.RealNameApplication;
+import com.jnshu.service.UserApplicationService2;
 import com.jnshu.service.UserService2;
 import com.jnshu.utils.CAM;
 import com.jnshu.utils.TokenUtil;
@@ -27,6 +29,8 @@ public class FrontUserController2 {
     private static TokenUtil tokenUtil = new TokenUtil();
     @Autowired
     UserService2 userService2;
+    @Autowired
+    UserApplicationService2 userApplicationService2;
 
     /**
      * 用户管理
@@ -332,11 +336,13 @@ public class FrontUserController2 {
         user.setUpdateAt(System.currentTimeMillis());
 
         Boolean cancelReal = false;
+        Boolean update = false;
         try {
             System.out.println(user);
             System.out.println(userService2);
             cancelReal = userService2.updateUserFrontRealStatus(user);
-            if (cancelReal){
+            update = userApplicationService2.cancelApplicationStatus2(id);
+            if (cancelReal && update){
                 cam.setMessage("取消实名成功。");
                 result.add(cam);
                 logger.info("后台 业务管理--用户详情-取消实名。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。"+"用户id="+id+", 实名取消成功。");
@@ -460,7 +466,7 @@ public class FrontUserController2 {
             }
 
             if (1 == bankCards.size()){
-                newDefaultBankCardId = null;
+                newDefaultBankCardId = 0L;
             }
 
             if (2 == bankCards.size()){

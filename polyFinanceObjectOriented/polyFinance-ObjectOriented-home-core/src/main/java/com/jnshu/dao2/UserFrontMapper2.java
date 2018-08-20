@@ -88,7 +88,7 @@ public interface UserFrontMapper2 {
     /**
      *用户详情--取消实名
      */
-    @Update("update user set real_name=null, id_card=null ,real_status=0, default_card =null, update_at=#{updateAt}, update_by=#{updateBy} where id=#{id} and real_status=1")
+    @Update("update user set real_name=null, id_card=null ,real_status=0, default_card =0, update_at=#{updateAt}, update_by=#{updateBy} where id=#{id} and real_status=1")
     Boolean updateUserFrontRealStatus(User user) throws Exception;
 
     /**

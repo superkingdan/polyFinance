@@ -48,6 +48,10 @@ public class UserApplicationServiceImpl2 implements UserApplicationService2 {
         return applicationMapper2.cancelApplicationStatus(realNameApplication);
     }
 
+    @Override
+    public Boolean cancelApplicationStatus2(Long userId) throws Exception{
+        return applicationMapper2.cancelApplicationStatus2(userId);
+    }
     //审核实名申请。
     @Override
     public Boolean reviewApplication(RealNameApplication realNameApplication) throws Exception {

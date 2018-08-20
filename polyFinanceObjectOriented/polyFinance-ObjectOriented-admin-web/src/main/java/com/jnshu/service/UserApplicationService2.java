@@ -24,6 +24,8 @@ public interface UserApplicationService2 {
     //取消实名
     Boolean cancelApplicationStatus(RealNameApplication realNameApplication) throws Exception;
 
+    //取消实名
+    Boolean cancelApplicationStatus2(Long userId) throws Exception;
     //审核实名申请。
     Boolean reviewApplication(RealNameApplication realNameApplication) throws Exception;
 

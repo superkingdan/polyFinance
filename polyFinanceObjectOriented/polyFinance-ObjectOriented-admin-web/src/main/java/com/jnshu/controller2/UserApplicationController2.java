@@ -129,11 +129,12 @@ public class UserApplicationController2 {
 
         //业务处理。
         try {
+            System.out.println("取消实名");
             update = userApplicationService2.cancelApplicationStatus(realNameApplication);
             if (update){
                 CAM cam1 = new CAM(0,"取消实名成功。");
                 result.add(cam1);
-                logger.info("业务管理--实名认证管理--实名列表取消实名成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求id参数： "+id+", applicationStatus="+applicationStatus);
+                logger.info("业务管理--用户详情--取消实名成功。当前账户id："+account.get("uid")+"，账户名："+account.get("loginName")+"，后台角色："+account.get("role")+"。请求id参数： "+id+", applicationStatus="+applicationStatus);
             }else {
                 CAM cam1 = new CAM(-1,"取消实名失败。原因：实名申请记录非“实名”状态。只有被实名认证的用户才可以取消实名。");
                 result.add(cam1);

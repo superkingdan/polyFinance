@@ -17,6 +17,10 @@ public interface ApplicationMapper2 {
     @Update("update real_name_application set application_status=3 where id=#{id} and application_status=1")
     Boolean cancelApplicationStatus(RealNameApplication realNameApplication) throws Exception;
 
+    //用户列表--取消实名状态。同时更新实名表里的取消实名操作。
+    @Update("update real_name_application set application_status=3 where user_id=#{userId} and application_status=1")
+    Boolean cancelApplicationStatus2(Long userId) throws Exception;
+
     //实名列表--审核
 //    @Update("update real_name_application set application_status=#{applicationStatus}, refuse_reason=#{refuseReason}  where id=#{id}")
     @UpdateProvider(type =ReviewApplication.class ,method ="updateSQL" )

@@ -3,10 +3,12 @@ package com.jnshu.service3;
 import com.alibaba.fastjson.JSONObject;
 import com.jnshu.dao3.BankCardMapper3;
 import com.jnshu.dao3.BankMapper3;
+import com.jnshu.dao3.RealNameApplicationMapper3;
 import com.jnshu.dao3.UserMapper3;
 import com.jnshu.dto3.BankCardList;
 import com.jnshu.entity.Bank;
 import com.jnshu.entity.BankCard;
+import com.jnshu.entity.RealNameApplication;
 import com.jnshu.entity.User;
 import com.jnshu.exception.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class UserBankServiceImpl3 implements UserBankService3 {
     BankCardMapper3 bankCardMapper3;
     @Autowired
     BankMapper3 bankMapper3;
+    @Autowired
+    RealNameApplicationMapper3 realNameApplicationMapper3;
 
     /*默认银行卡拼接*/
     @Override
@@ -47,10 +51,15 @@ public class UserBankServiceImpl3 implements UserBankService3 {
         if (user==null){
             throw new MyException(-1,"该用户不存在");
         }
-        if (user.getRealName()==null){
-            json.put("code",1000);
-            json.put("message","未实名");
-            return json;
+
+        if (user.getRealStatus()==0) {
+            RealNameApplication realNameApplication = realNameApplicationMapper3.findByUserId(id);
+            if (realNameApplication == null) {
+                throw new MyException(1000, "未实名");
+            }
+            if (realNameApplication.getApplicationStatus() == 0) {
+                throw new MyException(1002, "请耐心等待实名通过");
+            }
         }
         List<BankCardList> bankCardList =bankCardMapper3.findListByUser(id);
         json.put("code",0);
