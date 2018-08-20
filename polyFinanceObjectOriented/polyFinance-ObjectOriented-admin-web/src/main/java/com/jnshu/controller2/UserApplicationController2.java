@@ -121,6 +121,7 @@ public class UserApplicationController2 {
 
         RealNameApplication realNameApplication = new RealNameApplication();
         realNameApplication.setId(id);
+        realNameApplication.setApplicationStatus(applicationStatus);
         realNameApplication.setUpdateAt(System.currentTimeMillis());
         realNameApplication.setUpdateBy((Long) account.get("uid"));
 

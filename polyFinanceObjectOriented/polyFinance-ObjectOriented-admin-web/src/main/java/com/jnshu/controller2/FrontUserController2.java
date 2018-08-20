@@ -4,6 +4,8 @@ import com.jnshu.Domain2.DomainUserFront;
 import com.jnshu.Domain2.DomainUserFrontDetail;
 import com.jnshu.Domain2.UserBankCard;
 import com.jnshu.dto2.UserFrontListRPO;
+import com.jnshu.entity.RealNameApplication;
+import com.jnshu.service.UserApplicationService2;
 import com.jnshu.service.UserService2;
 import com.jnshu.utils.CAM;
 import com.jnshu.utils.TokenUtil;
@@ -27,6 +29,8 @@ public class FrontUserController2 {
     private static TokenUtil tokenUtil = new TokenUtil();
     @Autowired
     UserService2 userService2;
+    @Autowired
+    UserApplicationService2 userApplicationService2;
 
     /**
      * 用户管理
@@ -332,10 +336,16 @@ public class FrontUserController2 {
         user.setUpdateAt(System.currentTimeMillis());
 
         Boolean cancelReal = false;
+        Boolean update = false;
+        RealNameApplication realNameApplication = new RealNameApplication();
+        realNameApplication.setId(id);
+        realNameApplication.setUpdateAt(System.currentTimeMillis());
+        realNameApplication.setUpdateBy((Long) account.get("uid"));
         try {
             System.out.println(user);
             System.out.println(userService2);
             cancelReal = userService2.updateUserFrontRealStatus(user);
+            update = userApplicationService2.cancelApplicationStatus(realNameApplication);
             if (cancelReal){
                 cam.setMessage("取消实名成功。");
                 result.add(cam);
