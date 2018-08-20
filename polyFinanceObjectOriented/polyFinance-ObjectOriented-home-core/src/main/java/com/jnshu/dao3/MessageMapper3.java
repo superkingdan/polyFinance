@@ -70,6 +70,7 @@ public interface MessageMapper3 {
                     WHERE("message.sent_person_type=#{sentPersonType}");
                 if (rpo.getTitle()!=null)
                     WHERE("message.title like \"%\"#{title}\"%\"");
+                WHERE("message.user_id=0");
                 ORDER_BY("message.create_at desc");
             }}.toString();
         }
